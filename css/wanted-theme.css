@@ -383,6 +383,132 @@
   border: none;
 }
 
+/* ========================================
+   다크 챕터 (짝수 챕터: 2, 4, 6...)
+   본문 배경 검정, 텍스트 밝은 색으로 반전
+   ======================================== */
+.slide-body.dark {
+  background: #0a0a0a;
+}
+.slide-body.dark .body-title {
+  color: var(--wanted-white);
+}
+.slide-body.dark .body-text,
+.slide-body.dark .body-text p,
+.slide-body.dark .body-text strong {
+  color: #e0e0e0;
+}
+.slide-body.dark .body-text strong:first-child {
+  color: var(--wanted-white);
+}
+.slide-body.dark .body-crop-c3 .body-card {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e0e0e0;
+}
+.slide-body.dark .body-crop-c3 .body-card strong {
+  color: var(--wanted-white);
+}
+.slide-body.dark .body-crop-b2 .body-text {
+  color: #e0e0e0;
+}
+
+/* ========================================
+   상단 챕터 네비게이션 바
+   ======================================== */
+.chapter-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 60px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.chapter-nav:hover,
+.chapter-nav.visible {
+  opacity: 1;
+}
+/* 마우스가 상단 근처에 오면 표시 */
+.reveal-viewport:hover .chapter-nav {
+  opacity: 1;
+}
+
+.chapter-btn {
+  position: relative;
+  padding: 6px 16px;
+  font-family: 'WantedSans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.chapter-btn:hover,
+.chapter-btn.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+.chapter-btn.active {
+  background: rgba(0, 162, 255, 0.4);
+}
+
+/* 서브 페이지 드롭다운 */
+.chapter-pages {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  flex-direction: row;
+  gap: 3px;
+  padding: 6px;
+  margin-top: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px;
+  min-width: max-content;
+}
+.chapter-btn:hover .chapter-pages {
+  display: flex;
+}
+
+.page-dot {
+  width: 28px;
+  height: 28px;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  font-family: 'WantedSans', sans-serif;
+}
+.page-dot:hover {
+  background: rgba(0, 162, 255, 0.5);
+  color: #fff;
+}
+.page-dot.active {
+  background: rgba(0, 162, 255, 0.7);
+  color: #fff;
+}
+
 /* 레거시 호환 */
 .slide-content-wrap {
   display: flex;

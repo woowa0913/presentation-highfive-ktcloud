@@ -6,16 +6,46 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=8">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=9">
 </head>
 <body>
+
+  <!-- ============================================
+       상단 챕터 네비게이션 바
+       ============================================ -->
+  <nav class="chapter-nav" id="chapterNav">
+    <button class="chapter-btn" data-chapter="intro" onclick="Reveal.slide(0)">Title</button>
+    <button class="chapter-btn" data-chapter="index" onclick="Reveal.slide(1)">Index</button>
+    <button class="chapter-btn" data-chapter="ch1">
+      01
+      <div class="chapter-pages" id="ch1-pages"></div>
+    </button>
+    <button class="chapter-btn" data-chapter="ch2">
+      02
+      <div class="chapter-pages" id="ch2-pages"></div>
+    </button>
+    <button class="chapter-btn" data-chapter="ch3">
+      03
+      <div class="chapter-pages" id="ch3-pages"></div>
+    </button>
+    <button class="chapter-btn" data-chapter="ch4">
+      04
+      <div class="chapter-pages" id="ch4-pages"></div>
+    </button>
+    <button class="chapter-btn" data-chapter="ch5">
+      05
+      <div class="chapter-pages" id="ch5-pages"></div>
+    </button>
+    <button class="chapter-btn" data-chapter="closing" onclick="Reveal.slide(999)">End</button>
+  </nav>
+
   <div class="reveal">
     <div class="slides">
 
       <!-- ============================================
-           SLIDE 1: Title (배경: image1.png)
+           SLIDE: Title (배경: image1.png)
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image1.png" data-background-size="cover">
+      <section data-background-image="assets/pptx-media/image1.png" data-background-size="cover" data-chapter="intro">
         <div class="slide-title-wrap">
           <h1>
             방법을 핏하게,<br>
@@ -30,9 +60,9 @@
       </section>
 
       <!-- ============================================
-           SLIDE 2: Index / 목차 (배경: image2.png)
+           SLIDE: Index / 목차 (배경: image2.png)
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image2.png" data-background-size="cover">
+      <section data-background-image="assets/pptx-media/image2.png" data-background-size="cover" data-chapter="index">
         <div class="slide-index-wrap">
           <div class="index-numbers">01<br>02<br>03<br>04<br>05</div>
           <div class="index-items">
@@ -46,17 +76,17 @@
       </section>
 
       <!-- ============================================
-           SECTION 01 간지: (배경: image3.png - 간지_A)
+           CH1 간지 (홀수=흰배경) — image3.png
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover">
+      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch1">
         <div class="slide-section-wrap">
           <div class="section-number">01</div>
           <h2>HRD, 왜 '메이커'가<br>되어야 하는가</h2>
         </div>
       </section>
 
-      <!-- 본문: Crop_B_3 (좌우 텍스트) -->
-      <section data-background-color="#FFFFFF">
+      <!-- CH1 본문 (홀수=흰배경) -->
+      <section data-background-color="#FFFFFF" data-chapter="ch1">
         <div class="slide-body">
           <div class="body-title">HRD의 현재 과제</div>
           <div class="body-crop-b3">
@@ -72,11 +102,9 @@
             </div>
           </div>
         </div>
-        <aside class="notes">HRD 담당자가 느끼는 현실적인 문제점들. 청중 공감 유도.</aside>
       </section>
 
-      <!-- 본문: Crop_B_2 (좌 이미지 + 우 텍스트) -->
-      <section data-background-color="#FFFFFF">
+      <section data-background-color="#FFFFFF" data-chapter="ch1">
         <div class="slide-body">
           <div class="body-title">메이커가 된다는 것</div>
           <div class="body-crop-b2">
@@ -95,18 +123,18 @@
       </section>
 
       <!-- ============================================
-           SECTION 02 간지: (배경: image4.png - 간지_B)
+           CH2 간지 (짝수=검정배경) — image4.png
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image4.png" data-background-size="cover">
+      <section data-background-image="assets/pptx-media/image4.png" data-background-size="cover" data-chapter="ch2">
         <div class="slide-section-wrap">
           <div class="section-number">02</div>
           <h2>바이브 코딩이란<br>무엇인가</h2>
         </div>
       </section>
 
-      <!-- 본문: Crop_B_3 (좌우 텍스트) -->
-      <section data-background-color="#FFFFFF">
-        <div class="slide-body">
+      <!-- CH2 본문 (짝수=검정배경) -->
+      <section data-background-color="#0a0a0a" data-chapter="ch2">
+        <div class="slide-body dark">
           <div class="body-title">바이브 코딩 = <span class="accent">말로 만드는 소프트웨어</span></div>
           <div class="body-crop-b3">
             <div class="body-text">
@@ -123,21 +151,20 @@
             </div>
           </div>
         </div>
-        <aside class="notes">바이브 코딩의 개념을 비개발자 눈높이로 설명.</aside>
       </section>
 
       <!-- ============================================
-           SECTION 03 간지: (배경: image5.png - 간지_C)
+           CH3 간지 (홀수=흰배경) — image5.png
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image5.png" data-background-size="cover">
+      <section data-background-image="assets/pptx-media/image5.png" data-background-size="cover" data-chapter="ch3">
         <div class="slide-section-wrap">
           <div class="section-number">03</div>
           <h2>실제 사례:<br>만들어본 것들</h2>
         </div>
       </section>
 
-      <!-- 본문: Crop_A_1 (큰 데모 영역) — Demo 1 -->
-      <section data-background-color="#FFFFFF">
+      <!-- CH3 본문 (홀수=흰배경) -->
+      <section data-background-color="#FFFFFF" data-chapter="ch3">
         <div class="slide-body">
           <div class="body-title">사례 1: 온보딩 체크리스트 툴</div>
           <div class="body-crop-a1">
@@ -148,11 +175,9 @@
             </div>
           </div>
         </div>
-        <aside class="notes">실제 온보딩 도구 시연. 핵심 플로우 2-3가지만 보여주기.</aside>
       </section>
 
-      <!-- 본문: Crop_A_1 (큰 데모 영역) — Demo 2 -->
-      <section data-background-color="#FFFFFF">
+      <section data-background-color="#FFFFFF" data-chapter="ch3">
         <div class="slide-body">
           <div class="body-title">사례 2: 리더십 역량 진단 툴</div>
           <div class="body-crop-a1">
@@ -163,27 +188,26 @@
             </div>
           </div>
         </div>
-        <aside class="notes">리더십 진단 도구 시연. 질문 흐름 → 결과 화면 보여주기.</aside>
       </section>
 
       <!-- ============================================
-           SECTION 04 간지: (배경: image6.png - 간지_D)
+           CH4 간지 (짝수=검정배경) — image6.png
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image6.png" data-background-size="cover">
+      <section data-background-image="assets/pptx-media/image6.png" data-background-size="cover" data-chapter="ch4">
         <div class="slide-section-wrap">
           <div class="section-number">04</div>
           <h2>어떻게 만들었나:<br>프로세스와 도구</h2>
         </div>
       </section>
 
-      <!-- 본문: Crop_B_2 (좌 이미지 + 우 텍스트) — 프로세스 -->
-      <section data-background-color="#FFFFFF">
-        <div class="slide-body">
+      <!-- CH4 본문 (짝수=검정배경) -->
+      <section data-background-color="#0a0a0a" data-chapter="ch4">
+        <div class="slide-body dark">
           <div class="body-title">바이브 코딩 프로세스</div>
           <div class="body-crop-b2">
-            <div style="display:flex; flex-direction:column; justify-content:center; gap:1em; background:rgba(26,21,56,0.03); border-radius:12px; padding:8%;">
+            <div style="display:flex; flex-direction:column; justify-content:center; gap:1em; background:rgba(255,255,255,0.05); border-radius:12px; padding:8%;">
               <p style="font-size:1.8em; font-weight:700; color:var(--wanted-accent1);">01 → 02 → 03 → 04</p>
-              <p style="font-size:0.7em; color:var(--wanted-gray);">문제 정의 → AI 대화 → 반복 개선 → 배포</p>
+              <p style="font-size:0.7em; color:#888;">문제 정의 → AI 대화 → 반복 개선 → 배포</p>
             </div>
             <div class="body-text">
               <p class="fragment fade-up"><strong>1. 문제 정의</strong> — 무엇을 해결할 것인가</p>
@@ -195,9 +219,8 @@
         </div>
       </section>
 
-      <!-- 본문: Crop_C_3 (3열 텍스트 카드) — 사용 도구 -->
-      <section data-background-color="#FFFFFF">
-        <div class="slide-body">
+      <section data-background-color="#0a0a0a" data-chapter="ch4">
+        <div class="slide-body dark">
           <div class="body-title">사용 도구</div>
           <div class="body-crop-c3">
             <div class="body-card fragment fade-up">
@@ -218,18 +241,17 @@
       </section>
 
       <!-- ============================================
-           SECTION 05: 생존 전략 (간지 없음, 간지_A 재활용 불가 → 별도 간지)
-           간지 배경은 4개뿐이므로 05는 image3 재활용
+           CH5 간지 (홀수=흰배경) — image3.png (순환: 5→1번 배경)
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover">
+      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch5">
         <div class="slide-section-wrap">
           <div class="section-number">05</div>
           <h2>HRD 메이커 시대의<br>생존 전략</h2>
         </div>
       </section>
 
-      <!-- 본문: Crop_C_3 (3열 카드) — 3가지 제언 -->
-      <section data-background-color="#FFFFFF">
+      <!-- CH5 본문 (홀수=흰배경) -->
+      <section data-background-color="#FFFFFF" data-chapter="ch5">
         <div class="slide-body">
           <div class="body-title">3가지 제언</div>
           <div class="body-crop-c3">
@@ -250,15 +272,15 @@
       </section>
 
       <!-- ============================================
-           META REVEAL: 이 프레젠테이션의 비밀
+           META REVEAL
            ============================================ -->
-      <section data-auto-animate data-background-image="assets/pptx-media/image1.png" data-background-size="cover">
+      <section data-auto-animate data-background-image="assets/pptx-media/image1.png" data-background-size="cover" data-chapter="closing">
         <div class="slide-qa-wrap">
           <h2 style="font-size: 2em;">사실, 이 프레젠테이션도</h2>
         </div>
       </section>
 
-      <section data-auto-animate data-background-image="assets/pptx-media/image1.png" data-background-size="cover">
+      <section data-auto-animate data-background-image="assets/pptx-media/image1.png" data-background-size="cover" data-chapter="closing">
         <div class="slide-qa-wrap">
           <h2 style="font-size: 2em;">사실, 이 프레젠테이션도</h2>
           <p style="font-size: 1.4em; margin-top: 0.5em; font-weight: 700; color: var(--wanted-dark);">
@@ -269,20 +291,15 @@
             AI와 대화해서, 코드 한 줄 직접 쓰지 않고 만들었습니다.
           </p>
         </div>
-        <aside class="notes">클라이맥스. 잠시 멈추고 반응을 기다린다.</aside>
       </section>
 
-      <!-- ============================================
-           Q&A (배경: image7.png — 텍스트 내장)
-           ============================================ -->
-      <section data-background-image="assets/pptx-media/image7.png" data-background-size="cover">
+      <!-- Q&A -->
+      <section data-background-image="assets/pptx-media/image7.png" data-background-size="cover" data-chapter="closing">
         <div class="slide-qa-wrap"></div>
       </section>
 
-      <!-- ============================================
-           CLOSING (배경: image10.png — THANK YOU + 로고 내장)
-           ============================================ -->
-      <section data-background-image="assets/pptx-media/image10.png" data-background-size="cover">
+      <!-- CLOSING -->
+      <section data-background-image="assets/pptx-media/image10.png" data-background-size="cover" data-chapter="closing">
         <div class="slide-closing-wrap"></div>
       </section>
 
@@ -302,11 +319,11 @@
     import Reveal from './vendor/reveal/reveal.mjs';
     import DemoLoader from './js/demo-loader.js';
 
-    Reveal.initialize({
+    const deck = Reveal.initialize({
       hash: true,
       slideNumber: true,
       progress: true,
-      controls: true,
+      controls: false,
       controlsTutorial: false,
       transition: 'fade',
       transitionSpeed: 'default',
@@ -316,11 +333,79 @@
       margin: 0,
       center: false,
       plugins: [DemoLoader],
-      controls: false,
     });
+
+    // Make Reveal global for nav buttons
+    window.Reveal = Reveal;
 
     document.getElementById('navLeft').addEventListener('click', () => Reveal.prev());
     document.getElementById('navRight').addEventListener('click', () => Reveal.next());
+
+    /* ── Chapter Navigation ── */
+    Reveal.on('ready', buildChapterNav);
+    Reveal.on('slidechanged', updateChapterNav);
+
+    function buildChapterNav() {
+      const sections = document.querySelectorAll('.reveal .slides > section');
+      const chapters = {};
+
+      sections.forEach((sec, idx) => {
+        const ch = sec.dataset.chapter || 'other';
+        if (!chapters[ch]) chapters[ch] = [];
+        chapters[ch].push(idx);
+      });
+
+      // Build page dots for each chapter
+      Object.keys(chapters).forEach(ch => {
+        const container = document.getElementById(ch + '-pages');
+        if (!container) return;
+        const btn = container.parentElement;
+
+        // Click on chapter button goes to first slide of chapter
+        btn.addEventListener('click', (e) => {
+          if (e.target === btn || e.target.nodeType === 3) {
+            Reveal.slide(chapters[ch][0]);
+          }
+        });
+
+        chapters[ch].forEach((slideIdx, pageNum) => {
+          const dot = document.createElement('button');
+          dot.className = 'page-dot';
+          dot.textContent = pageNum + 1;
+          dot.dataset.slideIndex = slideIdx;
+          dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            Reveal.slide(slideIdx);
+          });
+          container.appendChild(dot);
+        });
+      });
+
+      // Fix "End" button to go to actual last slide
+      const endBtn = document.querySelector('[data-chapter="closing"].chapter-btn') ||
+                     document.querySelector('.chapter-btn:last-child');
+      if (endBtn && chapters.closing) {
+        endBtn.onclick = () => Reveal.slide(chapters.closing[0]);
+      }
+
+      updateChapterNav();
+    }
+
+    function updateChapterNav() {
+      const currentIdx = Reveal.getIndices().h;
+      const currentSection = document.querySelectorAll('.reveal .slides > section')[currentIdx];
+      const currentChapter = currentSection?.dataset.chapter || '';
+
+      // Update chapter buttons
+      document.querySelectorAll('.chapter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.chapter === currentChapter);
+      });
+
+      // Update page dots
+      document.querySelectorAll('.page-dot').forEach(dot => {
+        dot.classList.toggle('active', parseInt(dot.dataset.slideIndex) === currentIdx);
+      });
+    }
   </script>
 </body>
 </html>
