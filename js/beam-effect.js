@@ -1,133 +1,200 @@
 /**
  * Mouse Light Trail Effect
- * Inspired by knolskape.com/ai-labs hero effect
- * Smooth ribbon trails that follow cursor with gradient colors
+ * Faithfully reproduced from knolskape.com/ai-labs
+ * 80 trails, spring physics, HSL color cycling, additive blending
  */
 (function () {
-  const canvas = document.createElement('canvas');
-  canvas.id = 'beam-canvas';
-  canvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9998;';
-  document.body.appendChild(canvas);
+  /* ── Canvas setup ── */
+  const canvasEl = document.createElement('canvas');
+  canvasEl.id = 'beam-canvas';
+  canvasEl.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9998;';
+  document.body.appendChild(canvasEl);
 
-  const ctx = canvas.getContext('2d');
-  let W, H;
+  var ctx;
+  var oscillator;
+  var hueValue = 0;
+  var cursor = { x: 0, y: 0 };
+  var trails = [];
 
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
+  var config = {
+    friction: 0.5,
+    trails: 80,
+    size: 50,
+    dampening: 0.025,
+    tension: 0.99,
+  };
 
-  /* ── Trail configuration ── */
-  const TRAIL_LENGTH = 80;
-  const FADE_SPEED = 0.92;
-
-  /* Multiple ribbon trails with different offsets and colors */
-  const ribbons = [
-    { points: [], offset: 0,   width: 3,  color: [255, 100, 0],   opacity: 0.9  },
-    { points: [], offset: 8,   width: 12, color: [255, 120, 20],  opacity: 0.4  },
-    { points: [], offset: -6,  width: 2,  color: [200, 80, 255],  opacity: 0.8  },
-    { points: [], offset: -12, width: 8,  color: [220, 100, 255], opacity: 0.35 },
-    { points: [], offset: 4,   width: 2,  color: [255, 60, 120],  opacity: 0.6  },
-    { points: [], offset: -3,  width: 2,  color: [80, 180, 255],  opacity: 0.5  },
-  ];
-
-  let mouse = { x: -9999, y: -9999 };
-  let isActive = false;
-
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    isActive = true;
-  });
-
-  window.addEventListener('mouseleave', () => {
-    isActive = false;
-  });
-
-  /* ── Perpendicular offset for ribbon spread ── */
-  function getOffsetPoint(x, y, prevX, prevY, offset) {
-    const dx = x - prevX;
-    const dy = y - prevY;
-    const len = Math.sqrt(dx * dx + dy * dy) || 1;
-    const nx = -dy / len;
-    const ny = dx / len;
-    return { x: x + nx * offset, y: y + ny * offset };
+  /* ── Node (point in trail chain) ── */
+  function Node() {
+    this.x = 0;
+    this.y = 0;
+    this.vx = 0;
+    this.vy = 0;
   }
 
-  /* ── Draw a single ribbon trail ── */
-  function drawRibbon(ribbon) {
-    const pts = ribbon.points;
-    if (pts.length < 3) return;
+  /* ── Oscillator (cycles hue over time) ── */
+  function Oscillator(opts) {
+    this.phase = opts.phase || 0;
+    this.offset = opts.offset || 0;
+    this.frequency = opts.frequency || 0.001;
+    this.amplitude = opts.amplitude || 1;
+  }
+
+  Oscillator.prototype.update = function () {
+    this.phase += this.frequency;
+    hueValue = this.offset + Math.sin(this.phase) * this.amplitude;
+    return hueValue;
+  };
+
+  /* ── Trail (chain of nodes with spring physics) ── */
+  function Trail(opts) {
+    this.spring = opts.spring + 0.1 * Math.random() - 0.05;
+    this.friction = config.friction + 0.01 * Math.random() - 0.005;
+    this.nodes = [];
+    for (var i = 0; i < config.size; i++) {
+      var node = new Node();
+      node.x = cursor.x;
+      node.y = cursor.y;
+      this.nodes.push(node);
+    }
+  }
+
+  Trail.prototype.update = function () {
+    var spring = this.spring;
+    var head = this.nodes[0];
+
+    head.vx += (cursor.x - head.x) * spring;
+    head.vy += (cursor.y - head.y) * spring;
+
+    for (var i = 0, len = this.nodes.length; i < len; i++) {
+      var node = this.nodes[i];
+
+      if (i > 0) {
+        var prev = this.nodes[i - 1];
+        node.vx += (prev.x - node.x) * spring;
+        node.vy += (prev.y - node.y) * spring;
+        node.vx += prev.vx * config.dampening;
+        node.vy += prev.vy * config.dampening;
+      }
+
+      node.vx *= this.friction;
+      node.vy *= this.friction;
+      node.x += node.vx;
+      node.y += node.vy;
+
+      spring *= config.tension;
+    }
+  };
+
+  Trail.prototype.draw = function () {
+    var nodes = this.nodes;
+    var x = nodes[0].x;
+    var y = nodes[0].y;
 
     ctx.beginPath();
-    ctx.moveTo(pts[0].x, pts[0].y);
+    ctx.moveTo(x, y);
 
-    for (let i = 1; i < pts.length - 1; i++) {
-      const xc = (pts[i].x + pts[i + 1].x) / 2;
-      const yc = (pts[i].y + pts[i + 1].y) / 2;
-      ctx.quadraticCurveTo(pts[i].x, pts[i].y, xc, yc);
+    for (var i = 1, len = nodes.length - 2; i < len; i++) {
+      var a = nodes[i];
+      var b = nodes[i + 1];
+      x = 0.5 * (a.x + b.x);
+      y = 0.5 * (a.y + b.y);
+      ctx.quadraticCurveTo(a.x, a.y, x, y);
     }
 
-    const last = pts[pts.length - 1];
-    ctx.lineTo(last.x, last.y);
-
-    ctx.strokeStyle = `rgba(${ribbon.color[0]},${ribbon.color[1]},${ribbon.color[2]},${ribbon.opacity})`;
-    ctx.lineWidth = ribbon.width;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
+    var a = nodes[i];
+    var b = nodes[i + 1];
+    ctx.quadraticCurveTo(a.x, a.y, b.x, b.y);
     ctx.stroke();
+    ctx.closePath();
+  };
 
-    /* Glow effect */
-    if (ribbon.width <= 3) {
-      ctx.strokeStyle = `rgba(${ribbon.color[0]},${ribbon.color[1]},${ribbon.color[2]},${ribbon.opacity * 0.3})`;
-      ctx.lineWidth = ribbon.width + 6;
-      ctx.beginPath();
-      ctx.moveTo(pts[0].x, pts[0].y);
-      for (let i = 1; i < pts.length - 1; i++) {
-        const xc = (pts[i].x + pts[i + 1].x) / 2;
-        const yc = (pts[i].y + pts[i + 1].y) / 2;
-        ctx.quadraticCurveTo(pts[i].x, pts[i].y, xc, yc);
-      }
-      ctx.lineTo(last.x, last.y);
-      ctx.stroke();
-    }
+  /* ── Resize ── */
+  function resize() {
+    canvasEl.width = window.innerWidth - 20;
+    canvasEl.height = window.innerHeight;
   }
 
   /* ── Render loop ── */
   function render() {
-    ctx.clearRect(0, 0, W, H);
+    if (ctx.running) {
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
 
-    ribbons.forEach((ribbon) => {
-      if (isActive) {
-        const prev = ribbon.points.length > 0
-          ? ribbon.points[ribbon.points.length - 1]
-          : { x: mouse.x, y: mouse.y };
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.strokeStyle = 'hsla(' + Math.round(oscillator.update()) + ',100%,50%,0.025)';
+      ctx.lineWidth = 10;
 
-        const pt = ribbon.offset === 0
-          ? { x: mouse.x, y: mouse.y }
-          : getOffsetPoint(mouse.x, mouse.y, prev.x, prev.y, ribbon.offset);
-
-        ribbon.points.push(pt);
+      for (var i = 0; i < config.trails; i++) {
+        trails[i].update();
+        trails[i].draw();
       }
 
-      /* Trim old points */
-      while (ribbon.points.length > TRAIL_LENGTH) {
-        ribbon.points.shift();
-      }
-
-      /* Fade out when inactive */
-      if (!isActive && ribbon.points.length > 0) {
-        ribbon.points.shift();
-        if (ribbon.points.length > 0) ribbon.points.shift();
-      }
-
-      drawRibbon(ribbon);
-    });
-
-    requestAnimationFrame(render);
+      ctx.frame++;
+      window.requestAnimationFrame(render);
+    }
   }
 
-  render();
+  /* ── Mouse handler (first move triggers init) ── */
+  function onFirstInteraction(e) {
+    document.removeEventListener('mousemove', onFirstInteraction);
+    document.removeEventListener('touchstart', onFirstInteraction);
+
+    document.addEventListener('mousemove', function (ev) {
+      cursor.x = ev.clientX;
+      cursor.y = ev.clientY;
+    });
+
+    document.addEventListener('touchmove', function (ev) {
+      if (ev.touches.length === 1) {
+        cursor.x = ev.touches[0].pageX;
+        cursor.y = ev.touches[0].pageY;
+      }
+    });
+
+    // Set initial cursor position
+    if (e.touches) {
+      cursor.x = e.touches[0].pageX;
+      cursor.y = e.touches[0].pageY;
+    } else {
+      cursor.x = e.clientX;
+      cursor.y = e.clientY;
+    }
+
+    // Create trails
+    trails = [];
+    for (var i = 0; i < config.trails; i++) {
+      trails.push(new Trail({ spring: 0.45 + (i / config.trails) * 0.025 }));
+    }
+
+    render();
+  }
+
+  /* ── Init ── */
+  ctx = canvasEl.getContext('2d');
+  ctx.running = true;
+  ctx.frame = 1;
+
+  oscillator = new Oscillator({
+    phase: Math.random() * 2 * Math.PI,
+    amplitude: 85,
+    frequency: 0.0015,
+    offset: 285,
+  });
+
+  document.addEventListener('mousemove', onFirstInteraction);
+  document.addEventListener('touchstart', onFirstInteraction);
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('focus', function () {
+    if (!ctx.running) {
+      ctx.running = true;
+      render();
+    }
+  });
+  window.addEventListener('blur', function () {
+    ctx.running = true;
+  });
+
+  resize();
 })();
