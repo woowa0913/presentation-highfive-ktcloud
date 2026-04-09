@@ -1,6 +1,6 @@
 /**
  * Mouse Beam Effect for Reveal.js Presentation
- * Canvas-based light beams that follow cursor across all slides
+ * Original beam effect code — orange/purple/pink/blue beams
  */
 (function () {
   /* ── DOM 생성 ── */
@@ -32,14 +32,14 @@
   let smoothed = { x: -9999, y: -9999 };
   let rafId = null;
 
-  /* ── 빔 설정 (프레젠테이션용 — 부드럽고 밝은 톤) ── */
+  /* ── 빔 설정 (원본) ── */
   const BEAMS = [
-    { angle: -40,  color1: 'rgba(0,162,255,0.6)',   color2: 'rgba(0,100,255,0)',   width: 5,  length: 1.4 },
-    { angle: -42,  color1: 'rgba(0,180,255,0.3)',   color2: 'rgba(0,120,255,0)',   width: 16, length: 1.2 },
-    { angle: 140,  color1: 'rgba(180,80,255,0.5)',  color2: 'rgba(100,0,255,0)',   width: 6,  length: 1.3 },
-    { angle: 138,  color1: 'rgba(200,100,255,0.25)',color2: 'rgba(80,0,200,0)',    width: 20, length: 1.1 },
-    { angle: 50,   color1: 'rgba(22,231,207,0.4)',  color2: 'rgba(0,180,160,0)',   width: 4,  length: 1.1 },
-    { angle: 220,  color1: 'rgba(255,100,160,0.3)', color2: 'rgba(200,0,80,0)',    width: 4,  length: 1.0 },
+    { angle: -40,  color1: 'rgba(255,100,0,0.9)',   color2: 'rgba(255,50,0,0)',   width: 6,  length: 1.6 },
+    { angle: -42,  color1: 'rgba(255,120,20,0.5)',  color2: 'rgba(255,80,0,0)',   width: 18, length: 1.4 },
+    { angle: 140,  color1: 'rgba(200,80,255,0.7)',  color2: 'rgba(100,0,255,0)',  width: 8,  length: 1.5 },
+    { angle: 138,  color1: 'rgba(220,100,255,0.4)', color2: 'rgba(80,0,200,0)',   width: 24, length: 1.3 },
+    { angle: 50,   color1: 'rgba(255,60,120,0.5)',  color2: 'rgba(200,0,80,0)',   width: 5,  length: 1.2 },
+    { angle: 220,  color1: 'rgba(80,180,255,0.4)',  color2: 'rgba(0,100,255,0)',  width: 5,  length: 1.1 },
   ];
 
   /* ── 리사이즈 ── */
