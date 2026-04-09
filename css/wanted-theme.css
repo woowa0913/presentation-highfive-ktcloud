@@ -1,0 +1,577 @@
+/**
+ * HIGH FIVE 26 - Wanted Lab Custom Theme for Reveal.js
+ * Design tokens extracted from HIGH FIVE 26_presentation.pptx
+ */
+
+/* WantedSans Variable Font */
+@font-face {
+  font-family: 'WantedSans';
+  src: url('../fonts/WantedSans/WantedSansVariable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========================================
+   Design Tokens (from PPTX theme XML)
+   ======================================== */
+:root {
+  --wanted-dark: #1A1538;
+  --wanted-white: #FFFFFF;
+  --wanted-gray: #5E5E5E;
+  --wanted-light-gray: #D5D5D5;
+  --wanted-text-sub: #E5E8F5;
+
+  --wanted-accent1: #00A2FF;
+  --wanted-accent2: #16E7CF;
+  --wanted-accent3: #61D836;
+  --wanted-accent4: #FFD932;
+  --wanted-accent5: #FF644E;
+  --wanted-accent6: #FF42A1;
+}
+
+/* ========================================
+   Base Reveal.js Overrides
+   ======================================== */
+.reveal-viewport {
+  background: #e8ecf5;
+}
+
+.reveal {
+  font-family: 'WantedSans', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+  font-weight: 400;
+  color: var(--wanted-dark);
+  font-size: 28px;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  padding: 0;
+}
+
+/* Headings */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'WantedSans', sans-serif;
+  color: var(--wanted-dark);
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  margin-bottom: 0.5em;
+  text-transform: none;
+}
+
+.reveal h1 { font-size: 2.2em; font-weight: 700; }
+.reveal h2 { font-size: 1.6em; font-weight: 600; }
+.reveal h3 { font-size: 1.2em; font-weight: 600; }
+
+.reveal p, .reveal li {
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--wanted-dark);
+}
+
+.reveal strong, .reveal b {
+  font-weight: 600;
+}
+
+.reveal a {
+  color: var(--wanted-accent1);
+  text-decoration: none;
+}
+
+.reveal ul, .reveal ol {
+  margin-left: 0.8em;
+}
+.reveal li {
+  margin-bottom: 0.5em;
+}
+
+/* ========================================
+   Background Image Slide Base
+   ======================================== */
+.reveal .slides section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Reveal.js가 section에 position:absolute를 설정함 — 건드리지 않는다.
+     대신 height를 명시하여 자식의 % 기반 배치가 작동하도록 한다. */
+  height: 100% !important;
+}
+
+/* ========================================
+   1. Title Slide (1_제목)
+   PPTX 좌표: 제목 x=16.3% y=22.2% w=55.6% h=28.7%
+              소속 x=16.3% y=55.5% w=34.6%
+   배경 이미지에 "HIGH FIVE 26" 로고가 좌상단에 있으므로
+   텍스트는 반드시 y=22% 이하에 배치
+   ======================================== */
+.slide-title-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.slide-title-wrap h1 {
+  position: absolute;
+  top: 22%;
+  left: 16.3%;
+  width: 55%;
+  font-size: 2.86em; /* 80pt */
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--wanted-dark);
+  margin: 0;
+}
+.slide-title-wrap .speaker-info {
+  position: absolute;
+  top: 70%;
+  left: 16.3%;
+  font-size: 1.14em; /* 32pt */
+  color: var(--wanted-dark);
+  opacity: 0.7;
+}
+.slide-title-wrap .speaker-info .org {
+  font-weight: 600;
+}
+.slide-title-wrap .speaker-info .name {
+  font-weight: 500;
+}
+
+/* ========================================
+   2. Index / 목차 Slide (2_목차)
+   PPTX 좌표: 번호 x=39% y=22.8% w=4%
+              항목 x=44.3% y=22.8% w=50.6%
+   배경 이미지에 "HIGH FIVE 26" 로고(좌상단)와 "INDEX"(좌측) 텍스트 내장
+   ======================================== */
+.slide-index-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.slide-index-wrap .index-numbers {
+  position: absolute;
+  top: 23%;
+  left: 39%;
+  font-size: 1.71em; /* 48pt */
+  font-weight: 600;
+  color: var(--wanted-dark); /* 검정색 */
+  line-height: 2.2;
+}
+.slide-index-wrap .index-items {
+  position: absolute;
+  top: 23%;
+  left: 44.3%;
+  font-size: 1.71em; /* 48pt, SemiBold */
+  font-weight: 600;
+  color: var(--wanted-dark);
+  line-height: 2.2;
+}
+
+/* ========================================
+   3. Section Divider (간지 A/B/C/D)
+   PPTX 좌표: 번호 x=5% y=36.9% w=10.4% h=28.7%
+              소제목 x=16.3% y=36.9% w=66.9% h=28.7%
+   배경 이미지에 "HIGH FIVE 26" 로고가 좌상단에 있으므로
+   텍스트는 반드시 y=37% 이하에 배치
+   ======================================== */
+.slide-section-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.slide-section-wrap .section-number {
+  position: absolute;
+  top: 37%;
+  left: 3.5%; /* HIGH FIVE 26 좌측과 맞춤 */
+  font-size: 5em;
+  font-weight: 800;
+  color: var(--wanted-dark); /* 검정색 */
+  line-height: 1;
+  opacity: 1;
+}
+.slide-section-wrap h2 {
+  position: absolute;
+  top: 37%; /* 숫자와 위쪽 맞춤 */
+  left: 16.3%;
+  width: 67%;
+  font-size: 2.86em; /* 80pt, SemiBold */
+  font-weight: 600;
+  color: var(--wanted-dark);
+  line-height: 1.35;
+}
+
+/* ========================================
+   4. Content Slides - 본문 레이아웃 (PPTX 슬라이드 7~16)
+   공통: 흰색 배경, 상단 타이틀, 콘텐츠 영역 23%~87%
+   ======================================== */
+
+/* 본문 공통 베이스 */
+.slide-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  background: var(--wanted-white);
+}
+.slide-body .body-title {
+  padding: 4% 5% 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--wanted-dark);
+  line-height: 1.3;
+}
+.slide-body .body-source {
+  padding: 0 5% 3%;
+  font-size: 0.45em;
+  color: var(--wanted-gray);
+  margin-top: auto;
+}
+
+/* --- Crop_A_2 (슬라이드 10): 좌 이미지 55% + 우 텍스트 32% --- */
+.body-crop-a2 {
+  display: grid;
+  grid-template-columns: 55% 1fr;
+  gap: 3%;
+  padding: 0 5%;
+  flex: 1;
+  align-items: start;
+  margin-top: 2%;
+}
+.body-crop-a2 img,
+.body-crop-a2 iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.body-crop-a2 .body-text {
+  font-size: 0.75em;
+  line-height: 1.7;
+  color: var(--wanted-dark);
+}
+.body-crop-a2 .body-text strong {
+  font-weight: 600;
+}
+
+/* --- Crop_B_2 (슬라이드 12): 좌 이미지 44% + 우 텍스트 44% --- */
+.body-crop-b2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3%;
+  padding: 0 5%;
+  flex: 1;
+  align-items: start;
+  margin-top: 2%;
+}
+.body-crop-b2 img,
+.body-crop-b2 iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.body-crop-b2 .body-text {
+  font-size: 0.75em;
+  line-height: 1.7;
+  color: var(--wanted-dark);
+}
+
+/* --- Crop_B_3 (슬라이드 13): 좌 텍스트 + 우 텍스트 --- */
+.body-crop-b3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3%;
+  padding: 0 5%;
+  flex: 1;
+  align-items: start;
+  margin-top: 2%;
+}
+.body-crop-b3 .body-text {
+  font-size: 0.75em;
+  line-height: 1.7;
+  color: var(--wanted-dark);
+}
+.body-crop-b3 .body-text strong:first-child {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+}
+
+/* --- Crop_C_1 (슬라이드 14): 3열 이미지 --- */
+.body-crop-c1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.5%;
+  padding: 0 5%;
+  flex: 1;
+  align-items: start;
+  margin-top: 2%;
+}
+.body-crop-c1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* --- Crop_C_3 (슬라이드 16): 3열 텍스트 --- */
+.body-crop-c3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.5%;
+  padding: 0 5%;
+  flex: 1;
+  align-items: start;
+  margin-top: 2%;
+}
+.body-crop-c3 .body-card {
+  background: rgba(26, 21, 56, 0.03);
+  border-radius: 12px;
+  padding: 8% 7%;
+  font-size: 0.7em;
+  line-height: 1.7;
+  color: var(--wanted-dark);
+}
+.body-crop-c3 .body-card strong {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 1.15em;
+}
+
+/* --- Full 이미지 (슬라이드 7/8) --- */
+.body-full-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.body-full-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Crop_A_1 (슬라이드 9): 큰 이미지/데모 영역 --- */
+.body-crop-a1 {
+  flex: 1;
+  padding: 0 5%;
+  margin-top: 2%;
+}
+.body-crop-a1 img,
+.body-crop-a1 iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  border: none;
+}
+
+/* 레거시 호환 */
+.slide-content-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 6% 8%;
+  height: 100%;
+  box-sizing: border-box;
+  background: var(--wanted-white);
+}
+.slide-content-wrap h2 {
+  margin-bottom: 0.8em;
+}
+
+/* ========================================
+   5. Demo Slide (iframe)
+   ======================================== */
+.slide-demo-wrap {
+  display: flex;
+  flex-direction: column;
+  padding: 3% 4%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.slide-demo-wrap h3 {
+  margin-bottom: 0.5em;
+  font-size: 1em;
+}
+.demo-container {
+  flex: 1;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(26, 21, 56, 0.03);
+  border: 1px solid rgba(26, 21, 56, 0.08);
+}
+.demo-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.demo-container .demo-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.demo-container .demo-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--wanted-accent1);
+  font-size: 1em;
+  font-weight: 500;
+}
+
+/* ========================================
+   6. Q&A Slide (5_Q&A)
+   ======================================== */
+.slide-qa-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* Q&A cover uses image7 which already has "Q&A" text baked in */
+
+/* Q&A question slides */
+.slide-qa-question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 15%;
+  box-sizing: border-box;
+}
+.slide-qa-question h2 {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--wanted-dark);
+  line-height: 1.4;
+}
+
+/* ========================================
+   7. Closing Slide (6_마무리)
+   Uses image10.png which has "THANK YOU" baked in
+   ======================================== */
+.slide-closing-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+.accent { color: var(--wanted-accent1); }
+.accent2 { color: var(--wanted-accent2); }
+.accent5 { color: var(--wanted-accent5); }
+
+.muted {
+  color: var(--wanted-gray);
+  font-size: 0.8em;
+}
+
+.source {
+  font-size: 0.5em;
+  color: var(--wanted-gray);
+  margin-top: auto;
+  padding-top: 1em;
+}
+
+/* Fragment animation: slide up */
+.reveal .fragment.fade-up {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.reveal .fragment.fade-up.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Inverted text for dark-background slides (title, Q&A, closing) */
+.text-light h1, .text-light h2, .text-light h3,
+.text-light p, .text-light li, .text-light span,
+.text-light .speaker-info {
+  color: var(--wanted-dark) !important;
+}
+
+/* ========================================
+   Navigation Controls — 좌우 중간 높이, 양쪽 끝
+   ======================================== */
+.reveal .controls {
+  bottom: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+  right: 0 !important;
+}
+.reveal .controls .navigate-left {
+  position: fixed !important;
+  left: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+.reveal .controls .navigate-right {
+  position: fixed !important;
+  right: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+/* 상하 버튼 숨기기 (가로 슬라이드만 사용) */
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-down {
+  display: none !important;
+}
+
+/* ========================================
+   Slide Number & Progress
+   ======================================== */
+.reveal .slide-number {
+  font-family: 'WantedSans', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--wanted-gray);
+  background: transparent;
+  right: 20px;
+  bottom: 14px;
+}
+
+.reveal .progress {
+  height: 3px;
+  color: var(--wanted-accent1);
+}
+
+/* ========================================
+   Print / PDF
+   ======================================== */
+@media print {
+  .demo-container iframe { display: none; }
+  .demo-container .demo-fallback { display: block; }
+}
