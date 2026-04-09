@@ -525,29 +525,46 @@
 
 /* ========================================
    Navigation Controls — 좌우 중간 높이, 양쪽 끝
+   Reveal.js controls는 .reveal-viewport 기준 absolute
    ======================================== */
 .reveal .controls {
-  bottom: auto !important;
-  top: 50% !important;
-  transform: translateY(-50%);
-  right: 0 !important;
-}
-.reveal .controls .navigate-left {
-  position: fixed !important;
-  left: 12px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-}
-.reveal .controls .navigate-right {
-  position: fixed !important;
-  right: 12px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-}
-/* 상하 버튼 숨기기 (가로 슬라이드만 사용) */
-.reveal .controls .navigate-up,
-.reveal .controls .navigate-down {
   display: none !important;
+}
+
+/* 커스텀 좌우 버튼 — .reveal-viewport에 직접 배치 */
+.custom-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  background: rgba(26, 21, 56, 0.08);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.custom-nav:hover {
+  background: rgba(26, 21, 56, 0.18);
+}
+.custom-nav svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--wanted-dark, #1A1538);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.custom-nav-left {
+  left: 16px;
+}
+.custom-nav-right {
+  right: 16px;
 }
 
 /* ========================================

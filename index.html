@@ -6,7 +6,7 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=5">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=6">
 </head>
 <body>
   <div class="reveal">
@@ -289,6 +289,14 @@
     </div>
   </div>
 
+  <!-- Custom navigation buttons -->
+  <button class="custom-nav custom-nav-left" id="navLeft" aria-label="이전 슬라이드">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="custom-nav custom-nav-right" id="navRight" aria-label="다음 슬라이드">
+    <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+  </button>
+
   <script type="module">
     import Reveal from './vendor/reveal/reveal.mjs';
     import DemoLoader from './js/demo-loader.js';
@@ -307,7 +315,11 @@
       margin: 0,
       center: false,
       plugins: [DemoLoader],
+      controls: false,
     });
+
+    document.getElementById('navLeft').addEventListener('click', () => Reveal.prev());
+    document.getElementById('navRight').addEventListener('click', () => Reveal.next());
   </script>
 </body>
 </html>
