@@ -421,6 +421,9 @@
 .slide-body.dark .body-crop-c3 .body-card strong {
   color: var(--wanted-white);
 }
+.slide-body.dark .body-crop-c3 .body-card p {
+  color: #e0e0e0;
+}
 .slide-body.dark .body-crop-b2 .body-text {
   color: #e0e0e0;
 }
