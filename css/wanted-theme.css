@@ -582,51 +582,56 @@
   height: 100%;
   object-fit: cover;
 }
+/* 인트로 좌상단 로고 — 타이틀 페이지 image1.png의 "HIGH FIVE 26" 위치와 동일 */
 .slide-hero .hero-logo {
   position: absolute;
-  top: 3.5%;
+  top: 3.8%;
   left: 3.5%;
-  font-size: 1.14em; /* 32pt — 타이틀 페이지와 동일 */
+  font-size: 0.6em;
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.02em;
   z-index: 3;
 }
+/* 인트로 우하단 로고 — 타이틀 페이지 image1.png의 "wanted | inflearn" 위치와 동일 */
 .slide-hero .hero-sponsors {
   position: absolute;
   bottom: 4%;
-  right: 4%;
+  right: 3.5%;
   z-index: 3;
-  opacity: 0.8;
 }
 .slide-hero .hero-sponsors img {
-  height: 24px;
+  height: 28px;
+  opacity: 0.9;
 }
-.slide-hero .hero-text-layer {
+/* 인트로 중앙 텍스트 — 타이틀 페이지와 동일한 구조로 배치 */
+.slide-hero .hero-title-layer {
   position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  mix-blend-mode: difference;
+  top: 22%;
+  left: 16.3%;
+  width: 55%;
   z-index: 2;
+  mix-blend-mode: difference;
 }
-.slide-hero .hero-text-layer h1 {
-  font-size: 8em;
-  font-weight: 800;
+.slide-hero .hero-title-layer h1 {
+  font-size: 2.86em; /* 80pt — 타이틀 페이지와 동일 */
+  font-weight: 700;
   color: #fff;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.25;
+  margin: 0;
 }
-.slide-hero .hero-text-layer .hero-sub {
-  margin-top: 0.4em;
-  font-size: 2em;
+.slide-hero .hero-title-layer .speaker-info {
+  margin-top: 1.5em;
+  font-size: 1.14em; /* 32pt */
+  color: rgba(255, 255, 255, 0.8);
+}
+.slide-hero .hero-title-layer .speaker-info .org {
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: -0.01em;
 }
+.slide-hero .hero-title-layer .speaker-info .name {
+  font-weight: 500;
+}
+/* hero-text-layer는 더 이상 사용하지 않음 — hero-title-layer로 대체 */
 
 /* 레거시 호환 */
 .slide-content-wrap {
