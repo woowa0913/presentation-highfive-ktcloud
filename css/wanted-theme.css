@@ -643,23 +643,21 @@
 }
 .hero-sec-top-logo {
   position: absolute;
-  /* image1.png 내장 로고와 동일: 1920기준 x=100, y=100 */
+  /* JS에서 image1.png의 cover 좌표계와 동일하게 배치한다. */
   top: 100px;
   left: 100px;
-  font-family: 'WantedSans', sans-serif;
-  font-size: 29px;
-  font-weight: 700;
-  color: #fff;
   line-height: 1;
-  letter-spacing: -0.01em;
 }
 .hero-sec-bottom-logo {
   position: absolute;
-  bottom: 100px;
-  right: 100px;
+  line-height: 0;
 }
+.hero-sec-top-logo img,
 .hero-sec-bottom-logo img {
-  height: 29px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) invert(1);
 }
 /* 인트로 좌상단 로고 — 타이틀 페이지와 동일 위치/사이즈 */
 .slide-hero .hero-logo {

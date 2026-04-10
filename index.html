@@ -6,7 +6,7 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=29">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=31">
 </head>
 <body>
 
@@ -55,9 +55,11 @@
            ============================================ -->
       <section data-chapter="hero">
         <div class="hero-section-logos">
-          <div class="hero-sec-top-logo">HIGH FIVE 26</div>
+          <div class="hero-sec-top-logo">
+            <img src="assets/images/high-five-logo-title-dark.png" alt="HIGH FIVE 26">
+          </div>
           <div class="hero-sec-bottom-logo">
-            <img src="assets/images/sponsors-logo-white.png" alt="wanted | inflearn">
+            <img src="assets/images/sponsors-logo-title-dark.png" alt="wanted | inflearn">
           </div>
         </div>
         <div class="hero-text-center">
@@ -379,12 +381,41 @@
       const isHero = currentSection?.dataset.chapter === 'hero';
       heroFs.style.display = isHero ? 'block' : 'none';
       document.querySelector('.reveal-viewport')?.classList.toggle('hero-active', isHero);
+      updateHeroLogoLayout();
       if (isHero && window._heroClipStart) window._heroClipStart();
       else if (window._heroClipStop) window._heroClipStop();
     }
 
+    function updateHeroLogoLayout() {
+      const slide = document.querySelector('.reveal .slides > section[data-chapter="hero"]');
+      const topLogo = document.querySelector('.hero-sec-top-logo');
+      const bottomLogo = document.querySelector('.hero-sec-bottom-logo');
+      if (!slide || !topLogo || !bottomLogo) return;
+
+      const slideRect = slide.getBoundingClientRect();
+      const slideScale = slideRect.width / 1920;
+      if (!slideScale) return;
+
+      const viewportW = window.innerWidth;
+      const viewportH = window.innerHeight;
+      const coverScale = Math.max(viewportW / 1920, viewportH / 1080);
+      const coverX = (viewportW - 1920 * coverScale) / 2;
+      const coverY = (viewportH - 1080 * coverScale) / 2;
+
+      function place(el, sourceX, sourceY, sourceW, sourceH) {
+        el.style.left = `${(coverX + sourceX * coverScale - slideRect.left) / slideScale}px`;
+        el.style.top = `${(coverY + sourceY * coverScale - slideRect.top) / slideScale}px`;
+        el.style.width = `${(sourceW * coverScale) / slideScale}px`;
+        el.style.height = `${(sourceH * coverScale) / slideScale}px`;
+      }
+
+      place(topLogo, 100, 100, 257, 32);
+      place(bottomLogo, 1465, 948, 355, 32);
+    }
+
     Reveal.on('slidechanged', updateHeroVideo);
     Reveal.on('ready', updateHeroVideo);
+    window.addEventListener('resize', updateHeroLogoLayout);
 
     /* ── 3. 다크 배경에서 좌우 버튼 색상 변경 ── */
     const navLeftBtn = document.getElementById('navLeft');
