@@ -6,7 +6,7 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=33">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=34">
 </head>
 <body>
 
@@ -475,12 +475,14 @@
       <!-- CH6: 팀 소개 -->
       <section data-background-color="#0A0A0F" data-chapter="ch6">
         <div class="slide-body maker">
-          <div class="body-title">나만의 이야기가 아닙니다</div>
-          <div class="fragment fade-up" style="text-align:center; padding:1.5% 8%; margin:0 5% 1.5%; background:rgba(255,255,255,0.04); border-radius:10px; border:1px solid rgba(255,255,255,0.07);">
-            <p style="font-size:0.95em; color:#fff; margin:0; font-weight:600; line-height:1.7;">
-              코딩 경험 <strong style="color:var(--maker-violet);">0명</strong>에서 시작 → 팀 HRD 도구 <strong style="color:var(--maker-mint);">6개+</strong> 보유
+          <!-- 핵심 메시지: 항상 상단 표시 (non-fragment) -->
+          <div style="text-align:center; padding:2% 8% 1.5%; margin:0 5% 2%; background:linear-gradient(135deg, rgba(108,99,255,0.1), rgba(0,212,170,0.06)); border-radius:12px; border:1px solid rgba(108,99,255,0.25);">
+            <p style="font-size:0.7em; color:rgba(176,176,192,0.7); margin:0 0 0.4em; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">코딩 경험 0에서 시작한 HRD 팀의 이야기</p>
+            <p style="font-size:1.0em; color:#fff; margin:0; font-weight:700; line-height:1.7;">
+              코딩 경험 <strong style="color:var(--maker-violet); font-size:1.15em;">0명</strong>에서 시작 &nbsp;→&nbsp; 팀 HRD 도구 <strong style="color:var(--maker-mint); font-size:1.15em;">6개+</strong> 보유
             </p>
           </div>
+          <div class="body-title" style="font-size:clamp(1em,2.2vw,1.35em); margin-bottom:1.5%;">나만의 이야기가 아닙니다</div>
           <div class="team-grid">
             <div class="maker-card fragment fade-up">
               <span class="maker-card-icon">👩‍💼</span>
@@ -501,40 +503,52 @@
               <span class="tag mint">리더십</span>
             </div>
           </div>
-
         </div>
       </section>
 
       <!-- CH6: 팀 앱 1 — PI 평가 시스템 -->
       <section data-background-color="#0A0A0F" data-chapter="ch6">
         <div class="slide-body maker">
-          <div class="body-title">신입사원 PI 프로젝트 평가 시스템</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2.5%; padding:0 5%; flex:1; margin-top:2%; align-items:start;">
-            <div class="maker-card">
-              <span class="maker-card-icon">📋</span>
-              <strong>배경</strong>
-              <p style="color:var(--maker-text);">입문교육 중 PI 프로젝트 발표 평가가 수작업으로 이루어짐.</p>
-              <p style="color:rgba(176,176,192,0.7); font-size:0.9em; margin-top:0.5em;">집계에만 30분 이상 소요. 실수 발생 우려.</p>
-              <span class="tag">온보딩</span>
+          <div class="body-title">신입사원 <span class="accent-mint">PI 프로젝트</span> 평가 시스템</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2.5%; padding:0 5%; flex:1; margin-top:2%; align-items:stretch;">
+            <!-- 배경 카드 -->
+            <div class="maker-card" style="display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:0.5em; margin-bottom:0.8em; padding-bottom:0.8em; border-bottom:1px solid rgba(255,255,255,0.07);">
+                <span style="font-size:1.5em;">📋</span>
+                <strong style="color:#fff; font-size:1.05em;">배경</strong>
+              </div>
+              <p style="color:var(--maker-text); font-size:0.88em; line-height:1.8; margin:0 0 0.6em; flex:1;">입문교육 중 PI 프로젝트 발표 평가가 <strong style="color:rgba(255,255,255,0.85);">수작업</strong>으로 이루어짐.</p>
+              <p style="color:rgba(176,176,192,0.65); font-size:0.8em; line-height:1.7; margin:0 0 0.8em;">집계에만 30분 이상 소요.<br>휴먼에러 발생 우려.</p>
+              <span class="tag" style="align-self:flex-start;">온보딩</span>
             </div>
-            <div class="maker-card fragment fade-up">
-              <span class="maker-card-icon">✅</span>
-              <strong>기능</strong>
-              <ul style="list-style:none; padding:0; margin:0.6em 0 0; font-size:0.9em; color:var(--maker-text); line-height:1.9;">
-                <li>📱 QR코드로 즉시 접속</li>
-                <li>📊 평가자별 실시간 점수 입력</li>
-                <li>🏆 자동 집계 및 순위 산출</li>
-                <li>📤 결과 즉시 공유</li>
+            <!-- 기능 카드 -->
+            <div class="maker-card fragment fade-up" style="display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:0.5em; margin-bottom:0.8em; padding-bottom:0.8em; border-bottom:1px solid rgba(255,255,255,0.07);">
+                <span style="font-size:1.5em;">✅</span>
+                <strong style="color:#fff; font-size:1.05em;">기능</strong>
+              </div>
+              <ul style="list-style:none; padding:0; margin:0; font-size:0.85em; color:var(--maker-text); line-height:2.1; flex:1;">
+                <li style="color:rgba(255,255,255,0.9);">📱 QR코드로 즉시 접속</li>
+                <li style="color:rgba(255,255,255,0.85);">📊 평가자별 실시간 점수 입력</li>
+                <li style="color:rgba(255,255,255,0.85);">🏆 자동 집계 및 순위 산출</li>
+                <li style="color:rgba(255,255,255,0.8);">📤 결과 즉시 공유</li>
               </ul>
             </div>
-            <div class="maker-card fragment fade-up" style="border-color:rgba(0,212,170,0.4); background:rgba(0,212,170,0.05);">
-              <span class="maker-card-icon">🚀</span>
-              <strong style="color:var(--maker-mint);">결과</strong>
-              <p style="color:rgba(255,255,255,0.85); font-size:1.05em; font-weight:600; line-height:1.8; margin-top:0.5em;">
-                집계 시간<br>
-                <span style="color:var(--maker-mint); font-size:1.4em; font-weight:800;">30분 → 실시간</span>
-              </p>
-              <p style="color:var(--maker-text); font-size:0.85em; margin-top:0.5em;">평가자 만족도 대폭 향상</p>
+            <!-- 결과 카드 -->
+            <div class="maker-card fragment fade-up" style="border-color:rgba(0,212,170,0.45); background:rgba(0,212,170,0.06); display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:0.5em; margin-bottom:0.8em; padding-bottom:0.8em; border-bottom:1px solid rgba(0,212,170,0.15);">
+                <span style="font-size:1.5em;">🚀</span>
+                <strong style="color:var(--maker-mint); font-size:1.05em;">결과</strong>
+              </div>
+              <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+                <p style="color:rgba(255,255,255,0.75); font-size:0.8em; margin:0 0 0.4em;">집계 시간</p>
+                <p style="color:#fff; font-size:1.1em; font-weight:700; line-height:1.4; margin:0 0 0.6em;">
+                  <span style="color:rgba(255,255,255,0.5); text-decoration:line-through;">30분</span>
+                  &nbsp;→&nbsp;
+                  <span style="color:var(--maker-mint); font-size:1.3em; font-weight:800;">실시간</span>
+                </p>
+                <p style="color:var(--maker-text); font-size:0.82em; line-height:1.7; margin:0;">평가자 만족도 대폭 향상<br>실수 발생 <strong style="color:rgba(255,255,255,0.8);">0건</strong></p>
+              </div>
             </div>
           </div>
         </div>
@@ -645,11 +659,11 @@
             <ellipse cx="960" cy="560" rx="552" ry="303" fill="none" stroke="rgba(108,99,255,0.55)" stroke-width="2.5"/>
             <ellipse cx="960" cy="560" rx="528" ry="287" fill="none" stroke="rgba(108,99,255,0.35)" stroke-width="2"/>
 
-            <!-- START / GOAL -->
-            <rect x="862" y="218" width="88" height="36" rx="8" fill="rgba(0,212,170,0.12)" stroke="rgba(0,212,170,0.5)" stroke-width="1.5"/>
-            <text x="906" y="241" text-anchor="middle" font-size="20" font-weight="700" fill="#00D4AA">START</text>
-            <rect x="970" y="218" width="88" height="36" rx="8" fill="rgba(108,99,255,0.12)" stroke="rgba(108,99,255,0.5)" stroke-width="1.5"/>
-            <text x="1014" y="241" text-anchor="middle" font-size="20" font-weight="700" fill="#6C63FF">GOAL</text>
+            <!-- START / GOAL — compact row -->
+            <rect x="828" y="160" width="100" height="40" rx="10" fill="rgba(0,212,170,0.14)" stroke="rgba(0,212,170,0.55)" stroke-width="1.5"/>
+            <text x="878" y="185" text-anchor="middle" font-size="22" font-weight="800" fill="#00D4AA">START</text>
+            <rect x="992" y="160" width="100" height="40" rx="10" fill="rgba(108,99,255,0.14)" stroke="rgba(108,99,255,0.55)" stroke-width="1.5"/>
+            <text x="1042" y="185" text-anchor="middle" font-size="22" font-weight="800" fill="#6C63FF">GOAL</text>
 
             <!-- 레이블 -->
             <text x="318" y="548" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.6)" font-weight="500">문제 인식</text>
@@ -679,18 +693,20 @@
               </animateMotion>
             </g>
 
-            <!-- START/GOAL 아래: Rail Switch 버튼 + 대 딸깍 -->
-            <line x1="906" y1="254" x2="906" y2="276" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"/>
-            <line x1="1014" y1="254" x2="1014" y2="276" stroke="rgba(108,99,255,0.4)" stroke-width="1.5"/>
-            <line x1="906" y1="276" x2="1014" y2="276" stroke="rgba(176,176,192,0.2)" stroke-width="1"/>
-            <!-- Rail Switch 버튼 -->
-            <rect x="878" y="282" width="164" height="46" rx="13" fill="rgba(108,99,255,0.18)" stroke="rgba(108,99,255,0.75)" stroke-width="2"/>
-            <text x="960" y="311" text-anchor="middle" font-size="22" font-weight="700" fill="#6C63FF">⇄ Rail Switch</text>
-            <!-- 연결선 -->
-            <line x1="960" y1="328" x2="960" y2="355" stroke="rgba(108,99,255,0.45)" stroke-width="1.5" stroke-dasharray="4,3"/>
-            <!-- 대 딸깍 -->
-            <text x="960" y="410" text-anchor="middle" font-size="58" font-weight="900" fill="#6C63FF" filter="url(#glow-v)">대 딸깍</text>
-            <line x1="960" y1="420" x2="960" y2="440" stroke="rgba(108,99,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <!-- START/GOAL 아래: Rail Switch 버튼 + 대 딸깍 — 바로 붙여줌 -->
+            <!-- 연결선: START/GOAL → Rail Switch -->
+            <line x1="878" y1="200" x2="878" y2="214" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"/>
+            <line x1="1042" y1="200" x2="1042" y2="214" stroke="rgba(108,99,255,0.4)" stroke-width="1.5"/>
+            <line x1="878" y1="214" x2="1042" y2="214" stroke="rgba(176,176,192,0.18)" stroke-width="1"/>
+            <line x1="960" y1="214" x2="960" y2="222" stroke="rgba(176,176,192,0.25)" stroke-width="1.5"/>
+            <!-- Rail Switch 버튼 (바로 아래) -->
+            <rect x="868" y="222" width="184" height="46" rx="14" fill="rgba(108,99,255,0.2)" stroke="rgba(108,99,255,0.8)" stroke-width="2"/>
+            <text x="960" y="251" text-anchor="middle" font-size="23" font-weight="700" fill="#6C63FF">⇄ Rail Switch</text>
+            <!-- 짧은 연결선 -->
+            <line x1="960" y1="268" x2="960" y2="282" stroke="rgba(108,99,255,0.5)" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <!-- 대 딸깍 (바로 아래) -->
+            <text x="960" y="340" text-anchor="middle" font-size="62" font-weight="900" fill="#6C63FF" filter="url(#glow-v)">대 딸깍</text>
+            <line x1="960" y1="352" x2="960" y2="368" stroke="rgba(108,99,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
             <!-- 중앙 레벨스위치 원 -->
             <ellipse cx="960" cy="560" rx="235" ry="138" fill="rgba(8,8,18,0.96)" stroke="rgba(108,99,255,0.45)" stroke-width="2"/>
             <text x="960" y="540" text-anchor="middle" font-size="26" fill="rgba(176,176,192,0.55)" letter-spacing="2">레벨스위치</text>
@@ -726,7 +742,7 @@
       <section data-background-color="#FFFFFF" data-chapter="closing">
         <div class="slide-body">
           <div class="body-title">지금 시작하는 법 — <strong style="color:var(--wanted-accent1);">3단계 공식</strong></div>
-          <div style="display:grid; grid-template-columns:1fr 80px 1fr 80px 1fr; padding:0 6%; flex:1; align-items:center; margin-top:3%;">
+          <div style="display:grid; grid-template-columns:1fr 120px 1fr 120px 1fr; padding:0 4%; flex:1; align-items:center; margin-top:3%;">
             <div class="body-card fragment fade-up">
               <strong style="color:var(--wanted-accent1); font-size:2em; font-weight:800; display:block; margin-bottom:0.2em;">01</strong>
               <strong>작은 성공 경험</strong>
@@ -734,7 +750,7 @@
               <p>목표: A-to-Z 완성 경험 1개</p>
               <p style="margin-top:0.8em; color:var(--wanted-accent1); font-weight:600;">💊 도파민 먼저!</p>
             </div>
-            <div class="fragment fade-up" style="font-size:2.2em; color:var(--wanted-accent1); text-align:center; opacity:0.45; padding:0 4%; min-width:60px;">→</div>
+            <div class="fragment fade-up" style="font-size:2.8em; color:var(--wanted-accent1); text-align:center; opacity:0.5; letter-spacing:-0.05em;">→</div>
             <div class="body-card fragment fade-up">
               <strong style="color:var(--wanted-accent2); font-size:2em; font-weight:800; display:block; margin-bottom:0.2em;">02</strong>
               <strong>독학 확장</strong>
@@ -742,7 +758,7 @@
               <p>목표: 나만의 HRD 문제 해결</p>
               <p style="margin-top:0.8em; color:var(--wanted-accent2); font-weight:600;">🔄 반복하면 실력 된다</p>
             </div>
-            <div class="fragment fade-up" style="font-size:2.2em; color:var(--wanted-accent2); text-align:center; opacity:0.45; padding:0 4%; min-width:60px;">→</div>
+            <div class="fragment fade-up" style="font-size:2.8em; color:var(--wanted-accent2); text-align:center; opacity:0.5; letter-spacing:-0.05em;">→</div>
             <div class="body-card fragment fade-up">
               <strong style="color:var(--wanted-accent3); font-size:2em; font-weight:800; display:block; margin-bottom:0.2em;">03</strong>
               <strong>조직 자산화</strong>
@@ -758,55 +774,57 @@
       <section data-background-color="#FFFFFF" data-chapter="closing">
         <div class="slide-body">
           <div class="body-title">AI를 <span class="accent">어떻게 쓰느냐</span>가 성과를 가른다</div>
-          <div style="flex:1; display:flex; flex-direction:column; padding:0 5%; gap:3%;">
-            <!-- 성과 그래프 (SVG 전폭) -->
-            <div style="flex:0 0 52%;">
-              <svg id="perf-graph" viewBox="0 0 800 260" style="width:100%; height:100%;" xmlns="http://www.w3.org/2000/svg">
+          <div style="flex:1; display:flex; flex-direction:column; padding:0 4% 0; gap:2%;">
+            <!-- 성과 그래프 (SVG 전폭 확대 — 잘림 없음) -->
+            <div style="flex:0 0 62%; min-height:0; overflow:visible;">
+              <svg id="perf-graph" viewBox="0 0 920 300" style="width:100%; height:100%; display:block; overflow:visible;" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <style>
-                    #path-ai-none { stroke-dasharray: 450; stroke-dashoffset: 450; animation: draw-line 1.5s ease-out 0.3s forwards; }
-                    #path-ai-use  { stroke-dasharray: 460; stroke-dashoffset: 460; animation: draw-line 1.5s ease-out 0.8s forwards; }
-                    #path-vibe    { stroke-dasharray: 520; stroke-dashoffset: 520; animation: draw-line 1.5s ease-out 1.3s forwards; }
+                    #path-ai-none { stroke-dasharray: 540; stroke-dashoffset: 540; animation: draw-line 1.8s ease-out 0.2s forwards; }
+                    #path-ai-use  { stroke-dasharray: 560; stroke-dashoffset: 560; animation: draw-line 1.8s ease-out 0.7s forwards; }
+                    #path-vibe    { stroke-dasharray: 620; stroke-dashoffset: 620; animation: draw-line 1.8s ease-out 1.2s forwards; }
                     @keyframes draw-line { to { stroke-dashoffset: 0; } }
                   </style>
                 </defs>
-                <!-- 축 -->
-                <line x1="60" y1="220" x2="760" y2="220" stroke="#ddd" stroke-width="2"/>
-                <line x1="60" y1="220" x2="60" y2="20" stroke="#ddd" stroke-width="2"/>
-                <!-- 축 라벨 -->
-                <text x="410" y="248" text-anchor="middle" font-size="16" fill="#aaa" font-family="sans-serif">시간 (경험 누적)</text>
-                <text x="22" y="124" text-anchor="middle" font-size="16" fill="#aaa" font-family="sans-serif" transform="rotate(-90 22 124)">성과 / 역량</text>
-                <!-- 눈금선 -->
-                <line x1="60" y1="170" x2="760" y2="170" stroke="#f0f0f0" stroke-width="1"/>
-                <line x1="60" y1="120" x2="760" y2="120" stroke="#f0f0f0" stroke-width="1"/>
-                <line x1="60" y1="70" x2="760" y2="70" stroke="#f0f0f0" stroke-width="1"/>
-                <!-- 곡선 1: AI 미사용 -->
-                <path id="path-ai-none" d="M70,210 Q300,205 750,185" fill="none" stroke="#ccc" stroke-width="3" stroke-dasharray="8,4"/>
-                <!-- 곡선 2: AI 활용 -->
-                <path id="path-ai-use" d="M70,210 Q280,170 750,110" fill="none" stroke="#00A2FF" stroke-width="3.5" stroke-dasharray="8,4"/>
-                <!-- 곡선 3: AI·바이브코딩 -->
-                <path id="path-vibe" d="M70,210 Q240,130 750,32" fill="none" stroke="#6C63FF" stroke-width="4.5"/>
-                <!-- 끝점 -->
-                <circle cx="750" cy="185" r="5" fill="#ccc"/>
-                <circle cx="750" cy="110" r="5" fill="#00A2FF"/>
-                <circle cx="750" cy="32"  r="6" fill="#6C63FF"/>
-                <!-- 라벨 -->
-                <text x="756" y="190" font-size="13" fill="#bbb" font-family="sans-serif">AI 미사용</text>
-                <text x="756" y="115" font-size="13" fill="#00A2FF" font-family="sans-serif" font-weight="600">AI 활용</text>
-                <text x="560" y="50"  font-size="13" fill="#6C63FF" font-family="sans-serif" font-weight="700">AI · 바이브코딩</text>
-                <text x="560" y="66"  font-size="13" fill="#6C63FF" font-family="sans-serif" font-weight="700">대담하게 활용</text>
+                <!-- 배경 구분선 -->
+                <line x1="70" y1="265" x2="860" y2="265" stroke="#e5e5e5" stroke-width="2"/>
+                <line x1="70" y1="265" x2="70" y2="20" stroke="#e5e5e5" stroke-width="2"/>
+                <!-- 눈금선 + 라벨 -->
+                <line x1="70" y1="210" x2="860" y2="210" stroke="#f5f5f5" stroke-width="1.5"/>
+                <line x1="70" y1="155" x2="860" y2="155" stroke="#f5f5f5" stroke-width="1.5"/>
+                <line x1="70" y1="100" x2="860" y2="100" stroke="#f5f5f5" stroke-width="1.5"/>
+                <line x1="70" y1="48"  x2="860" y2="48"  stroke="#f5f5f5" stroke-width="1.5"/>
+                <!-- Y축 라벨 -->
+                <text x="28" y="145" text-anchor="middle" font-size="17" fill="#bbb" font-family="sans-serif" transform="rotate(-90 28 145)">성과 / 역량</text>
+                <!-- X축 라벨 -->
+                <text x="465" y="290" text-anchor="middle" font-size="17" fill="#bbb" font-family="sans-serif">시간 (경험 누적)</text>
+                <!-- 곡선 1: AI 미사용 (완만) -->
+                <path id="path-ai-none" d="M80,255 C200,250 450,240 850,220" fill="none" stroke="#d0d0d0" stroke-width="3.5" stroke-dasharray="10,5"/>
+                <!-- 곡선 2: AI 활용 (중간) -->
+                <path id="path-ai-use"  d="M80,255 C200,220 420,175 850,110" fill="none" stroke="#00A2FF" stroke-width="4" stroke-dasharray="10,5"/>
+                <!-- 곡선 3: AI·바이브코딩 (가파름) -->
+                <path id="path-vibe"    d="M80,255 C180,200 350,120 850,30" fill="none" stroke="#6C63FF" stroke-width="5.5" stroke-linecap="round"/>
+                <!-- 끝점 마커 -->
+                <circle cx="850" cy="220" r="6" fill="#d0d0d0"/>
+                <circle cx="850" cy="110" r="6" fill="#00A2FF"/>
+                <circle cx="850" cy="30"  r="8" fill="#6C63FF" filter=""/>
+                <!-- 끝점 라벨 -->
+                <text x="858" y="225" font-size="15" fill="#aaa" font-family="sans-serif">AI 미사용</text>
+                <text x="858" y="116" font-size="15" fill="#00A2FF" font-family="sans-serif" font-weight="600">AI 활용</text>
+                <!-- 바이브코딩 라벨: 인라인 -->
+                <text x="630" y="58"  font-size="16" fill="#6C63FF" font-family="sans-serif" font-weight="800">✦ AI · 바이브코딩 대담하게 활용</text>
               </svg>
             </div>
             <!-- 설명 카드 (아래 배치) -->
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:3%; flex:1;">
-              <div class="fragment fade-up" style="padding:4% 5%; background:rgba(108,99,255,0.06); border:1px solid rgba(108,99,255,0.2); border-radius:12px; display:flex; align-items:center;">
-                <p style="font-size:0.78em; color:var(--wanted-dark); margin:0; line-height:1.9;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:3%; flex:1; min-height:0;">
+              <div class="fragment fade-up" style="padding:3.5% 5%; background:rgba(108,99,255,0.06); border:1px solid rgba(108,99,255,0.2); border-radius:12px; display:flex; align-items:center;">
+                <p style="font-size:0.8em; color:var(--wanted-dark); margin:0; line-height:1.9;">
                   AI가 갈 곳은 많아졌고, Cost는 낮아졌다.<br>
                   <strong style="color:#6C63FF;">리더가 능력 100%로 결과를 만들 수 있는 시대.</strong>
                 </p>
               </div>
-              <div class="fragment fade-up" style="padding:4% 5%; background:rgba(255,80,80,0.04); border:1px solid rgba(255,80,80,0.15); border-radius:12px; display:flex; align-items:center;">
-                <p style="font-size:0.78em; color:var(--wanted-dark); margin:0; line-height:1.9;">
+              <div class="fragment fade-up" style="padding:3.5% 5%; background:rgba(255,80,80,0.04); border:1px solid rgba(255,80,80,0.15); border-radius:12px; display:flex; align-items:center;">
+                <p style="font-size:0.8em; color:var(--wanted-dark); margin:0; line-height:1.9;">
                   단, <strong>AX 전환도 함께 고민해야 합니다.</strong><br>
                   <span style="color:var(--wanted-gray);">사명감만 앞세우면 조직에서 무용론이 될 수 있습니다.</span>
                 </p>
