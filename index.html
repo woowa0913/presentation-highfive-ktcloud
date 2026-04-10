@@ -6,7 +6,7 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=15">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=16">
 </head>
 <body>
 
@@ -15,6 +15,19 @@
     <video autoplay muted loop playsinline>
       <source src="https://image.wanted.co.kr/highfive/2026/intro_video_web.mp4" type="video/mp4">
     </video>
+  </div>
+
+  <!-- Hero 텍스트 오버레이 (fixed, 영상과 같은 레벨에서 blend) -->
+  <div class="hero-fixed-overlay" id="heroOverlay">
+    <div class="hero-top-logo">HIGH FIVE 26</div>
+    <div class="hero-center">
+      <div class="hero-main-title">HIGH FIVE 26</div>
+      <div class="hero-sub-en">HR TECH :</div>
+      <div class="hero-sub-kr">방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</div>
+    </div>
+    <div class="hero-bottom-logo">
+      <img src="assets/images/sponsors-logo-white.png" alt="wanted | inflearn">
+    </div>
   </div>
 
   <!-- 상단 챕터 네비게이션 바 -->
@@ -54,17 +67,7 @@
            HERO: 영상 배경 + blend 텍스트
            ============================================ -->
       <section data-chapter="hero">
-        <div class="slide-hero">
-          <div class="hero-logo">HIGH FIVE 26</div>
-          <div class="hero-title-layer">
-            <div class="hero-main-title">HIGH FIVE 26</div>
-            <div class="hero-sub-en">HR TECH :</div>
-            <div class="hero-sub-kr">방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</div>
-          </div>
-          <div class="hero-sponsors">
-            <img src="assets/images/sponsors-logo-white.png" alt="wanted | inflearn">
-          </div>
-        </div>
+        <!-- 콘텐츠는 hero-fixed-overlay(body 직속)에서 렌더링 -->
       </section>
 
       <!-- ============================================
@@ -370,13 +373,15 @@
       navTimer = setTimeout(() => nav.classList.remove('visible'), 1000);
     });
 
-    /* ── 2. Hero 영상 배경: hero 슬라이드에서만 표시 ── */
+    /* ── 2. Hero 영상 배경 + 텍스트 오버레이: hero 슬라이드에서만 표시 ── */
     const heroVideoBg = document.getElementById('heroVideoBg');
+    const heroOverlay = document.getElementById('heroOverlay');
 
     function updateHeroVideo() {
       const currentSection = document.querySelectorAll('.reveal .slides > section')[Reveal.getIndices().h];
       const isHero = currentSection?.dataset.chapter === 'hero';
       heroVideoBg.style.display = isHero ? 'block' : 'none';
+      heroOverlay.style.display = isHero ? 'block' : 'none';
       document.querySelector('.reveal-viewport')?.classList.toggle('hero-active', isHero);
     }
 

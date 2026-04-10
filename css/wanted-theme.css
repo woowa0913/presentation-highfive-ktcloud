@@ -573,14 +573,78 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: 9990;
   pointer-events: none;
   background: #5a8fc7;
+  display: none; /* JS로 hero 슬라이드에서만 표시 */
 }
 .hero-video-bg video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* 인트로 텍스트 오버레이 — 영상과 같은 fixed 레벨에서 blend */
+.hero-fixed-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9991;
+  pointer-events: none;
+  display: none; /* JS로 hero 슬라이드에서만 표시 */
+  mix-blend-mode: difference;
+}
+.hero-fixed-overlay .hero-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero-fixed-overlay .hero-main-title {
+  font-family: 'WantedSans', sans-serif;
+  font-size: 130px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.hero-fixed-overlay .hero-sub-en {
+  margin-top: 0.3em;
+  font-family: 'WantedSans', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+.hero-fixed-overlay .hero-sub-kr {
+  margin-top: 0.15em;
+  font-family: 'WantedSans', sans-serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.hero-fixed-overlay .hero-top-logo {
+  position: absolute;
+  top: 3.5%;
+  left: 2.5%;
+  font-family: 'WantedSans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+.hero-fixed-overlay .hero-bottom-logo {
+  position: absolute;
+  bottom: 3.5%;
+  right: 2.5%;
+}
+.hero-fixed-overlay .hero-bottom-logo img {
+  height: 30px;
+  opacity: 0.9;
 }
 /* 인트로 좌상단 로고 — 타이틀 페이지와 동일 위치/사이즈 */
 .slide-hero .hero-logo {
