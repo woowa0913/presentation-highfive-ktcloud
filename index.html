@@ -6,7 +6,7 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=35">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=36">
 </head>
 <body>
 
@@ -534,29 +534,30 @@
         </div>
       </section>
 
-      <section data-background-color="#FFFFFF" data-chapter="ch5">
-        <div class="slide-body">
-          <div class="body-title">그 레일의 목적지는 대상자의 레벨업이다</div>
-          <div class="body-crop-b2">
-            <div class="learning-track">
-              <div class="track-line"></div>
-              <div class="track-gate start">Start</div>
-              <div class="track-gate goal">Goal</div>
-              <div class="track-station s1">문제 발견</div>
-              <div class="track-station s2">맥락 설계</div>
-              <div class="track-station s3">도구 제작</div>
-              <div class="track-station s4">현장 적용</div>
-              <div class="track-station s5">데이터 확인</div>
-              <div class="track-station s6">반복 개선</div>
-              <div class="track-center">대상자<br>레벨업</div>
-            </div>
-            <div class="body-text">
-              <strong>HRD가 설계해야 할 것은 ‘과정’만이 아니다</strong>
-              <p class="fragment fade-up">입과 전 안내, 사전 준비, 실습, 피드백, 현업 적용, 후속 리마인드까지 하나의 트랙으로 이어져야 한다.</p>
-              <p class="fragment fade-up">AI와 바이브 코딩은 이 트랙의 빈칸을 더 빠르게 메우는 도구가 된다.</p>
-              <p class="fragment fade-up">핵심은 기술 자체가 아니라, 대상자가 실제로 성장하도록 경험을 설계하는 것이다.</p>
+      <section data-background-color="#0c0c1e" data-chapter="ch5">
+        <div class="learning-rail-slide">
+          <div class="learning-rail-header">
+            <span>Learning Growth Track</span>
+            <h2>그 레일의 목적지는<br>대상자의 레벨업이다</h2>
+            <p>AI와 바이브 코딩은 버튼 하나가 아니라, 문제 정의부터 개선까지 이어지는 성장 루프를 더 빠르게 돌리는 스위치다.</p>
+          </div>
+          <div class="learning-rail-card">
+            <canvas id="learningRailCanvas" aria-label="AI와 바이브 코딩의 학습 성장 레일 애니메이션"></canvas>
+            <div class="learning-rail-controls">
+              <div class="learning-rail-dots" aria-hidden="true">
+                <span data-learning-dot="0" class="active"></span>
+                <span data-learning-dot="1"></span>
+                <span data-learning-dot="2"></span>
+              </div>
+              <button id="learningRailSwitch" type="button">① 레일 스위치  딸깍!</button>
+              <span id="learningRailLabel">외부 레일 운행 중 · 일반 순환 모드</span>
             </div>
           </div>
+          <aside class="learning-rail-note">
+            <strong>HRD가 설계해야 할 것은 ‘과정’만이 아니다</strong>
+            <p>입과 전 안내, 사전 준비, 실습, 피드백, 현업 적용, 후속 리마인드까지 하나의 트랙으로 이어져야 한다.</p>
+            <p>AI와 바이브 코딩은 이 트랙의 빈칸을 빠르게 메워, 단일 작업을 병렬 학습 루프로 확장한다.</p>
+          </aside>
         </div>
       </section>
 
@@ -770,6 +771,335 @@
         if (railActivateButton) railActivateButton.textContent = '마우스로 눌러보기';
       }
     });
+
+    /* ── 학습 성장 트랙: 레일 스위치에 따라 AI 가속/병렬 루프를 전개 ── */
+    const learningCanvas = document.getElementById('learningRailCanvas');
+    const learningSwitch = document.getElementById('learningRailSwitch');
+    const learningLabel = document.getElementById('learningRailLabel');
+    const learningDots = Array.from(document.querySelectorAll('[data-learning-dot]'));
+
+    if (learningCanvas) {
+      const railCtx = learningCanvas.getContext('2d');
+      let railW = 0;
+      let railH = 0;
+      let railState = 0;
+      let railFrame = 0;
+      let railAct1 = 0;
+      let railAct2 = 0;
+      let railMainT = -Math.PI / 2;
+
+      const loopDefs = [
+        { dx: 0, dy: -0.3, frx: 0.22, fry: 0.26, col: '#7F77DD', label: 'AI 가속 루프', sub: '고속 단일 처리', spd: 0.034, delay: 0 },
+        { dx: -0.44, dy: -0.07, frx: 0.17, fry: 0.19, col: '#1D9E75', label: '기획 · 전략', spd: 0.026, delay: 0 },
+        { dx: 0, dy: -0.07, frx: 0.17, fry: 0.19, col: '#378ADD', label: '실행 · 검증', spd: 0.031, delay: 0.2 },
+        { dx: 0.44, dy: -0.07, frx: 0.17, fry: 0.19, col: '#D85A30', label: '리소스 배분', spd: 0.021, delay: 0.4 },
+        { dx: -0.28, dy: 0.33, frx: 0.17, fry: 0.19, col: '#D4537E', label: '성과 분석', spd: 0.035, delay: 0.6 },
+        { dx: 0.28, dy: 0.33, frx: 0.17, fry: 0.19, col: '#BA7517', label: '개선 · 학습', spd: 0.028, delay: 0.8 },
+      ];
+      const loopT = loopDefs.map((_, i) => i * 0.9 + 0.2);
+      const stations = [
+        { a: -Math.PI / 2, name: 'START · GOAL', col: '#BA7517' },
+        { a: -Math.PI * 0.78, name: '문제 정의', col: '#7F77DD' },
+        { a: -Math.PI * 0.22, name: '실험 · 설계', col: '#7F77DD' },
+        { a: 0, name: '리소스 평가', col: '#378ADD' },
+        { a: Math.PI * 0.28, name: '자원 배분', col: '#378ADD' },
+        { a: Math.PI * 0.5, name: '대안 비교', col: '#1D9E75' },
+        { a: Math.PI * 0.72, name: '아웃컴 분석', col: '#1D9E75' },
+        { a: Math.PI, name: '전략 수립', col: '#D4537E' },
+      ];
+
+      function resizeLearningRail() {
+        const rect = learningCanvas.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        railW = rect.width || 800;
+        railH = rect.height || 640;
+        learningCanvas.width = Math.floor(railW * dpr);
+        learningCanvas.height = Math.floor(railH * dpr);
+        railCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function outerLoop() {
+        return {
+          cx: railW / 2,
+          cy: railH / 2 - 14,
+          rx: Math.min(railW * 0.37, 300),
+          ry: Math.min(railH * 0.28, 160),
+        };
+      }
+
+      function loopGeometry(def) {
+        const o = outerLoop();
+        return {
+          cx: o.cx + def.dx * o.rx,
+          cy: o.cy + def.dy * o.ry,
+          rx: def.frx * o.rx,
+          ry: def.fry * o.ry,
+        };
+      }
+
+      function railPoint(track, angle) {
+        return [
+          track.cx + track.rx * Math.cos(angle),
+          track.cy + track.ry * Math.sin(angle),
+        ];
+      }
+
+      function easeRail(value) {
+        return value < 0.5 ? 2 * value * value : 1 - Math.pow(-2 * value + 2, 2) / 2;
+      }
+
+      function drawRail(track, color, alpha, gap = 8) {
+        if (alpha < 0.015) return;
+        const inner = { cx: track.cx, cy: track.cy, rx: track.rx - gap, ry: track.ry - gap * 0.6 };
+        const outer = { cx: track.cx, cy: track.cy, rx: track.rx + gap, ry: track.ry + gap * 0.6 };
+        railCtx.save();
+        railCtx.globalAlpha = alpha;
+        const sleepers = Math.max(10, Math.floor(track.rx * 0.5));
+        railCtx.strokeStyle = color + '55';
+        railCtx.lineWidth = 3;
+        railCtx.lineCap = 'round';
+        for (let i = 0; i < sleepers; i++) {
+          const angle = (i / sleepers) * Math.PI * 2;
+          const [x1, y1] = railPoint(inner, angle);
+          const [x2, y2] = railPoint(outer, angle);
+          railCtx.beginPath();
+          railCtx.moveTo(x1, y1);
+          railCtx.lineTo(x2, y2);
+          railCtx.stroke();
+        }
+        [inner, outer].forEach((rail) => {
+          railCtx.strokeStyle = color;
+          railCtx.lineWidth = 2;
+          railCtx.beginPath();
+          railCtx.ellipse(rail.cx, rail.cy, rail.rx, rail.ry, 0, 0, Math.PI * 2);
+          railCtx.stroke();
+        });
+        railCtx.restore();
+      }
+
+      function drawTrain(x, y, angle, scale, color) {
+        railCtx.save();
+        railCtx.translate(x, y);
+        railCtx.rotate(angle + Math.PI / 2);
+        railCtx.fillStyle = color;
+        railCtx.beginPath();
+        railCtx.roundRect(-7 * scale, -13 * scale, 14 * scale, 26 * scale, 3);
+        railCtx.fill();
+        railCtx.fillStyle = 'rgba(255,255,255,.9)';
+        railCtx.beginPath();
+        railCtx.roundRect(-4.5 * scale, -10 * scale, 9 * scale, 7 * scale, 1.5);
+        railCtx.fill();
+        railCtx.fillStyle = '#fffde7';
+        railCtx.beginPath();
+        railCtx.arc(0, -13 * scale, 2.5 * scale, 0, Math.PI * 2);
+        railCtx.fill();
+        railCtx.restore();
+      }
+
+      function drawStations(track) {
+        stations.forEach((station) => {
+          const [px, py] = railPoint(track, station.a);
+          const nx = Math.cos(station.a);
+          const ny = Math.sin(station.a);
+          const distance = Math.min(58, Math.max(30, railW * 0.05));
+          const lx = track.cx + (track.rx + distance) * nx;
+          const ly = track.cy + (track.ry + distance * 0.65) * ny;
+          railCtx.save();
+          railCtx.strokeStyle = station.col + '40';
+          railCtx.lineWidth = 1;
+          railCtx.setLineDash([2, 4]);
+          railCtx.beginPath();
+          railCtx.moveTo(px, py);
+          railCtx.lineTo(lx, ly);
+          railCtx.stroke();
+          railCtx.setLineDash([]);
+          railCtx.fillStyle = station.col;
+          railCtx.beginPath();
+          railCtx.arc(px, py, 5, 0, Math.PI * 2);
+          railCtx.fill();
+          railCtx.font = '500 11px WantedSans, system-ui, sans-serif';
+          const textWidth = railCtx.measureText(station.name).width;
+          const boxWidth = textWidth + 12;
+          railCtx.fillStyle = 'rgba(10,10,28,.93)';
+          railCtx.strokeStyle = station.col + '66';
+          railCtx.lineWidth = 1;
+          railCtx.beginPath();
+          railCtx.roundRect(lx - boxWidth / 2, ly - 9.5, boxWidth, 19, 4);
+          railCtx.fill();
+          railCtx.stroke();
+          railCtx.fillStyle = station.col;
+          railCtx.textAlign = 'center';
+          railCtx.textBaseline = 'middle';
+          railCtx.fillText(station.name, lx, ly);
+          railCtx.restore();
+        });
+      }
+
+      function updateLearningSwitch() {
+        const colors = ['#534AB7', '#1D9E75', '#D85A30'];
+        learningDots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === railState);
+          dot.style.background = index === railState ? colors[index] : 'rgba(255,255,255,.2)';
+        });
+        if (!learningSwitch || !learningLabel) return;
+        if (railState === 0) {
+          learningSwitch.textContent = '① 레일 스위치  딸깍!';
+          learningSwitch.style.background = '#7F77DD';
+          learningSwitch.style.borderColor = '#AFA9EC';
+          learningLabel.textContent = '외부 레일 운행 중 · 일반 순환 모드';
+        } else if (railState === 1) {
+          learningSwitch.textContent = '② AI 가속 루프 전개!';
+          learningSwitch.style.background = '#1D9E75';
+          learningSwitch.style.borderColor = '#5DCAA5';
+          learningLabel.textContent = 'AI 단일 가속 루프 활성화 · 속도 ↑';
+        } else {
+          learningSwitch.textContent = '↺ 병렬 처리 풀 가동!';
+          learningSwitch.style.background = '#D85A30';
+          learningSwitch.style.borderColor = '#F09975';
+          learningLabel.textContent = '병렬 처리 풀 가동 중 · 동시 다발 진행!';
+        }
+      }
+
+      learningSwitch?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        railState = (railState + 1) % 3;
+        updateLearningSwitch();
+      });
+
+      window.addEventListener('resize', resizeLearningRail);
+      Reveal.on('ready', resizeLearningRail);
+      Reveal.on('slidechanged', resizeLearningRail);
+      setTimeout(resizeLearningRail, 80);
+      updateLearningSwitch();
+
+      function renderLearningRail() {
+        if (!railW || !railH) {
+          resizeLearningRail();
+          requestAnimationFrame(renderLearningRail);
+          return;
+        }
+
+        railCtx.clearRect(0, 0, railW, railH);
+        railCtx.fillStyle = '#0c0c1e';
+        railCtx.fillRect(0, 0, railW, railH);
+
+        railCtx.save();
+        railCtx.strokeStyle = 'rgba(255,255,255,.02)';
+        railCtx.lineWidth = 1;
+        for (let x = 0; x < railW; x += 60) {
+          railCtx.beginPath();
+          railCtx.moveTo(x, 0);
+          railCtx.lineTo(x, railH);
+          railCtx.stroke();
+        }
+        for (let y = 0; y < railH; y += 60) {
+          railCtx.beginPath();
+          railCtx.moveTo(0, y);
+          railCtx.lineTo(railW, y);
+          railCtx.stroke();
+        }
+        railCtx.restore();
+
+        railCtx.textAlign = 'center';
+        railCtx.font = '400 12px WantedSans, system-ui, sans-serif';
+        railCtx.fillStyle = 'rgba(255,255,255,.25)';
+        railCtx.fillText('조직의 AI & 바이브 코딩이 성과를 만드는 흐름의 변화', railW / 2, 22);
+
+        const activationSpeed = 0.04;
+        railAct1 = Math.max(0, Math.min(1, railAct1 + (railState >= 1 ? activationSpeed : -activationSpeed)));
+        railAct2 = Math.max(0, Math.min(1, railAct2 + (railState >= 2 ? activationSpeed * 0.65 : -activationSpeed)));
+
+        const outer = outerLoop();
+        drawRail(outer, '#BA7517', 1, 9);
+        drawStations(outer);
+
+        const [switchX, switchY] = railPoint(outer, -Math.PI / 2);
+        const pulse = (Math.sin(railFrame * 0.07) + 1) * 0.5;
+        const switchColor = railState === 2 ? '#D85A30' : railState === 1 ? '#1D9E75' : '#534AB7';
+        railCtx.save();
+        railCtx.fillStyle = switchColor;
+        railCtx.globalAlpha = 0.18 + pulse * 0.14;
+        railCtx.beginPath();
+        railCtx.arc(switchX, switchY - 22, 20, 0, Math.PI * 2);
+        railCtx.fill();
+        railCtx.globalAlpha = 1;
+        railCtx.beginPath();
+        railCtx.arc(switchX, switchY - 22, 9, 0, Math.PI * 2);
+        railCtx.fill();
+        railCtx.fillStyle = '#fff';
+        railCtx.font = 'bold 7.5px WantedSans, sans-serif';
+        railCtx.textAlign = 'center';
+        railCtx.textBaseline = 'middle';
+        railCtx.fillText('SW', switchX, switchY - 22);
+        railCtx.restore();
+
+        if (railAct1 > 0.015) {
+          const alpha = easeRail(railAct1);
+          const loop = loopGeometry(loopDefs[0]);
+          drawRail(loop, loopDefs[0].col, alpha, 5);
+          railCtx.save();
+          railCtx.globalAlpha = alpha;
+          railCtx.textAlign = 'center';
+          railCtx.font = '500 12px WantedSans, system-ui, sans-serif';
+          railCtx.fillStyle = '#AFA9EC';
+          railCtx.fillText(loopDefs[0].label, loop.cx, loop.cy - loop.ry - 11);
+          railCtx.font = '400 10px WantedSans, system-ui, sans-serif';
+          railCtx.fillStyle = 'rgba(175,169,236,.5)';
+          railCtx.fillText(loopDefs[0].sub, loop.cx, loop.cy + loop.ry + 14);
+          if (railState === 1) {
+            railCtx.font = '500 11px WantedSans, system-ui, sans-serif';
+            railCtx.fillStyle = 'rgba(159,151,255,.7)';
+            railCtx.fillText('+' + Math.round(1 + railAct1 * 8) + 'x 속도', loop.cx, loop.cy);
+          }
+          railCtx.restore();
+          loopT[0] += loopDefs[0].spd * (1 + railAct1 * 0.55);
+          const [lx, ly] = railPoint(loop, loopT[0]);
+          const [lx2, ly2] = railPoint(loop, loopT[0] + 0.024);
+          drawTrain(lx, ly, Math.atan2(ly2 - ly, lx2 - lx), 0.78, '#9F97FF');
+        }
+
+        if (railAct2 > 0.01) {
+          let visibleLoops = 0;
+          for (let i = 1; i < loopDefs.length; i++) {
+            const def = loopDefs[i];
+            const raw = (railAct2 - (def.delay || 0) * 0.5) / 0.5;
+            const alpha = easeRail(Math.max(0, Math.min(1, raw)));
+            if (alpha < 0.015) continue;
+            visibleLoops++;
+            const loop = loopGeometry(def);
+            drawRail(loop, def.col, alpha, 5);
+            railCtx.save();
+            railCtx.globalAlpha = Math.min(1, alpha * 2.5);
+            railCtx.textAlign = 'center';
+            railCtx.font = '500 11px WantedSans, system-ui, sans-serif';
+            railCtx.fillStyle = def.col;
+            railCtx.fillText(def.label, loop.cx, loop.cy);
+            railCtx.restore();
+            loopT[i] += def.spd;
+            const [lx, ly] = railPoint(loop, loopT[i]);
+            const [lx2, ly2] = railPoint(loop, loopT[i] + 0.024);
+            drawTrain(lx, ly, Math.atan2(ly2 - ly, lx2 - lx), 0.65, def.col);
+          }
+          if (visibleLoops > 0 && railAct2 > 0.35) {
+            const totalLoops = visibleLoops + (railAct1 > 0.5 ? 1 : 0);
+            railCtx.textAlign = 'center';
+            railCtx.font = '500 13px WantedSans, system-ui, sans-serif';
+            railCtx.fillStyle = 'rgba(255,255,255,.38)';
+            railCtx.fillText('동시 처리 루프 × ' + totalLoops, railW / 2, railH - 52);
+          }
+        }
+
+        railMainT += 0.005 + railAct2 * 0.003;
+        const [trainX, trainY] = railPoint(outer, railMainT);
+        const [trainX2, trainY2] = railPoint(outer, railMainT + 0.01);
+        drawTrain(trainX, trainY, Math.atan2(trainY2 - trainY, trainX2 - trainX), 1, '#E8A830');
+
+        railFrame++;
+        requestAnimationFrame(renderLearningRail);
+      }
+
+      renderLearningRail();
+    }
 
     /* ── KAC 통합 사례: 서류점검/모의고사 데모 전환 ── */
     document.querySelectorAll('.case-tab').forEach((tab) => {
