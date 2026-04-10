@@ -42,6 +42,10 @@
       05
       <div class="chapter-pages" id="ch5-pages"></div>
     </button>
+    <button class="chapter-btn" data-chapter="ch6">
+      06
+      <div class="chapter-pages" id="ch6-pages"></div>
+    </button>
     <button class="chapter-btn" data-chapter="closing">End</button>
     <!-- 이펙트 토글 -->
     <button class="effect-toggle" id="effectToggle">Effect ON</button>
@@ -90,197 +94,408 @@
         <div class="slide-index-wrap">
           <div class="index-numbers">01<br>02<br>03<br>04<br>05</div>
           <div class="index-items">
-            HRD, 왜 '메이커'가 되어야 하는가<br>
-            바이브 코딩이란 무엇인가<br>
-            실제 사례: 만들어본 것들<br>
-            어떻게 만들었나: 프로세스와 도구<br>
-            HRD 메이커 시대의 생존 전략
+            왜 지금 'HRD 메이커'인가?<br>
+            바이브 코딩으로 구현한 HRD 솔루션<br>
+            온보딩의 혁신, 게이미피케이션<br>
+            리더십의 체득화<br>
+            누구나 메이커가 될 수 있는 조직 문화
           </div>
         </div>
       </section>
 
-      <!-- CH1 간지 (홀수=흰) — image3 -->
+      <!-- CH1 -->
       <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch1">
         <div class="slide-section-wrap">
           <div class="section-number">01</div>
-          <h2>HRD, 왜 '메이커'가<br>되어야 하는가</h2>
+          <h2>왜 지금<br>'HRD 메이커'인가?</h2>
         </div>
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch1">
         <div class="slide-body">
-          <div class="body-title">HRD의 현재 과제</div>
-          <div class="body-crop-b3">
-            <div class="body-text">
-              <strong>바뀐 환경</strong>
-              <p class="fragment fade-up">교육 운영 중심에서 <strong>방법 설계</strong>로 역할 전환이 필요한 시대</p>
-              <p class="fragment fade-up">조직 맞춤형 솔루션에 대한 수요가 급증하고 있음</p>
+          <div class="body-title">구축(Build)이 구매(Buy)보다 빠른 시대</div>
+          <div class="body-crop-b2" style="margin-top: 4%;">
+            
+            <div style="display:flex; flex-direction:column; justify-content:center; padding: 6% 8%; background:rgba(26,21,56,0.03); border-radius: 16px; border: 1px solid rgba(26,21,56,0.08);">
+              <h3 style="font-size:2em; font-weight:800; color:var(--wanted-dark); margin-bottom:1em; display:flex; align-items:center; gap:0.5em;">
+                <span style="font-size:1.5em; opacity:0.8;">🏢</span> 기존 방식, '구매(Buy)'
+              </h3>
+              <div style="font-size:1.1em; line-height:2.2; color:var(--wanted-gray);">
+                <div class="fragment fade-up" style="margin-bottom:0.8em;"><strong>⏱ 기안부터 도입까지 수개월 대기</strong><br><span style="font-size:0.8em; color:#888;">솔루션 탐색, 결재, 보안 검토 등 도입까지만 3~6개월 소요</span></div>
+                <div class="fragment fade-up" style="margin-bottom:0.8em;"><strong>🧊 기성품의 한계 (Mismatch)</strong><br><span style="font-size:0.8em; color:#888;">우리 조직의 핵심가치와 맥락이 100% 반영되지 않는 구조</span></div>
+                <div class="fragment fade-up"><strong>💸 비싼 수정 비용</strong><br><span style="font-size:0.8em; color:#888;">문구 하나를 바꾸려 해도 추가 비용과 긴 커뮤니케이션</span></div>
+              </div>
             </div>
-            <div class="body-text">
-              <strong>현실의 병목</strong>
-              <p class="fragment fade-up">개발자/외주 의존 → 속도와 비용의 이중 병목</p>
-              <p class="fragment fade-up">아이디어가 있어도 실행할 수단이 없는 상황</p>
+
+            <div style="display:flex; flex-direction:column; justify-content:center; padding: 6% 8%; background:linear-gradient(135deg, rgba(0,162,255,0.05), rgba(97,216,54,0.05)); border-radius: 16px; border: 1px solid rgba(0,162,255,0.2);">
+              <h3 style="font-size:2em; font-weight:800; color:var(--wanted-accent1); margin-bottom:1em; display:flex; align-items:center; gap:0.5em;">
+                <span style="font-size:1.5em;">🚀</span> 새로운 패러다임, '구축(Build)'
+              </h3>
+              <div style="font-size:1.1em; line-height:2.2; color:var(--wanted-dark);">
+                <div class="fragment fade-up" style="margin-bottom:0.8em;"><strong style="color:var(--wanted-accent1);">⚡ 빛의 속도로 배포</strong><br><span style="font-size:0.8em; color:#666;">어제 기획한 온보딩 게임을 오늘 아침에 바로 링크로 배포</span></div>
+                <div class="fragment fade-up" style="margin-bottom:0.8em;"><strong style="color:var(--wanted-accent1);">🎯 완벽한 타겟팅 (100% Fit)</strong><br><span style="font-size:0.8em; color:#666;">우리 조직의 언어와 최신 이슈를 어색함 없이 바로 녹여냄</span></div>
+                <div class="fragment fade-up"><strong style="color:var(--wanted-accent1);">🤖 비용 ZERO, 무한 수정</strong><br><span style="font-size:0.8em; color:#666;">AI 피드백으로 실패 부담 없이 즉시 고치고 다시 테스트</span></div>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      <section data-background-color="#FFFFFF" data-chapter="ch1">
-        <div class="slide-body">
-          <div class="body-title">메이커가 된다는 것</div>
-          <div class="body-crop-b2">
-            <div style="display:flex; align-items:center; justify-content:center; background:rgba(26,21,56,0.03); border-radius:12px; padding:10%;">
-              <p style="font-size:1.4em; font-weight:600; color:var(--wanted-dark); text-align:center; line-height:1.5;">
-                교육을 <em>운영</em>하는 사람에서<br>
-                교육의 <strong>방법을 만드는</strong> 사람으로
-              </p>
-            </div>
-            <div class="body-text">
-              <p class="fragment fade-up">"기술을 도구 삼아 교육의 효과성을 극대화하고 HRD의 존재 가치를 증명하는 것"</p>
-              <p class="fragment fade-up" style="margin-top:1.5em; color:var(--wanted-gray);">HRD 담당자가 직접 만드는 온보딩 툴, 리더십 진단 도구, 교육 자동화 시스템</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CH2 간지 (짝수=검정) — image4 -->
+      <!-- CH2 -->
       <section data-background-image="assets/pptx-media/image4.png" data-background-size="cover" data-chapter="ch2">
         <div class="slide-section-wrap">
-          <div class="section-number">02</div>
-          <h2>바이브 코딩이란<br>무엇인가</h2>
+          <div class="section-number" style="color:#fff;">02</div>
+          <h2 style="color:#fff;">바이브 코딩으로<br>구현한 HRD 솔루션</h2>
         </div>
       </section>
 
-      <section data-background-color="#0a0a0a" data-chapter="ch2">
-        <div class="slide-body dark">
-          <div class="body-title">바이브 코딩 = <span class="accent">말로 만드는 소프트웨어</span></div>
-          <div class="body-crop-b3">
-            <div class="body-text">
-              <strong>개념</strong>
-              <p class="fragment fade-up">AI에게 <strong>자연어로 지시</strong>하면 코드를 생성</p>
-              <p class="fragment fade-up">코딩 경험 없이도 웹앱, 도구, 자동화 구축 가능</p>
-              <p class="fragment fade-up">프로그래밍 언어가 아니라 <strong>아이디어</strong>가 출발점</p>
+      <!-- CH2: DISC Demo -->
+      <section data-background-color="#FFFFFF" data-chapter="ch2">
+        <div class="slide-body">
+          <div class="body-title">현장에서 즉시 확인하는 조직의 색깔 — <span style="color:var(--wanted-accent5); font-weight:800;">[LIVE DEMO] DISC 간이 진단</span></div>
+          <div class="body-crop-b2" style="margin-top: 4%; gap: 6%;">
+            
+            <div style="display:flex; flex-direction:column; justify-content:center;">
+              <p style="font-size:1.2em; font-weight: 600; color:var(--wanted-dark); margin-bottom:0.5em; line-height:1.6;">
+                종이 설문지를 걷어내고 스마트폰으로 참여
+              </p>
+              <p style="font-size:0.9em; color:var(--wanted-gray); margin-bottom:2.5em; line-height:1.6;">
+                워크숍 현장에서 버튼을 누르면 실시간으로 대시보드에 결과가 시각화됩니다. HRD 담당자가 하루 만에 만든 인터랙티브 진단 도구입니다.
+              </p>
+              <div id="disc-buttons" style="display:flex; flex-direction:column; gap:1.2em; font-size:1em;">
+                <button onclick="updateDisc('D')" class="disc-btn">Q1. 즉각적인 목표 달성을 중시한다 (D형)</button>
+                <button onclick="updateDisc('I')" class="disc-btn">Q2. 열정적으로 아이디어를 공유한다 (I형)</button>
+                <button onclick="updateDisc('S')" class="disc-btn">Q3. 팀원들과 조화로운 협업을 한다 (S형)</button>
+                <button onclick="updateDisc('C')" class="disc-btn">Q4. 세밀하게 데이터를 분석한다 (C형)</button>
+              </div>
             </div>
-            <div class="body-text">
-              <strong>왜 지금인가</strong>
-              <p class="fragment fade-up">AI 코딩 도구의 급격한 발전 (Claude, GPT, Cursor)</p>
-              <p class="fragment fade-up">1인이 만들 수 있는 범위가 <strong>팀 수준</strong>으로 확장</p>
-              <p class="fragment fade-up">비개발자 → 기술 창업자의 장벽이 역대 최저</p>
+
+            <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; background:#1A1538; border-radius:24px; padding:6%; height:600px; box-shadow: 0 20px 40px rgba(26,21,56,0.15);">
+               <div style="color:rgba(255,255,255,0.5); font-size:1.2em; font-weight:bold; margin-bottom:auto; align-self:flex-start;">조직 성향분포 대시보드</div>
+               <div style="display:flex; gap:8%; height:75%; width:100%; align-items:flex-end; justify-content:center;">
+                <div class="disc-bar" id="bar-D" style="width:20%; background:#FF644E; border-radius:12px 12px 0 0; transition:height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s; height:20%; position:relative;">
+                  <div style="position:absolute; top:-2em; w-full; text-align:center; color:#fff; font-weight:800; font-size:1.5em; width:100%;">D</div>
+                </div>
+                <div class="disc-bar" id="bar-I" style="width:20%; background:#FFD932; border-radius:12px 12px 0 0; transition:height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s; height:35%; position:relative;">
+                  <div style="position:absolute; top:-2em; w-full; text-align:center; color:#fff; font-weight:800; font-size:1.5em; width:100%;">I</div>
+                </div>
+                <div class="disc-bar" id="bar-S" style="width:20%; background:#61D836; border-radius:12px 12px 0 0; transition:height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s; height:45%; position:relative;">
+                  <div style="position:absolute; top:-2em; w-full; text-align:center; color:#fff; font-weight:800; font-size:1.5em; width:100%;">S</div>
+                </div>
+                <div class="disc-bar" id="bar-C" style="width:20%; background:#00A2FF; border-radius:12px 12px 0 0; transition:height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s; height:15%; position:relative;">
+                  <div style="position:absolute; top:-2em; w-full; text-align:center; color:#fff; font-weight:800; font-size:1.5em; width:100%;">C</div>
+                </div>
+              </div>
             </div>
+
           </div>
+          <script>
+            function updateDisc(type) {
+              const bars = ['D','I','S','C'];
+              bars.forEach(b => {
+                document.getElementById('bar-'+b).style.height = (b === type ? '85%' : (10+Math.random()*40)+'%');
+                document.getElementById('bar-'+b).style.opacity = (b === type ? '1' : '0.4');
+              });
+            }
+          </script>
+          <style>
+            .disc-btn { padding:20px 24px; font-weight:700; font-size:1.1em; text-align:left; border:2px solid #E5E8F5; border-radius:12px; background:#fff; cursor:pointer; transition:all 0.2s; color:var(--wanted-dark); }
+            .disc-btn:hover { border-color:var(--wanted-accent1); background:rgba(0,162,255,0.05); transform:translateX(5px); }
+          </style>
         </div>
       </section>
 
-      <!-- CH3 간지 (홀수=흰) — image5 -->
+      <!-- CH2: Coaching Scanner -->
+      <section data-background-color="#FFFFFF" data-chapter="ch2">
+        <div class="slide-body">
+          <div class="body-title">리더의 피드백, AI가 정합성을 검토하다 — <span style="color:var(--wanted-accent1); font-weight:800;">[LIVE DEMO] 코칭 서류 스캐너</span></div>
+          <div class="body-crop-b2" style="margin-top: 4%; gap: 6%;">
+            
+            <div style="background:#F8F9FA; border:1px solid #E5E8F5; border-radius:24px; padding:6%; display:flex; flex-direction:column; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+              <div style="font-weight:800; font-size:1.3em; margin-bottom:0.8em; color:var(--wanted-dark);">💡 리더 피드백 초안 입력</div>
+              <p style="font-size:0.9em; color:#666; margin-bottom:1.5em;">리더가 면담 전 작성한 피드백을 AI가 객관성, 감정 배제 여부를 기준 삼아 스캔합니다.</p>
+              
+              <textarea style="flex:1; width:100%; border:2px solid #D5D5D5; padding:20px; border-radius:12px; font-family:'WantedSans', sans-serif; font-size:1.1em; line-height:1.7; resize:none; background:#fff; color:#333; margin-bottom:1.5em; transition:border-color 0.3s;" id="coach-text" onfocus="this.style.borderColor='#00A2FF'" onblur="this.style.borderColor='#D5D5D5'">"A팀원아, 너는 프로젝트 리딩은 참 잘하는데 종종 마감 기한을 넘겨서 다른 팀에 피해를 주잖아. 솔직히 실망스러울 때가 좀 있어. 다음 분기에는 시간 관리 좀 똑바로 신경 써주면 좋겠다."</textarea>
+              
+              <button onclick="runScanner()" style="padding:20px; font-size:1.2em; font-weight:800; background:var(--wanted-dark); color:#fff; border:none; border-radius:12px; cursor:pointer; transition:transform 0.1s, background 0.2s; box-shadow: 0 6px 20px rgba(26,21,56,0.3);" onmousedown="this.style.transform='scale(0.98)'" onmouseup="this.style.transform='scale(1)'" onmouseover="this.style.background='#2c2459'" onmouseout="this.style.background='var(--wanted-dark)'">�� AI 피드백 스캔 &amp; 진단 시작</button>
+            </div>
+
+            <div style="display:flex; flex-direction:column; justify-content:center; position:relative; min-height:500px;">
+              <div id="scan-overlay" style="display:none; position:absolute; inset:0; background:rgba(255,255,255,0.95); z-index:10; border-radius:24px; align-items:center; justify-content:center; flex-direction:column; border:1px solid #E5E8F5;">
+                <div class="loader-spinner" style="width:60px; height:60px; border:6px solid #f3f3f3; border-top:6px solid #00A2FF; border-radius:50%; animation:spin 1s linear infinite; margin-bottom:20px;"></div>
+                <div style="font-size:1.4em; font-weight:800; color:#00A2FF; font-family:monospace;" id="scan-loader">Analyzing Context...</div>
+              </div>
+              
+              <div id="scan-result" style="opacity:0; transition:opacity 0.6s ease; background:#F0FDF4; border:2px solid #BBF7D0; border-radius:24px; padding:8%; height:100%; display:flex; flex-direction:column; justify-content:center;">
+                <h3 style="color:#16A34A; font-weight:800; font-size:1.8em; margin-bottom:1em; display:flex; align-items:center; gap:10px;">
+                  <span style="background:#16A34A; color:#fff; border-radius:50%; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; font-size:0.6em;">✓</span>
+                  분석 리포트 완료
+                </h3>
+                
+                <ul style="font-size:1.1em; line-height:2.0; color:#15803D; list-style:none; padding:0; gap:1em; display:flex; flex-direction:column; margin-bottom:2em;">
+                  <li style="display:flex; align-items:flex-start; gap:10px;">
+                    <span style="font-size:1.2em;">⚠️</span>
+                    <div><strong>감정적 편향 주의:</strong> "실망스러울 때가 있어", "똑바로" 등의 표현은 감정적 반발을 일으킵니다. [수정 필요]</div>
+                  </li>
+                  <li style="display:flex; align-items:flex-start; gap:10px;">
+                    <span style="font-size:1.2em;">✅</span>
+                    <div><strong>구체적 행동 지적:</strong> 마감기한 준수 부족과 타 팀 피해라는 사실관계는 명확합니다. [우수]</div>
+                  </li>
+                  <li style="display:flex; align-items:flex-start; gap:10px;">
+                    <span style="font-size:1.2em;">💡</span>
+                    <div><strong>대안 제시 보완:</strong> 구체적으로 '스탠드업 미팅 시 진척도 공유'와 같은 액션 플랜을 제안하세요.</div>
+                  </li>
+                </ul>
+                
+                <div style="background:#DCCEE7; padding:5%; border-radius:12px; font-weight:800; font-size:1.2em; color:#166534; text-align:center; margin-top:auto;">
+                  최종 스코어: 68점 (교정 후 피드백 권장)
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <script>
+            function runScanner() {
+              document.getElementById('scan-result').style.opacity = '0';
+              document.getElementById('scan-overlay').style.display = 'flex';
+              let t=0;
+              let msgs = ['Analyzing Context...','Checking Grammar...','Detecting Emotions...','Generating Report...'];
+              let iv = setInterval(()=>{ document.getElementById('scan-loader').innerHTML = msgs[t++%4]; }, 500);
+              setTimeout(() => {
+                clearInterval(iv);
+                document.getElementById('scan-overlay').style.display = 'none';
+                document.getElementById('scan-result').style.opacity = '1';
+              }, 2500);
+            }
+          </script>
+          <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
+        </div>
+      </section>
+
+      <!-- CH3 -->
       <section data-background-image="assets/pptx-media/image5.png" data-background-size="cover" data-chapter="ch3">
         <div class="slide-section-wrap">
           <div class="section-number">03</div>
-          <h2>실제 사례:<br>만들어본 것들</h2>
+          <h2>온보딩의 혁신,<br>게이미피케이션</h2>
         </div>
       </section>
 
+      <!-- CH3: Balance Game -->
       <section data-background-color="#FFFFFF" data-chapter="ch3">
         <div class="slide-body">
-          <div class="body-title">사례 1: 온보딩 체크리스트 툴</div>
-          <div class="body-crop-a1">
-            <div class="demo-container" style="height:100%; border-radius:12px; overflow:hidden; border:1px solid rgba(26,21,56,0.08);">
-              <iframe data-src="about:blank" title="온보딩 데모"></iframe>
-              <img class="demo-fallback" src="assets/fallbacks/onboarding-fallback.png" alt="온보딩 데모 스크린샷">
-              <div class="demo-loader">Loading...</div>
+          <div class="body-title">실시간 온보딩 밸런스 게임 — <span style="font-size:1.1em; color:var(--wanted-dark); font-weight:800;">신입사원에게 당장 더 필요한 것은?</span></div>
+          <div style="display:flex; flex-direction:column; height:85%; justify-content:center; align-items:center; padding:0 8%; margin-top:3%;">
+            
+            <p style="font-size:1.1em; color:var(--wanted-gray); margin-bottom:2em; text-align:center; line-height:1.6;">
+              "정답이 없는 난제를 통해 조직 구성원의 가치관을 파악하고 동기화합니다."<br>
+              <strong style="color:var(--wanted-dark);">화면에 띄워둔 게임에 청중들이 접속해 실시간으로 투표하는 모습</strong>을 상상해보세요.
+            </p>
+
+            <div style="display:flex; width:100%; gap:4%; height:450px; margin-bottom:2em;">
+              
+              <!-- Option A -->
+              <div onclick="voteBalance('manual')" style="flex:1; cursor:pointer; border-radius:32px; border:4px solid #E5E8F5; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; transition:all 0.3s; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.04);" id="btn-manual">
+                <div id="bg-manual" style="position:absolute; bottom:0; left:0; width:100%; height:0%; background:linear-gradient(to top, rgba(0,162,255,0.2), rgba(0,162,255,0.05)); z-index:0; transition:height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+                <div style="z-index:1; font-size:4em; margin-bottom:20px;">📘</div>
+                <div style="z-index:1; font-size:2.4em; font-weight:800; color:var(--wanted-dark); text-align:center; padding:0 20px; line-height:1.2;">완벽한 A-Z<br>업무 매뉴얼</div>
+                <div id="vote-manual" style="z-index:1; font-size:4.5em; font-weight:900; color:var(--wanted-accent1); margin-top:20px; text-shadow: 0 4px 10px rgba(0,162,255,0.2);">0</div>
+              </div>
+              
+              <div style="display:flex; align-items:center; justify-content:center; font-size:3.5em; font-style:italic; font-weight:900; color:#D5D5D5; padding: 0 20px;">VS</div>
+
+              <!-- Option B -->
+              <div onclick="voteBalance('food')" style="flex:1; cursor:pointer; border-radius:32px; border:4px solid #E5E8F5; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; transition:all 0.3s; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.04);" id="btn-food">
+                <div id="bg-food" style="position:absolute; bottom:0; left:0; width:100%; height:0%; background:linear-gradient(to top, rgba(255,66,161,0.2), rgba(255,66,161,0.05)); z-index:0; transition:height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+                <div style="z-index:1; font-size:4em; margin-bottom:20px;">☕</div>
+                <div style="z-index:1; font-size:2.4em; font-weight:800; color:var(--wanted-dark); text-align:center; padding:0 20px; line-height:1.2;">따뜻한 커피와<br>비전 공감 미팅</div>
+                <div id="vote-food" style="z-index:1; font-size:4.5em; font-weight:900; color:var(--wanted-accent6); margin-top:20px; text-shadow: 0 4px 10px rgba(255,66,161,0.2);">0</div>
+              </div>
+
             </div>
+            
+            <script>
+              let vM=0, vF=0;
+              function voteBalance(type) {
+                if(type==='manual') vM++; else vF++;
+                let t=vM+vF;
+                document.getElementById('vote-manual').innerText = vM;
+                document.getElementById('vote-food').innerText = vF;
+                
+                // Height cap at 90%
+                let hM = Math.min(90, (vM/t*100));
+                let hF = Math.min(90, (vF/t*100));
+                
+                document.getElementById('bg-manual').style.height = hM + '%';
+                document.getElementById('bg-food').style.height = hF + '%';
+                
+                document.getElementById('btn-manual').style.borderColor = vM>vF ? '#00A2FF' : '#E5E8F5';
+                document.getElementById('btn-manual').style.transform = type==='manual' ? 'scale(1.02)' : 'scale(1)';
+                setTimeout(()=> document.getElementById('btn-manual').style.transform = 'scale(1)', 200);
+
+                document.getElementById('btn-food').style.borderColor = vF>vM ? '#FF42A1' : '#E5E8F5';
+                document.getElementById('btn-food').style.transform = type==='food' ? 'scale(1.02)' : 'scale(1)';
+                setTimeout(()=> document.getElementById('btn-food').style.transform = 'scale(1)', 200);
+              }
+            </script>
           </div>
         </div>
       </section>
 
-      <section data-background-color="#FFFFFF" data-chapter="ch3">
-        <div class="slide-body">
-          <div class="body-title">사례 2: 리더십 역량 진단 툴</div>
-          <div class="body-crop-a1">
-            <div class="demo-container" style="height:100%; border-radius:12px; overflow:hidden; border:1px solid rgba(26,21,56,0.08);">
-              <iframe data-src="about:blank" title="리더십 진단 데모"></iframe>
-              <img class="demo-fallback" src="assets/fallbacks/leadership-fallback.png" alt="리더십 진단 데모 스크린샷">
-              <div class="demo-loader">Loading...</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CH4 간지 (짝수=검정) — image6 -->
+      <!-- CH4 -->
       <section data-background-image="assets/pptx-media/image6.png" data-background-size="cover" data-chapter="ch4">
         <div class="slide-section-wrap">
-          <div class="section-number">04</div>
-          <h2>어떻게 만들었나:<br>프로세스와 도구</h2>
+          <div class="section-number" style="color:#fff;">04</div>
+          <h2 style="color:#fff;">리더십의 체득화<br>(1on1 시뮬레이터)</h2>
         </div>
       </section>
 
-      <section data-background-color="#0a0a0a" data-chapter="ch4">
-        <div class="slide-body dark">
-          <div class="body-title">바이브 코딩 프로세스</div>
-          <div class="body-crop-b2">
-            <div style="display:flex; flex-direction:column; justify-content:center; gap:1em; background:rgba(255,255,255,0.05); border-radius:12px; padding:8%;">
-              <p style="font-size:1.8em; font-weight:700; color:var(--wanted-accent1);">01 → 02 → 03 → 04</p>
-              <p style="font-size:0.7em; color:#888;">문제 정의 → AI 대화 → 반복 개선 → 배포</p>
+      <!-- CH4: 1on1 시뮬 -->
+      <section data-background-color="#0A0A0F" data-chapter="ch4">
+        <div class="slide-body maker">
+          <div class="body-title" style="color:#fff;">리더십은 지식이 아닌 가상 훈련으로 — <span style="color:var(--wanted-accent2); font-weight:800;">1on1 시뮬레이터</span></div>
+          <div class="body-crop-b2" style="margin-top: 5%;">
+            
+            <!-- 왼쪽: 시뮬레이터 UI -->
+            <div style="background:#13131A; border:1px solid #2A2A35; border-radius:24px; padding:6%; flex:1; position:relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+              <div style="color:#888; font-size:0.9em; font-weight:700; margin-bottom:1.5em; display:flex; justify-content:space-between; align-items:center;">
+                <span style="display:flex; align-items:center; gap:8px;"><span style="display:block; width:12px; height:12px; background:#FF644E; border-radius:50%;"></span> Live Session 진입 중</span>
+                <span style="color:var(--wanted-accent2); background:rgba(22,231,207,0.1); padding:4px 12px; border-radius:20px; font-size:0.8em;">TURN 2 / 5</span>
+              </div>
+              
+              <div style="background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.05); padding:8%; border-radius:16px; margin-bottom:2em; color:#E5E8F5; font-size:1.15em; line-height:1.7;">
+                <span style="font-size:1.5em; color:#FFD932; display:block; margin-bottom:10px;">👤 수석 매니저 (경력 5년차)</span>
+                "팀장님, 요즘 업무가 너무 몰려서 매일 야근입니다... 솔직히 말씀드리면, 번아웃이 오고 있는 것 같습니다. 업무 분담이 너무 불공평해요."
+              </div>
+              
+              <div style="display:flex; flex-direction:column; gap:1.2em; font-size:0.95em; margin-bottom: 2em;">
+                <div class="sim-opt fragment fade-up">A. "연말이라 다들 힘드네. 주말에 푹 쉬고 다음 주에 다시 얘기해보자."</div>
+                <div class="sim-opt fragment fade-up">B. "많이 힘들었구나. 현재 병목이 걸린 업무 리스트를 같이 펼쳐보고 우선순위를 재조정해볼까?"</div>
+                <div class="sim-opt fragment fade-up">C. "휴가를 이틀 정도 다녀오는 건 어때? 급한 일은 내가 막아줄게."</div>
+              </div>
+
+              <div style="margin-top:auto; background:rgba(0,0,0,0.4); border-radius:12px; padding:6%; border: 1px solid rgba(255,255,255,0.05);">
+                <div style="display:flex; justify-content:space-between; color:#aaa; font-size:0.9em; font-weight:700; margin-bottom:0.8em;">
+                  <span>📈 리더 공감력 게이지</span>
+                  <span style="color:var(--wanted-accent2);">75%</span>
+                </div>
+                <div style="height:10px; background:#222; border-radius:5px; overflow:hidden;">
+                  <div style="height:100%; width:75%; background:linear-gradient(90deg, #1A1538, var(--wanted-accent2)); border-radius:5px;"></div>
+                </div>
+              </div>
+              <style>
+                .sim-opt { border:2px solid #333; padding:5% 6%; border-radius:12px; color:#ccc; font-weight:600; cursor:pointer; transition:all 0.2s ease; line-height:1.5; }
+                .sim-opt:hover { border-color:var(--wanted-accent2); background:rgba(22,231,207,0.05); color:#fff; transform:translateY(-2px); }
+              </style>
             </div>
-            <div class="body-text">
-              <p class="fragment fade-up"><strong>1. 문제 정의</strong> — 무엇을 해결할 것인가</p>
-              <p class="fragment fade-up"><strong>2. AI와 대화</strong> — 자연어로 요구사항 전달</p>
-              <p class="fragment fade-up"><strong>3. 반복 개선</strong> — 피드백 → 수정 → 테스트</p>
-              <p class="fragment fade-up"><strong>4. 배포</strong> — 실제 사용자에게 전달</p>
+            
+            <!-- 오른쪽: 설명 텍스트 -->
+            <div style="display:flex; flex-direction:column; justify-content:center; gap:3em; padding-left:8%;">
+               <div>
+                 <h3 style="color:#fff; font-size:2.2em; font-weight:800; margin-bottom:0.5em; line-height:1.3;">매번 새롭게 렌더링되는<br>무한한 대화 시나리오</h3>
+                 <p style="color:#999; font-size:1.1em; line-height:1.8;">LLM 엔진 기반으로 구성원의 성향(DISC 등)과 팀 히스토리 데이터를 반영하여, 접속할 때마다 다른 대화 상황을 시뮬레이션합니다.</p>
+               </div>
+               
+               <div class="fragment fade-up" style="background:rgba(22,231,207,0.05); border-left:4px solid var(--wanted-accent2); padding: 6% 8%; border-radius:0 16px 16px 0;">
+                 <h3 style="color:var(--wanted-accent2); font-size:1.5em; font-weight:800; margin-bottom:0.6em;">"아는 것과 뱉는 것은 다르다"</h3>
+                 <p style="color:#ccc; font-size:1em; line-height:1.8; font-weight:500;">이론으로만 배우는 리더십 교육의 한계를 넘어, 실제 면담 전 타임아웃의 압박감과 부정적인 감정 대응을 <strong>가상환경에서 수십 번 훈련</strong>할 수 있습니다.</p>
+               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      <section data-background-color="#0a0a0a" data-chapter="ch4">
-        <div class="slide-body dark">
-          <div class="body-title">사용 도구</div>
-          <div class="body-crop-c3">
-            <div class="body-card fragment fade-up">
-              <strong>AI 코딩 파트너</strong>
-              <p>Claude, ChatGPT 등 AI와 자연어로 대화하며 코드 생성</p>
-            </div>
-            <div class="body-card fragment fade-up">
-              <strong>코드 에디터</strong>
-              <p>Cursor, VS Code 등 AI 통합 에디터로 실시간 코딩</p>
-            </div>
-            <div class="body-card fragment fade-up">
-              <strong>무료 배포</strong>
-              <p>Vercel, Netlify 등에서 클릭 한 번으로 전 세계 배포</p>
-              <p style="margin-top:0.8em; font-weight:600;">비용: 거의 0원<br>시간: 하루면 MVP</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CH5 간지 (홀수=흰) — image3 (순환) -->
-      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch5">
+      <!-- CH5 -->
+      <section data-background-image="assets/pptx-media/image5.png" data-background-size="cover" data-chapter="ch5">
         <div class="slide-section-wrap">
           <div class="section-number">05</div>
-          <h2>HRD 메이커 시대의<br>생존 전략</h2>
+          <h2>누구나 메이커가 될 수 있는<br>조직 문화</h2>
         </div>
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch5">
         <div class="slide-body">
-          <div class="body-title">3가지 제언</div>
-          <div class="body-crop-c3">
-            <div class="body-card fragment fade-up">
-              <strong>작게 시작하라</strong>
-              <p>완벽한 시스템이 아니라, 하나의 문제를 해결하는 도구부터 만들어보세요.</p>
+          <div class="body-title">혼자가 아닌 '우리'의 혁신 — <span style="font-weight:800;">동료의 AX 성공 사례</span></div>
+          
+          <div class="body-crop-c3" style="margin-top: 5%;">
+            
+            <div class="body-card fragment fade-up" style="background:#fff; border: 1px solid #E5E8F5; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+              <span style="font-size:3em; display:block; margin-bottom:0.5em; text-align:center;">📊</span>
+              <strong style="font-size:1.6em; text-align:center; display:block; margin-bottom:0.8em;">신입사원 PI 시스템</strong>
+              <p style="font-size:1em; color:#666; line-height:1.7; text-align:center;">기존 수십 시간이 걸리던 수작업 엑셀 평가를 <strong>실시간 모바일 데이터베이스 앱</strong>으로 대체했습니다.</p>
+              <div style="background:rgba(0,162,255,0.08); padding:8px 16px; border-radius:20px; color:var(--wanted-accent1); font-weight:800; font-size:0.9em; text-align:center; margin-top:2em;">#온보딩_자동화</div>
             </div>
-            <div class="body-card fragment fade-up">
-              <strong>실패를 두려워하지 마라</strong>
-              <p>AI가 수정해줍니다. 실패 비용이 제로에 가깝습니다.</p>
+
+            <div class="body-card fragment fade-up" style="background:#fff; border: 1px solid #E5E8F5; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+              <span style="font-size:3em; display:block; margin-bottom:0.5em; text-align:center;">🎮</span>
+              <strong style="font-size:1.6em; text-align:center; display:block; margin-bottom:0.8em;">kt cloud 2033</strong>
+              <p style="font-size:1em; color:#666; line-height:1.7; text-align:center;">딱딱한 회사 규정을 유명 텍스트 어드벤처 게임 UI 차용하여 <strong>생존 게임형 온보딩 도구</strong>로 승화시켰습니다.</p>
+              <div style="background:rgba(22,231,207,0.08); padding:8px 16px; border-radius:20px; color:#0e9888; font-weight:800; font-size:0.9em; text-align:center; margin-top:2em;">#게이미피케이션</div>
             </div>
-            <div class="body-card fragment fade-up">
-              <strong>공유하라</strong>
-              <p>만든 것을 동료와 나누면, HRD의 가치가 증명됩니다.</p>
+
+            <div class="body-card fragment fade-up" style="background:#fff; border: 1px solid #E5E8F5; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+              <span style="font-size:3em; display:block; margin-bottom:0.5em; text-align:center;">💬</span>
+              <strong style="font-size:1.6em; text-align:center; display:block; margin-bottom:0.8em;">1on1 시뮬레이터</strong>
+              <p style="font-size:1em; color:#666; line-height:1.7; text-align:center;">프롬프트 엔지니어링과 AI API 연동을 통해, <strong>조직 데이터를 학습한 실감형 시뮬레이션</strong>을 구축했습니다.</p>
+              <div style="background:rgba(97,216,54,0.08); padding:8px 16px; border-radius:20px; color:#328f14; font-weight:800; font-size:0.9em; text-align:center; margin-top:2em;">#조직개발_마이크로러닝</div>
             </div>
+
+          </div>
+
+          <div class="fragment fade-up" style="text-align:center; margin: 4% 8% 0; padding:3%; background:var(--wanted-dark); border-radius:16px; font-weight:800; font-size:1.4em; color:#fff; box-shadow: 0 10px 20px rgba(26,21,56,0.2);">
+            개발자가 <span style="color:var(--wanted-accent2);">0명</span>이었던 HRD 팀이 만든 도구가 무려 <span style="color:var(--wanted-accent2);">6개+</span><br>
+            <span style="font-size:0.75em; font-weight:500; color:#ccc; display:block; margin-top:10px;">"작은 도파민 성공 경험 하나가 동료들을 자극하고 팀의 AX를 일으킵니다"</span>
+          </div>
+
+        </div>
+      </section>
+
+      <section data-background-color="#FFFFFF" data-chapter="ch5">
+        <div class="slide-body">
+          <div class="body-title">메이커를 움직이는 엔진 — <span style="color:var(--wanted-accent1);">학습과 자극의 소스</span></div>
+          
+          <div style="display:flex; flex:1; align-items:center; justify-content:center;">
+             <div style="position:relative; width: 600px; height: 600px; display:flex; align-items:center; justify-content:center;">
+                
+                <!-- 궤도 애니메이션 CSS 고도화 -->
+                <style>
+                  @keyframes spin-cw { 100% { transform: rotate(360deg); } }
+                  @keyframes spin-ccw { 100% { transform: rotate(-360deg); } }
+                  
+                  .orbit-ring-outer { position:absolute; inset:0; border:2px dashed #D5D5D5; border-radius:50%; animation: spin-cw 30s linear infinite; }
+                  .orbit-ring-inner { position:absolute; inset:80px; border:1px solid #E5E8F5; border-radius:50%; animation: spin-ccw 20s linear infinite; }
+                  
+                  .orbit-item { position:absolute; width:80px; height:80px; border-radius:50%; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.2em; border: 4px solid #fff; z-index: 10; }
+                  .orbit-inner-spin-cw { animation: spin-ccw 30s linear infinite; } /* 바깥 고리의 역방향 회전 (글자 정방향 유지) */
+                  .orbit-inner-spin-ccw { animation: spin-cw 20s linear infinite; } /* 안쪽 고리의 역방향 회전 */
+                </style>
+                
+                <div class="orbit-ring-outer">
+                   <div class="orbit-item orbit-inner-spin-cw" style="top:-40px; left:50%; margin-left:-40px;"><span style="color:#0a66c2; font-size:1.5em;">in</span></div>
+                   <div class="orbit-item orbit-inner-spin-cw" style="top:50%; left:-40px; margin-top:-40px;"><span style="color:#000; font-size:1.2em;">Thread</span></div>
+                   <div class="orbit-item orbit-inner-spin-cw" style="bottom:-40px; left:50%; margin-left:-40px;"><span style="color:#ff0000; font-size:1.5em;">▶</span></div>
+                   <div class="orbit-item orbit-inner-spin-cw" style="top:50%; right:-40px; margin-top:-40px;"><span style="color:#00A2FF; font-size:1.3em;">X</span></div>
+                </div>
+
+                <div class="orbit-ring-inner">
+                   <div class="orbit-item orbit-inner-spin-ccw" style="top:-40px; left:50%; margin-left:-40px; background:#10a37f; color:#fff; border-color:#10a37f;">GPT</div>
+                   <div class="orbit-item orbit-inner-spin-ccw" style="bottom:-40px; left:50%; margin-left:-40px; background:#D97757; color:#fff; border-color:#D97757;">Claude</div>
+                </div>
+
+                <!-- 코어 엔진 -->
+                <div style="z-index: 20; position:absolute; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:#1A1538; width: 220px; height: 220px; border-radius: 50%; box-shadow: 0 0 50px rgba(0,162,255,0.4);">
+                  <span style="font-size:3.5em; margin-bottom:5px;">🧠</span>
+                  <div style="font-size:2em; font-weight:900; color:#fff; line-height:1.1; margin-bottom:5px;">Maker's<br>Fuel</div>
+                  <div style="color:#00A2FF; font-size:0.9em; font-weight:700;">함께 자라는 동료</div>
+                </div>
+
+             </div>
           </div>
         </div>
       </section>
 
-      <!-- META REVEAL -->
+      <!-- META REVEAL --><!-- META REVEAL --><!-- META REVEAL -->
       <section data-auto-animate data-background-image="assets/pptx-media/image1.png" data-background-size="cover" data-chapter="closing">
         <div class="slide-qa-wrap">
           <h2 style="font-size: 2em;">사실, 이 프레젠테이션도</h2>
@@ -425,7 +640,9 @@
       const currentSection = document.querySelectorAll('.reveal .slides > section')[Reveal.getIndices().h];
       const bgColor = currentSection?.dataset.backgroundColor || '';
       const isDark = bgColor === '#0a0a0a' || bgColor === '#000000' ||
+                     bgColor === '#0A0A0F' || bgColor === '#0a0a0f' ||
                      currentSection?.querySelector('.slide-body.dark') !== null ||
+                     currentSection?.querySelector('.slide-body.maker') !== null ||
                      currentSection?.querySelector('.slide-hero') !== null;
 
       navLeftBtn.classList.toggle('nav-on-dark', isDark);
