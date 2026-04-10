@@ -566,37 +566,26 @@
   height: 100%;
   overflow: visible;
 }
-/* 영상을 viewport 전체에 배치 (Reveal.js 스케일링 바깥까지 채움) */
-.hero-video-bg {
+/* Hero 전체 컨테이너: 영상 + 텍스트를 같은 스태킹 컨텍스트에 배치 */
+.hero-fullscreen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 9990;
-  pointer-events: none;
-  background: #5a8fc7;
-  display: none; /* JS로 hero 슬라이드에서만 표시 */
+  display: none;
+  isolation: isolate; /* blend-mode가 이 컨테이너 안에서만 작동 */
 }
-.hero-video-bg video {
+.hero-fullscreen video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* 인트로 텍스트 오버레이 */
-.hero-fixed-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9991;
-  pointer-events: none;
-  display: none;
-}
-
-/* 중앙 텍스트: 영상을 텍스트 모양으로 클리핑 + 블루 필터 */
-.hero-fixed-overlay .hero-center {
+.hero-fullscreen .hero-text-center {
   position: absolute;
   inset: 0;
   display: flex;
@@ -604,48 +593,36 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  pointer-events: none;
 }
-
-/*
-  핵심 기법: 각 텍스트 요소에 영상과 동일한 배경을 fixed로 붙이고
-  background-clip: text로 텍스트 모양만 남김.
-  그 위에 블루 필터를 씌워서 남색~블루~하늘색~흰색 톤으로 변환.
-  영상이 움직이면 텍스트 색상도 실시간으로 변함.
-*/
-.hero-clip-text {
-  background: url('https://image.wanted.co.kr/highfive/2026/intro_video_web.mp4') center/cover no-repeat;
-  /* fallback — 실제로는 JS에서 canvas를 배경으로 사용 */
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-fixed-overlay .hero-main-title {
+.hero-fullscreen .hero-main-title {
   font-family: 'WantedSans', sans-serif;
   font-size: 130px;
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: #1a2878; /* fallback */
+  color: #1a2878;
+  mix-blend-mode: overlay;
 }
-.hero-fixed-overlay .hero-sub-en {
+.hero-fullscreen .hero-sub-en {
   margin-top: 0.2em;
   font-family: 'WantedSans', sans-serif;
   font-size: 42px;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #1a3090;
+  color: #102060;
+  mix-blend-mode: overlay;
 }
-.hero-fixed-overlay .hero-sub-kr {
+.hero-fullscreen .hero-sub-kr {
   margin-top: 0.1em;
   font-family: 'WantedSans', sans-serif;
   font-size: 36px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #2040a0;
+  color: #102060;
+  mix-blend-mode: overlay;
 }
-.hero-fixed-overlay .hero-top-logo {
+.hero-fullscreen .hero-top-logo {
   position: absolute;
   top: 3.5%;
   left: 2.5%;
@@ -653,13 +630,15 @@
   font-size: 22px;
   font-weight: 700;
   color: #fff;
+  pointer-events: none;
 }
-.hero-fixed-overlay .hero-bottom-logo {
+.hero-fullscreen .hero-bottom-logo {
   position: absolute;
   bottom: 3.5%;
   right: 2.5%;
+  pointer-events: none;
 }
-.hero-fixed-overlay .hero-bottom-logo img {
+.hero-fullscreen .hero-bottom-logo img {
   height: 30px;
   opacity: 0.9;
 }

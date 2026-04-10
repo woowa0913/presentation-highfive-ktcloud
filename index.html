@@ -6,21 +6,17 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=18">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=19">
 </head>
 <body>
 
-  <!-- Hero 영상 배경 (viewport 전체, 슬라이드 바깥) -->
-  <div class="hero-video-bg" id="heroVideoBg">
+  <!-- Hero: 영상 + 텍스트를 같은 컨테이너에 배치 (blend-mode 작동 보장) -->
+  <div class="hero-fullscreen" id="heroFullscreen">
     <video autoplay muted loop playsinline>
       <source src="https://image.wanted.co.kr/highfive/2026/intro_video_web.mp4" type="video/mp4">
     </video>
-  </div>
-
-  <!-- Hero 텍스트 오버레이 (fixed, 영상과 같은 레벨에서 blend) -->
-  <div class="hero-fixed-overlay" id="heroOverlay">
     <div class="hero-top-logo">HIGH FIVE 26</div>
-    <div class="hero-center">
+    <div class="hero-text-center">
       <div class="hero-main-title">HR TECH</div>
       <div class="hero-sub-en">방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</div>
       <div class="hero-sub-kr">kt cloud 박상우</div>
@@ -322,7 +318,6 @@
     <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
   </button>
 
-  <script src="js/hero-text-clip.js" defer></script>
   <script src="js/beam-effect.js"></script>
   <script type="module">
     import Reveal from './vendor/reveal/reveal.mjs';
@@ -374,15 +369,13 @@
       navTimer = setTimeout(() => nav.classList.remove('visible'), 1000);
     });
 
-    /* ── 2. Hero 영상 배경 + 텍스트 오버레이: hero 슬라이드에서만 표시 ── */
-    const heroVideoBg = document.getElementById('heroVideoBg');
-    const heroOverlay = document.getElementById('heroOverlay');
+    /* ── 2. Hero: hero 슬라이드에서만 표시 ── */
+    const heroFs = document.getElementById('heroFullscreen');
 
     function updateHeroVideo() {
       const currentSection = document.querySelectorAll('.reveal .slides > section')[Reveal.getIndices().h];
       const isHero = currentSection?.dataset.chapter === 'hero';
-      heroVideoBg.style.display = isHero ? 'block' : 'none';
-      heroOverlay.style.display = isHero ? 'block' : 'none';
+      heroFs.style.display = isHero ? 'block' : 'none';
       document.querySelector('.reveal-viewport')?.classList.toggle('hero-active', isHero);
     }
 
