@@ -595,32 +595,39 @@
   text-align: center;
   pointer-events: none;
 }
-.hero-fullscreen .hero-main-title {
+/* 텍스트에 영상을 픽셀 단위로 반영: background-clip:text + canvas 배경 */
+.hero-fullscreen .hero-main-title,
+.hero-fullscreen .hero-sub-en,
+.hero-fullscreen .hero-sub-kr {
+  color: #1a2878; /* fallback (canvas 로드 전) */
   font-family: 'WantedSans', sans-serif;
+}
+.hero-fullscreen .hero-main-title {
   font-size: 130px;
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: #1a2878;
-  mix-blend-mode: overlay;
 }
 .hero-fullscreen .hero-sub-en {
   margin-top: 0.2em;
-  font-family: 'WantedSans', sans-serif;
   font-size: 42px;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #102060;
-  mix-blend-mode: overlay;
 }
 .hero-fullscreen .hero-sub-kr {
   margin-top: 0.1em;
-  font-family: 'WantedSans', sans-serif;
   font-size: 36px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #102060;
-  mix-blend-mode: overlay;
+}
+/* JS가 적용하는 clip 스타일 */
+.hero-clip-active {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  background-size: 100vw 100vh !important;
+  background-attachment: fixed !important;
 }
 .hero-fullscreen .hero-top-logo {
   position: absolute;
