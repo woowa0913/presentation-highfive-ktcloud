@@ -558,8 +558,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  width: 120%;
+  height: 120%;
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
@@ -575,17 +575,18 @@
   z-index: 2;
 }
 .slide-hero .hero-text-layer h1 {
-  font-size: 4.5em;
-  font-weight: 900;
+  font-size: 8em;
+  font-weight: 800;
   color: #fff;
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -0.03em;
 }
 .slide-hero .hero-text-layer .hero-sub {
-  margin-top: 0.6em;
-  font-size: 1.2em;
-  font-weight: 500;
+  margin-top: 0.4em;
+  font-size: 2em;
+  font-weight: 600;
   color: rgba(255, 255, 255, 0.7);
+  letter-spacing: -0.01em;
 }
 
 /* 레거시 호환 */
