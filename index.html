@@ -6,7 +6,7 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=34">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=35">
 </head>
 <body>
 
@@ -286,132 +286,117 @@
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch3">
-        <div class="slide-body">
-          <div class="body-title">사례 맵: HRD가 직접 만든 문제 해결 도구들</div>
-          <div class="body-crop-c3 portfolio-grid">
-            <div class="portfolio-card major fragment fade-up">
-              <span>KAC</span>
-              <strong>서류 점검 → 모의고사</strong>
-              <p>자격 취득의 선결조건인 서류 완성도를 먼저 잡고, 이후 시험 준비 경험으로 연결</p>
-              <div class="app-actions">
-                <button type="button" class="detail-btn" data-detail="kac">상세 보기</button>
-                <a href="https://kac-doc-check.vercel.app/" target="_blank" rel="noopener noreferrer">서류점검</a>
-                <a href="https://kac-mock-test.vercel.app/" target="_blank" rel="noopener noreferrer">모의고사</a>
-              </div>
+        <div class="case-live-slide">
+          <aside class="case-live-panel">
+            <span>Practice 01</span>
+            <h3>KAC 서류 점검 → 모의고사</h3>
+            <p>KAC 자격 취득은 시험 이전에 제출 서류 기준을 먼저 충족해야 한다. 그래서 선결조건인 서류 점검을 먼저 경험화하고, 이후 모의고사로 준비도를 높였다.</p>
+            <ul>
+              <li>업로드 즉시 제출 기준 확인</li>
+              <li>반복 안내와 휴먼에러 감소</li>
+              <li>시험 준비도 자각 → 합격률 95%</li>
+            </ul>
+            <div class="case-tabs" role="tablist" aria-label="KAC 데모 선택">
+              <button class="case-tab active" type="button" data-demo-target="kacDemo" data-src="https://kac-doc-check.vercel.app/" data-open="https://kac-doc-check.vercel.app/">서류점검</button>
+              <button class="case-tab" type="button" data-demo-target="kacDemo" data-src="https://kac-mock-test.vercel.app/" data-open="https://kac-mock-test.vercel.app/">모의고사</button>
             </div>
-            <div class="portfolio-card major fragment fade-up">
-              <span>DISC</span>
-              <strong>조직 다이내믹스 진단</strong>
-              <p>개인 결과를 넘어 같이 일하는 방식에 대한 팀 대화를 촉진</p>
-              <div class="app-actions">
-                <button type="button" class="detail-btn" data-detail="disc">상세 보기</button>
-                <a href="https://disc-coaching-analyzer.vercel.app/" target="_blank" rel="noopener noreferrer">앱 보기</a>
-              </div>
+            <div class="app-actions">
+              <a class="demo-open-link" href="https://kac-doc-check.vercel.app/" target="_blank" rel="noopener noreferrer" data-demo-open-for="kacDemo">크게 보기</a>
+              <button type="button" class="detail-btn" data-detail="kac">발표 포인트</button>
             </div>
-            <div class="portfolio-card major fragment fade-up">
-              <span>Calibration</span>
-              <strong>제도 전환 시뮬레이션</strong>
-              <p>설명을 넘어 임원이 직접 기준과 파장 효과를 체감하는 워크숍 도구</p>
-              <div class="app-actions">
-                <button type="button" class="detail-btn" data-detail="calibration">상세 보기</button>
-                <a href="https://ai.studio/apps/drive/1MD0tzbY2vEbeNXRhfLb_cOcGthT4C81W" target="_blank" rel="noopener noreferrer">앱 보기</a>
-              </div>
+          </aside>
+          <div class="case-live-demo">
+            <div class="demo-browser-bar">
+              <span></span><span></span><span></span>
+              <strong id="kacDemoLabel">kac-doc-check.vercel.app</strong>
+            </div>
+            <div class="demo-container case-demo-frame">
+              <iframe id="kacDemo" data-src="https://kac-doc-check.vercel.app/" title="KAC 서류점검 및 모의고사 데모"></iframe>
+              <div class="demo-loader">Loading live app...</div>
             </div>
           </div>
         </div>
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch3">
-        <div class="slide-body">
-          <div class="body-title">대표 사례 1: KAC 서류 점검 → 모의고사</div>
-          <div class="body-crop-b2">
-            <div class="case-mockup kac">
-              <div class="mockup-bar">KAC Preparation</div>
-              <div class="flow-lane active">
-                <span>STEP 1</span>
-                <strong>서류 점검</strong>
-                <p>자격 취득 선결조건인 코칭 로그와 과제 기준을 업로드 즉시 확인</p>
-              </div>
-              <div class="flow-lane">
-                <span>STEP 2</span>
-                <strong>모의고사</strong>
-                <p>시험 환경과 유사한 문제 풀이로 부족한 지점을 스스로 자각</p>
-              </div>
-              <div class="mockup-result">서류 누락 감소 → 준비도 상승 → 합격률 95%</div>
+        <div class="case-live-slide">
+          <aside class="case-live-panel">
+            <span>Practice 02</span>
+            <h3>DISC 진단 시스템</h3>
+            <p>개인 진단 결과를 보여주는 데서 끝내지 않고, 동료·상사 결과까지 연결해 같이 일하는 방식에 대한 조직 대화를 열었다.</p>
+            <ul>
+              <li>개인/동료/상사 결과 확인</li>
+              <li>본부·팀 단위 관계 맥락 파악</li>
+              <li>진단을 OD 대화의 소재로 전환</li>
+            </ul>
+            <div class="app-actions">
+              <a href="https://disc-coaching-analyzer.vercel.app/" target="_blank" rel="noopener noreferrer">크게 보기</a>
+              <button type="button" class="detail-btn" data-detail="disc">발표 포인트</button>
             </div>
-            <div class="body-text">
-              <strong>선결조건부터 경험으로 바꾸다</strong>
-              <p class="fragment fade-up">KAC 자격 취득은 시험 이전에 제출 서류 기준을 충족해야 한다.</p>
-              <p class="fragment fade-up">기존에는 코치와 담당자가 수작업으로 점검해 휴먼에러와 반복 안내가 발생했다.</p>
-              <p class="fragment fade-up">먼저 서류 점검 시스템으로 제출 기준을 잡고, 이후 모의고사로 시험 준비도를 높였다.</p>
-              <div class="metric-callout fragment fade-up">
-                <span>95%</span>
-                <p>합격률로 이어진 실무형 학습 경험</p>
-              </div>
-              <div class="app-actions fragment fade-up">
-                <a href="https://kac-doc-check.vercel.app/" target="_blank" rel="noopener noreferrer">서류점검 앱</a>
-                <a href="https://kac-mock-test.vercel.app/" target="_blank" rel="noopener noreferrer">모의고사 앱</a>
-                <button type="button" class="detail-btn" data-detail="kac">발표 포인트</button>
-              </div>
+          </aside>
+          <div class="case-live-demo">
+            <div class="demo-browser-bar">
+              <span></span><span></span><span></span>
+              <strong>disc-coaching-analyzer.vercel.app</strong>
+            </div>
+            <div class="demo-container case-demo-frame">
+              <iframe data-src="https://disc-coaching-analyzer.vercel.app/" title="DISC 진단 시스템 데모"></iframe>
+              <div class="demo-loader">Loading live app...</div>
             </div>
           </div>
         </div>
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch3">
-        <div class="slide-body">
-          <div class="body-title">대표 사례 2: DISC 진단 시스템</div>
-          <div class="body-crop-b2">
-            <div class="network-visual">
-              <div class="node me">나</div>
-              <div class="node peer">동료</div>
-              <div class="node leader">상사</div>
-              <div class="node team">팀</div>
-              <div class="network-line l1"></div>
-              <div class="network-line l2"></div>
-              <div class="network-line l3"></div>
+        <div class="case-live-slide">
+          <aside class="case-live-panel">
+            <span>Practice 03</span>
+            <h3>칼리브레이션 시뮬레이션</h3>
+            <p>제도는 바뀌었지만 실제 시스템은 아직 미구현인 상황에서, 임원들이 연봉 조정의 기준과 파장 효과를 핸즈온으로 체감하게 했다.</p>
+            <ul>
+              <li>개인 조정이 조직 전체에 미치는 영향 확인</li>
+              <li>워크숍에서 기준과 예외 상황 논의</li>
+              <li>교육 앱을 넘어 변화관리 도구로 확장</li>
+            </ul>
+            <div class="app-actions">
+              <a href="https://ai.studio/apps/drive/1MD0tzbY2vEbeNXRhfLb_cOcGthT4C81W" target="_blank" rel="noopener noreferrer">크게 보기</a>
+              <button type="button" class="detail-btn" data-detail="calibration">발표 포인트</button>
             </div>
-            <div class="body-text">
-              <strong>진단을 조직 대화로 바꾸다</strong>
-              <p class="fragment fade-up">리더들은 팀원의 성향과 상호작용 방식을 궁금해하지만, 외부 시스템은 비싸고 조직 맥락을 충분히 보여주기 어렵다.</p>
-              <p class="fragment fade-up">내부 로그인 기반으로 개인 결과뿐 아니라 동료·상사 결과까지 확인할 수 있게 했다.</p>
-              <p class="fragment fade-up">핵심 가치는 진단 그 자체가 아니라 <strong>같이 일하는 방식에 대한 대화</strong>를 여는 것이다.</p>
-              <div class="app-actions fragment fade-up">
-                <a href="https://disc-coaching-analyzer.vercel.app/" target="_blank" rel="noopener noreferrer">DISC 앱 보기</a>
-                <button type="button" class="detail-btn" data-detail="disc">발표 포인트</button>
-              </div>
+          </aside>
+          <div class="case-live-demo">
+            <div class="demo-browser-bar">
+              <span></span><span></span><span></span>
+              <strong>calibration-simulator.preview</strong>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section data-background-color="#FFFFFF" data-chapter="ch3">
-        <div class="slide-body">
-          <div class="body-title">대표 사례 3: 칼리브레이션 시뮬레이션</div>
-          <div class="body-crop-b2">
-            <div class="simulator-card">
-              <div class="sim-row">
-                <span>성과 영향도</span>
-                <div class="sim-track"><div style="width:72%"></div></div>
-              </div>
-              <div class="sim-row">
-                <span>조직 형평성</span>
-                <div class="sim-track"><div style="width:58%"></div></div>
-              </div>
-              <div class="sim-row">
-                <span>예산 파장</span>
-                <div class="sim-track warning"><div style="width:84%"></div></div>
-              </div>
-              <div class="sim-total">조정 후 영향: +3.8%</div>
-            </div>
-            <div class="body-text">
-              <strong>제도 설명에서 실제 체감으로</strong>
-              <p class="fragment fade-up">제도는 바뀌었지만 시스템은 아직 미구현인 상황에서 임원들이 연봉 조정의 파장 효과를 체감하기 어려웠다.</p>
-              <p class="fragment fade-up">실제 개발 예정 레이아웃과 고려 요소를 바탕으로 시뮬레이션을 제작했다.</p>
-              <p class="fragment fade-up">워크숍에서 직접 핸즈온하며 기준을 공유했고, HRD 메이커의 역할이 <strong>변화관리 도구</strong>까지 확장될 수 있음을 보여줬다.</p>
-              <div class="app-actions fragment fade-up">
-                <a href="https://ai.studio/apps/drive/1MD0tzbY2vEbeNXRhfLb_cOcGthT4C81W" target="_blank" rel="noopener noreferrer">시뮬레이션 보기</a>
-                <button type="button" class="detail-btn" data-detail="calibration">발표 포인트</button>
+            <div class="demo-container case-demo-frame">
+              <div class="calibration-demo" data-calibration-demo>
+                <div class="calibration-toolbar">
+                  <span>Executive Workshop</span>
+                  <strong>보상 조정 시뮬레이터</strong>
+                </div>
+                <div class="calibration-grid">
+                  <div class="calibration-profile">
+                    <span>대상자</span>
+                    <strong>김하이 / Senior Manager</strong>
+                    <p>성과 A · 시장가치 상위 18% · 핵심인재 Pool</p>
+                  </div>
+                  <div class="calibration-impact">
+                    <span>조정 후 영향</span>
+                    <strong data-calibration-impact>+3.8%</strong>
+                    <p data-calibration-message>예산 범위 안에서 유지 리스크를 낮추는 구간입니다.</p>
+                  </div>
+                </div>
+                <div class="calibration-control">
+                  <label for="calibrationRange">연봉 조정률</label>
+                  <output data-calibration-output>3.8%</output>
+                  <input id="calibrationRange" type="range" min="0" max="9" value="4" step="0.2" data-calibration-range>
+                </div>
+                <div class="calibration-bars">
+                  <div><span>성과 영향도</span><i style="--bar: 76%"></i></div>
+                  <div><span>조직 형평성</span><i data-calibration-equity style="--bar: 62%"></i></div>
+                  <div><span>예산 파장</span><i data-calibration-budget style="--bar: 48%"></i></div>
+                </div>
+                <div class="calibration-note">설명을 듣는 대신, 값을 움직이며 기준과 파장 효과를 함께 논의합니다.</div>
               </div>
             </div>
           </div>
@@ -784,6 +769,52 @@
         clickRailExperience?.classList.remove('is-active');
         if (railActivateButton) railActivateButton.textContent = '마우스로 눌러보기';
       }
+    });
+
+    /* ── KAC 통합 사례: 서류점검/모의고사 데모 전환 ── */
+    document.querySelectorAll('.case-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.dataset.demoTarget;
+        const iframe = document.getElementById(targetId);
+        if (!iframe || !tab.dataset.src) return;
+
+        const groupTabs = document.querySelectorAll(`.case-tab[data-demo-target="${targetId}"]`);
+        groupTabs.forEach((item) => item.classList.toggle('active', item === tab));
+
+        iframe.dataset.src = tab.dataset.src;
+        iframe.src = tab.dataset.src;
+
+        const openLink = document.querySelector(`[data-demo-open-for="${targetId}"]`);
+        if (openLink && tab.dataset.open) openLink.href = tab.dataset.open;
+
+        const label = document.getElementById(`${targetId}Label`);
+        if (label) label.textContent = new URL(tab.dataset.src).hostname;
+      });
+    });
+
+    /* ── 칼리브레이션 로컬 데모: iframe 제한 없이 발표 중 조작 가능하게 유지 ── */
+    document.querySelectorAll('[data-calibration-demo]').forEach((demo) => {
+      const range = demo.querySelector('[data-calibration-range]');
+      const output = demo.querySelector('[data-calibration-output]');
+      const impact = demo.querySelector('[data-calibration-impact]');
+      const message = demo.querySelector('[data-calibration-message]');
+      const equity = demo.querySelector('[data-calibration-equity]');
+      const budget = demo.querySelector('[data-calibration-budget]');
+
+      const render = () => {
+        const value = Number(range.value);
+        const display = value.toFixed(1) + '%';
+        output.textContent = display;
+        impact.textContent = '+' + display;
+        equity.style.setProperty('--bar', Math.max(34, 82 - value * 4.5) + '%');
+        budget.style.setProperty('--bar', Math.min(92, 28 + value * 7) + '%');
+        message.textContent = value > 6
+          ? '유지 효과는 커지지만 예산 파장과 형평성 논의가 필요합니다.'
+          : '예산 범위 안에서 유지 리스크를 낮추는 구간입니다.';
+      };
+
+      range.addEventListener('input', render);
+      render();
     });
 
     /* ── 사례 상세 모달: 발표 중 실제 링크와 스토리 포인트 확인 ── */
