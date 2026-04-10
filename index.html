@@ -6,9 +6,16 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=12">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=13">
 </head>
 <body>
+
+  <!-- Hero 영상 배경 (viewport 전체, 슬라이드 바깥) -->
+  <div class="hero-video-bg" id="heroVideoBg">
+    <video autoplay muted loop playsinline>
+      <source src="https://image.wanted.co.kr/highfive/2026/intro_video_web.mp4" type="video/mp4">
+    </video>
+  </div>
 
   <!-- 상단 챕터 네비게이션 바 -->
   <nav class="chapter-nav" id="chapterNav">
@@ -46,15 +53,15 @@
       <!-- ============================================
            HERO: 영상 배경 + blend 텍스트
            ============================================ -->
-      <section data-background-color="#88b4e0" data-chapter="hero">
+      <section data-chapter="hero">
         <div class="slide-hero">
-          <video autoplay muted loop playsinline>
-            <source src="https://image.wanted.co.kr/highfive/2026/intro_video_web.mp4" type="video/mp4">
-          </video>
           <div class="hero-logo">HIGH FIVE 26</div>
           <div class="hero-text-layer">
             <h1>HIGH FIVE 26</h1>
             <div class="hero-sub">방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</div>
+          </div>
+          <div class="hero-sponsors">
+            <span style="font-size:0.7em; font-weight:600; color:rgba(255,255,255,0.7); letter-spacing:0.05em;">wanted &nbsp;|&nbsp; inflearn</span>
           </div>
         </div>
       </section>
@@ -70,7 +77,7 @@
             'HRD 메이커' 시대
           </h1>
           <div class="speaker-info">
-            <span class="org">원티드랩</span>&nbsp;&nbsp;<span class="name">김석준</span>
+            <span class="org">kt cloud</span>&nbsp;&nbsp;<span class="name">박상우</span>
           </div>
         </div>
       </section>
@@ -362,7 +369,20 @@
       navTimer = setTimeout(() => nav.classList.remove('visible'), 1000);
     });
 
-    /* ── 2. 다크 배경에서 좌우 버튼 색상 변경 ── */
+    /* ── 2. Hero 영상 배경: hero 슬라이드에서만 표시 ── */
+    const heroVideoBg = document.getElementById('heroVideoBg');
+
+    function updateHeroVideo() {
+      const currentSection = document.querySelectorAll('.reveal .slides > section')[Reveal.getIndices().h];
+      const isHero = currentSection?.dataset.chapter === 'hero';
+      heroVideoBg.style.display = isHero ? 'block' : 'none';
+      document.querySelector('.reveal-viewport')?.classList.toggle('hero-active', isHero);
+    }
+
+    Reveal.on('slidechanged', updateHeroVideo);
+    Reveal.on('ready', updateHeroVideo);
+
+    /* ── 3. 다크 배경에서 좌우 버튼 색상 변경 ── */
     const navLeftBtn = document.getElementById('navLeft');
     const navRightBtn = document.getElementById('navRight');
 
