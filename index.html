@@ -6,24 +6,15 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=27">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=29">
 </head>
 <body>
 
-  <!-- Hero: 영상 + 텍스트를 같은 컨테이너에 배치 (blend-mode 작동 보장) -->
+  <!-- Hero 영상 배경 (viewport 전체, section 뒤) -->
   <div class="hero-fullscreen" id="heroFullscreen">
     <video autoplay muted loop playsinline>
       <source src="assets/images/intro_video.mp4" type="video/mp4">
     </video>
-    <div class="hero-top-logo">HIGH FIVE 26</div>
-    <div class="hero-text-center">
-      <div class="hero-main-title">HR TECH</div>
-      <div class="hero-sub-en">방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</div>
-      <div class="hero-sub-kr">kt cloud 박상우</div>
-    </div>
-    <div class="hero-bottom-logo">
-      <img src="assets/images/sponsors-logo-white.png" alt="wanted | inflearn">
-    </div>
   </div>
 
   <!-- 상단 챕터 네비게이션 바 -->
@@ -63,7 +54,17 @@
            HERO: 영상 배경 + blend 텍스트
            ============================================ -->
       <section data-chapter="hero">
-        <!-- 콘텐츠는 hero-fixed-overlay(body 직속)에서 렌더링 -->
+        <div class="hero-section-logos">
+          <div class="hero-sec-top-logo">HIGH FIVE 26</div>
+          <div class="hero-sec-bottom-logo">
+            <img src="assets/images/sponsors-logo-white.png" alt="wanted | inflearn">
+          </div>
+        </div>
+        <div class="hero-text-center">
+          <div class="hero-main-title">HR TECH</div>
+          <div class="hero-sub-en">방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</div>
+          <div class="hero-sub-kr">kt cloud 박상우</div>
+        </div>
       </section>
 
       <!-- ============================================
@@ -380,46 +381,7 @@
       document.querySelector('.reveal-viewport')?.classList.toggle('hero-active', isHero);
       if (isHero && window._heroClipStart) window._heroClipStart();
       else if (window._heroClipStop) window._heroClipStop();
-      if (isHero) alignHeroLogos();
     }
-
-    /* Hero 로고를 타이틀 페이지의 image1.png 내장 로고와 정확히 일치시킴 */
-    function alignHeroLogos() {
-      // 타이틀의 배경(image1.png)이 렌더되는 실제 영역을 기준으로 맞춤
-      // Reveal.js의 slide-background가 실제 화면에서 차지하는 영역 = 배경 이미지 렌더 영역
-      const bg = document.querySelector('.slide-background:nth-child(2)'); // 타이틀은 2번째 section
-      const bgRect = bg?.getBoundingClientRect();
-      if (!bgRect || bgRect.width === 0) return;
-
-      // image1.png 원본(3840x2160) 기준 로고 좌표
-      // 좌상단 "HIGH FIVE 26": x=200/3840=5.21%, y=200/2160=9.26%, h=58/2160=2.69%
-      // 우하단 "wanted|inflearn": bottom-offset=201/2160=9.31%, right-offset=201/3840=5.23%, h=59/2160=2.73%
-      const imgScale = bgRect.width / 3840;
-
-      const topLogo = heroFs.querySelector('.hero-top-logo');
-      const bottomLogo = heroFs.querySelector('.hero-bottom-logo');
-
-      if (topLogo) {
-        topLogo.style.top = (bgRect.y + 200 * imgScale) + 'px';
-        topLogo.style.left = (bgRect.x + 200 * imgScale) + 'px';
-        topLogo.style.fontSize = (58 * imgScale) + 'px';
-        topLogo.style.fontWeight = '700';
-        topLogo.style.letterSpacing = '-0.01em';
-      }
-      if (bottomLogo) {
-        bottomLogo.style.bottom = 'auto';
-        bottomLogo.style.right = 'auto';
-        // 우하단: image1.png에서 로고 상단 y=1896, 좌측 x=2930
-        bottomLogo.style.top = (bgRect.y + 1900 * imgScale) + 'px';
-        bottomLogo.style.left = (bgRect.x + 2930 * imgScale) + 'px';
-      }
-      const logoImg = bottomLogo?.querySelector('img');
-      if (logoImg) logoImg.style.height = (59 * imgScale) + 'px';
-    }
-
-    window.addEventListener('resize', () => {
-      if (heroFs.style.display !== 'none') alignHeroLogos();
-    });
 
     Reveal.on('slidechanged', updateHeroVideo);
     Reveal.on('ready', updateHeroVideo);

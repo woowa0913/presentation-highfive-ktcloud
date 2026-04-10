@@ -566,16 +566,15 @@
   height: 100%;
   overflow: visible;
 }
-/* Hero 전체 컨테이너: 영상 + 텍스트를 같은 스태킹 컨텍스트에 배치 */
+/* Hero 영상 배경: viewport 전체, section 뒤에 위치 */
 .hero-fullscreen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9990;
+  z-index: -1; /* section보다 뒤에 */
   display: none;
-  isolation: isolate; /* blend-mode가 이 컨테이너 안에서만 작동 */
 }
 .hero-fullscreen video {
   position: absolute;
@@ -585,7 +584,8 @@
   height: 100%;
   object-fit: cover;
 }
-.hero-fullscreen .hero-text-center {
+/* 중앙 텍스트: section 내부에서 Reveal.js 스케일링 적용 */
+.hero-text-center {
   position: absolute;
   inset: 0;
   display: flex;
@@ -594,27 +594,28 @@
   align-items: center;
   text-align: center;
   pointer-events: none;
+  z-index: 2;
 }
 /* 텍스트에 영상을 픽셀 단위로 반영: background-clip:text + canvas 배경 */
-.hero-fullscreen .hero-main-title,
-.hero-fullscreen .hero-sub-en,
-.hero-fullscreen .hero-sub-kr {
+.hero-text-center .hero-main-title,
+.hero-text-center .hero-sub-en,
+.hero-text-center .hero-sub-kr {
   color: #1a2878; /* fallback (canvas 로드 전) */
   font-family: 'WantedSans', sans-serif;
 }
-.hero-fullscreen .hero-main-title {
+.hero-text-center .hero-main-title {
   font-size: 130px;
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
-.hero-fullscreen .hero-sub-en {
+.hero-text-center .hero-sub-en {
   margin-top: 0.2em;
   font-size: 42px;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
-.hero-fullscreen .hero-sub-kr {
+.hero-text-center .hero-sub-kr {
   margin-top: 0.1em;
   font-size: 36px;
   font-weight: 600;
@@ -629,18 +630,36 @@
   background-size: 100vw 100vh !important;
   background-attachment: fixed !important;
 }
-/* 인트로 로고: JS(alignHeroLogos)가 타이틀 section 기준으로 동적 배치 */
-.hero-fullscreen .hero-top-logo {
+/* 인트로 로고: section 내부 배치 = Reveal.js 스케일링 자동 적용
+   1920x1080 좌표계 = image1.png 내장 로고와 동일 */
+/* 인트로 로고: section 내부, Reveal.js 1920x1080 좌표계 */
+.hero-section-logos {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.hero-sec-top-logo {
+  position: absolute;
+  /* image1.png 내장 로고와 동일: 1920기준 x=100, y=100 */
+  top: 100px;
+  left: 100px;
   font-family: 'WantedSans', sans-serif;
+  font-size: 29px;
   font-weight: 700;
   color: #fff;
-  pointer-events: none;
   line-height: 1;
+  letter-spacing: -0.01em;
 }
-.hero-fullscreen .hero-bottom-logo {
+.hero-sec-bottom-logo {
   position: absolute;
-  pointer-events: none;
+  bottom: 100px;
+  right: 100px;
+}
+.hero-sec-bottom-logo img {
+  height: 29px;
 }
 /* 인트로 좌상단 로고 — 타이틀 페이지와 동일 위치/사이즈 */
 .slide-hero .hero-logo {

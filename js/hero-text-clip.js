@@ -54,7 +54,7 @@
     ctx.putImageData(img, 0, 0);
     const url = canvas.toDataURL('image/jpeg', 0.5);
 
-    document.querySelectorAll('.hero-fullscreen .hero-main-title,.hero-fullscreen .hero-sub-en,.hero-fullscreen .hero-sub-kr')
+    document.querySelectorAll('.hero-text-center .hero-main-title,.hero-text-center .hero-sub-en,.hero-text-center .hero-sub-kr')
       .forEach(el => {
         el.style.backgroundImage = 'url(' + url + ')';
         el.style.backgroundSize = '100vw 100vh';
@@ -79,7 +79,7 @@
     running = false;
     if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
     // Reset text to fallback color
-    document.querySelectorAll('.hero-fullscreen .hero-main-title,.hero-fullscreen .hero-sub-en,.hero-fullscreen .hero-sub-kr')
+    document.querySelectorAll('.hero-text-center .hero-main-title,.hero-text-center .hero-sub-en,.hero-text-center .hero-sub-kr')
       .forEach(el => {
         el.style.backgroundImage = '';
         el.style.webkitBackgroundClip = '';
