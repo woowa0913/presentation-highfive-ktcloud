@@ -6,7 +6,7 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=25">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=26">
 </head>
 <body>
 
@@ -378,10 +378,42 @@
       const isHero = currentSection?.dataset.chapter === 'hero';
       heroFs.style.display = isHero ? 'block' : 'none';
       document.querySelector('.reveal-viewport')?.classList.toggle('hero-active', isHero);
-      // Start/stop pixel-level text clip effect
       if (isHero && window._heroClipStart) window._heroClipStart();
       else if (window._heroClipStop) window._heroClipStop();
+      if (isHero) alignHeroLogos();
     }
+
+    /* Hero 로고를 타이틀 페이지의 image1.png 내장 로고와 정확히 일치시킴 */
+    function alignHeroLogos() {
+      // 타이틀 section(slide 1)의 실제 렌더 위치 가져오기
+      const titleSection = document.querySelectorAll('.reveal .slides > section')[1];
+      if (!titleSection) return;
+      const sr = titleSection.getBoundingClientRect();
+      const scale = sr.width / 1920;
+
+      // image1.png 기준: top-left logo at 100px,100px; bottom-right at bottom-100px, right-100px
+      // font height ~32px, all in 1920x1080 coordinate space
+      const topLogo = heroFs.querySelector('.hero-top-logo');
+      const bottomLogo = heroFs.querySelector('.hero-bottom-logo');
+
+      if (topLogo) {
+        topLogo.style.top = (sr.y + 100 * scale) + 'px';
+        topLogo.style.left = (sr.x + 100 * scale) + 'px';
+        topLogo.style.fontSize = (32 * scale) + 'px';
+      }
+      if (bottomLogo) {
+        bottomLogo.style.bottom = 'auto';
+        bottomLogo.style.right = 'auto';
+        bottomLogo.style.top = (sr.y + sr.height - 100 * scale - 32 * scale) + 'px';
+        bottomLogo.style.left = (sr.x + sr.width - 100 * scale - 370 * scale) + 'px';
+      }
+      const logoImg = bottomLogo?.querySelector('img');
+      if (logoImg) logoImg.style.height = (32 * scale) + 'px';
+    }
+
+    window.addEventListener('resize', () => {
+      if (heroFs.style.display !== 'none') alignHeroLogos();
+    });
 
     Reveal.on('slidechanged', updateHeroVideo);
     Reveal.on('ready', updateHeroVideo);

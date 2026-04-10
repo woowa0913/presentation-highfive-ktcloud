@@ -629,15 +629,10 @@
   background-size: 100vw 100vh !important;
   background-attachment: fixed !important;
 }
-/* 인트로 로고: 타이틀 페이지(image1.png) 내장 로고와 동일 위치/사이즈
-   image1.png 측정: 100/1080 = 9.26% from edges, 32/1080 = 2.96% height
-   vw/vh 기준으로 viewport 스케일과 무관하게 동일 위치 */
+/* 인트로 로고: JS(alignHeroLogos)가 타이틀 section 기준으로 동적 배치 */
 .hero-fullscreen .hero-top-logo {
   position: absolute;
-  top: 9.26vh;
-  left: 5.21vw;
   font-family: 'WantedSans', sans-serif;
-  font-size: 2.96vh;
   font-weight: 700;
   color: #fff;
   pointer-events: none;
@@ -645,12 +640,7 @@
 }
 .hero-fullscreen .hero-bottom-logo {
   position: absolute;
-  bottom: 9.26vh;
-  right: 5.21vw;
   pointer-events: none;
-}
-.hero-fullscreen .hero-bottom-logo img {
-  height: 2.96vh;
 }
 /* 인트로 좌상단 로고 — 타이틀 페이지와 동일 위치/사이즈 */
 .slide-hero .hero-logo {
