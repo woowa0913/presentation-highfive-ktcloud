@@ -6,14 +6,14 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=20">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=22">
 </head>
 <body>
 
   <!-- Hero: 영상 + 텍스트를 같은 컨테이너에 배치 (blend-mode 작동 보장) -->
   <div class="hero-fullscreen" id="heroFullscreen">
     <video autoplay muted loop playsinline>
-      <source src="https://image.wanted.co.kr/highfive/2026/intro_video_web.mp4" type="video/mp4">
+      <source src="assets/images/intro_video.mp4" type="video/mp4">
     </video>
     <div class="hero-top-logo">HIGH FIVE 26</div>
     <div class="hero-text-center">
@@ -378,6 +378,9 @@
       const isHero = currentSection?.dataset.chapter === 'hero';
       heroFs.style.display = isHero ? 'block' : 'none';
       document.querySelector('.reveal-viewport')?.classList.toggle('hero-active', isHero);
+      // Start/stop pixel-level text clip effect
+      if (isHero && window._heroClipStart) window._heroClipStart();
+      else if (window._heroClipStop) window._heroClipStop();
     }
 
     Reveal.on('slidechanged', updateHeroVideo);
