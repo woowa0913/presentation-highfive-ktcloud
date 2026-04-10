@@ -583,7 +583,7 @@
   height: 100%;
   object-fit: cover;
 }
-/* 인트로 텍스트 오버레이 — 영상과 같은 fixed 레벨 */
+/* 인트로 텍스트 오버레이 */
 .hero-fixed-overlay {
   position: fixed;
   top: 0;
@@ -594,6 +594,8 @@
   pointer-events: none;
   display: none;
 }
+
+/* 중앙 텍스트: 영상을 텍스트 모양으로 클리핑 + 블루 필터 */
 .hero-fixed-overlay .hero-center {
   position: absolute;
   inset: 0;
@@ -603,33 +605,45 @@
   align-items: center;
   text-align: center;
 }
-/* 텍스트에 배경 영상 색상을 반영하는 반투명 블루 톤 */
+
+/*
+  핵심 기법: 각 텍스트 요소에 영상과 동일한 배경을 fixed로 붙이고
+  background-clip: text로 텍스트 모양만 남김.
+  그 위에 블루 필터를 씌워서 남색~블루~하늘색~흰색 톤으로 변환.
+  영상이 움직이면 텍스트 색상도 실시간으로 변함.
+*/
+.hero-clip-text {
+  background: url('https://image.wanted.co.kr/highfive/2026/intro_video_web.mp4') center/cover no-repeat;
+  /* fallback — 실제로는 JS에서 canvas를 배경으로 사용 */
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .hero-fixed-overlay .hero-main-title {
   font-family: 'WantedSans', sans-serif;
   font-size: 130px;
   font-weight: 800;
-  color: rgba(20, 40, 120, 0.55);
   line-height: 1.1;
   letter-spacing: -0.02em;
-  mix-blend-mode: multiply;
+  color: #1a2878; /* fallback */
 }
 .hero-fixed-overlay .hero-sub-en {
   margin-top: 0.2em;
   font-family: 'WantedSans', sans-serif;
   font-size: 42px;
   font-weight: 700;
-  color: rgba(20, 50, 150, 0.7);
   letter-spacing: 0.02em;
-  mix-blend-mode: multiply;
+  color: #1a3090;
 }
 .hero-fixed-overlay .hero-sub-kr {
   margin-top: 0.1em;
   font-family: 'WantedSans', sans-serif;
   font-size: 36px;
   font-weight: 600;
-  color: rgba(30, 50, 160, 0.8);
   letter-spacing: -0.01em;
-  mix-blend-mode: multiply;
+  color: #2040a0;
 }
 .hero-fixed-overlay .hero-top-logo {
   position: absolute;
