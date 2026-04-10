@@ -377,6 +377,7 @@
 .origin-story-card,
 .shortcut-mockup,
 .dopamine-loop,
+.click-rail,
 .learning-track,
 .growth-chart {
   min-height: 62vh;
@@ -817,6 +818,97 @@
   font-weight: 800;
   line-height: 1.45;
   letter-spacing: -0.03em;
+}
+.click-rail {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(0, 162, 255, 0.18), transparent 34%),
+    linear-gradient(180deg, #f8fbff, #f1f5ff);
+  border: 1px solid rgba(26, 21, 56, 0.08);
+  box-shadow: 0 24px 70px rgba(26, 21, 56, 0.08);
+}
+.rail-line {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 45%;
+  height: 38%;
+  border: 9px solid rgba(26, 21, 56, 0.2);
+  border-top-color: rgba(26, 21, 56, 0.14);
+  border-radius: 50%;
+}
+.rail-line::before,
+.rail-line::after {
+  content: '';
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(26, 21, 56, 0.22) 0 16px, transparent 16px 30px);
+}
+.rail-line::before { top: 8%; }
+.rail-line::after { bottom: 8%; }
+.rail-train {
+  position: absolute;
+  left: 8%;
+  top: 30%;
+  display: grid;
+  place-items: center;
+  width: 7.2em;
+  height: 3.2em;
+  border-radius: 999px 18px 18px 999px;
+  color: var(--wanted-white);
+  background: linear-gradient(135deg, var(--wanted-dark), #283a8a);
+  font-size: 0.68em;
+  font-weight: 950;
+  box-shadow: 0 18px 42px rgba(26, 21, 56, 0.22);
+}
+.rail-train::before,
+.rail-train::after {
+  content: '';
+  position: absolute;
+  bottom: -0.55em;
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 50%;
+  background: var(--wanted-accent2);
+  box-shadow: 0 0 0 3px var(--wanted-white);
+}
+.rail-train::before { left: 1.25em; }
+.rail-train::after { right: 1.25em; }
+.rail-gate {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 6.7em;
+  min-height: 3em;
+  padding: 0.5em;
+  border-radius: 18px;
+  color: var(--wanted-dark);
+  background: var(--wanted-white);
+  border: 1px solid rgba(26, 21, 56, 0.1);
+  box-shadow: 0 14px 34px rgba(26, 21, 56, 0.1);
+  font-size: 0.52em;
+  font-weight: 900;
+  text-align: center;
+}
+.rail-gate.g1 { left: 12%; bottom: 18%; }
+.rail-gate.g2 { left: 25%; top: 20%; }
+.rail-gate.g3,
+.rail-gate.g4 {
+  top: 16%;
+  color: var(--wanted-white);
+  background: var(--wanted-dark);
+}
+.rail-gate.g3 { left: 43%; }
+.rail-gate.g4 { right: 31%; }
+.rail-gate.g5 { right: 20%; bottom: 18%; }
+.rail-gate.g6 { right: 9%; top: 31%; }
+.rail-gate.g7 {
+  left: 43%;
+  bottom: 13%;
+  background: var(--wanted-accent2);
 }
 .learning-track {
   position: relative;
