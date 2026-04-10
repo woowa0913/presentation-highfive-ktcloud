@@ -6,7 +6,7 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=33">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=34">
 </head>
 <body>
 
@@ -515,26 +515,36 @@
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch5">
-        <div class="slide-body">
-          <div class="body-title">AI 시대의 학습은 하나의 성장 트랙이 된다</div>
-          <div class="body-crop-b2">
-            <div class="click-rail">
-              <div class="rail-line"></div>
-              <div class="rail-train">대 딸깍</div>
-              <div class="rail-gate g1">문제 발견</div>
-              <div class="rail-gate g2">맥락 설계</div>
-              <div class="rail-gate g3">Start</div>
-              <div class="rail-gate g4">Goal</div>
-              <div class="rail-gate g5">현장 적용</div>
-              <div class="rail-gate g6">데이터 확인</div>
-              <div class="rail-gate g7">반복 개선</div>
+        <div class="rail-experience" id="clickRailExperience">
+          <div class="rail-copy">
+            <span>Click to Accelerate</span>
+            <h2>AI 시대의 학습은<br>하나의 성장 트랙이 된다</h2>
+            <p>기차가 레일을 돌듯, 성과는 우연한 클릭이 아니라 설계된 흐름 위에서 반복된다.</p>
+          </div>
+          <div class="rail-stage" aria-label="대 딸깍 시대 성장 레일">
+            <svg class="rail-svg" viewBox="0 0 1400 640" aria-hidden="true">
+              <path class="outer-rail-path" d="M120 320 C120 105 1280 105 1280 320 C1280 535 120 535 120 320Z"></path>
+              <path class="inner-rail-path" d="M440 320 C440 220 960 220 960 320 C960 420 440 420 440 320Z"></path>
+            </svg>
+            <div class="rail-orbit outer-orbit">
+              <div class="rail-train outer-train">대 딸깍</div>
             </div>
-            <div class="body-text">
-              <strong>‘대 딸깍’은 버튼 하나가 아니라, 설계된 레일 위에서 일어난다</strong>
-              <p>AI가 대신 만들어주는 것처럼 보여도, 출발점과 도착점은 HRD가 정해야 한다.</p>
-              <p class="fragment fade-up">문제 발견, 맥락 설계, 현장 적용, 데이터 확인이라는 관문이 있어야 결과물이 교육 효과로 이어진다.</p>
-              <p class="fragment fade-up">바이브 코딩은 레일을 달리는 엔진이고, HRD는 그 레일을 설계하는 사람이다.</p>
+            <div class="rail-orbit inner-orbit">
+              <div class="rail-train inner-train">성과</div>
             </div>
+            <div class="rail-gate g1">문제 발견</div>
+            <div class="rail-gate g2">맥락 설계</div>
+            <div class="rail-gate g3">Start</div>
+            <div class="rail-gate g4">Goal</div>
+            <div class="rail-gate g5">현장 적용</div>
+            <div class="rail-gate g6">데이터 확인</div>
+            <div class="rail-gate g7">반복 개선</div>
+            <div class="rail-core">
+              <span>대 딸깍 시대</span>
+              <strong>클릭은 시작이고,<br>성과는 설계에서 나온다</strong>
+              <p>HRD가 레일을 설계하면 AI는 더 빠르게 돌며 학습 경험을 성과로 바꾼다.</p>
+            </div>
+            <button class="rail-activate" type="button">마우스로 눌러보기</button>
           </div>
         </div>
       </section>
@@ -751,6 +761,30 @@
     Reveal.on('slidechanged', updateHeroVideo);
     Reveal.on('ready', updateHeroVideo);
     window.addEventListener('resize', updateHeroLogoLayout);
+
+    /* ── 대 딸깍 레일: 클릭 시 안쪽 성과 루프 표시 ── */
+    const clickRailExperience = document.getElementById('clickRailExperience');
+    const railActivateButton = document.querySelector('.rail-activate');
+
+    function activateClickRail() {
+      if (!clickRailExperience) return;
+      clickRailExperience.classList.add('is-active');
+      if (railActivateButton) railActivateButton.textContent = '성과 루프 작동 중';
+    }
+
+    clickRailExperience?.addEventListener('click', activateClickRail);
+    railActivateButton?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      activateClickRail();
+    });
+
+    Reveal.on('slidechanged', () => {
+      const currentSection = document.querySelectorAll('.reveal .slides > section')[Reveal.getIndices().h];
+      if (!currentSection?.contains(clickRailExperience)) {
+        clickRailExperience?.classList.remove('is-active');
+        if (railActivateButton) railActivateButton.textContent = '마우스로 눌러보기';
+      }
+    });
 
     /* ── 사례 상세 모달: 발표 중 실제 링크와 스토리 포인트 확인 ── */
     const appDetails = {
