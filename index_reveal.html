@@ -6,7 +6,14 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=34">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=35">
+  <style>
+    @keyframes hrd-maker-pulse {
+      0%   { transform: scale(1);    box-shadow: 0 0 60px rgba(108,99,255,0.5), 0 0 30px rgba(0,212,170,0.3); }
+      45%  { transform: scale(1.06); box-shadow: 0 0 90px rgba(108,99,255,0.75), 0 0 50px rgba(0,212,170,0.5); }
+      100% { transform: scale(1);    box-shadow: 0 0 60px rgba(108,99,255,0.5), 0 0 30px rgba(0,212,170,0.3); }
+    }
+  </style>
 </head>
 <body>
 
@@ -107,7 +114,7 @@
       <!-- ============================================
            CH1 간지 (홀수=흰) — image3
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch1">
+      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch1" data-transition="zoom-in fade-out">
         <div class="slide-section-wrap">
           <div class="section-number">01</div>
           <h2>HRD 담당자의<br>딜레마</h2>
@@ -171,21 +178,21 @@
               <p style="font-size:0.75em; color:var(--wanted-gray); line-height:1.7; flex:1;">교육 일정 · 수강 관리<br>출석 체크 · 비용 정산</p>
               <span style="font-size:0.68em; color:#bbb; margin-top:0.8em;">운영 담당자</span>
             </div>
-            <div class="fragment fade-right" style="text-align:center; color:var(--wanted-light-gray); font-size:1.4em;">›</div>
+            <div style="text-align:center; color:var(--wanted-light-gray); font-size:1.4em;">›</div>
             <div class="body-card fragment fade-right" style="padding:6% 5%; text-align:center; display:flex; flex-direction:column; align-items:center; height:100%; box-sizing:border-box;">
               <div style="width:44px; height:44px; border-radius:50%; background:rgba(26,21,56,0.08); display:flex; align-items:center; justify-content:center; font-size:0.7em; font-weight:800; color:rgba(26,21,56,0.35); margin-bottom:0.8em;">02</div>
               <strong style="font-size:1.05em; display:block; margin-bottom:0.5em;">Curator</strong>
               <p style="font-size:0.75em; color:var(--wanted-gray); line-height:1.7; flex:1;">외부 콘텐츠 선정<br>강사 섭외 · 프로그램 기획</p>
               <span style="font-size:0.68em; color:#bbb; margin-top:0.8em;">기획 담당자</span>
             </div>
-            <div class="fragment fade-right" style="text-align:center; color:var(--wanted-light-gray); font-size:1.4em;">›</div>
+            <div style="text-align:center; color:var(--wanted-light-gray); font-size:1.4em;">›</div>
             <div class="body-card fragment fade-right" style="padding:6% 5%; text-align:center; display:flex; flex-direction:column; align-items:center; height:100%; box-sizing:border-box;">
               <div style="width:44px; height:44px; border-radius:50%; background:rgba(26,21,56,0.08); display:flex; align-items:center; justify-content:center; font-size:0.7em; font-weight:800; color:rgba(26,21,56,0.35); margin-bottom:0.8em;">03</div>
               <strong style="font-size:1.05em; display:block; margin-bottom:0.5em;">Designer</strong>
               <p style="font-size:0.75em; color:var(--wanted-gray); line-height:1.7; flex:1;">조직 맞춤 커리큘럼<br>학습 여정 설계</p>
               <span style="font-size:0.68em; color:#bbb; margin-top:0.8em;">설계 담당자</span>
             </div>
-            <div class="fragment fade-right" style="text-align:center; color:var(--wanted-accent1); font-size:1.4em; font-weight:700;">›</div>
+            <div style="text-align:center; color:var(--wanted-accent1); font-size:1.4em; font-weight:700;">›</div>
             <div class="body-card fragment fade-right" style="padding:6% 5%; text-align:center; display:flex; flex-direction:column; align-items:center; height:100%; box-sizing:border-box; border:2px solid var(--wanted-accent1); background:rgba(0,162,255,0.04);">
               <div style="width:44px; height:44px; border-radius:50%; background:var(--wanted-accent1); display:flex; align-items:center; justify-content:center; font-size:0.7em; font-weight:800; color:#fff; margin-bottom:0.8em;">04</div>
               <strong style="font-size:1.05em; display:block; margin-bottom:0.5em; color:var(--wanted-accent1);">Maker</strong>
@@ -206,7 +213,7 @@
       <!-- ============================================
            CH2 간지 (짝수=검정) — image4
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image4.png" data-background-size="cover" data-chapter="ch2">
+      <section data-background-image="assets/pptx-media/image4.png" data-background-size="cover" data-chapter="ch2" data-transition="zoom-in fade-out">
         <div class="slide-section-wrap">
           <div class="section-number" style="color:#fff;">02</div>
           <h2 style="color:#fff;">그러다 만난,<br>바이브 코딩</h2>
@@ -265,8 +272,11 @@
           <div class="body-title"><span class="accent">도파민</span> 루프의 시작</div>
           <!-- 핵심 메시지 -->
           <div class="fragment fade-up" style="text-align:center; padding:2% 8%; margin:1.5% 5% 0; background:linear-gradient(135deg, rgba(0,162,255,0.07), rgba(22,231,207,0.05)); border-radius:12px; border:1.5px solid rgba(0,162,255,0.2);">
-            <p style="font-size:1.0em; color:var(--wanted-dark); margin:0; line-height:1.8; font-weight:600;">
+            <p style="font-size:1.0em; color:var(--wanted-dark); margin:0 0 0.4em; line-height:1.8; font-weight:600;">
               💊 <span style="color:var(--wanted-accent1);">"만들었다"는 경험의 도파민</span>이 자기주도 성장을 이끈다
+            </p>
+            <p style="font-size:0.62em; color:rgba(26,21,56,0.35); margin:0; font-style:italic; font-weight:400;">
+              Flow Theory (Csikszentmihalyi) — 명확한 목표 + 즉각적 피드백 + 적절한 도전 = 몰입 경험 · Progress Principle (Amabile) — 작은 진전이 내적 동기를 가장 강하게 유발
             </p>
           </div>
           <!-- Before / After -->
@@ -319,7 +329,7 @@
                     <div style="font-size:0.48em; color:rgba(176,176,192,0.45); line-height:1.5;">Vibe<br>Coding</div>
                   </div>
                   <!-- 내부 원: HRD 메이커 -->
-                  <div class="fragment fade-up" style="position:absolute; inset:22%; border-radius:50%; background:linear-gradient(135deg, var(--maker-violet), var(--maker-mint)); display:flex; align-items:center; justify-content:center; text-align:center; box-shadow:0 0 60px rgba(108,99,255,0.5), 0 0 30px rgba(0,212,170,0.3);">
+                  <div class="fragment fade-up" style="position:absolute; inset:22%; border-radius:50%; background:linear-gradient(135deg, var(--maker-violet), var(--maker-mint)); display:flex; align-items:center; justify-content:center; text-align:center; box-shadow:0 0 60px rgba(108,99,255,0.5), 0 0 30px rgba(0,212,170,0.3); animation:hrd-maker-pulse 2.2s ease-in-out 0.6s 3;">
                     <div>
                       <div style="font-size:0.75em; font-weight:900; color:#fff; line-height:1.25; letter-spacing:-0.02em;">HRD<br>메이커</div>
                       <div style="font-size:0.5em; color:rgba(255,255,255,0.85); margin-top:0.5em; line-height:1.5;">직접 설계<br>직접 구현</div>
@@ -349,7 +359,7 @@
       <!-- ============================================
            CH3 간지 (홀수=흰) — image5
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image5.png" data-background-size="cover" data-chapter="ch3">
+      <section data-background-image="assets/pptx-media/image5.png" data-background-size="cover" data-chapter="ch3" data-transition="zoom-in fade-out">
         <div class="slide-section-wrap">
           <div class="section-number">03</div>
           <h2>잠깐,<br>여러분의 선택은?</h2>
@@ -369,7 +379,7 @@
       <!-- ============================================
            CH4 간지 (홀수=흰) — image3
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch4">
+      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch4" data-transition="zoom-in fade-out">
         <div class="slide-section-wrap">
           <div class="section-number">04</div>
           <h2>리더십<br>메이커</h2>
@@ -416,7 +426,7 @@
       <!-- ============================================
            CH5 간지 (짝수=검정) — image6
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image6.png" data-background-size="cover" data-chapter="ch5">
+      <section data-background-image="assets/pptx-media/image6.png" data-background-size="cover" data-chapter="ch5" data-transition="zoom-in fade-out">
         <div class="slide-section-wrap">
           <div class="section-number" style="color:#fff; text-shadow:0 2px 16px rgba(0,0,0,0.8);">05</div>
           <h2 style="color:#fff; text-shadow:0 2px 20px rgba(0,0,0,0.7);">온보딩<br>메이커</h2>
@@ -465,7 +475,7 @@
       <!-- ============================================
            CH6 간지 (짝수=검정) — image4 (순환)
            ============================================ -->
-      <section data-background-image="assets/pptx-media/image4.png" data-background-size="cover" data-chapter="ch6">
+      <section data-background-image="assets/pptx-media/image4.png" data-background-size="cover" data-chapter="ch6" data-transition="zoom-in fade-out">
         <div class="slide-section-wrap">
           <div class="section-number" style="color:#fff;">06</div>
           <h2 style="color:#fff;">팀이<br>만든 세계</h2>
@@ -484,23 +494,41 @@
           </div>
           <div class="body-title" style="font-size:clamp(1em,2.2vw,1.35em); margin-bottom:1.5%;">나만의 이야기가 아닙니다</div>
           <div class="team-grid">
-            <div class="maker-card fragment fade-up">
-              <span class="maker-card-icon">👩‍💼</span>
-              <strong>박창윤</strong>
-              <p>신입사원 교육 담당<br>PI 평가 시스템 개발</p>
-              <span class="tag">온보딩</span>
+            <!-- 박창윤 — 앱 ① PI 평가 시스템 -->
+            <div class="maker-card fragment fade-up" style="border-color:rgba(0,212,170,0.35);">
+              <div style="display:flex; align-items:center; gap:0.5em; margin-bottom:0.6em;">
+                <span class="maker-card-icon" style="margin:0; font-size:1.6em;">📋</span>
+                <div>
+                  <div style="font-size:0.95em; font-weight:700; color:#fff;">박창윤</div>
+                  <div style="font-size:0.6em; color:rgba(176,176,192,0.6); letter-spacing:0.05em;">신입사원 교육 담당</div>
+                </div>
+              </div>
+              <p style="color:var(--maker-text); font-size:0.88em; line-height:1.8; margin:0 0 0.6em;">PI 프로젝트 발표 평가를 수작업에서 <strong style="color:rgba(255,255,255,0.85);">실시간 자동화</strong>로 전환.</p>
+              <span class="tag mint" style="font-size:0.62em;">PI 평가 시스템</span>
             </div>
-            <div class="maker-card fragment fade-up">
-              <span class="maker-card-icon">👨‍💻</span>
-              <strong>박창윤</strong>
-              <p>경력직 온보딩 담당<br>kt cloud 2033 게임 개발</p>
-              <span class="tag">게이미피케이션</span>
+            <!-- 박창윤 — 앱 ② kt cloud 2033 -->
+            <div class="maker-card fragment fade-up" style="border-color:rgba(108,99,255,0.35);">
+              <div style="display:flex; align-items:center; gap:0.5em; margin-bottom:0.6em;">
+                <span class="maker-card-icon" style="margin:0; font-size:1.6em;">🎮</span>
+                <div>
+                  <div style="font-size:0.95em; font-weight:700; color:#fff;">박창윤</div>
+                  <div style="font-size:0.6em; color:rgba(176,176,192,0.6); letter-spacing:0.05em;">경력직 온보딩 담당</div>
+                </div>
+              </div>
+              <p style="color:var(--maker-text); font-size:0.88em; line-height:1.8; margin:0 0 0.6em;">경력입사자 온보딩을 <strong style="color:rgba(255,255,255,0.85);">텍스트 어드벤처 게임</strong>으로 재설계.</p>
+              <span class="tag" style="font-size:0.62em; background:rgba(108,99,255,0.15); color:rgba(160,150,255,0.9);">kt cloud 2033</span>
             </div>
-            <div class="maker-card fragment fade-up">
-              <span class="maker-card-icon">👨‍🏫</span>
-              <strong>김성환</strong>
-              <p>리더십 개발 담당<br>1on1 시뮬레이터 개발</p>
-              <span class="tag mint">리더십</span>
+            <!-- 김성환 — 1on1 시뮬레이터 -->
+            <div class="maker-card fragment fade-up" style="border-color:rgba(168,85,247,0.35);">
+              <div style="display:flex; align-items:center; gap:0.5em; margin-bottom:0.6em;">
+                <span class="maker-card-icon" style="margin:0; font-size:1.6em;">💬</span>
+                <div>
+                  <div style="font-size:0.95em; font-weight:700; color:#fff;">김성환</div>
+                  <div style="font-size:0.6em; color:rgba(176,176,192,0.6); letter-spacing:0.05em;">리더십 개발 담당</div>
+                </div>
+              </div>
+              <p style="color:var(--maker-text); font-size:0.88em; line-height:1.8; margin:0 0 0.6em;">1on1 리더십 스킬을 <strong style="color:rgba(255,255,255,0.85);">선택형 시뮬레이션</strong>으로 반복 학습.</p>
+              <span class="tag" style="font-size:0.62em; background:rgba(168,85,247,0.12); color:#A855F7;">1on1 시뮬레이터</span>
             </div>
           </div>
         </div>
@@ -699,9 +727,9 @@
             <line x1="1042" y1="200" x2="1042" y2="214" stroke="rgba(108,99,255,0.4)" stroke-width="1.5"/>
             <line x1="878" y1="214" x2="1042" y2="214" stroke="rgba(176,176,192,0.18)" stroke-width="1"/>
             <line x1="960" y1="214" x2="960" y2="222" stroke="rgba(176,176,192,0.25)" stroke-width="1.5"/>
-            <!-- Rail Switch 버튼 (바로 아래) -->
-            <rect x="868" y="222" width="184" height="46" rx="14" fill="rgba(108,99,255,0.2)" stroke="rgba(108,99,255,0.8)" stroke-width="2"/>
-            <text x="960" y="251" text-anchor="middle" font-size="23" font-weight="700" fill="#6C63FF">⇄ Rail Switch</text>
+            <!-- Rail Switch 버튼 (바로 아래) — 클릭하면 내부 레일 등장 -->
+            <rect id="rail-switch-btn" x="868" y="222" width="184" height="46" rx="14" fill="rgba(108,99,255,0.2)" stroke="rgba(108,99,255,0.8)" stroke-width="2" style="cursor:pointer;" onclick="window.Reveal && window.Reveal.nextFragment()"/>
+            <text x="960" y="251" text-anchor="middle" font-size="23" font-weight="700" fill="#6C63FF" style="pointer-events:none;">⇄ Rail Switch</text>
             <!-- 짧은 연결선 -->
             <line x1="960" y1="268" x2="960" y2="282" stroke="rgba(108,99,255,0.5)" stroke-width="1.5" stroke-dasharray="3,3"/>
             <!-- 대 딸깍 (바로 아래) -->
@@ -738,38 +766,6 @@
           <div class="fragment" id="rail-inner-trigger" style="display:none !important;"></div>
         </div>
       </section>
-      <!-- END: 지금 시작하는 법 -->
-      <section data-background-color="#FFFFFF" data-chapter="closing">
-        <div class="slide-body">
-          <div class="body-title">지금 시작하는 법 — <strong style="color:var(--wanted-accent1);">3단계 공식</strong></div>
-          <div style="display:grid; grid-template-columns:1fr 120px 1fr 120px 1fr; padding:0 4%; flex:1; align-items:center; margin-top:3%;">
-            <div class="body-card fragment fade-up">
-              <strong style="color:var(--wanted-accent1); font-size:2em; font-weight:800; display:block; margin-bottom:0.2em;">01</strong>
-              <strong>작은 성공 경험</strong>
-              <p>도구: Replit / Lovable / Google AI Studio</p>
-              <p>목표: A-to-Z 완성 경험 1개</p>
-              <p style="margin-top:0.8em; color:var(--wanted-accent1); font-weight:600;">💊 도파민 먼저!</p>
-            </div>
-            <div class="fragment fade-up" style="font-size:2.8em; color:var(--wanted-accent1); text-align:center; opacity:0.5; letter-spacing:-0.05em;">→</div>
-            <div class="body-card fragment fade-up">
-              <strong style="color:var(--wanted-accent2); font-size:2em; font-weight:800; display:block; margin-bottom:0.2em;">02</strong>
-              <strong>독학 확장</strong>
-              <p>도구: YouTube + AI 과외 (Claude)</p>
-              <p>목표: 나만의 HRD 문제 해결</p>
-              <p style="margin-top:0.8em; color:var(--wanted-accent2); font-weight:600;">🔄 반복하면 실력 된다</p>
-            </div>
-            <div class="fragment fade-up" style="font-size:2.8em; color:var(--wanted-accent2); text-align:center; opacity:0.5; letter-spacing:-0.05em;">→</div>
-            <div class="body-card fragment fade-up">
-              <strong style="color:var(--wanted-accent3); font-size:2em; font-weight:800; display:block; margin-bottom:0.2em;">03</strong>
-              <strong>조직 자산화</strong>
-              <p>도구: Vercel 배포 + 내부 공유</p>
-              <p>목표: 팀의 도구가 됨</p>
-              <p style="margin-top:0.8em; color:var(--wanted-accent3); font-weight:600;">🏆 HRD의 가치 증명</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- END: AI × 바이브코딩 성과 그래프 -->
       <section data-background-color="#FFFFFF" data-chapter="closing">
         <div class="slide-body">
@@ -804,15 +800,21 @@
                 <path id="path-ai-use"  d="M80,255 C200,220 420,175 850,110" fill="none" stroke="#00A2FF" stroke-width="4" stroke-dasharray="10,5"/>
                 <!-- 곡선 3: AI·바이브코딩 (가파름) -->
                 <path id="path-vibe"    d="M80,255 C180,200 350,120 850,30" fill="none" stroke="#6C63FF" stroke-width="5.5" stroke-linecap="round"/>
+                <!-- 중간 지점 레이블 (선을 눈으로 안 따라가도 됨) -->
+                <text x="440" y="237" font-size="13" fill="#c0c0c0" font-family="sans-serif">— AI 미사용</text>
+                <text x="440" y="174" font-size="13" fill="#5BB8FF" font-family="sans-serif" font-weight="600">— AI 활용</text>
+                <text x="370" y="118" font-size="13" fill="#9C96FF" font-family="sans-serif" font-weight="700">— AI · 바이브코딩</text>
                 <!-- 끝점 마커 -->
                 <circle cx="850" cy="220" r="6" fill="#d0d0d0"/>
                 <circle cx="850" cy="110" r="6" fill="#00A2FF"/>
-                <circle cx="850" cy="30"  r="8" fill="#6C63FF" filter=""/>
+                <circle cx="850" cy="30"  r="8" fill="#6C63FF"/>
                 <!-- 끝점 라벨 -->
-                <text x="858" y="225" font-size="15" fill="#aaa" font-family="sans-serif">AI 미사용</text>
-                <text x="858" y="116" font-size="15" fill="#00A2FF" font-family="sans-serif" font-weight="600">AI 활용</text>
-                <!-- 바이브코딩 라벨: 인라인 -->
-                <text x="630" y="58"  font-size="16" fill="#6C63FF" font-family="sans-serif" font-weight="800">✦ AI · 바이브코딩 대담하게 활용</text>
+                <text x="858" y="225" font-size="14" fill="#bbb" font-family="sans-serif">AI 미사용</text>
+                <text x="858" y="115" font-size="14" fill="#00A2FF" font-family="sans-serif" font-weight="700">AI 활용</text>
+                <!-- 바이브코딩 끝점 + 이론 출처 -->
+                <text x="630" y="46" font-size="16" fill="#6C63FF" font-family="sans-serif" font-weight="800">✦ AI · 바이브코딩 대담하게 활용</text>
+                <text x="860" y="35" font-size="14" fill="#6C63FF" font-family="sans-serif" font-weight="700">AI · 바이브코딩</text>
+                <text x="70" y="280" font-size="11" fill="#ccc" font-family="sans-serif" font-style="italic">* Ethan Mollick (Wharton, 2023) — AI 적극 활용 그룹과 미사용 그룹 간 성과 격차 ~40%</text>
               </svg>
             </div>
             <!-- 설명 카드 (아래 배치) -->
@@ -834,22 +836,54 @@
         </div>
       </section>
 
+      <!-- END: 지금 시작하는 법 -->
+      <section data-background-color="#FFFFFF" data-chapter="closing">
+        <div class="slide-body">
+          <div class="body-title">지금 시작하는 법 — <strong style="color:var(--wanted-accent1);">3단계 공식</strong></div>
+          <div style="display:grid; grid-template-columns:1fr 120px 1fr 120px 1fr; padding:0 4%; flex:1; align-items:center; margin-top:3%;">
+            <div class="body-card fragment fade-up">
+              <strong style="color:var(--wanted-accent1); font-size:2em; font-weight:800; display:block; margin-bottom:0.2em;">01</strong>
+              <strong>작은 성공 경험</strong>
+              <p>도구: Replit / Lovable / Google AI Studio</p>
+              <p>목표: A-to-Z 완성 경험 1개</p>
+              <p style="margin-top:0.8em; color:var(--wanted-accent1); font-weight:600;">💊 도파민 먼저!</p>
+            </div>
+            <div class="fragment fade-up" style="font-size:2.8em; color:var(--wanted-accent1); text-align:center; opacity:0.5; letter-spacing:-0.05em;">→</div>
+            <div class="body-card fragment fade-up">
+              <strong style="color:var(--wanted-accent2); font-size:2em; font-weight:800; display:block; margin-bottom:0.2em;">02</strong>
+              <strong>독학 확장</strong>
+              <p>도구: YouTube + AI 과외 (Claude)</p>
+              <p>목표: 나만의 HRD 문제 해결</p>
+              <p style="margin-top:0.8em; color:var(--wanted-accent2); font-weight:600;">🔄 반복하면 실력 된다</p>
+            </div>
+            <div class="fragment fade-up" style="font-size:2.8em; color:var(--wanted-accent2); text-align:center; opacity:0.5; letter-spacing:-0.05em;">→</div>
+            <div class="body-card fragment fade-up">
+              <strong style="color:var(--wanted-accent3); font-size:2em; font-weight:800; display:block; margin-bottom:0.2em;">03</strong>
+              <strong>조직 자산화</strong>
+              <p>도구: Vercel 배포 + 내부 공유</p>
+              <p>목표: 팀의 도구가 됨</p>
+              <p style="margin-top:0.8em; color:var(--wanted-accent3); font-weight:600;">🏆 HRD의 가치 증명</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- META REVEAL -->
       <section data-auto-animate data-background-image="assets/pptx-media/image1.png" data-background-size="cover" data-chapter="closing">
         <div class="slide-qa-wrap">
-          <h2 style="font-size: 2em;">사실, 이 프레젠테이션도</h2>
+          <h2 data-id="meta-h2" style="font-size: 2.2em; font-weight: 800; letter-spacing: -0.02em;">사실, 이 프레젠테이션도</h2>
         </div>
       </section>
 
       <section data-auto-animate data-background-image="assets/pptx-media/image1.png" data-background-size="cover" data-chapter="closing">
         <div class="slide-qa-wrap">
-          <h2 style="font-size: 2em;">사실, 이 프레젠테이션도</h2>
-          <p style="font-size: 1.4em; margin-top: 0.5em; font-weight: 700; color: var(--wanted-dark);">
+          <h2 data-id="meta-h2" style="font-size: 1.45em; font-weight: 600; opacity: 0.6; letter-spacing: -0.01em;">사실, 이 프레젠테이션도</h2>
+          <p style="font-size: 1.65em; margin-top: 0.4em; font-weight: 800; color: var(--wanted-dark); letter-spacing: -0.02em; line-height: 1.3;">
             바이브 코딩으로 만들었습니다.
           </p>
-          <p class="fragment fade-up muted" style="margin-top: 1em; text-align: center;">
+          <p class="fragment fade-up muted" style="margin-top: 1em; text-align: center; font-size: 1.05em; line-height: 1.9;">
             PowerPoint가 아닙니다. 웹앱입니다.<br>
-            AI와 대화해서, 코드 한 줄 직접 쓰지 않고 만들었습니다.
+            AI와 대화해서, <strong style="color:var(--wanted-accent1);">코드 한 줄 직접 쓰지 않고</strong> 만들었습니다.
           </p>
         </div>
       </section>
@@ -861,7 +895,24 @@
 
       <!-- CLOSING -->
       <section data-background-image="assets/pptx-media/image10.png" data-background-size="cover" data-chapter="closing">
-        <div class="slide-closing-wrap"></div>
+        <div class="slide-closing-wrap">
+          <!-- 하단 핵심 메시지 + 연락처 -->
+          <div style="position:absolute; bottom:6%; left:50%; transform:translateX(-50%); width:80%; text-align:center;">
+            <p style="font-size:0.75em; color:rgba(255,255,255,0.5); margin:0 0 0.6em; letter-spacing:0.1em; text-transform:uppercase; font-weight:600;">함께 만들어요</p>
+            <p style="font-size:1.05em; color:rgba(255,255,255,0.85); margin:0 0 1.2em; font-weight:500; line-height:1.7;">
+              HRD 담당자가 <strong style="color:#00D4AA;">메이커</strong>가 되는 세상,<br>
+              여러분의 첫 번째 앱을 응원합니다.
+            </p>
+            <div style="display:flex; align-items:center; justify-content:center; gap:2em; flex-wrap:wrap;">
+              <div style="padding:8px 20px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:24px; font-size:0.72em; color:rgba(255,255,255,0.7);">
+                🔗 pv-claude.vercel.app
+              </div>
+              <div style="padding:8px 20px; background:rgba(0,212,170,0.12); border:1px solid rgba(0,212,170,0.3); border-radius:24px; font-size:0.72em; color:rgba(0,212,170,0.9); font-weight:600;">
+                kt cloud · 박상우
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
     </div>
