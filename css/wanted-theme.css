@@ -842,6 +842,65 @@
   padding-top: 1em;
 }
 
+/* ========================================
+   8. Impact / Big Number Slides
+   ======================================== */
+.slide-impact-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 10%;
+}
+.slide-impact-wrap .impact-number {
+  font-size: 6em;
+  font-weight: 900;
+  color: var(--wanted-accent1);
+  line-height: 1;
+  margin-bottom: 0.1em;
+  text-shadow: 0 10px 30px rgba(0, 162, 255, 0.2);
+}
+.slide-impact-wrap .impact-label {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--wanted-dark);
+}
+.slide-impact-wrap .impact-sub {
+  font-size: 1em;
+  color: var(--wanted-gray);
+  margin-top: 1em;
+}
+
+/* ========================================
+   9. Theory / Comparison Layout
+   ======================================== */
+.theory-comparison {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 2em;
+}
+.theory-box {
+  background: #f8f9fa;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 1.5em;
+  text-align: center;
+}
+.theory-box.highlight {
+  background: rgba(0, 162, 255, 0.05);
+  border: 2px solid var(--wanted-accent1);
+}
+.theory-arrow {
+  font-size: 2em;
+  color: #ccc;
+  font-weight: 900;
+}
+
 /* Fragment animation: slide up */
 .reveal .fragment.fade-up {
   transform: translateY(20px);
