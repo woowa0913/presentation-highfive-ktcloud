@@ -947,6 +947,13 @@
 .slide-body.maker .body-title {
   color: #FFFFFF;
 }
+/* .reveal p specificity(0,1,1)가 .maker-card(0,1,0)보다 높아 어두운 배경에서 텍스트가 안 보이는 문제 수정 */
+.slide-body.maker p,
+.slide-body.maker li,
+.maker-card p,
+.maker-card li {
+  color: var(--maker-text);
+}
 .accent-violet { color: var(--maker-violet); }
 .accent-mint   { color: var(--maker-mint); }
 

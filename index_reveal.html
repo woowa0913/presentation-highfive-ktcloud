@@ -890,36 +890,36 @@
               </animateMotion>
             </g>
 
-            <!-- Rail Switch 진입점: START/GOAL 사이에서 두 레일 모두 통과 -->
-            <!-- 외부 레일 상단(y=265)과 내부 레일 상단(y=265)이 모두 이 지점을 통과 -->
             <!-- 연결선: START → Switch, GOAL → Switch -->
             <line x1="855" y1="182" x2="855" y2="212" stroke="rgba(0,212,170,0.5)" stroke-width="1.5"/>
             <line x1="1065" y1="182" x2="1065" y2="212" stroke="rgba(108,99,255,0.5)" stroke-width="1.5"/>
             <line x1="855" y1="212" x2="1065" y2="212" stroke="rgba(176,176,192,0.2)" stroke-width="1"/>
             <line x1="960" y1="212" x2="960" y2="225" stroke="rgba(108,99,255,0.4)" stroke-width="2"/>
-            <!-- 외부 레일 통과선 표시 (스위치 위치) -->
-            <line x1="820" y1="265" x2="960" y2="265" stroke="rgba(108,99,255,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
-            <line x1="960" y1="265" x2="1100" y2="265" stroke="rgba(0,212,170,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
-            <!-- Rail Switch 버튼 — 크게 -->
+            <!-- Rail Switch 버튼 — 항상 표시, 클릭 시 fragment 순서대로 진행 -->
             <rect id="rail-switch-btn" x="850" y="225" width="220" height="56" rx="16" fill="rgba(108,99,255,0.22)" stroke="rgba(108,99,255,0.9)" stroke-width="2.5" style="cursor:pointer;" onclick="window.Reveal && window.Reveal.nextFragment()"/>
             <text x="960" y="259" text-anchor="middle" font-size="27" font-weight="700" fill="#6C63FF" style="pointer-events:none;">⇄ Rail Switch</text>
-            <!-- 아래 연결 + 대 딸깍 -->
-            <line x1="960" y1="281" x2="960" y2="298" stroke="rgba(108,99,255,0.5)" stroke-width="1.5" stroke-dasharray="3,3"/>
-            <text x="960" y="360" text-anchor="middle" font-size="68" font-weight="900" fill="#6C63FF" filter="url(#glow-v)">대 딸깍</text>
-            <line x1="960" y1="372" x2="960" y2="388" stroke="rgba(108,99,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
-            <!-- 중앙 레벨스위치 원 -->
-            <ellipse cx="960" cy="560" rx="235" ry="138" fill="rgba(8,8,18,0.96)" stroke="rgba(108,99,255,0.45)" stroke-width="2"/>
-            <text x="960" y="540" text-anchor="middle" font-size="26" fill="rgba(176,176,192,0.55)" letter-spacing="2">레벨스위치</text>
-            <text x="960" y="590" text-anchor="middle" font-size="22" fill="rgba(0,212,170,0.75)">HRD × AI × 바이브코딩</text>
 
-            <!-- 내부 레일 그룹 (fragment로 등장) — 상단이 y=265에서 외부 레일과 만남 -->
-            <!-- 내부 레일: cx=960, cy=430, rx=200, ry=165 → 상단 y=265 (스위치 통과점) -->
+            <!-- ① 대 딸깍 그룹 — fragment 1로 등장 -->
+            <g id="rail-daltak-group" opacity="0">
+              <line x1="960" y1="281" x2="960" y2="300" stroke="rgba(108,99,255,0.5)" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <text x="960" y="370" text-anchor="middle" font-size="72" font-weight="900" fill="#6C63FF" filter="url(#glow-v)">대 딸깍</text>
+              <line x1="960" y1="384" x2="960" y2="400" stroke="rgba(108,99,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            </g>
+
+            <!-- ② 중앙 레벨스위치 원 + 텍스트 — fragment 2로 등장 -->
+            <g id="rail-center-group" opacity="0">
+              <ellipse cx="960" cy="560" rx="235" ry="138" fill="rgba(8,8,18,0.96)" stroke="rgba(108,99,255,0.45)" stroke-width="2"/>
+              <text x="960" y="540" text-anchor="middle" font-size="26" fill="rgba(176,176,192,0.7)" letter-spacing="2">레벨스위치</text>
+              <text x="960" y="590" text-anchor="middle" font-size="24" fill="rgba(0,212,170,0.9)" font-weight="700">HRD × AI × 바이브코딩</text>
+            </g>
+
+            <!-- ③ 내부 레일 그룹 — fragment 3으로 등장 -->
             <g id="inner-rail-group" opacity="0">
-              <ellipse cx="960" cy="430" rx="200" ry="165" fill="none" stroke="rgba(0,212,170,0.18)" stroke-width="35"/>
-              <ellipse cx="960" cy="430" rx="200" ry="165" fill="none" stroke="#080812" stroke-width="26"/>
-              <ellipse cx="960" cy="430" rx="200" ry="165" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="22" stroke-dasharray="4,18"/>
-              <ellipse cx="960" cy="430" rx="208" ry="173" fill="none" stroke="rgba(0,212,170,0.7)" stroke-width="2.5" filter="url(#glow-m)"/>
-              <ellipse cx="960" cy="430" rx="192" ry="157" fill="none" stroke="rgba(0,212,170,0.45)" stroke-width="1.5"/>
+              <ellipse cx="960" cy="560" rx="175" ry="95" fill="none" stroke="rgba(0,212,170,0.18)" stroke-width="35"/>
+              <ellipse cx="960" cy="560" rx="175" ry="95" fill="none" stroke="#080812" stroke-width="26"/>
+              <ellipse cx="960" cy="560" rx="175" ry="95" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="22" stroke-dasharray="4,18"/>
+              <ellipse cx="960" cy="560" rx="183" ry="101" fill="none" stroke="rgba(0,212,170,0.7)" stroke-width="2.5" filter="url(#glow-m)"/>
+              <ellipse cx="960" cy="560" rx="167" ry="89" fill="none" stroke="rgba(0,212,170,0.45)" stroke-width="1.5"/>
               <!-- 내부 기차 (민트, 빠르게) -->
               <g filter="url(#glow-m)">
                 <rect x="-20" y="-10" width="40" height="20" rx="4" fill="#00D4AA"/>
@@ -927,7 +927,7 @@
                 <rect x="-4" y="-6" width="10" height="12" rx="1.5" fill="rgba(255,255,255,0.35)"/>
                 <rect x="9" y="-6" width="8" height="12" rx="1.5" fill="rgba(255,255,255,0.28)"/>
                 <circle cx="18" cy="0" r="3.5" fill="rgba(255,240,80,0.9)"/>
-                <animateMotion dur="3.2s" repeatCount="indefinite" rotate="auto">
+                <animateMotion dur="2.8s" repeatCount="indefinite" rotate="auto">
                   <mpath href="#rail-inner-path"/>
                 </animateMotion>
               </g>
@@ -935,7 +935,9 @@
 
           </svg>
 
-          <!-- Fragment 트리거 -->
+          <!-- Fragment 트리거 3개 — 순차 등장 -->
+          <div class="fragment" id="rail-daltak-trigger" style="display:none !important;"></div>
+          <div class="fragment" id="rail-center-trigger" style="display:none !important;"></div>
           <div class="fragment" id="rail-inner-trigger" style="display:none !important;"></div>
         </div>
       </section>
@@ -1213,17 +1215,24 @@
     document.getElementById('navLeft').addEventListener('click', () => Reveal.prev());
     document.getElementById('navRight').addEventListener('click', () => Reveal.next());
 
-    /* ── 레일 슬라이드: 내부 레일 fragment 이벤트 ── */
+    /* ── 레일 슬라이드: 3단계 순차 fragment 이벤트 ── */
+    const railFragments = [
+      { trigger: 'rail-daltak-trigger',  group: 'rail-daltak-group',  dur: '0.7s' },
+      { trigger: 'rail-center-trigger',  group: 'rail-center-group',  dur: '0.8s' },
+      { trigger: 'rail-inner-trigger',   group: 'inner-rail-group',   dur: '0.9s' },
+    ];
     Reveal.on('fragmentshown', e => {
-      if (e.fragment.id === 'rail-inner-trigger') {
-        const g = document.getElementById('inner-rail-group');
-        if (g) { g.style.transition = 'opacity 0.9s ease'; g.setAttribute('opacity','1'); }
+      const item = railFragments.find(f => f.trigger === e.fragment.id);
+      if (item) {
+        const g = document.getElementById(item.group);
+        if (g) { g.style.transition = `opacity ${item.dur} ease`; g.setAttribute('opacity','1'); }
       }
     });
     Reveal.on('fragmenthidden', e => {
-      if (e.fragment.id === 'rail-inner-trigger') {
-        const g = document.getElementById('inner-rail-group');
-        if (g) { g.setAttribute('opacity','0'); }
+      const item = railFragments.find(f => f.trigger === e.fragment.id);
+      if (item) {
+        const g = document.getElementById(item.group);
+        if (g) { g.style.transition = 'opacity 0.3s ease'; g.setAttribute('opacity','0'); }
       }
     });
 
