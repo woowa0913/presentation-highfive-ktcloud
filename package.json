@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "history:codex": "node scripts/export-codex-history.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

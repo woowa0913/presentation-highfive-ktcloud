@@ -135,20 +135,20 @@
                    집합교육 (Classroom Training / 10%)
                 </div>
                 <!-- Leak arrows -->
-                <div style="position:relative; margin:20px 0;">
-                   <svg width="240" height="200" viewBox="0 0 240 200">
-                      <!-- Funnel shape -->
-                      <polygon points="10,0 230,0 150,150 150,200 90,200 90,150" fill="none" stroke="#ddd" stroke-width="4" stroke-linejoin="round"/>
-                      <!-- Cracks -->
-                      <path d="M40,50 L70,80 L50,100" fill="none" stroke="#ccc" stroke-width="2" />
-                      <path d="M200,60 L170,90 L190,120" fill="none" stroke="#ccc" stroke-width="2" />
-                      <!-- Leakage Text -->
-                      <text x="20" y="90" font-size="14" fill="#FF644E" font-weight="bold">속도 ↘</text>
-                      <text x="180" y="110" font-size="14" fill="#FF644E" font-weight="bold">↘ 비용</text>
-                      <text x="10" y="140" font-size="14" fill="#FF644E" font-weight="bold">핏의 문제 ↘</text>
-                   </svg>
+                <div style="position:relative; margin:10px 0; height: 350px; display: flex; justify-content: center; align-items: center;">
+                    <svg width="450" height="350" viewBox="0 0 240 200" style="width: auto; height: 100%;">
+                       <!-- Funnel shape -->
+                       <polygon points="10,0 230,0 150,150 150,200 90,200 90,150" fill="rgba(255,100,78,0.08)" stroke="#FF644E" stroke-width="4" stroke-linejoin="round"/>
+                       <!-- Cracks -->
+                       <path d="M40,50 L70,80 L50,100" fill="none" stroke="#ccc" stroke-width="2" />
+                       <path d="M200,60 L170,90 L190,120" fill="none" stroke="#ccc" stroke-width="2" />
+                       <!-- Leakage Text -->
+                       <text x="25" y="80" font-size="18" fill="#FF644E" font-weight="900">속도 저하 ↘</text>
+                       <text x="165" y="105" font-size="18" fill="#FF644E" font-weight="900">↘ 비용 발생</text>
+                       <text x="10" y="140" font-size="18" fill="#FF644E" font-weight="900">핏 불일치 ↘</text>
+                    </svg>
                 </div>
-                <div class="fragment fade-up" style="background:rgba(22,163,74,0.1); padding:15px; border-radius:12px; width:60%; text-align:center; font-weight:800; border-bottom:5px solid #16A34A;">
+                <div class="fragment fade-up" style="background:rgba(22,163,74,0.1); padding:20px; border-radius:16px; width:75%; text-align:center; font-weight:800; border-bottom:5px solid #16A34A; font-size: 1.1em;">
                    현업 적용 및 성과<br>(Workflow / 70%)
                 </div>
              </div>
@@ -310,8 +310,8 @@
           <div class="body-crop-b2" style="margin-top: 4%; gap:4%;">
 
             <div class="fragment fade-right" style="background:#f8f9fa; border:1px solid #E5E8F5; border-radius:16px; padding:4% 6%; text-align:center; position:relative;">
-              <div style="font-size:1.5em; font-weight:800; color:#FF644E; margin-bottom:1em;">[ Before — 기존 방식 ]</div>
-              <ul style="text-align:left; font-size:1em; line-height:1.8; color:#555; list-style:none; padding:0; margin-bottom:1.5em;">
+              <div style="font-size:1.6em; font-weight:800; color:#FF644E; margin-bottom:1.2em; background:rgba(255,100,78,0.05); padding:15px; border-radius:12px; display:inline-block;">[ Before — 기존 방식 ]</div>
+              <ul style="text-align:left; font-size:1.1em; line-height:2; color:#333; list-style:none; padding:0; margin-bottom:2em;">
                 <li>😔 내부 개발자 의뢰 → 대기 → 우선순위 밀림</li>
                 <li>😔 외주 업체 → 비용 견적 → 기간 협의</li>
                 <li>😔 지인 도움 → 눈치 보임 → 원하는 대로 안 나옴</li>
@@ -472,22 +472,23 @@
       <section data-background-color="#FFFFFF" data-chapter="ch2">
         <div class="slide-body">
           <div class="body-title">방법론의 전환: ISD에서 Agile L&D로</div>
-          <div style="display:flex; flex-direction:column; justify-content:center; height:80%;">
-            <div class="theory-comparison">
-              <div class="theory-box">
-                <h4 style="color:#666;">전통적 ISD (ADDIE)</h4>
-                <p style="font-size:0.8em; line-height:1.6; color:#777;">분석 ➔ 설계 ➔ 개발 ➔ 실행 ➔ 평가</p>
-                <div style="margin-top:1em; font-weight:700; color:#888;">"완벽한 설계 후 구축"</div>
+          <div style="display:flex; flex-direction:column; justify-content:center; height:85%; padding: 0 100px;">
+            <blockquote style="font-size:1.5em; border-left: 10px solid var(--wanted-accent1); padding: 25px 50px; background: #f8f9fa; border-radius: 0 24px 24px 0; margin-bottom: 60px; font-weight: 700; color: var(--wanted-dark);">
+              "Learning in the Flow of Work를 실현하는<br>가장 실천적인 방식은 바이브 코딩입니다."
+            </blockquote>
+            
+            <div style="display:flex; align-items:stretch; gap:30px;">
+              <div style="flex:1; padding:50px; border: 1px solid #ddd; border-radius: 24px; text-align:center;">
+                <h4 style="color:#888; font-size:1.4em; font-weight:700;">전통적 ISD (ADDIE)</h4>
+                <p style="font-size:1.1em; line-height:1.6; color:#777; margin-top:1.5em;">분석 ➔ 설계 ➔ 개발 ➔ 실행 ➔ 평가</p>
+                <div style="margin-top:2em; font-weight:800; color:#999; font-size:1.3em;">"완벽한 설계 후 구축"</div>
               </div>
-              <div class="theory-arrow">VS</div>
-              <div class="theory-box highlight">
-                <h4 style="color:var(--wanted-accent1);">바이브 코딩 (Agile)</h4>
-                <p style="font-size:0.8em; line-height:1.6; color:var(--wanted-dark);">문제 발견 ➔ 즉시 구현 ➔ 현장 피드백 ➔ 반복 개선</p>
-                <div style="margin-top:1em; font-weight:700; color:var(--wanted-accent1);">"시도하며 완성해가는 경험"</div>
+              <div style="display:flex; align-items:center; font-weight:900; color:#ccc; font-size:1.5em;">VS</div>
+              <div style="flex:1; padding:50px; border: 3px solid var(--wanted-accent1); border-radius: 24px; background: rgba(0,162,255,0.03); box-shadow: 0 15px 40px rgba(0,162,255,0.08); text-align:center;">
+                <h4 style="color:var(--wanted-accent1); font-size:1.5em; font-weight:800;">바이브 코딩 (Agile)</h4>
+                <p style="font-size:1.2em; line-height:1.6; color:var(--wanted-dark); font-weight:700; margin-top:1.5em;">문제 발견 ➔ 즉시 구현 ➔ 현장 피드백 ➔ 반복 개선</p>
+                <div style="margin-top:2em; font-weight:900; color:var(--wanted-accent1); font-size:1.4em;">"시도하며 완성해가는 경험"</div>
               </div>
-            </div>
-            <div style="margin-top:3em; text-align:center;">
-              <p style="font-size:1.2em; color:#555;">Josh Bersin의 <strong style="color:var(--wanted-dark);">"Learning in the Flow of Work"</strong>를 실현하는 가장 기술적이고 실천적인 방식입니다.</p>
             </div>
           </div>
         </div>
@@ -498,40 +499,40 @@
         <div class="slide-body">
           <div class="body-title">AI-Augmented ADDIE: 모델의 재발견</div>
           <div style="display:flex; justify-content:center; align-items:center; height:80%;">
-             <div style="position:relative; width:800px; height:800px; display:flex; justify-content:center; align-items:center;">
+             <div style="position:relative; width:850px; height:850px; display:flex; justify-content:center; align-items:center;">
                 <!-- Center Core -->
-                <div style="width:280px; height:280px; background:var(--wanted-dark); border-radius:50%; display:flex; align-items:center; text-align:center; color:#fff; z-index:10; box-shadow:0 0 50px rgba(0,0,0,0.1);">
-                   <div style="width:100%; font-size:1.4em; font-weight:800;">AI-Augmented<br><span style="color:var(--wanted-accent1);">ADDIE</span></div>
+                <div style="width:320px; height:320px; background:var(--wanted-dark); border-radius:50%; display:flex; align-items:center; text-align:center; color:#fff; z-index:10; box-shadow:0 0 50px rgba(0,0,0,0.2); border: 8px solid rgba(0,162,255,0.3);">
+                   <div style="width:100%; font-size:1.6em; font-weight:800; line-height:1.2;">AI-Augmented<br><span style="color:var(--wanted-accent1);">ADDIE</span></div>
                 </div>
                 <!-- Orbit Items -->
-                <div class="fragment fade-up" style="position:absolute; top:20px; text-align:center; width:300px;">
-                   <div style="background:#f4f7ff; padding:1.5em; border-radius:16px; border:1px solid #d0d9ff;">
-                      <strong style="color:var(--wanted-accent1);">A (분석)</strong>
-                      <p style="font-size:0.8em; margin-top:0.5em; color:#555;">학습 데이터 AI 분석 ➔<br>실시간 니즈/페인포인트 도출</p>
+                <div class="fragment fade-up" style="position:absolute; top:20px; text-align:center; width:340px;">
+                   <div style="background:#f4f7ff; padding:2em; border-radius:24px; border:2px solid #d0d9ff; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+                      <strong style="color:var(--wanted-accent1); font-size:1.15em;">A (분석)</strong>
+                      <p style="font-size:1em; margin-top:0.5em; color:#333; font-weight:700;">학습 데이터 AI 분석 ➔<br>실시간 니즈 도출</p>
                    </div>
                 </div>
-                <div class="fragment fade-up" style="position:absolute; right:-150px; top:250px; text-align:left; width:300px;">
-                   <div style="background:#f4f7ff; padding:1.5em; border-radius:16px; border:1px solid #d0d9ff;">
-                      <strong style="color:var(--wanted-accent1);">D (설계)</strong>
-                      <p style="font-size:0.8em; margin-top:0.5em; color:#555;">AI 기반 모듈 구성 ➔<br>코스 웨어 및 평가 요소 설계</p>
+                <div class="fragment fade-up" style="position:absolute; right:-180px; top:250px; text-align:left; width:340px;">
+                   <div style="background:#f4f7ff; padding:2em; border-radius:24px; border:2px solid #d0d9ff; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+                      <strong style="color:var(--wanted-accent1); font-size:1.15em;">D (설계)</strong>
+                      <p style="font-size:1em; margin-top:0.5em; color:#333; font-weight:700;">AI 기반 모듈 구성 ➔<br>코스 웨어 및 평가 설계</p>
                    </div>
                 </div>
-                <div class="fragment fade-up" style="position:absolute; right:50px; bottom:20px; text-align:left; width:300px;">
-                   <div style="background:#f4f7ff; padding:1.5em; border-radius:16px; border:1px solid #d0d9ff;">
-                      <strong style="color:var(--wanted-accent1);">D (개발)</strong>
-                      <p style="font-size:0.8em; margin-top:0.5em; color:#555;">바이브 코딩 ➔<br>프로토타입 즉시 제작 및 배포</p>
+                <div class="fragment fade-up" style="position:absolute; right:40px; bottom:-20px; text-align:left; width:340px;">
+                   <div style="background:#f4f7ff; padding:2em; border-radius:24px; border:2px solid #d0d9ff; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+                      <strong style="color:var(--wanted-accent1); font-size:1.15em;">D (개발)</strong>
+                      <p style="font-size:1em; margin-top:0.5em; color:#333; font-weight:700;">바이브 코딩 ➔<br>프로토타입 즉시 제작</p>
                    </div>
                 </div>
-                <div class="fragment fade-up" style="position:absolute; left:50px; bottom:20px; text-align:right; width:300px;">
-                   <div style="background:#f4f7ff; padding:1.5em; border-radius:16px; border:1px solid #d0d9ff;">
-                      <strong style="color:var(--wanted-accent1);">I (실행)</strong>
-                      <p style="font-size:0.8em; margin-top:0.5em; color:#555;">AI 튜터 기반의 실시간<br>개별화된 피드백 루프</p>
+                <div class="fragment fade-up" style="position:absolute; left:40px; bottom:-20px; text-align:right; width:340px;">
+                   <div style="background:#f4f7ff; padding:2em; border-radius:24px; border:2px solid #d0d9ff; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+                      <strong style="color:var(--wanted-accent1); font-size:1.15em;">I (실행)</strong>
+                      <p style="font-size:1em; margin-top:0.5em; color:#333; font-weight:700;">AI 튜터 기반의<br>개별화 피드백 루프</p>
                    </div>
                 </div>
-                <div class="fragment fade-up" style="position:absolute; left:-150px; top:250px; text-align:right; width:300px;">
-                   <div style="background:#f4f7ff; padding:1.5em; border-radius:16px; border:1px solid #d0d9ff;">
-                      <strong style="color:var(--wanted-accent1);">E (평가)</strong>
-                      <p style="font-size:0.8em; margin-top:0.5em; color:#555;">성과 데이터 초개인화 분석 ➔<br>다음 학습 경로 추천</p>
+                <div class="fragment fade-up" style="position:absolute; left:-180px; top:250px; text-align:right; width:340px;">
+                   <div style="background:#f4f7ff; padding:2em; border-radius:24px; border:2px solid #d0d9ff; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+                      <strong style="color:var(--wanted-accent1); font-size:1.15em;">E (평가)</strong>
+                      <p style="font-size:1em; margin-top:0.5em; color:#333; font-weight:700;">성과 데이터 자동 분석 ➔<br>다음 학습 경로 추천</p>
                    </div>
                 </div>
              </div>
@@ -542,24 +543,27 @@
       <!-- 보강: HRD 메이커 5대 핵심 역량 (이미지 1 반영) -->
       <section data-background-color="#FFFFFF" data-chapter="ch2">
         <div class="slide-body">
-          <div class="body-title">HRD 메이커의 5대 핵심 역량</div>
+          <div class="body-title">HRD 메이거의 5대 핵심 역량</div>
           <div style="display:flex; align-items:center; justify-content:space-around; height:80%;">
              <!-- Radar Chart Sim (CSS) -->
              <div style="position:relative; width:500px; height:500px; background:radial-gradient(circle, #eee 1%, transparent 1%) 0 0 / 50px 50px; border-radius:50%; border:1px solid #eee; display:flex; justify-content:center; align-items:center;">
                 <svg viewBox="0 0 200 200" style="width:100%; height:100%; transform:rotate(-18deg);">
                    <polygon points="100,20 176,75 147,165 53,165 24,75" fill="rgba(22, 231, 207, 0.2)" stroke="var(--wanted-accent1)" stroke-width="2" />
-                   <circle cx="100" cy="20" r="4" fill="var(--wanted-accent1)" />
-                   <circle cx="176" cy="75" r="4" fill="var(--wanted-accent1)" />
-                   <circle cx="147" cy="165" r="4" fill="var(--wanted-accent1)" />
-                   <circle cx="53" cy="165" r="4" fill="var(--wanted-accent1)" />
-                   <circle cx="24" cy="75" r="4" fill="var(--wanted-accent1)" />
+                   <!-- Vertices with Letters -->
+                   <g>
+                     <circle cx="100" cy="20" r="10" fill="var(--wanted-accent1)" /><text x="100" y="24" font-size="12" fill="#fff" text-anchor="middle" font-weight="900">T</text>
+                     <circle cx="176" cy="75" r="10" fill="var(--wanted-accent1)" /><text x="176" y="79" font-size="12" fill="#fff" text-anchor="middle" font-weight="900">C</text>
+                     <circle cx="147" cy="165" r="10" fill="var(--wanted-accent1)" /><text x="147" y="169" font-size="12" fill="#fff" text-anchor="middle" font-weight="900">F</text>
+                     <circle cx="53" cy="165" r="10" fill="var(--wanted-accent1)" /><text x="53" y="169" font-size="12" fill="#fff" text-anchor="middle" font-weight="900">C</text>
+                     <circle cx="24" cy="75" r="10" fill="var(--wanted-accent1)" /><text x="24" y="79" font-size="12" fill="#fff" text-anchor="middle" font-weight="900">D</text>
+                   </g>
                 </svg>
-                <!-- Labels -->
-                <div style="position:absolute; top:-20px; font-weight:800; color:var(--wanted-dark);">Thinking<br><span style="font-size:0.75em; color:#888;">전략적 문제 정의</span></div>
-                <div style="position:absolute; right:-80px; top:180px; font-weight:800; color:var(--wanted-dark);">Context<br><span style="font-size:0.75em; color:#888;">맥락적 정보 제공</span></div>
-                <div style="position:absolute; right:20px; bottom:20px; font-weight:800; color:var(--wanted-dark);">Framework<br><span style="font-size:0.75em; color:#888;">아키텍처 인식</span></div>
-                <div style="position:absolute; left:20px; bottom:20px; font-weight:800; color:var(--wanted-dark);">Checkpoint<br><span style="font-size:0.75em; color:#888;">버전 관리</span></div>
-                <div style="position:absolute; left:-80px; top:180px; font-weight:800; color:var(--wanted-dark);">Debugging<br><span style="font-size:0.75em; color:#888;">협업 오류 조율</span></div>
+                <!-- Labels positioned closer to vertices -->
+                <div style="position:absolute; top:35px; font-weight:800; color:var(--wanted-dark); white-space:nowrap;"><span style="color:var(--wanted-accent1); font-size:1.2em; margin-right:5px;">T</span>Thinking <span style="font-size:0.8em; color:#888;">(문제 정의)</span></div>
+                <div style="position:absolute; right:15px; top:200px; text-align:left; font-weight:800; color:var(--wanted-dark); white-space:nowrap;"><span style="color:var(--wanted-accent1); font-size:1.2em; margin-right:5px;">C</span>Context <span style="font-size:0.8em; color:#888;">(조직 맥락)</span></div>
+                <div style="position:absolute; right:120px; bottom:80px; font-weight:800; color:var(--wanted-dark); white-space:nowrap;"><span style="color:var(--wanted-accent1); font-size:1.2em; margin-right:5px;">F</span>Framework <span style="font-size:0.8em; color:#888;">(구조 설계)</span></div>
+                <div style="position:absolute; left:120px; bottom:80px; font-weight:800; color:var(--wanted-dark); white-space:nowrap;"><span style="color:var(--wanted-accent1); font-size:1.2em; margin-right:5px;">C</span>Checkpoint <span style="font-size:0.8em; color:#888;">(이정표 설정)</span></div>
+                <div style="position:absolute; left:15px; top:200px; text-align:right; font-weight:800; color:var(--wanted-dark); white-space:nowrap;"><span style="color:var(--wanted-accent1); font-size:1.2em; margin-right:5px;">D</span>Debugging <span style="font-size:0.8em; color:#888;">(지속 개선)</span></div>
              </div>
              
              <div style="width:40%; padding:3em; background:#f9f9f9; border-radius:24px;">
@@ -571,60 +575,52 @@
              </div>
           </div>
         </div>
+      </section>
       <section data-background-color="#FFFFFF" data-chapter="ch2">
         <div class="slide-body">
-          <div class="body-title">우리는 이미 '바이브 코더'의 DNA를 가지고 있습니다</div>
-          <div style="display:flex; justify-content:center; align-items:center; height:80%; gap:4em;">
+          <div class="body-title">이미 우리 안에 있는 '메이커'의 DNA</div>
+          <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:90%; gap:30px; padding:0 80px;">
              
-             <!-- DNA Mapping (이미지 2 반영) -->
-             <div style="display:flex; flex-direction:column; gap:1.5em; flex:1;">
-                <!-- Thinking -->
-                <div class="fragment fade-right" style="display:flex; align-items:center; gap:1em;">
-                   <div style="width:140px; height:80px; border-radius:40px; background:rgba(255,100,78,0.2); border:2px solid #FF644E; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.2;">
-                      <strong style="color:var(--wanted-dark);">Thinking</strong><br><span style="font-size:0.7em; color:#555;">(전략적 문제 정의)</span>
-                   </div>
-                   <div style="color:#aaa;">➔</div>
-                   <div style="flex:1; background:#f4f4f4; border-bottom:3px solid #FF644E; padding:1em; font-weight:700; color:#333;">
-                      현업 니즈 분석 및 문제 발굴 <span style="font-weight:400; font-size:0.8em; color:#777;">(Needs Analysis)</span>
-                   </div>
+             <div style="display:flex; gap:20px; width:100%; justify-content:center;">
+                <div class="fragment fade-up" style="flex:1; background:#f4f7ff; border:2px solid #d0d9ff; border-radius:20px; padding:20px; text-align:center;">
+                   <div style="background:var(--wanted-accent1); color:#fff; width:36px; height:36px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px; font-weight:800;">T</div>
+                   <h4 style="font-size:1em; margin-bottom:5px;">Thinking</h4>
+                   <p style="font-size:0.85em; color:#555; line-height:1.4;">니즈를 <strong>솔루션 아키텍처</strong>로 전환</p>
                 </div>
-                <!-- Framework -->
-                <div class="fragment fade-right" style="display:flex; align-items:center; gap:1em;">
-                   <div style="width:140px; height:80px; border-radius:40px; background:rgba(22,163,74,0.2); border:2px solid #16A34A; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.2;">
-                      <strong style="color:var(--wanted-dark);">Framework</strong><br><span style="font-size:0.7em; color:#555;">(아키텍처 인식)</span>
-                   </div>
-                   <div style="color:#aaa;">➔</div>
-                   <div style="flex:1; background:#f4f4f4; border-bottom:3px solid #16A34A; padding:1em; font-weight:700; color:#333;">
-                      ADDIE 기반의 학습 경험 설계 <span style="font-weight:400; font-size:0.8em; color:#777;">(Instructional Design)</span>
-                   </div>
+                <div class="fragment fade-up" style="flex:1; background:#f4f7ff; border:2px solid #d0d9ff; border-radius:20px; padding:20px; text-align:center;">
+                   <div style="background:var(--wanted-accent1); color:#fff; width:36px; height:36px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px; font-weight:800;">C</div>
+                   <h4 style="font-size:1em; margin-bottom:5px;">Context</h4>
+                   <p style="font-size:0.85em; color:#555; line-height:1.4;">조직의 언어를 <strong>프롬프트</strong>로 변환</p>
                 </div>
-                <!-- Context -->
-                <div class="fragment fade-right" style="display:flex; align-items:center; gap:1em;">
-                   <div style="width:140px; height:80px; border-radius:40px; background:rgba(255,217,50,0.3); border:2px solid #FFD932; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.2;">
-                      <strong style="color:var(--wanted-dark);">Context</strong><br><span style="font-size:0.7em; color:#555;">(정보 제공)</span>
-                   </div>
-                   <div style="color:#aaa;">➔</div>
-                   <div style="flex:1; background:#f4f4f4; border-bottom:3px solid #FFD932; padding:1em; font-weight:700; color:#333;">
-                      우리 조직만의 핵심가치와 상황 파악 <span style="font-weight:400; font-size:0.8em; color:#777;">(Org. Context)</span>
-                   </div>
-                </div>
-                <!-- Debugging -->
-                <div class="fragment fade-right" style="display:flex; align-items:center; gap:1em;">
-                   <div style="width:140px; height:80px; border-radius:40px; background:rgba(0,162,255,0.2); border:2px solid #00A2FF; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.2;">
-                      <strong style="color:var(--wanted-dark);">Debugging</strong><br><span style="font-size:0.7em; color:#555;">(협업 오류 해결)</span>
-                   </div>
-                   <div style="color:#aaa;">➔</div>
-                   <div style="flex:1; background:#f4f4f4; border-bottom:3px solid #00A2FF; padding:1em; font-weight:700; color:#333;">
-                      성과 피드백 및 코칭 <span style="font-weight:400; font-size:0.8em; color:#777;">(Feedback & Coaching)</span>
-                   </div>
+                <div class="fragment fade-up" style="flex:1; background:#f4f7ff; border:2px solid #d0d9ff; border-radius:20px; padding:20px; text-align:center;">
+                   <div style="background:var(--wanted-accent1); color:#fff; width:36px; height:36px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px; font-weight:800;">F</div>
+                   <h4 style="font-size:1em; margin-bottom:5px;">Framework</h4>
+                   <p style="font-size:0.85em; color:#555; line-height:1.4;">모델을 <strong>실행 가능한 앱</strong>으로 가시화</p>
                 </div>
              </div>
 
-          </div>
-          <div class="fragment fade-up" style="text-align:center; margin-top:2em; background:rgba(22,163,74,0.1); padding:1em; border-radius:12px; border:1px solid #16A34A;">
-             <p style="font-size:1.2em; font-weight:800; color:var(--wanted-dark); margin:0;">
-                바이브 코딩은 새로운 기술을 배우는 것이 아닙니다.<br>HRD가 가장 잘하던 <span style="color:#16A34A;">'문제 발견, 설계, 피드백'</span> 역량을 소프트웨어로 실체화하는 무기일 뿐입니다.
-             </p>
+             <div style="width:100%; height:2px; background:linear-gradient(to right, #00A2FF, #16E7CF); position:relative;">
+                <div style="position:absolute; left:50%; transform:translateX(-50%) translateY(-20px); font-size:0.7em; font-weight:800; color:#888;">AI-Powered Workflow Integration</div>
+             </div>
+
+             <div style="display:flex; gap:20px; width:70%; justify-content:center;">
+                <div class="fragment fade-up" style="flex:1; background:#fff9e6; border:2px solid #ffeeb3; border-radius:20px; padding:20px; text-align:center;">
+                   <div style="background:var(--wanted-accent4); color:#fff; width:36px; height:36px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px; font-weight:800;">C</div>
+                   <h4 style="font-size:1em; margin-bottom:5px;">Checkpoint</h4>
+                   <p style="font-size:0.85em; color:#555; line-height:1.4;">운영을 넘어 <strong>제품의 이정표</strong> 수립</p>
+                </div>
+                <div class="fragment fade-up" style="flex:1; background:#f0fff4; border:2px solid #bbf7d0; border-radius:20px; padding:20px; text-align:center;">
+                   <div style="background:var(--wanted-accent3); color:#fff; width:36px; height:36px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px; font-weight:800;">D</div>
+                   <h4 style="font-size:1em; margin-bottom:5px;">Debugging</h4>
+                   <p style="font-size:0.85em; color:#555; line-height:1.4;">피드백을 <strong>즉시 도구 고도화</strong>에 정렬</p>
+                </div>
+             </div>
+
+             <div class="fragment fade-up" style="width:100%; background:rgba(0,162,255,0.05); padding:20px; border-radius:16px; border-left:5px solid var(--wanted-accent1);">
+                <p style="font-size:1.1em; font-weight:700; color:var(--wanted-dark); text-align:center; margin:0;">
+                   바이브 코딩은 새로운 기술을 배우는 것이 아닙니다.<br>HRD가 가장 잘하던 <span style="color:var(--wanted-accent1);">'문제 발견, 설계, 피드백'</span> 역량을 소프트웨어로 실체화하는 무기입니다.
+                </p>
+             </div>
           </div>
         </div>
       </section>
@@ -775,19 +771,19 @@
         <div class="slide-body">
           <div class="body-title">대표 사례 1: KAC 서류 점검 → 모의고사</div>
           
-          <div style="display:flex; justify-content:center; align-items:center; height:60%; gap:3em;">
-            <div class="fragment fade-right" style="background:#f8f9fa; padding:3em; border-radius:24px; border:2px solid #E5E8F5; text-align:center; width:450px;">
-              <div style="font-size:4em; margin-bottom:0.2em;">📋</div>
+          <div style="display:flex; justify-content:center; align-items:center; height:65%; gap:3em;">
+            <div class="fragment fade-right" style="background:#f8f9fa; padding:2.5em; border-radius:24px; border:2px solid #E5E8F5; text-align:center; width:450px;">
+              <div style="font-size:3.5em; margin-bottom:0.2em;">📋</div>
               <div style="font-size:1.2em; font-weight:800; color:var(--wanted-dark); margin-bottom:1em; background:#E5E8F5; display:inline-block; padding:5px 15px; border-radius:20px;">STEP 1: 서류 점검</div>
-              <p style="font-size:1.1em; color:#555; line-height:1.6;">자격 취득 선결조건인 코칭 로그와<br>과제 기준을 업로드 즉시 확인합니다.</p>
+              <p style="font-size:1.1em; color:#555; line-height:1.5;">자격 취득 선결조건인 코칭 로그와<br>과제 기준을 업로드 즉시 확인합니다.</p>
             </div>
             
             <div class="fragment fade-up" style="font-size:3em; color:#00A2FF;">➔</div>
             
-            <div class="fragment fade-left" style="background:rgba(0,162,255,0.05); padding:3em; border-radius:24px; border:2px solid #00A2FF; text-align:center; width:450px;">
-              <div style="font-size:4em; margin-bottom:0.2em;">📝</div>
+            <div class="fragment fade-left" style="background:rgba(0,162,255,0.05); padding:2.5em; border-radius:24px; border:2px solid #00A2FF; text-align:center; width:450px;">
+              <div style="font-size:3.5em; margin-bottom:0.2em;">📝</div>
               <div style="font-size:1.2em; font-weight:800; color:#00A2FF; margin-bottom:1em; background:#e6f4ff; display:inline-block; padding:5px 15px; border-radius:20px;">STEP 2: 모의고사</div>
-              <p style="font-size:1.1em; color:#333; line-height:1.6;">시험 환경과 유사한 문제 풀이로<br>부족한 지점을 스스로 자각합니다.</p>
+              <p style="font-size:1.1em; color:#333; line-height:1.5;">시험 환경과 유사한 문제 풀이로<br>부족한 지점을 스스로 자각합니다.</p>
             </div>
           </div>
           
@@ -1004,6 +1000,9 @@
                 <div style="padding:15px; border-radius:8px; background:#E5E8F5; text-align:center; font-weight:700;">4. 결과물 확인 (수정 거의 불가)</div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch4">
         <div class="slide-body">
@@ -1165,9 +1164,9 @@
         </div>
       </section>
 
-      <section data-background-color="#FFFFFF" data-chapter="ch5">
 
       <section data-background-color="#FFFFFF" data-chapter="ch5">
+
         <div class="slide-body">
           <div class="body-title">가장 큰 장벽: "내가 어떻게 해..."</div>
           <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:80%; text-align:center;">
