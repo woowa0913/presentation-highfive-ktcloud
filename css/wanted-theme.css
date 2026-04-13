@@ -237,7 +237,7 @@
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
-  padding: 0;
+  padding: 0 0 5% 0;
   background: var(--wanted-white);
 }
 .slide-body .body-title {
