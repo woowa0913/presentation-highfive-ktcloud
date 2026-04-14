@@ -38,6 +38,16 @@
 
 ## 버전 이력
 
+### v2.1 — 2026-04-14
+**feat: CH3 시작점에 실시간 밸런스게임 슬라이드 추가**
+- CH3 간지 직후(25p → 26p로 이동, 밸런스게임이 25p가 됨) 새 슬라이드 삽입
+- Mac 브라우저 프레임 (빨강/노랑/초록 dot + URL 바)
+- 빨강/초록 dot 클릭 시 `window.open()`으로 새 창 열기
+- iframe: https://kt-cloud-balance-game.vercel.app/
+- 타이틀: "실시간 밸런스게임 — 여러분의 생각은?"
+- MONOLITH 라이트 모드 + LIVE INTERACTION 칩
+- 총 슬라이드 수: 50 → 51
+
 ### v2.0 — 2026-04-14
 **design: MONOLITH 디자인으로 본문 36슬라이드 완전 재작성 (Stitch 기반)**
 
