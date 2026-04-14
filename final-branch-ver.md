@@ -15,7 +15,7 @@
 - gemini 기준 원본 링크: `https://presentationvibe-git-gemini-woowa0913s-projects.vercel.app`
 - final 브랜치 링크: `https://presentationvibe-git-final-woowa0913s-projects.vercel.app`
 - preview 배포는 푸시마다 갱신되므로 기록 기준은 branch alias 링크로 유지한다.
-- 마지막 확인 시각: 2026-04-14 21:08 KST
+- 마지막 확인 시각: 2026-04-14 21:16 KST
 - Vercel 프로젝트: `presentation_vibe`
 
 ## 3. 현재 상태
@@ -226,6 +226,12 @@
 - 32페이지 `KAC 사례의 임팩트` 상단/하단 카드 폭을 넓히고 설명 텍스트 크기를 소폭 줄여 줄바꿈을 최소화
 - 34페이지는 브라우저 바의 `disc-coaching-analyzer.vercel.app` 주소 텍스트를 제거하고, 우측 상단에 `DISC 앱 데모` 버튼을 배치
 - 34페이지 좌측 이미지는 클릭 시 확대 가능하게 하고, 슬라이드에서 `다음` 입력 시 해당 영역이 실제 `https://disc-coaching-analyzer.vercel.app/` 앱 iframe으로 전환되도록 상태형 인터랙션을 추가
+
+### v1.5.4 (2026-04-14) - 34페이지 DISC 스냅샷 복원 및 앱 확대
+
+- 34페이지 첫 화면의 좌측 이미지를 로컬 PNG가 아니라 이전에 사용하던 Google 링크 기반 슬랙 메시지 이미지로 복원
+- 스냅샷 하단에 함께 보이던 앱 일부가 노출되지 않도록 원래 메시지 이미지 기준으로 정리
+- `다음` 입력 후 노출되는 DISC 앱 iframe은 세로 높이를 더 키우고 화면 자체를 확대해 카드 안에서 더 꽉 차게 보이도록 조정
 
 ## 5. 운영 규칙
 

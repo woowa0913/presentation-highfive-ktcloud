@@ -3814,6 +3814,19 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   background: #fff;
 }
 
+.case-disc-browser[data-disc-case-state="app"] {
+  min-height: 660px !important;
+}
+
+.case-disc-browser[data-disc-case-state="app"] .case-disc-screen iframe {
+  min-height: 600px;
+  width: calc(100% / 1.14);
+  height: calc(100% / 1.14);
+  transform: scale(1.14);
+  transform-origin: top center;
+  margin: 0 auto;
+}
+
 .case-disc-browser[data-disc-case-state="snapshot"] iframe {
   display: none;
 }
