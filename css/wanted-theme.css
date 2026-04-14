@@ -3473,6 +3473,49 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   border-color: rgba(255, 255, 255, 0.14);
 }
 
+.case-link-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.case-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.case-preview-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.case-preview-tile img {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(70, 84, 120, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.case-preview-tile span {
+  font-size: 0.72em;
+  font-weight: 800;
+  color: var(--stitch-blue-deep);
+  text-align: center;
+}
+
+.case-preview-tile:hover img {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+}
+
 .reframe-divider {
   height: 1px;
   background: linear-gradient(90deg, rgba(51, 99, 255, 0.24), rgba(51, 99, 255, 0));
