@@ -3509,3 +3509,460 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   .demo-container iframe { display: none; }
   .demo-container .demo-fallback { display: block; }
 }
+
+/* ========================================
+   Chapter 02 / 04 refinements
+   ======================================== */
+.structural-limits-slide .body-title,
+.old-new-slide .body-title,
+.maker-evolution-slide .body-title,
+.methodology-shift-slide .body-title,
+.addie-stack-slide .body-title,
+.balance-game-live-slide .body-title {
+  margin-bottom: 28px;
+}
+
+.structural-limits-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 34px;
+  min-height: 78%;
+  padding: 10px 120px 10px 84px;
+}
+
+.structural-limit-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.structural-limit-emoji {
+  width: 92px;
+  text-align: center;
+  font-size: 3.2em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.structural-limit-copy strong {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 1.54em;
+  font-weight: 800;
+  color: var(--wanted-dark);
+}
+
+.structural-limit-copy .accent-line {
+  color: var(--stitch-blue);
+  border-bottom: 4px solid rgba(51, 99, 255, 0.4);
+  padding-bottom: 4px;
+}
+
+.structural-limit-copy span {
+  display: block;
+  font-size: 1.12em;
+  line-height: 1.68;
+  color: #5d6376;
+}
+
+.old-new-slide .reframe-stage {
+  justify-content: center;
+}
+
+.old-new-compare {
+  align-items: stretch;
+  gap: 34px;
+}
+
+.old-new-panel {
+  min-height: 640px;
+  padding: 52px 46px;
+}
+
+.old-new-panel .reframe-compare-badge {
+  font-size: 0.82em;
+}
+
+.old-new-panel .reframe-heading {
+  font-size: 1.72em;
+  line-height: 1.28;
+  margin-bottom: 18px;
+}
+
+.old-new-panel .reframe-copy {
+  font-size: 1.02em;
+  line-height: 1.72;
+  margin-bottom: 22px;
+}
+
+.old-new-panel .reframe-list {
+  gap: 16px;
+}
+
+.old-new-panel .reframe-list-item {
+  font-size: 0.96em;
+  min-height: 70px;
+}
+
+.maker-evolution-stage {
+  gap: 26px;
+}
+
+.maker-evolution-intro {
+  max-width: 1420px;
+}
+
+.maker-evolution-intro .reframe-heading {
+  font-size: 1.18em;
+}
+
+.maker-role-grid {
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr 56px 1fr 56px 1.2fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+.maker-role-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 520px;
+  padding: 34px 28px 30px;
+  text-align: center;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(51, 99, 255, 0.12);
+  box-shadow: var(--stitch-shadow);
+}
+
+.maker-role-card.is-maker {
+  background: linear-gradient(180deg, #f6faff 0%, #eef5ff 100%);
+  border: 2px solid rgba(51, 99, 255, 0.42);
+  box-shadow: 0 26px 60px rgba(51, 99, 255, 0.12);
+}
+
+.maker-role-number {
+  width: 58px;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #ecf0fb;
+  color: #7f87a0;
+  font-size: 0.98em;
+  font-weight: 900;
+}
+
+.maker-role-number.is-maker {
+  background: var(--stitch-blue);
+  color: #fff;
+}
+
+.maker-role-card .reframe-heading {
+  font-size: 1.38em;
+  margin-bottom: 0;
+}
+
+.maker-role-card.is-maker .reframe-heading {
+  color: var(--stitch-blue);
+}
+
+.maker-role-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #424a5e;
+  font-size: 0.98em;
+  line-height: 1.56;
+  font-weight: 600;
+}
+
+.maker-role-foot {
+  font-size: 0.78em;
+  font-weight: 800;
+  color: #98a0b4;
+}
+
+.maker-role-foot.is-maker {
+  color: var(--stitch-blue);
+}
+
+.maker-role-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8em;
+  font-weight: 300;
+  color: #c6cbda;
+}
+
+.maker-role-arrow.active {
+  color: var(--stitch-blue);
+}
+
+.maker-evolution-quote {
+  padding: 24px 34px;
+  border-radius: 24px;
+  background: rgba(51, 99, 255, 0.08);
+  border-left: 4px solid var(--stitch-blue);
+  font-size: 1.08em;
+  font-weight: 800;
+  color: var(--wanted-dark);
+  text-align: center;
+}
+
+.methodology-key-message {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0 56px;
+}
+
+.methodology-key-message p {
+  color: var(--stitch-blue-deep);
+  font-size: 1.18em;
+  font-weight: 900;
+}
+
+.methodology-compare {
+  align-items: stretch;
+  gap: 28px;
+}
+
+.methodology-panel {
+  min-height: 500px;
+  justify-content: space-between;
+}
+
+.methodology-panel-label {
+  margin: 4px 0 8px;
+  font-size: 1em;
+  font-weight: 700;
+  color: #80879b;
+}
+
+.methodology-panel-label.is-blue {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.methodology-panel .reframe-heading {
+  font-size: 1.48em;
+}
+
+.methodology-stack {
+  flex: 1;
+}
+
+.methodology-stack .reframe-split-note {
+  min-height: 56px;
+  font-size: 0.88em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addie-stack-slide {
+  gap: 26px;
+}
+
+.addie-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: -4px;
+}
+
+.addie-title-row h3 {
+  margin: 0;
+  font-size: 1.18em;
+  font-weight: 800;
+  color: #485066;
+}
+
+.addie-title-icon {
+  font-size: 1.24em;
+}
+
+.addie-stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.addie-list-row {
+  display: grid;
+  grid-template-columns: 210px 1fr 110px;
+  align-items: stretch;
+  min-height: 132px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: var(--stitch-shadow);
+  border: 1px solid rgba(51, 99, 255, 0.08);
+}
+
+.addie-stage-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  background: linear-gradient(180deg, #f5f7fc 0%, #eef2fb 100%);
+  color: var(--stitch-blue);
+  font-size: 0.9em;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-right: 1px dashed rgba(51, 99, 255, 0.24);
+}
+
+.addie-stage-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 28px;
+}
+
+.addie-stage-copy strong {
+  font-size: 1.04em;
+  font-weight: 800;
+  color: var(--wanted-dark);
+}
+
+.addie-stage-copy span {
+  font-size: 0.84em;
+  line-height: 1.6;
+  color: #5c657a;
+}
+
+.addie-stage-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9em;
+  background: rgba(51, 99, 255, 0.04);
+  color: var(--stitch-blue-deep);
+}
+
+.addie-stage-icon.is-accent {
+  color: var(--stitch-blue);
+}
+
+.balance-game-live-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 82%;
+}
+
+.balance-game-live-intro {
+  max-width: 1360px;
+}
+
+.balance-game-live-intro .reframe-heading {
+  font-size: 1.18em;
+}
+
+.mac-demo-window {
+  display: flex;
+  flex-direction: column;
+  min-height: 720px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #f8fafc;
+  border: 1px solid rgba(26, 21, 56, 0.08);
+  box-shadow: 0 34px 90px rgba(15, 23, 42, 0.18);
+}
+
+.mac-demo-window:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+}
+
+.mac-demo-window:fullscreen .mac-demo-body {
+  min-height: calc(100vh - 68px);
+}
+
+.mac-demo-titlebar {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: linear-gradient(180deg, #eef3fb 0%, #e7edf7 100%);
+  border-bottom: 1px solid rgba(26, 21, 56, 0.08);
+}
+
+.mac-demo-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mac-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+}
+
+.mac-dot.is-close { background: #ff5f57; }
+.mac-dot.is-minimize { background: #febc2e; }
+.mac-dot.is-expand {
+  background: #28c840;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06) inset;
+}
+
+.mac-demo-address {
+  justify-self: center;
+  font-size: 0.74em;
+  font-weight: 800;
+  color: #667085;
+  letter-spacing: 0.02em;
+}
+
+.mac-demo-open {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(51, 99, 255, 0.1);
+  color: var(--stitch-blue-deep);
+  font-size: 0.68em;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.mac-demo-body {
+  position: relative;
+  min-height: 652px;
+  background: #ffffff;
+}
+
+.mac-demo-poster {
+  position: absolute;
+  inset: 0;
+  background: #ffffff url('../assets/balance-game-poster.png') center top / cover no-repeat;
+}
+
+.mac-demo-body iframe {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 652px;
+  border: 0;
+  background: #ffffff;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.mac-demo-window.is-loaded .mac-demo-body iframe { opacity: 1; }

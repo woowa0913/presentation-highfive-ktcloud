@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kt cloud Balance Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              kt: {
+                mint: '#2BC4C9', // Legacy support
+                black: '#1A1A1A',
+                gray: '#F5F5F5',
+                'dark-red': '#B8021E',
+                'dark-blue': '#005AAA',
+                'purple': '#AA50FF',
+                'dark-purple': '#6E1ECD',
+                'teal': '#00BEAC',
+                'dark-teal': '#00786E',
+                'brand-red': '#FE2E36' // For Logo
+              },
+              game: {
+                red: '#B8021E',
+                blue: '#005AAA',
+                green: '#005AAA' 
+              }
+            },
+            fontFamily: {
+              sans: ['Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes bounce-in {
+        0% { opacity: 0; transform: scale(0.8); }
+        50% { transform: scale(1.05); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes bounce-subtle {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.3s ease-in;
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 0.5s ease-out;
+      }
+      .animate-bounce-in {
+        animation: bounce-in 0.6s ease-out;
+      }
+      .animate-bounce-subtle {
+        animation: bounce-subtle 2s ease-in-out infinite;
+      }
+    </style>
+
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="./assets/index-BDy7LdNH.js"></script>
+</head>
+  <body class="bg-gray-50 text-gray-900">
+    <div id="root"></div>
+</body>
+</html>
