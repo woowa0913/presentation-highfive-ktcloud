@@ -2,7 +2,7 @@
 
 > 브랜치: `stich` (gemini 브랜치에서 분기)  
 > 배포 링크: https://presentationvibe-git-stich-woowa0913s-projects.vercel.app  
-> 마지막 업데이트: 2026-04-14
+> 마지막 업데이트: 2026-04-14 (v1.0)
 
 ---
 
@@ -37,6 +37,32 @@
 ---
 
 ## 버전 이력
+
+### v1.0 — 2026-04-14
+**design: MONOLITH 디자인 시스템 전면 적용 (Stitch 디자인 원칙 기반)**
+
+CSS 변경 (wanted-theme.css +417줄):
+- MONOLITH 디자인 토큰 추가 (다크: #000000/#3363FF, 라이트: #f7f9fd/#0047e4)
+- 폰트: Plus Jakarta Sans (헤드라인), Inter (본문), Noto Sans KR (한국어 폴백)
+- `.slide-body` 라이트 모드 오버라이드: #f7f9fd 배경, 깔끔한 카드 (soft shadow)
+- `.slide-body.dark` 다크 모드 오버라이드: #000000 배경, glass panel 카드
+- `.body-title::after` 데코레이티브 블루 라인 (다크에서 neon glow)
+- Progress bar: hover-only 표시 (opacity 0 → hover시 1), 2px, #3363FF
+- `.chapter-nav`: 더 어두운 glass panel, #3363FF active 색상
+- `.slide-impact-wrap`: 다크 배경 + neon 블루 넘버
+- 유틸리티: `.glass-panel`, `.neon-glow`, `.mono-chip`, `.mono-mesh-bg`, `.mono-ambient`
+
+HTML 변경 (index.html +593줄 -170줄):
+- Google Fonts (Plus Jakarta Sans, Inter, Material Symbols) 링크 추가
+- 라이트 본문 배경: #FFFFFF → #f7f9fd (28개 슬라이드)
+- 다크 본문 배경: #0a0a0a/#0a0a0f → #000000 (8개 슬라이드)
+- 임팩트 슬라이드 (95%): 라이트 → 다크 배경 전환
+- 다크 슬라이드 8개: `mono-mesh-bg` (메시 그라데이션), `glass-panel` (카드), `neon-glow` (강조)
+- 전체 본문 35개 슬라이드: `mono-chip` 카테고리 배지 추가 (ASPIRATION, CASE STUDY 등)
+- 인라인 accent 색상: var(--wanted-accent1) → #3363FF / var(--mono-neon)
+
+보호된 슬라이드 (변경 없음):
+- hero, title, 간지 (6개), index, closing (4개)
 
 ### v0.1 — 2026-04-14
 **chore: 브랜치 라벨 gemini → stich 변경**
