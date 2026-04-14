@@ -583,7 +583,7 @@
 
 .reveal .slides section[data-chapter="ch1"] .body-title::before { content: "Chapter 01 · Origin"; }
 .reveal .slides section[data-chapter="ch2"] .body-title::before { content: "Chapter 02 · Why Maker"; }
-.reveal .slides section[data-chapter="ch3"] .body-title::before { content: "Chapter 03 · Vibe Coding"; }
+.reveal .slides section[data-chapter="ch3"] .body-title::before { content: "Chapter 03 · HRD의 바이브 코딩"; }
 .reveal .slides section[data-chapter="ch4"] .body-title::before { content: "Chapter 04 · Case Study"; }
 .reveal .slides section[data-chapter="ch5"] .body-title::before { content: "Chapter 05 · Quickstart"; }
 .reveal .slides section[data-chapter="ch6"] .body-title::before { content: "Chapter 06 · Governance"; }
