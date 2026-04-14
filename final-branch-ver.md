@@ -335,6 +335,44 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.5.9 (2026-04-15) - 챕터 4/5 스왑 및 팀 확장 사례 추가
+
+### 현재 상태
+- 37페이지는 첨부 시안에 맞춰 좌측 카피 + 우측 `kt cloud HR Bot` 화면 중심으로 재구성했고, 기존 요약 카드는 제거했다.
+- 37페이지 우측 HR Bot 화면 클릭 시 가이드 모달이 계속 열리며, 모달 안에서는 가이드 3장을 넘겨볼 수 있다.
+- 38페이지는 설명 폰트 크기를 키우고, 각 미리보기 영역 hover 시 새 창으로 여는 전체화면 버튼이 나타나도록 바꿨다.
+- 38페이지 레이블은 `Onboarding & Culture 01/02/03` 형태로 수정했다.
+- 챕터 4와 챕터 5의 순서를 교체해, 이제 `개인 실험에서 팀의 방식으로`가 Chapter 04, `실제 사례 — HRD가 직접 만든 것들`이 Chapter 05로 노출된다.
+- `presentation_vibe_codex`의 18p, 19p, 20p 내용을 참고해 `혼자 만든 것이 아니라, 팀의 방식으로 진화 중이다`, `동료 사례`, `실패와 진화` 3장을 팀 섹션에 추가했다.
+
+### 변경 이력
+- `index.html`
+  - 37페이지를 Slack HR Bot 시안형 레이아웃으로 교체
+  - 38페이지 카드에 새 창 열기 버튼 추가 및 레이블 문구 수정
+  - 팀 확장 사례 3장 추가
+  - Reveal 초기화 전 Chapter 04/05 섹션 블록을 재배치하는 스크립트 추가
+  - 목차 04/05 항목 순서 교체
+- `css/wanted-theme.css`
+  - 37페이지 전용 브라우저/메시지 UI 스타일 추가
+  - 38페이지 카드 설명 타이포 및 hover 버튼 스타일 강화
+  - body title 상단 챕터 뱃지 문구를 새 순서에 맞게 조정
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4176`)에서 Playwright로 확인
+- 확인 항목
+  - 37페이지 레이아웃과 HR Bot 가이드 모달 오픈
+  - 38페이지 hover 전체화면 버튼 노출
+  - 챕터 4/5 간지 순서 교체
+- 확인 캡처
+  - `/tmp/check-slide-43-onboarding-bot.png`
+  - `/tmp/check-slide-43-guide-modal-loaded.png`
+  - `/tmp/check-slide-44-onboarding-tools-hover.png`
+  - `/tmp/check-slide-27-ch4-title.png`
+  - `/tmp/check-slide-34-ch5-title.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.5.8 (2026-04-15) - 온보딩/조직문화 36~38페이지 재구성
 
 ### 현재 상태

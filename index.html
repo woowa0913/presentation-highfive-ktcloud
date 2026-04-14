@@ -129,8 +129,8 @@
             만들고 싶었지만, 만들 수 없었던 시간들<br>
             왜 HRD는 메이커가 되어야 하는가<br>
             HRD의 바이브 코딩, 개념이 아니라 실행 방식<br>
-            실제 사례 — HRD가 직접 만든 것들<br>
             개인 실험에서 팀의 방식으로<br>
+            실제 사례 — HRD가 직접 만든 것들<br>
             지금의 도구가 사라져도 남는 것
           </div>
         </div>
@@ -1492,90 +1492,63 @@
       <section data-background-color="#eaf1ff" data-chapter="ch4" class="onboarding-bot-slide">
         <div class="slide-body">
           <div class="body-title">온보딩과 조직문화에도 적용했습니다.</div>
-          <div class="reframe-stage">
-            <div class="onboarding-bot-grid">
-              <div class="reframe-card onboarding-bot-copy">
-                <span class="reframe-eyebrow">kt cloud Practice 06</span>
-                <h3 class="reframe-heading">Slack HR 봇 자동화</h3>
-                <p class="reframe-copy">온보딩 프로세스를 자동화하여 리더와 구성원이 놓치지 않고 챙길 수 있도록 돕습니다. 시기별 알림과 가이드 자료를 Slack을 통해 자동으로 발송합니다.</p>
-                <div class="onboarding-bot-points">
-                  <div class="reframe-card is-blue onboarding-mini-card">
-                    <div class="reframe-stat-label">Trigger</div>
-                    <h4 class="reframe-heading">정해진 주차에 맞춰 필요한 대화를 자동 리마인드</h4>
-                  </div>
-                  <div class="reframe-card onboarding-mini-card">
-                    <div class="reframe-stat-label">Guide</div>
-                    <h4 class="reframe-heading">커피챗 질문지, 로그 작성 안내, 후속 액션까지 함께 전달</h4>
-                  </div>
-                  <div class="reframe-card is-mint onboarding-mini-card">
-                    <div class="reframe-stat-label">Outcome</div>
-                    <h4 class="reframe-heading">리더와 입사자가 놓치지 않고 같은 리듬으로 온보딩을 이어감</h4>
-                  </div>
-                </div>
+          <div class="reframe-stage onboarding-bot-stage">
+            <div class="onboarding-bot-split">
+              <div class="onboarding-bot-copy-simple">
+                <span class="onboarding-bot-practice">kt cloud Practice 06</span>
+                <h3>Slack HR 봇 자동화</h3>
+                <p>온보딩 프로세스를 자동화하여 리더와 구성원이 놓치지 않고 챙길 수 있도록 돕습니다. 시기별 알림과 가이드 자료를 Slack을 통해 자동으로 발송합니다.</p>
               </div>
 
-              <div class="reframe-card onboarding-bot-preview">
-                <div class="case-app-card-head onboarding-bot-head">
-                  <div>
-                    <span class="reframe-eyebrow">Workflow Preview</span>
-                    <h3 class="reframe-heading">Slack 메시지로 바로 실행되는 온보딩 리듬</h3>
-                  </div>
+              <button
+                type="button"
+                class="onboarding-bot-browser-simple"
+                data-onboarding-guide-open
+                aria-label="kt cloud HR Bot 가이드 열기">
+                <div class="onboarding-bot-browser-bar">
+                  <div class="reframe-browser-dots"><span></span><span></span><span></span></div>
+                  <strong>kt cloud HR Bot</strong>
+                  <span>APP</span>
                 </div>
-                <button
-                  type="button"
-                  class="reframe-browser onboarding-bot-browser"
-                  data-onboarding-guide-open
-                  aria-label="kt cloud HR Bot 가이드 열기">
-                  <div class="reframe-browser-bar">
-                    <div class="reframe-browser-dots"><span></span><span></span><span></span></div>
-                    <div class="reframe-stat-label">kt cloud HR Bot</div>
-                    <span class="onboarding-bot-launch">클릭하여 가이드 보기</span>
+                <div class="onboarding-bot-browser-body">
+                  <div class="onboarding-bot-browser-today">Today</div>
+                  <div class="onboarding-slack-row">
+                    <div class="onboarding-slack-icon">🤖</div>
+                    <div class="onboarding-slack-bubble">
+                      <div class="onboarding-slack-author">HR Bot</div>
+                      <p>👋 안녕하세요! kt cloud HR 봇입니다.</p>
+                    </div>
                   </div>
-                  <div class="reframe-browser-screen onboarding-bot-screen">
-                    <div class="onboarding-chat-app">
-                      <div class="onboarding-chat-sidebar">
-                        <div class="onboarding-chat-badge">HR</div>
-                        <div class="onboarding-chat-channel"># new-keller-onboarding</div>
-                        <div class="onboarding-chat-meta">자동 리마인드 워크플로우</div>
-                      </div>
-                      <div class="onboarding-chat-thread">
-                        <div class="onboarding-chat-message">
-                          <div class="onboarding-chat-avatar">HR</div>
-                          <div class="onboarding-chat-bubble">
-                            <strong>2주차 리더 커피챗 안내</strong>
-                            <p>이번 주 신규 입사자와 첫 커피챗을 진행해 주세요. 질문 가이드와 체크포인트를 함께 보냅니다.</p>
-                          </div>
-                        </div>
-                        <div class="onboarding-chat-message is-accent">
-                          <div class="onboarding-chat-avatar">HR</div>
-                          <div class="onboarding-chat-bubble">
-                            <strong>4주차 온보딩 로그 제출</strong>
-                            <p>신규 입사자가 지난 4주를 돌아보고 현재 적응 상태를 남길 수 있도록 로그 링크를 발송합니다.</p>
-                          </div>
-                        </div>
-                        <div class="onboarding-chat-message">
-                          <div class="onboarding-chat-avatar">HR</div>
-                          <div class="onboarding-chat-bubble">
-                            <strong>8주차 리마인드</strong>
-                            <p>2차 온보딩 로그와 후속 대화 포인트를 정리한 파일을 함께 공유합니다.</p>
-                            <div class="onboarding-chat-file">
-                              <span class="onboarding-chat-file-icon">PDF</span>
-                              <span>온보딩_리더가이드_체크리스트.pdf</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="onboarding-chat-message is-note">
-                          <div class="onboarding-chat-avatar">BOT</div>
-                          <div class="onboarding-chat-bubble">
-                            <strong>12주차 최종 1on1</strong>
-                            <p>최종 1on1 체크포인트와 회고 문항을 전달하며 온보딩을 마무리합니다.</p>
-                          </div>
-                        </div>
+                  <div class="onboarding-slack-row">
+                    <div class="onboarding-slack-icon">🤖</div>
+                    <div class="onboarding-slack-bubble">
+                      <div class="onboarding-slack-author">HR Bot</div>
+                      <p>새로운 팀원 '김케클'님의 입사를 환영합니다! 🎉</p>
+                    </div>
+                  </div>
+                  <div class="onboarding-slack-row">
+                    <div class="onboarding-slack-icon">🤖</div>
+                    <div class="onboarding-slack-bubble">
+                      <div class="onboarding-slack-author">HR Bot</div>
+                      <p>지금 바로 [온보딩 가이드]를 확인하고, 첫 번째 커피챗 일정을 잡아보세요.</p>
+                    </div>
+                  </div>
+                  <div class="onboarding-slack-row">
+                    <div class="onboarding-slack-icon">🤖</div>
+                    <div class="onboarding-slack-bubble">
+                      <div class="onboarding-slack-author">HR Bot</div>
+                      <div class="onboarding-slack-attachment">
+                        <span class="onboarding-slack-pdf">PDF</span>
+                        <span>뉴케클러 온보딩 가이드.pdf</span>
                       </div>
                     </div>
                   </div>
-                </button>
-              </div>
+                  <div class="onboarding-bot-input">
+                    <div class="onboarding-bot-input-field"></div>
+                    <div class="onboarding-bot-input-meta">Only visible to you</div>
+                  </div>
+                </div>
+              </button>
             </div>
           </div>
         </div>
@@ -1593,8 +1566,16 @@
                     title="D툰D툰 앱 미리보기"
                     loading="lazy"
                     referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                  <button type="button" class="case-app-float-open onboarding-tool-open" aria-label="새 창으로 열기" data-mac-open-window="https://dtoon-dtoon.vercel.app/">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                      <path d="M16 3h3a2 2 0 0 1 2 2v3"></path>
+                      <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+                      <path d="M8 21H5a2 2 0 0 1-2-2v-3"></path>
+                    </svg>
+                  </button>
                 </div>
-                <span class="reframe-eyebrow">Culture 01</span>
+                <span class="reframe-eyebrow onboarding-tool-eyebrow">Onboarding &amp; Culture 01</span>
                 <h3 class="reframe-heading">D툰D툰</h3>
                 <p class="reframe-copy">AI로 그린 나의 캐릭터가 들려주는 사내 조직문화, 이벤트, 교육, 업무 가이드 이야기</p>
                 <a class="reframe-link" href="https://dtoon-dtoon.vercel.app/" target="_blank" rel="noreferrer">데모 보기</a>
@@ -1607,8 +1588,16 @@
                     title="만다라차트 앱 미리보기"
                     loading="lazy"
                     referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                  <button type="button" class="case-app-float-open onboarding-tool-open" aria-label="새 창으로 열기" data-mac-open-window="https://kt-cloud-mandala.vercel.app/">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                      <path d="M16 3h3a2 2 0 0 1 2 2v3"></path>
+                      <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+                      <path d="M8 21H5a2 2 0 0 1-2-2v-3"></path>
+                    </svg>
+                  </button>
                 </div>
-                <span class="reframe-eyebrow">Culture 02</span>
+                <span class="reframe-eyebrow onboarding-tool-eyebrow">Onboarding &amp; Culture 02</span>
                 <h3 class="reframe-heading">만다라차트</h3>
                 <p class="reframe-copy">신입사원들이 교육을 수료하며 한 해 성장 계획을 수립하고 서로 응원하는 웹앱</p>
                 <a class="reframe-link" href="https://kt-cloud-mandala.vercel.app/" target="_blank" rel="noreferrer">데모 보기</a>
@@ -1621,8 +1610,16 @@
                     title="땡큐레터 작성기 미리보기"
                     loading="lazy"
                     referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                  <button type="button" class="case-app-float-open onboarding-tool-open" aria-label="새 창으로 열기" data-mac-open-window="https://thanks-letter-dun.vercel.app/">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                      <path d="M16 3h3a2 2 0 0 1 2 2v3"></path>
+                      <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+                      <path d="M8 21H5a2 2 0 0 1-2-2v-3"></path>
+                    </svg>
+                  </button>
                 </div>
-                <span class="reframe-eyebrow">Culture 03</span>
+                <span class="reframe-eyebrow onboarding-tool-eyebrow">Onboarding &amp; Culture 03</span>
                 <h3 class="reframe-heading">땡큐레터 작성기</h3>
                 <p class="reframe-copy">교육 프로그램 출강 사내강사에게 피드백과 함께 보낼 감사 레터 작성</p>
                 <div class="case-link-group">
@@ -1759,6 +1756,66 @@
         <div class="slide-section-wrap">
           <div class="section-number" style="color:var(--wanted-dark);">05</div>
           <h2 style="color:var(--wanted-dark);">개인 실험에서<br>팀의 방식으로</h2>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0a" data-chapter="ch5">
+        <div class="slide-body dark">
+          <div class="body-title">혼자 만든 것이 아니라, 팀의 방식으로 진화 중이다</div>
+          <div class="body-crop-c3 team-evolution">
+            <div class="body-card fragment fade-up">
+              <strong>개인 실험</strong>
+              <p>반복되는 불편을 작은 웹앱과 시뮬레이션으로 바꾸며 가능성을 확인했다.</p>
+            </div>
+            <div class="body-card fragment fade-up">
+              <strong>팀 공유</strong>
+              <p>막히는 지점, 프롬프트, 소스, 배포 방법을 서로 공유하며 제작 속도가 빨라졌다.</p>
+            </div>
+            <div class="body-card fragment fade-up">
+              <strong>함께 빌드</strong>
+              <p>PI 평가, kt cloud 2033, 1on1 시뮬레이터처럼 동료들의 사례로 확장되고 있다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0a" data-chapter="ch5">
+        <div class="slide-body dark">
+          <div class="body-title">동료 사례: 한 명의 특이한 시도가 아니라 팀 문화로</div>
+          <div class="body-crop-c3">
+            <div class="body-card fragment fade-up">
+              <strong>PI 프로젝트 평가 시스템</strong>
+              <p>종이 취합보다 빠르게 진행하고, 결과를 더 임팩트 있게 시각화했다.</p>
+            </div>
+            <div class="body-card fragment fade-up">
+              <strong>kt cloud 2033</strong>
+              <p>경력입사자의 일하는 방식 학습을 게임화하고 Confluence 탐색까지 연결했다.</p>
+            </div>
+            <div class="body-card fragment fade-up">
+              <strong>1on1 시뮬레이터</strong>
+              <p>제한 회차 안에서 대화를 마무리하고, 종료 후 피드백을 받는 게임형 학습으로 발전했다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0a" data-chapter="ch5">
+        <div class="slide-body dark">
+          <div class="body-title">실패와 진화: 1on1 시뮬레이터</div>
+          <div class="body-crop-c3 iteration-track">
+            <div class="body-card fragment fade-up">
+              <strong>v1. 텍스트 기반 웹앱</strong>
+              <p>빠르게 만들 수 있었지만 실제 대화감과 몰입도는 낮았다.</p>
+            </div>
+            <div class="body-card fragment fade-up">
+              <strong>v2. GPTs 대화형</strong>
+              <p>상대의 맥락 입력이 가능해졌지만, 사용 데이터 축적은 어려웠다.</p>
+            </div>
+            <div class="body-card fragment fade-up">
+              <strong>v3. 게임화 + 데이터화</strong>
+              <p>몰입도를 높이고 활용 데이터를 쌓아 조직적으로 확장할 수 있게 됐다.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1991,6 +2048,41 @@
   <script type="module">
     import Reveal from './vendor/reveal/reveal.mjs';
     import DemoLoader from './js/demo-loader.js';
+
+    function swapChapterFourAndFiveOrder() {
+      const slidesRoot = document.querySelector('.reveal .slides');
+      if (!slidesRoot) return;
+
+      const sections = Array.from(slidesRoot.children);
+      const ch4Start = sections.findIndex((section) => section.dataset.chapter === 'ch4');
+      const ch5Start = sections.findIndex((section, index) => index > ch4Start && section.dataset.chapter === 'ch5');
+      const ch6Start = sections.findIndex((section, index) => index > ch5Start && section.dataset.chapter === 'ch6');
+      if (ch4Start < 0 || ch5Start < 0 || ch6Start < 0) return;
+
+      const ch4Sections = sections.slice(ch4Start, ch5Start);
+      const ch5Sections = sections.slice(ch5Start, ch6Start);
+      if (!ch4Sections.length || !ch5Sections.length) return;
+
+      ch5Sections.forEach((section) => {
+        section.dataset.chapter = 'ch4';
+        const number = section.querySelector('.section-number');
+        if (number) number.textContent = '04';
+      });
+
+      ch4Sections.forEach((section) => {
+        section.dataset.chapter = 'ch5';
+        const number = section.querySelector('.section-number');
+        if (number) number.textContent = '05';
+      });
+
+      const insertBefore = sections[ch6Start];
+      const fragment = document.createDocumentFragment();
+      ch5Sections.forEach((section) => fragment.appendChild(section));
+      ch4Sections.forEach((section) => fragment.appendChild(section));
+      slidesRoot.insertBefore(fragment, insertBefore);
+    }
+
+    swapChapterFourAndFiveOrder();
 
     Reveal.initialize({
       hash: true,
