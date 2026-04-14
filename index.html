@@ -1932,7 +1932,39 @@
       effectBtn.classList.toggle('off', !effectOn);
     });
 
-    /* ── 4. 챕터 네비게이션 빌드 ── */
+    /* ── 4. Mac Demo: 새 창 열기 + 풀스크린 + iframe 로딩 ── */
+    function initMacDemoFullscreen() {
+      document.querySelectorAll('[data-mac-demo-window]').forEach((windowEl) => {
+        const expandBtn = windowEl.querySelector('[data-mac-fullscreen]');
+        const iframe = windowEl.querySelector('[data-mac-demo-iframe]');
+        if (iframe && iframe.dataset.bound !== 'true') {
+          iframe.dataset.bound = 'true';
+          iframe.addEventListener('load', () => { windowEl.classList.add('is-loaded'); });
+        }
+        if (!expandBtn || expandBtn.dataset.bound === 'true') return;
+        expandBtn.dataset.bound = 'true';
+        expandBtn.addEventListener('click', async () => {
+          try {
+            if (document.fullscreenElement === windowEl) await document.exitFullscreen();
+            else await windowEl.requestFullscreen();
+          } catch (e) { console.error('mac demo fullscreen failed', e); }
+        });
+      });
+    }
+    function initMacDemoOpenWindow() {
+      document.querySelectorAll('[data-mac-open-window]').forEach((button) => {
+        if (button.dataset.bound === 'true') return;
+        button.dataset.bound = 'true';
+        button.addEventListener('click', () => {
+          const url = button.dataset.macOpenWindow;
+          if (url) window.open(url, '_blank', 'noopener,noreferrer');
+        });
+      });
+    }
+    Reveal.on('ready', initMacDemoFullscreen);
+    Reveal.on('ready', initMacDemoOpenWindow);
+
+    /* ── 5. 챕터 네비게이션 빌드 ── */
     Reveal.on('ready', buildChapterNav);
     Reveal.on('slidechanged', updateChapterNav);
 
