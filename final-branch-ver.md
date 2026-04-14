@@ -15,7 +15,7 @@
 - gemini 기준 원본 링크: `https://presentationvibe-git-gemini-woowa0913s-projects.vercel.app`
 - final 브랜치 링크: `https://presentationvibe-git-final-woowa0913s-projects.vercel.app`
 - preview 배포는 푸시마다 갱신되므로 기록 기준은 branch alias 링크로 유지한다.
-- 마지막 확인 시각: 2026-04-14 20:17 KST
+- 마지막 확인 시각: 2026-04-14 20:39 KST
 - Vercel 프로젝트: `presentation_vibe`
 
 ## 3. 현재 상태
@@ -211,6 +211,13 @@
 - 30페이지는 `Outcome / Shift / Effect` 카드를 제거해 서류점검 앱과 실제 활용 스냅샷이 더 크게 보이도록 단순화
 - 30페이지 좌측 앱 프레임은 세로 높이를 다시 확장해 시연 화면이 더 풍부하게 보이도록 조정
 - 31페이지는 하단 `Outcome / Shift / Effect` 카드를 하단 밴드처럼 재배치해 잘리지 않도록 보정하고, 본문 카드와의 겹침을 줄이기 위해 앱/스냅샷 높이를 슬라이드별로 다르게 최적화
+
+### v1.5.2 (2026-04-14) - 29페이지 사례 스냅샷 교체 및 높이 보정
+
+- 29페이지 `HRD가 직접 만든 문제 해결 도구들`의 3개 사례 카드를 외부 링크 이미지 대신 `pptx-media` 기준 실제 PNG 스냅샷으로 교체
+- KAC, DISC, 칼리브레이션 사례 이미지를 `case-kac-support.png`, `case-disc-dynamics.png`, `case-calibration-simulator.png`로 `final` 브랜치에 반영
+- 사용자 요청에 맞춰 29페이지 카드 내 데모 링크는 모두 제거하고, 발표용 스냅샷 중심 레이아웃으로 단순화
+- 29페이지 전용 카드/브라우저 높이와 본문 여백을 축소해 슬라이드 하단이 잘리지 않도록 보정하고 로컬 캡처로 전체 표시를 확인
 
 ## 5. 운영 규칙
 

@@ -3150,6 +3150,43 @@ body.effects-off .sparkle-item {
   border: 1px solid rgba(70, 84, 120, 0.08);
 }
 
+.case-portfolio-slide .reframe-stage {
+  gap: 18px;
+}
+
+.case-portfolio-slide .reframe-card {
+  gap: 12px;
+  padding: 22px 22px 20px;
+}
+
+.case-portfolio-slide .reframe-heading {
+  font-size: 1.1em;
+}
+
+.case-portfolio-slide .reframe-copy {
+  font-size: 0.72em;
+  line-height: 1.52;
+}
+
+.case-portfolio-slide .reframe-portfolio-grid {
+  gap: 18px;
+  align-items: stretch;
+}
+
+.case-portfolio-slide .reframe-browser {
+  min-height: 228px !important;
+}
+
+.case-portfolio-slide .reframe-browser-screen {
+  min-height: 164px !important;
+  padding: 14px;
+}
+
+.case-portfolio-slide .reframe-browser-screen img {
+  object-fit: contain;
+  background: #fff;
+}
+
 .reframe-process {
   position: relative;
   display: grid;
