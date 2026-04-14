@@ -238,39 +238,46 @@
           <div class="body-title">그래서 만들어보려고 했습니다</div>
           <div class="reframe-stage">
             <div class="reframe-grid-3" style="flex:1;">
-              <div class="reframe-card is-warm fragment fade-up">
-                <span class="reframe-eyebrow">Route 01</span>
-                <h3 class="reframe-heading">외부 업체 위탁</h3>
-                <p class="reframe-copy">내부 시스템 연동 허들이 크고, 수개월이 지나도 첫 화면조차 늦게 도착했습니다.</p>
-                <div class="reframe-metric-strip" style="grid-template-columns:1fr 1fr;">
-                  <div class="reframe-metric"><div class="reframe-stat-label">Lead Time</div><strong>3~6개월</strong></div>
-                  <div class="reframe-metric"><div class="reframe-stat-label">Cost</div><strong>고비용</strong></div>
+              <div class="reframe-card is-warm reframe-route-card fragment fade-up">
+                <div class="reframe-route-head">
+                  <div class="reframe-route-icon">💸</div>
+                  <h3 class="reframe-route-title">외부 업체 위탁</h3>
                 </div>
-              </div>
-              <div class="reframe-card fragment fade-up">
-                <span class="reframe-eyebrow">Route 02</span>
-                <h3 class="reframe-heading">내부 개발팀 의뢰</h3>
-                <p class="reframe-copy">우선순위에서 늘 밀렸고, 작은 실험은 대기열의 맨 뒤에서 사라지기 쉬웠습니다.</p>
-                <ul class="reframe-list">
-                  <li class="reframe-list-item"><span class="reframe-bullet">Q</span><span>리소스 부족</span></li>
-                  <li class="reframe-list-item"><span class="reframe-bullet">W</span><span>업무 우선순위 충돌</span></li>
-                  <li class="reframe-list-item"><span class="reframe-bullet">E</span><span>실험의 타이밍 상실</span></li>
-                </ul>
-              </div>
-              <div class="reframe-card is-blue fragment fade-up">
-                <span class="reframe-eyebrow">Route 03</span>
-                <h3 class="reframe-heading">개발 잘하는 지인에게 부탁</h3>
-                <p class="reframe-copy">내가 원하는 핏을 충분히 설명하기 어렵고, 수정 요청도 조심스러워 결국 타협하게 됩니다.</p>
-                <div class="reframe-chip-row">
-                  <span class="reframe-chip">핏 불일치</span>
-                  <span class="reframe-chip">설명 비용</span>
-                  <span class="reframe-chip">수정 부담</span>
+                <div class="reframe-route-lines">
+                  <div class="reframe-route-line">내부 시스템과 붙는 순간, 일정과 범위부터 다시 조율해야 합니다.</div>
+                  <div class="reframe-route-line">첫 화면을 받기까지 오래 걸리고, 수정 비용도 추가로 붙기 쉽습니다.</div>
+                  <div class="reframe-route-line">결과물이 나와도 내 생각의 디테일까지 통제하기는 어렵습니다.</div>
                 </div>
+                <div class="reframe-route-summary">평균 3~6개월 · 고비용</div>
+              </div>
+              <div class="reframe-card reframe-route-card fragment fade-up">
+                <div class="reframe-route-head">
+                  <div class="reframe-route-icon">🏢</div>
+                  <h3 class="reframe-route-title">내부 개발팀 의뢰</h3>
+                </div>
+                <div class="reframe-route-lines">
+                  <div class="reframe-route-line">우선순위에서 밀리면 작은 실험일수록 대기열 뒤편으로 밀려납니다.</div>
+                  <div class="reframe-route-line">요구사항을 설명하는 데 시간을 쓰지만, 정작 시도 타이밍은 자꾸 늦어집니다.</div>
+                  <div class="reframe-route-line">리소스가 부족할수록 '이번엔 일단 보류'로 끝나는 경우가 많았습니다.</div>
+                </div>
+                <div class="reframe-route-summary">우선순위 충돌 · 실험 타이밍 상실</div>
+              </div>
+              <div class="reframe-card is-blue reframe-route-card fragment fade-up">
+                <div class="reframe-route-head">
+                  <div class="reframe-route-icon">🤝</div>
+                  <h3 class="reframe-route-title">개발 잘하는 지인에게 부탁</h3>
+                </div>
+                <div class="reframe-route-lines">
+                  <div class="reframe-route-line">부탁하는 순간부터 이미 미안함이 생기고, 요구를 세게 말하기가 어려워집니다.</div>
+                  <div class="reframe-route-line">결과가 조금 달라도 다시 설명하고 고쳐달라고 요청하는 데 부담이 생깁니다.</div>
+                  <div class="reframe-route-line">결국 '이 정도면 됐다'며 핏이 덜 맞는 결과를 받아들이게 됩니다.</div>
+                </div>
+                <div class="reframe-route-summary">수정 요청 부담 · 통제권 약화</div>
               </div>
             </div>
-            <div class="reframe-card fragment fade-up">
-              <h3 class="reframe-heading">결국 모든 경로가 같은 문제로 수렴했습니다.</h3>
-              <p class="reframe-copy">오래 걸리고, 비용이 들고, 내 생각이 가장 정확하게 반영되지 않는다는 점이었습니다.</p>
+            <div class="reframe-route-note fragment fade-up">
+              <div class="reframe-route-note-icon">😮‍💨</div>
+              <p class="reframe-route-note-copy">어느 경로든 시간, 비용, 통제권 — 셋 중 하나는 포기해야 하는 경우가 많다</p>
             </div>
           </div>
         </div>
