@@ -472,6 +472,53 @@
   line-height: 1.35;
 }
 
+.closing-interstitial {
+  overflow: hidden;
+}
+
+.closing-ganzi-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(0, 212, 170, 0.18), transparent 24%),
+    radial-gradient(circle at 82% 20%, rgba(108, 99, 255, 0.24), transparent 26%),
+    radial-gradient(circle at 50% 78%, rgba(59, 130, 246, 0.18), transparent 30%),
+    linear-gradient(140deg, #050814 0%, #0c1230 52%, #07090f 100%);
+}
+
+.closing-ganzi-bg::before,
+.closing-ganzi-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transform: rotate(-18deg);
+}
+
+.closing-ganzi-bg::before {
+  width: 980px;
+  height: 980px;
+  left: -180px;
+  bottom: -540px;
+}
+
+.closing-ganzi-bg::after {
+  width: 620px;
+  height: 620px;
+  right: -120px;
+  top: -260px;
+}
+
+.closing-section-wrap .section-number {
+  color: rgba(255, 255, 255, 0.18);
+  text-shadow: 0 20px 80px rgba(108, 99, 255, 0.3);
+}
+
+.closing-section-wrap h2 {
+  color: #ffffff;
+  text-shadow: 0 18px 44px rgba(3, 7, 18, 0.34);
+}
+
 /* ========================================
    4. Content Slides - 본문 레이아웃 (PPTX 슬라이드 7~16)
    공통: 흰색 배경, 상단 타이틀, 콘텐츠 영역 23%~87%
@@ -572,8 +619,8 @@
 .reveal .slides section[data-chapter="ch1"] .body-title::before { content: "Chapter 01 · Origin"; }
 .reveal .slides section[data-chapter="ch2"] .body-title::before { content: "Chapter 02 · Why Maker"; }
 .reveal .slides section[data-chapter="ch3"] .body-title::before { content: "Chapter 03 · HRD의 바이브 코딩"; }
-.reveal .slides section[data-chapter="ch4"] .body-title::before { content: "Chapter 04 · Quickstart"; }
-.reveal .slides section[data-chapter="ch5"] .body-title::before { content: "Chapter 05 · Case Study"; }
+.reveal .slides section[data-chapter="ch4"] .body-title::before { content: "Chapter 04 · Case Study"; }
+.reveal .slides section[data-chapter="ch5"] .body-title::before { content: "Chapter 05 · Team Expansion"; }
 .reveal .slides section[data-chapter="ch6"] .body-title::before { content: "Chapter 06 · Governance"; }
 
 body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::before {
@@ -811,6 +858,139 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 }
 .slide-body.dark .body-crop-b2 .body-text {
   color: #e0e0e0;
+}
+
+.team-story-intro {
+  margin: 6px 5% 24px;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.12), rgba(0, 212, 170, 0.06));
+  border: 1px solid rgba(108, 99, 255, 0.24);
+}
+
+.team-story-kicker {
+  margin: 0 0 8px;
+  font-size: 0.76em;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(176, 176, 192, 0.72);
+}
+
+.team-story-summary {
+  margin: 0;
+  font-size: 0.98em;
+  line-height: 1.72;
+  color: #ffffff;
+}
+
+.team-story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  padding: 0 5%;
+}
+
+.team-story-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  padding: 30px 28px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 48px rgba(3, 7, 18, 0.24);
+}
+
+.team-story-badge {
+  width: 58px;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(0, 212, 170, 0.14);
+  color: #00d4aa;
+  font-size: 1.6em;
+}
+
+.team-story-badge.is-violet {
+  background: rgba(108, 99, 255, 0.14);
+  color: #a79cff;
+}
+
+.team-story-badge.is-magenta {
+  background: rgba(168, 85, 247, 0.14);
+  color: #d39bff;
+}
+
+.team-story-name {
+  margin-top: 18px;
+  font-size: 1.22em;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.team-story-copy {
+  margin: 14px 0 20px;
+  flex: 1;
+  font-size: 0.96em;
+  line-height: 1.82;
+  color: rgba(228, 232, 240, 0.82);
+}
+
+.team-story-copy strong {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.team-story-tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(0, 212, 170, 0.12);
+  color: #8ef0d7;
+  font-size: 0.8em;
+  font-weight: 800;
+}
+
+.team-story-tag.is-violet {
+  background: rgba(108, 99, 255, 0.12);
+  color: #b6afff;
+}
+
+.team-story-tag.is-magenta {
+  background: rgba(168, 85, 247, 0.12);
+  color: #d9a8ff;
+}
+
+.iteration-track .body-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.team-link-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.team-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(108, 99, 255, 0.26);
+  background: rgba(108, 99, 255, 0.12);
+  color: #f3f4f6;
+  font-size: 0.92em;
+  font-weight: 800;
+  text-decoration: none;
 }
 
 .reveal .slides section[data-chapter^="ch"] .slide-body.dark {
@@ -4126,7 +4306,7 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   align-items: center;
   padding: 10px 18px;
   border-radius: 999px;
-  background: #22c55e;
+  background: #3b82f6;
   color: #ffffff;
   font-size: 0.74em;
   font-weight: 900;
@@ -4153,7 +4333,7 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 686px;
+  min-height: 700px;
   padding: 0;
   border: 1px solid rgba(53, 13, 54, 0.18);
   border-radius: 18px;
@@ -4194,9 +4374,9 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 .onboarding-bot-browser-body {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   flex: 1;
-  padding: 22px 18px 14px;
+  padding: 20px 16px 14px;
   background: #ffffff;
 }
 
@@ -4213,21 +4393,33 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .onboarding-slack-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: #dcfce7;
-  font-size: 0.72em;
+  color: #15803d;
+  flex-shrink: 0;
+}
+
+.onboarding-slack-icon svg {
+  width: 21px;
+  height: 21px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .onboarding-slack-bubble {
   flex: 1;
+  max-width: 82%;
   padding: 14px 16px;
   border-radius: 16px;
-  background: #f7f8fb;
+  background: #f3f4f6;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
 }
 
@@ -4243,6 +4435,21 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   font-size: 0.8em;
   line-height: 1.55;
   color: #20232d;
+}
+
+.onboarding-slack-row.is-user {
+  justify-content: flex-end;
+  padding-left: 54px;
+}
+
+.onboarding-slack-row.is-user .onboarding-slack-bubble {
+  background: #3b82f6;
+  color: #ffffff;
+  max-width: 72%;
+}
+
+.onboarding-slack-row.is-user .onboarding-slack-bubble p {
+  color: #ffffff;
 }
 
 .onboarding-slack-attachment {
@@ -4283,9 +4490,21 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 
 .onboarding-bot-input-field {
   height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
   border-radius: 14px;
   border: 1px solid rgba(182, 190, 205, 0.72);
   background: #ffffff;
+  color: #9ca3af;
+  font-size: 0.8em;
+}
+
+.onboarding-bot-send {
+  color: #9ca3af;
+  font-size: 0.92em;
+  font-weight: 700;
 }
 
 .onboarding-bot-input-meta {

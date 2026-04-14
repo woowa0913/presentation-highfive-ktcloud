@@ -335,6 +335,51 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.0 (2026-04-15) - 밸런스 게임 복구 및 팀/온보딩/마무리 구간 재정렬
+
+### 현재 상태
+- 21페이지 밸런스 게임은 외부 임베드 대신 로컬 `assets/balance-game` 빌드로 다시 연결해 실제 진행이 되도록 복구했다.
+- 챕터 4와 5 순서를 다시 원래 흐름으로 되돌려, `실제 사례`가 먼저 나오고 `개인 실험에서 팀의 방식으로`가 그 뒤를 잇도록 복구했다.
+- 팀 확장 슬라이드는 claude 브랜치 21p 구성을 반영해 `박창윤`, `박창윤`, `김성환` 카드형 사례로 다시 정리했고, 담당 표기는 제거했다.
+- `실패와 진화: 1on1 시뮬레이터` 슬라이드에는 v2용 가이드 2개 + 데모 링크, v3용 웹앱 링크를 버튼으로 추가했다.
+- Slack HR Bot 슬라이드는 우측 목업을 원본 스타일에 더 가깝게 다듬고, 좌측 `kt cloud Practice 06` 배지를 블루 톤으로 변경했다.
+- `도파민 루프` 뒤에는 claude 브랜치의 `대 딸깍 레일 스위치`, `AI를 어떻게 쓰느냐가 성과를 가른다` 2장을 추가했다.
+- Chapter 06 간지 슬라이드는 배경을 새로 구성해 더 강한 인터스티셜 화면으로 바꿨고, 기존 배경의 `Q.` 요소가 보이지 않도록 정리했다.
+
+### 변경 이력
+- `index.html`
+  - 밸런스 게임 iframe/src와 새 창 열기 경로를 로컬 빌드 기준으로 교체
+  - Chapter 04/05 순서를 바꾸던 런타임 스크립트 제거
+  - 팀 사례 슬라이드를 claude 브랜치 21p 기반 카드 레이아웃으로 교체
+  - 1on1 시뮬레이터 v2/v3 링크 버튼 추가
+  - Slack HR Bot 메시지 UI를 재구성하고 사용자 응답/입력 영역 추가
+  - 레일 스위치/성과 그래프 2장 추가
+  - Chapter 06 간지 슬라이드 배경 구조 교체
+- `css/wanted-theme.css`
+  - 챕터 상단 뱃지 문구를 `Case Study` / `Team Expansion` 기준으로 복구
+  - 팀 카드/링크 버튼 스타일 추가
+  - Slack HR Bot 블루 배지 및 원본형 메시지 목업 스타일 보정
+  - Chapter 06 간지용 배경/광원 스타일 추가
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4177`)에서 Playwright로 확인
+- 확인 항목
+  - 21페이지 밸런스 게임이 로컬 빌드로 이동하며 `#/solo/...` 라우트까지 진입하는지
+  - Slack HR Bot 슬라이드 배지 색상/메시지 구성
+  - 팀 사례 카드 3개와 1on1 링크 버튼 노출
+  - 레일 스위치 3단계 fragment 노출
+  - Chapter 06 간지 슬라이드 배경 반영
+- 확인 캡처
+  - `/tmp/presentation-vibe-check/21-balance.png`
+  - `/tmp/presentation-vibe-check/37-slack-bot.png`
+  - `/tmp/presentation-vibe-check/47-team-story.png`
+  - `/tmp/presentation-vibe-check/48-iteration-links.png`
+  - `/tmp/presentation-vibe-check/42-rail-slide.png`
+  - `/tmp/presentation-vibe-check/52-closing-interstitial.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.5.9 (2026-04-15) - 챕터 4/5 스왑 및 팀 확장 사례 추가
 
 ### 현재 상태
