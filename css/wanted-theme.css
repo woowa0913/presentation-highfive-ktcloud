@@ -3866,6 +3866,22 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   font-size: 1.18em;
 }
 
+.balance-game-opening-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 86%;
+}
+
+.balance-game-opening-slide .mac-demo-window {
+  min-height: 804px;
+}
+
+.balance-game-opening-hint {
+  background: rgba(51, 99, 255, 0.1);
+  color: var(--stitch-blue-deep);
+}
+
 .mac-demo-window {
   display: flex;
   flex-direction: column;

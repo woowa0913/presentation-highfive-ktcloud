@@ -820,6 +820,33 @@
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch3">
+        <div class="slide-body balance-game-opening-slide">
+          <div class="body-title">실시간 밸런스게임 — 여러분의 생각은?</div>
+          <div class="balance-game-opening-stage">
+            <div class="mac-demo-window fragment fade-up" data-mac-demo-window>
+              <div class="mac-demo-titlebar">
+                <div class="mac-demo-controls">
+                  <button type="button" class="mac-dot is-close" aria-label="새 창으로 열기" data-mac-open-window="https://kt-cloud-balance-game.vercel.app/"></button>
+                  <button type="button" class="mac-dot is-minimize" aria-label="새 창으로 열기" data-mac-open-window="https://kt-cloud-balance-game.vercel.app/"></button>
+                  <button type="button" class="mac-dot is-expand" aria-label="새 창으로 열기" data-mac-open-window="https://kt-cloud-balance-game.vercel.app/"></button>
+                </div>
+                <div class="mac-demo-address">https://kt-cloud-balance-game.vercel.app/</div>
+                <span class="mac-demo-open balance-game-opening-hint">좌측 상단 버튼 클릭 시 새 창 실행</span>
+              </div>
+              <div class="mac-demo-body">
+                <iframe
+                  src="https://kt-cloud-balance-game.vercel.app/"
+                  title="실시간 밸런스게임"
+                  loading="eager"
+                  data-mac-demo-iframe
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#FFFFFF" data-chapter="ch3">
         <div class="slide-body">
           <div class="body-title">바이브 코딩은 개발자 흉내가 아니라 실행 방식이다</div>
           <div class="reframe-stage">
@@ -1872,16 +1899,16 @@
       document.querySelectorAll('[data-mac-demo-window]').forEach((windowEl) => {
         const expandBtn = windowEl.querySelector('[data-mac-fullscreen]');
         const iframe = windowEl.querySelector('[data-mac-demo-iframe]');
-        if (!expandBtn || expandBtn.dataset.bound === 'true') return;
-
-        expandBtn.dataset.bound = 'true';
-
         if (iframe && iframe.dataset.bound !== 'true') {
           iframe.dataset.bound = 'true';
           iframe.addEventListener('load', () => {
             windowEl.classList.add('is-loaded');
           });
         }
+
+        if (!expandBtn || expandBtn.dataset.bound === 'true') return;
+
+        expandBtn.dataset.bound = 'true';
 
         expandBtn.addEventListener('click', async () => {
           try {
@@ -1893,6 +1920,18 @@
           } catch (error) {
             console.error('mac demo fullscreen failed', error);
           }
+        });
+      });
+    }
+
+    function initMacDemoOpenWindow() {
+      document.querySelectorAll('[data-mac-open-window]').forEach((button) => {
+        if (button.dataset.bound === 'true') return;
+        button.dataset.bound = 'true';
+        button.addEventListener('click', () => {
+          const targetUrl = button.dataset.macOpenWindow;
+          if (!targetUrl) return;
+          window.open(targetUrl, '_blank', 'noopener,noreferrer');
         });
       });
     }
@@ -1909,6 +1948,7 @@
     Reveal.on('fragmenthidden', syncDiscoveryCarouselState);
     Reveal.on('ready', initCaseLiveToggle);
     Reveal.on('ready', initMacDemoFullscreen);
+    Reveal.on('ready', initMacDemoOpenWindow);
 
     /* ── 3. 다크 배경에서 좌우 버튼 색상 변경 ── */
     const navLeftBtn = document.getElementById('navLeft');
