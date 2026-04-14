@@ -202,6 +202,167 @@
 }
 
 /* ========================================
+   2A. Intro Preamble — Reading Flow
+   첨부 시안 기준 4단계 상태 전환
+   ======================================== */
+.intro-reading-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(51, 99, 255, 0.08), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f7f9fd 100%);
+}
+
+.intro-reading-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at top right, rgba(51, 99, 255, 0.08), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f7f9fd 100%);
+}
+
+.intro-reading-topline {
+  position: absolute;
+  top: 10.2%;
+  left: 8.2%;
+  margin: 0;
+  font-family: 'WantedSans', sans-serif;
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #111318;
+}
+
+.intro-reading-topline span {
+  color: var(--wanted-accent1);
+  font-weight: 700;
+}
+
+.intro-reading-question {
+  position: absolute;
+  left: 50%;
+  margin: 0;
+  text-align: center;
+  font-family: 'WantedSans', sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+  color: #101216;
+  transform: translateX(-50%);
+}
+
+.intro-reading-question.is-large {
+  top: 47%;
+  width: 68%;
+  font-size: 2.58em;
+}
+
+.intro-reading-question.is-medium {
+  top: 37.2%;
+  width: 68%;
+  font-size: 2.34em;
+}
+
+.intro-reading-question.is-compact {
+  top: 22.2%;
+  width: 48%;
+  font-size: 1.76em;
+}
+
+.intro-reading-maxim {
+  position: absolute;
+  top: 42.3%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: 'Plus Jakarta Sans', 'WantedSans', sans-serif;
+  font-size: 2.44em;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: rgba(24, 28, 31, 0.34);
+  text-shadow: 0 3px 10px rgba(70, 84, 120, 0.08);
+}
+
+.intro-reading-maxim span {
+  transition: color 0.28s ease, transform 0.28s ease;
+}
+
+.intro-reading-maxim.is-lower {
+  top: 50.8%;
+}
+
+.intro-reading-maxim.is-emphasis span {
+  color: rgba(24, 28, 31, 0.42);
+}
+
+.intro-reading-maxim.is-emphasis span.is-active {
+  color: var(--wanted-accent1);
+}
+
+.intro-reading-credit {
+  position: absolute;
+  top: 51.4%;
+  right: 11.4%;
+  margin: 0;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: #1b1d23;
+}
+
+.intro-reading-credit.is-lower {
+  top: 58.8%;
+}
+
+.intro-reading-context {
+  position: absolute;
+  left: 50%;
+  bottom: 27.6%;
+  width: 73%;
+  margin: 0;
+  text-align: center;
+  transform: translateX(-50%);
+  font-size: 1.6em;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+  color: #111318;
+}
+
+.intro-reading-quotes {
+  position: absolute;
+  left: 50%;
+  bottom: 16.2%;
+  display: flex;
+  justify-content: center;
+  gap: 88px;
+  width: 78%;
+  transform: translateX(-50%);
+}
+
+.intro-reading-quotes p {
+  margin: 0;
+  font-size: 1.62em;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--wanted-accent2);
+  white-space: nowrap;
+}
+
+.intro-reading-scene.fragment {
+  transition: opacity 0.34s ease, transform 0.34s ease;
+}
+
+/* ========================================
    3. Section Divider (간지 A/B/C/D)
    PPTX 좌표: 번호 x=5% y=36.9% w=10.4% h=28.7%
               소제목 x=16.3% y=36.9% w=66.9% h=28.7%
