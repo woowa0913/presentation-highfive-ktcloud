@@ -3613,8 +3613,10 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   max-width: 1420px;
 }
 
-.maker-evolution-intro .reframe-heading {
-  font-size: 1.18em;
+.maker-evolution-intro p {
+  color: var(--stitch-blue-deep);
+  font-size: 1.16em;
+  font-weight: 900;
 }
 
 .maker-role-grid {
@@ -3698,21 +3700,11 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   font-size: 2.8em;
   font-weight: 300;
   color: #c6cbda;
+  opacity: 1;
 }
 
 .maker-role-arrow.active {
   color: var(--stitch-blue);
-}
-
-.maker-evolution-quote {
-  padding: 24px 34px;
-  border-radius: 24px;
-  background: rgba(51, 99, 255, 0.08);
-  border-left: 4px solid var(--stitch-blue);
-  font-size: 1.08em;
-  font-weight: 800;
-  color: var(--wanted-dark);
-  text-align: center;
 }
 
 .methodology-key-message {
@@ -3758,11 +3750,18 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .methodology-stack .reframe-split-note {
-  min-height: 56px;
   font-size: 0.88em;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.methodology-stack.is-left .reframe-split-note {
+  min-height: 52px;
+}
+
+.methodology-stack.is-right .reframe-split-note {
+  min-height: 65px;
 }
 
 .addie-stack-slide {
