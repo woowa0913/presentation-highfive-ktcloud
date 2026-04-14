@@ -15,7 +15,7 @@
 - gemini 기준 원본 링크: `https://presentationvibe-git-gemini-woowa0913s-projects.vercel.app`
 - final 브랜치 링크: `https://presentationvibe-git-final-woowa0913s-projects.vercel.app`
 - preview 배포는 푸시마다 갱신되므로 기록 기준은 branch alias 링크로 유지한다.
-- 마지막 확인 시각: 2026-04-14 21:21 KST
+- 마지막 확인 시각: 2026-04-14 21:34 KST
 - Vercel 프로젝트: `presentation_vibe`
 
 ## 3. 현재 상태
@@ -237,6 +237,14 @@
 
 - 34페이지 DISC 앱 상태에서도 30페이지와 동일한 hover 기반 새 창 열기 버튼이 나타나도록 `case-app-float-open` 버튼을 추가
 - 스냅샷 상태에서는 해당 버튼이 보이지 않도록 숨기고, 앱 상태에서만 hover 시 노출되게 정리
+
+### v1.5.6 (2026-04-14) - 34/35페이지 사례 슬라이드 재배치 및 엔딩 정리
+
+- 34페이지 DISC 앱은 iframe 확대값과 세로 높이를 다시 조정해 카드 하단 빈 여백이 최소화되도록 보정
+- 35페이지 `대표 사례 3: 칼리브레이션 시뮬레이션`은 설명 카드(`Problem`, `Solution`, 새 `Facilitation Point`)를 좌측으로 옮기고, 우측에는 `https://kt-cloud-callibration.vercel.app/` 앱을 직접 띄우는 브라우저 프레임으로 재구성
+- 35페이지 우측 앱 카드에는 `데모 보기` 버튼과 hover 기반 새 창 열기 버튼을 함께 추가
+- 기존 37페이지 `조직 밸런스 게임`, 39페이지 `조직 밸런스 게임 라이브`, 50페이지 `사실, 이 프레젠테이션도` 슬라이드를 삭제
+- 기존 51페이지 Q&A 슬라이드는 배경 이미지만 남기고 QR 코드와 `Scan for Resources & Q&A` 문구를 제거
 
 ## 5. 운영 규칙
 

@@ -3820,10 +3820,10 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .case-disc-browser[data-disc-case-state="app"] .case-disc-screen iframe {
-  min-height: 600px;
-  width: calc(100% / 1.14);
-  height: calc(100% / 1.14);
-  transform: scale(1.14);
+  min-height: 640px;
+  width: calc(100% / 1.22);
+  height: calc(100% / 1.22);
+  transform: translateY(-18px) scale(1.22);
   transform-origin: top center;
   margin: 0 auto;
 }
@@ -3838,6 +3838,31 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 
 .case-disc-browser[data-disc-case-state="app"] .case-disc-zoom {
   display: none;
+}
+
+.case-calibration-grid {
+  align-items: stretch;
+}
+
+.case-calibration-stack {
+  gap: 16px;
+}
+
+.case-calibration-note-card .reframe-list {
+  margin-top: 4px;
+}
+
+.case-calibration-app-card {
+  height: 100%;
+}
+
+.case-calibration-browser {
+  min-height: 620px !important;
+}
+
+.case-calibration-screen,
+.case-calibration-screen iframe {
+  min-height: 560px;
 }
 
 .image-lightbox {
