@@ -177,16 +177,75 @@
           <div class="body-title">우리가 직면한 뼈아픈 현실: '전이(Transfer)'의 실패</div>
           <div style="display:flex; justify-content:center; align-items:center; height:80%; gap:3em;">
              
-             <!-- Funnel Graphic -->
+             <!-- Animated Funnel Graphic -->
              <div style="flex:1; display:flex; flex-direction:column; align-items:center; position:relative;">
-                <div class="fragment fade-down" style="background:#f4f4f4; padding:15px; border-radius:12px; width:80%; text-align:center; font-weight:800; border-top:5px solid #FF644E; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+                <style>
+                  @keyframes funnel-drop { 0%{top:-30px;opacity:0} 10%{opacity:1} 100%{top:380px;opacity:0.3} }
+                  @keyframes leak-left { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(-120px,40px) scale(0.3);opacity:0} }
+                  @keyframes leak-right { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(120px,40px) scale(0.3);opacity:0} }
+                  @keyframes survive { 0%{transform:translateY(0) scale(1);opacity:1} 100%{transform:translateY(60px) scale(0.8);opacity:0} }
+                  @keyframes pulse-label { 0%,100%{opacity:0.5} 50%{opacity:1} }
+                  .funnel-dot { position:absolute; border-radius:50%; animation-iteration-count:infinite; animation-timing-function:ease-in; }
+                  .funnel-leak-l { position:absolute; border-radius:50%; animation: leak-left 1.5s ease-out infinite; }
+                  .funnel-leak-r { position:absolute; border-radius:50%; animation: leak-right 1.5s ease-out infinite; }
+                  .funnel-survive { position:absolute; border-radius:50%; animation: survive 2s ease-in infinite; }
+                </style>
+
+                <div class="fragment fade-down" style="background:#f4f4f4; padding:15px; border-radius:12px; width:80%; text-align:center; font-weight:800; border-top:5px solid #FF644E; box-shadow:0 5px 15px rgba(0,0,0,0.1); z-index:2;">
                    집합교육 (Classroom Training / 10%)
                 </div>
-                <!-- Leak arrows -->
-                <div style="position:relative; margin:10px 0; height: 350px; display: flex; justify-content: center; align-items: center;">
-                    <img src="assets/pptx-media/transfer-gap-funnel.png" alt="Transfer Gap Funnel" style="width: auto; height: 100%; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); border-radius: 12px; margin: 0;">
+
+                <!-- Animated Funnel Container -->
+                <div style="position:relative; width:320px; height:400px; margin:8px 0;">
+                  <!-- Funnel Shape SVG -->
+                  <svg viewBox="0 0 320 400" style="width:100%;height:100%;position:absolute;top:0;left:0;">
+                    <!-- Funnel body -->
+                    <path d="M30,0 L290,0 L200,360 L120,360 Z" fill="rgba(255,100,78,0.04)" stroke="rgba(255,100,78,0.2)" stroke-width="2"/>
+                    <!-- Funnel neck -->
+                    <rect x="120" y="360" width="80" height="40" rx="4" fill="rgba(22,163,74,0.08)" stroke="rgba(22,163,74,0.3)" stroke-width="2"/>
+                    <!-- Leak zone indicators -->
+                    <text x="0" y="180" fill="rgba(255,100,78,0.35)" font-size="11" font-weight="700" text-anchor="start" transform="rotate(-30,10,180)">LEAK</text>
+                    <text x="320" y="180" fill="rgba(255,100,78,0.35)" font-size="11" font-weight="700" text-anchor="end" transform="rotate(30,310,180)">LEAK</text>
+                    <!-- Leak arrows left -->
+                    <path d="M80,120 Q40,140 10,120" fill="none" stroke="rgba(255,100,78,0.25)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowR)"/>
+                    <path d="M90,200 Q45,220 5,200" fill="none" stroke="rgba(255,100,78,0.2)" stroke-width="1.5" stroke-dasharray="4,3"/>
+                    <path d="M105,280 Q65,300 20,280" fill="none" stroke="rgba(255,100,78,0.15)" stroke-width="1.5" stroke-dasharray="4,3"/>
+                    <!-- Leak arrows right -->
+                    <path d="M240,120 Q280,140 310,120" fill="none" stroke="rgba(255,100,78,0.25)" stroke-width="1.5" stroke-dasharray="4,3"/>
+                    <path d="M230,200 Q275,220 315,200" fill="none" stroke="rgba(255,100,78,0.2)" stroke-width="1.5" stroke-dasharray="4,3"/>
+                    <path d="M215,280 Q255,300 300,280" fill="none" stroke="rgba(255,100,78,0.15)" stroke-width="1.5" stroke-dasharray="4,3"/>
+                    <defs><marker id="arrowR" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto"><path d="M0,0 L6,2 L0,4" fill="rgba(255,100,78,0.3)"/></marker></defs>
+                  </svg>
+
+                  <!-- Falling input dots (continuously entering) -->
+                  <div class="funnel-dot" style="width:14px;height:14px;background:#FF644E;left:130px;animation:funnel-drop 3.0s 0.0s infinite;"></div>
+                  <div class="funnel-dot" style="width:12px;height:12px;background:#FF644E;left:165px;animation:funnel-drop 3.0s 0.4s infinite;"></div>
+                  <div class="funnel-dot" style="width:14px;height:14px;background:#FFD932;left:145px;animation:funnel-drop 3.0s 0.8s infinite;"></div>
+                  <div class="funnel-dot" style="width:10px;height:10px;background:#00A2FF;left:180px;animation:funnel-drop 3.0s 1.2s infinite;"></div>
+                  <div class="funnel-dot" style="width:12px;height:12px;background:#FF644E;left:120px;animation:funnel-drop 3.0s 1.6s infinite;"></div>
+                  <div class="funnel-dot" style="width:14px;height:14px;background:#FFD932;left:155px;animation:funnel-drop 3.0s 2.0s infinite;"></div>
+                  <div class="funnel-dot" style="width:10px;height:10px;background:#00A2FF;left:190px;animation:funnel-drop 3.0s 2.4s infinite;"></div>
+
+                  <!-- Leaking dots (escaping sides) -->
+                  <div class="funnel-leak-l" style="width:10px;height:10px;background:#FF644E;opacity:0.7;top:110px;left:75px;animation-delay:0.3s;"></div>
+                  <div class="funnel-leak-r" style="width:12px;height:12px;background:#FFD932;opacity:0.7;top:130px;left:235px;animation-delay:0.8s;"></div>
+                  <div class="funnel-leak-l" style="width:8px;height:8px;background:#00A2FF;opacity:0.6;top:190px;left:90px;animation-delay:1.5s;"></div>
+                  <div class="funnel-leak-r" style="width:10px;height:10px;background:#FF644E;opacity:0.6;top:210px;left:220px;animation-delay:1.0s;"></div>
+                  <div class="funnel-leak-l" style="width:12px;height:12px;background:#FFD932;opacity:0.5;top:270px;left:105px;animation-delay:2.0s;"></div>
+                  <div class="funnel-leak-r" style="width:8px;height:8px;background:#00A2FF;opacity:0.5;top:250px;left:210px;animation-delay:0.5s;"></div>
+                  <div class="funnel-leak-l" style="width:10px;height:10px;background:#FF644E;opacity:0.4;top:310px;left:115px;animation-delay:1.8s;"></div>
+                  <div class="funnel-leak-r" style="width:10px;height:10px;background:#FFD932;opacity:0.4;top:300px;left:200px;animation-delay:2.3s;"></div>
+
+                  <!-- Surviving dots (making it through) — very few, green -->
+                  <div class="funnel-survive" style="width:8px;height:8px;background:#16A34A;top:370px;left:150px;animation-delay:1.0s;"></div>
+                  <div class="funnel-survive" style="width:6px;height:6px;background:#16A34A;top:375px;left:165px;animation-delay:2.5s;"></div>
+
+                  <!-- Percentage labels -->
+                  <div style="position:absolute;top:60px;left:-30px;font-size:13px;font-weight:800;color:#FF644E;animation:pulse-label 2s infinite;">–90%</div>
+                  <div style="position:absolute;bottom:15px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:800;color:#16A34A;">~10%</div>
                 </div>
-                <div class="fragment fade-up" style="background:rgba(22,163,74,0.1); padding:20px; border-radius:16px; width:75%; text-align:center; font-weight:800; border-bottom:5px solid #16A34A; font-size: 1.1em;">
+
+                <div class="fragment fade-up" style="background:rgba(22,163,74,0.1); padding:20px; border-radius:16px; width:75%; text-align:center; font-weight:800; border-bottom:5px solid #16A34A; font-size: 1.1em; z-index:2;">
                    현업 적용 및 성과<br>(Workflow / 70%)
                 </div>
              </div>
