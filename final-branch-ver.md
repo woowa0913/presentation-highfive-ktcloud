@@ -335,6 +335,35 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.1 (2026-04-15) - 7p/10p/12p gemini 레퍼런스 반영
+
+### 현재 상태
+- 7페이지 좌측 시각 요소를 gemini 브랜치의 깔때기 애니메이션 스타일로 교체했다.
+- 10페이지 우측 4번 이미지는 gemini 브랜치처럼 이미지 위 텍스트 오버레이가 보이도록 재구성했다.
+- 12페이지 구글 검색 결과 및 단축키 생성 앱 영역의 세로 높이를 더 길게 확장했다.
+
+### 변경 이력
+- `index.html`
+  - 7페이지 `Transfer Gap` 영역을 애니메이션 퍼널 SVG와 누수/잔존 점 연출로 교체
+  - 10페이지 우측 책 이미지 카드의 텍스트 위치와 크기를 gemini 브랜치 기준으로 재배치
+  - 12페이지 상단 설명 카드와 하단 브라우저를 첫 화면에서도 바로 보이도록 상위 fragment 제거
+- `css/wanted-theme.css`
+  - 12페이지 `.case-live-browser` 높이를 `720px`로 늘리고 내부 화면 높이 계산 규칙을 보강
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4177`)에서 Playwright 캡처로 확인
+- 확인 항목
+  - 7페이지 좌측 애니메이션 노출
+  - 10페이지 우측 이미지 오버레이 위치/크기
+  - 12페이지 검색 결과 영역 세로 확장
+- 확인 캡처
+  - `/tmp/presentation-vibe-check-4/7-transfer-funnel.png`
+  - `/tmp/presentation-vibe-check-4/10-discovery-overlay.png`
+  - `/tmp/presentation-vibe-check-4/12-case-live-tall.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.0 (2026-04-15) - 밸런스 게임 복구 및 팀/온보딩/마무리 구간 재정렬
 
 ### 현재 상태

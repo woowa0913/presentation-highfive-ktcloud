@@ -2847,11 +2847,12 @@ body.effects-off .sparkle-item {
   color: var(--stitch-sub);
 }
 
-.case-live-browser {
+.reframe-browser.case-live-browser {
   display: flex;
   flex-direction: column;
   flex: 1;
-  min-height: 0;
+  min-height: 720px;
+  height: 720px;
 }
 
 .case-live-browser .reframe-browser-bar {
@@ -2911,9 +2912,10 @@ body.effects-off .sparkle-item {
   text-overflow: ellipsis;
 }
 
-.case-live-browser .reframe-browser-screen {
+.reframe-browser.case-live-browser .reframe-browser-screen {
   flex: 1;
-  min-height: 0;
+  min-height: 646px;
+  height: calc(100% - 62px);
   padding: 0;
   display: flex;
   position: relative;
