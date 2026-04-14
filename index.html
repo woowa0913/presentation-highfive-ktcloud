@@ -1361,49 +1361,121 @@
 
       <section data-background-color="#FFFFFF" data-chapter="ch4" class="onboarding-journey-slide">
         <div class="slide-body">
-          <div class="body-title">온보딩에도 적용했습니다</div>
+          <div class="body-title">온보딩과 조직문화에도 적용했습니다.</div>
           <div class="reframe-stage">
-            <div class="reframe-card is-blue onboarding-journey-intro">
-              <span class="reframe-eyebrow">Expansion</span>
-              <h3 class="reframe-heading">한 번 도구를 만들기 시작하면 적용 범위는 빠르게 넓어집니다. 온보딩도 예외가 아니었습니다.</h3>
-              <p class="reframe-copy">입사 초기의 대화, 기록, 피드백 시점을 놓치지 않도록 온보딩 여정 자체를 구조화했습니다.</p>
-            </div>
             <div class="onboarding-journey-board">
-              <div class="onboarding-journey-board-head">뉴켈러 온보딩 커피챗 &amp; 로그 프로세스</div>
-              <div class="onboarding-journey-track" aria-label="뉴켈러 온보딩 프로세스 타임라인">
-                <div class="onboarding-journey-step is-neutral">
+              <div class="onboarding-journey-board-head">뉴케클러 온보딩 커피챗 &amp; 로그 프로세스</div>
+              <div class="onboarding-journey-track" aria-label="뉴케클러 온보딩 프로세스 타임라인">
+                <div class="onboarding-journey-step is-neutral is-label-bottom">
+                  <button
+                    type="button"
+                    class="onboarding-journey-trigger"
+                    data-onboarding-step-trigger
+                    aria-expanded="false"
+                    aria-controls="onboarding-step-1">
+                    <span class="onboarding-journey-dot"></span>
+                  </button>
+                  <div class="onboarding-journey-tooltip" id="onboarding-step-1" role="status">
+                    <div class="onboarding-journey-tooltip-title">입사/OJT</div>
+                    <div class="onboarding-journey-tooltip-copy">웰컴 키트 수령 및 기본 교육</div>
+                  </div>
                   <span class="onboarding-journey-week">1주차</span>
-                  <span class="onboarding-journey-dot"></span>
-                  <span class="onboarding-journey-label">입사 / OJT</span>
+                  <span class="onboarding-journey-label">입사/OJT</span>
                 </div>
-                <div class="onboarding-journey-step is-chat">
+                <div class="onboarding-journey-step is-chat is-label-top">
+                  <button
+                    type="button"
+                    class="onboarding-journey-trigger"
+                    data-onboarding-step-trigger
+                    aria-expanded="false"
+                    aria-controls="onboarding-step-2">
+                    <span class="onboarding-journey-dot"></span>
+                  </button>
+                  <div class="onboarding-journey-tooltip" id="onboarding-step-2" role="status">
+                    <div class="onboarding-journey-tooltip-title">리더 커피챗 1</div>
+                    <div class="onboarding-journey-tooltip-copy">상호 기대사항 조율 및 라포 형성</div>
+                  </div>
                   <span class="onboarding-journey-week">2주차</span>
-                  <span class="onboarding-journey-dot"></span>
                   <span class="onboarding-journey-label">리더 커피챗 1</span>
                 </div>
-                <div class="onboarding-journey-step is-log">
+                <div class="onboarding-journey-step is-log is-label-bottom">
+                  <button
+                    type="button"
+                    class="onboarding-journey-trigger"
+                    data-onboarding-step-trigger
+                    aria-expanded="false"
+                    aria-controls="onboarding-step-3">
+                    <span class="onboarding-journey-dot"></span>
+                  </button>
+                  <div class="onboarding-journey-tooltip" id="onboarding-step-3" role="status">
+                    <div class="onboarding-journey-tooltip-title">온보딩 로그 1</div>
+                    <div class="onboarding-journey-tooltip-copy">초기 적응 현황 점검 및 피드백</div>
+                  </div>
                   <span class="onboarding-journey-week">4주차</span>
-                  <span class="onboarding-journey-dot"></span>
                   <span class="onboarding-journey-label">온보딩 로그 1</span>
                 </div>
-                <div class="onboarding-journey-step is-chat">
+                <div class="onboarding-journey-step is-chat is-label-top">
+                  <button
+                    type="button"
+                    class="onboarding-journey-trigger"
+                    data-onboarding-step-trigger
+                    aria-expanded="false"
+                    aria-controls="onboarding-step-4">
+                    <span class="onboarding-journey-dot"></span>
+                  </button>
+                  <div class="onboarding-journey-tooltip" id="onboarding-step-4" role="status">
+                    <div class="onboarding-journey-tooltip-title">리더 커피챗 2</div>
+                    <div class="onboarding-journey-tooltip-copy">업무 파악도 점검 및 지원 사항 확인</div>
+                  </div>
                   <span class="onboarding-journey-week">6주차</span>
-                  <span class="onboarding-journey-dot"></span>
                   <span class="onboarding-journey-label">리더 커피챗 2</span>
                 </div>
-                <div class="onboarding-journey-step is-log">
+                <div class="onboarding-journey-step is-log is-label-bottom">
+                  <button
+                    type="button"
+                    class="onboarding-journey-trigger"
+                    data-onboarding-step-trigger
+                    aria-expanded="false"
+                    aria-controls="onboarding-step-5">
+                    <span class="onboarding-journey-dot"></span>
+                  </button>
+                  <div class="onboarding-journey-tooltip" id="onboarding-step-5" role="status">
+                    <div class="onboarding-journey-tooltip-title">온보딩 로그 2</div>
+                    <div class="onboarding-journey-tooltip-copy">직무 수행 역량 및 협업 관계 점검</div>
+                  </div>
                   <span class="onboarding-journey-week">8주차</span>
-                  <span class="onboarding-journey-dot"></span>
                   <span class="onboarding-journey-label">온보딩 로그 2</span>
                 </div>
-                <div class="onboarding-journey-step is-chat">
+                <div class="onboarding-journey-step is-chat is-label-top">
+                  <button
+                    type="button"
+                    class="onboarding-journey-trigger"
+                    data-onboarding-step-trigger
+                    aria-expanded="false"
+                    aria-controls="onboarding-step-6">
+                    <span class="onboarding-journey-dot"></span>
+                  </button>
+                  <div class="onboarding-journey-tooltip" id="onboarding-step-6" role="status">
+                    <div class="onboarding-journey-tooltip-title">리더 커피챗 3</div>
+                    <div class="onboarding-journey-tooltip-copy">수습 기간 목표 달성 현황 중간 점검</div>
+                  </div>
                   <span class="onboarding-journey-week">10주차</span>
-                  <span class="onboarding-journey-dot"></span>
                   <span class="onboarding-journey-label">리더 커피챗 3</span>
                 </div>
-                <div class="onboarding-journey-step is-final">
+                <div class="onboarding-journey-step is-final is-label-bottom">
+                  <button
+                    type="button"
+                    class="onboarding-journey-trigger"
+                    data-onboarding-step-trigger
+                    aria-expanded="false"
+                    aria-controls="onboarding-step-7">
+                    <span class="onboarding-journey-dot"></span>
+                  </button>
+                  <div class="onboarding-journey-tooltip" id="onboarding-step-7" role="status">
+                    <div class="onboarding-journey-tooltip-title">최종 1on1</div>
+                    <div class="onboarding-journey-tooltip-copy">수습 평가 피드백 및 정식 채용 결정</div>
+                  </div>
                   <span class="onboarding-journey-week">12주차</span>
-                  <span class="onboarding-journey-dot"></span>
                   <span class="onboarding-journey-label">최종 1on1</span>
                 </div>
               </div>
@@ -1417,12 +1489,12 @@
         </div>
       </section>
 
-      <section data-background-color="#FFFFFF" data-chapter="ch4" class="onboarding-bot-slide">
+      <section data-background-color="#eaf1ff" data-chapter="ch4" class="onboarding-bot-slide">
         <div class="slide-body">
-          <div class="body-title">온보딩에도 적용했습니다</div>
+          <div class="body-title">온보딩과 조직문화에도 적용했습니다.</div>
           <div class="reframe-stage">
             <div class="onboarding-bot-grid">
-              <div class="reframe-card is-dark onboarding-bot-copy">
+              <div class="reframe-card onboarding-bot-copy">
                 <span class="reframe-eyebrow">kt cloud Practice 06</span>
                 <h3 class="reframe-heading">Slack HR 봇 자동화</h3>
                 <p class="reframe-copy">온보딩 프로세스를 자동화하여 리더와 구성원이 놓치지 않고 챙길 수 있도록 돕습니다. 시기별 알림과 가이드 자료를 Slack을 통해 자동으로 발송합니다.</p>
@@ -1449,10 +1521,15 @@
                     <h3 class="reframe-heading">Slack 메시지로 바로 실행되는 온보딩 리듬</h3>
                   </div>
                 </div>
-                <div class="reframe-browser onboarding-bot-browser">
+                <button
+                  type="button"
+                  class="reframe-browser onboarding-bot-browser"
+                  data-onboarding-guide-open
+                  aria-label="kt cloud HR Bot 가이드 열기">
                   <div class="reframe-browser-bar">
                     <div class="reframe-browser-dots"><span></span><span></span><span></span></div>
                     <div class="reframe-stat-label">kt cloud HR Bot</div>
+                    <span class="onboarding-bot-launch">클릭하여 가이드 보기</span>
                   </div>
                   <div class="reframe-browser-screen onboarding-bot-screen">
                     <div class="onboarding-chat-app">
@@ -1497,6 +1574,60 @@
                       </div>
                     </div>
                   </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#FFFFFF" data-chapter="ch4" class="onboarding-tools-slide">
+        <div class="slide-body">
+          <div class="body-title">온보딩과 조직문화에도 적용했습니다.</div>
+          <div class="reframe-stage">
+            <div class="reframe-grid-3" style="flex:1;">
+              <div class="reframe-card onboarding-tool-card">
+                <div class="reframe-photo onboarding-tool-preview">
+                  <iframe
+                    src="https://dtoon-dtoon.vercel.app/"
+                    title="D툰D툰 앱 미리보기"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <span class="reframe-eyebrow">Culture 01</span>
+                <h3 class="reframe-heading">D툰D툰</h3>
+                <p class="reframe-copy">AI로 그린 나의 캐릭터가 들려주는 사내 조직문화, 이벤트, 교육, 업무 가이드 이야기</p>
+                <a class="reframe-link" href="https://dtoon-dtoon.vercel.app/" target="_blank" rel="noreferrer">데모 보기</a>
+              </div>
+
+              <div class="reframe-card is-rose onboarding-tool-card">
+                <div class="reframe-photo onboarding-tool-preview">
+                  <iframe
+                    src="https://kt-cloud-mandala.vercel.app/"
+                    title="만다라차트 앱 미리보기"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <span class="reframe-eyebrow">Culture 02</span>
+                <h3 class="reframe-heading">만다라차트</h3>
+                <p class="reframe-copy">신입사원들이 교육을 수료하며 한 해 성장 계획을 수립하고 서로 응원하는 웹앱</p>
+                <a class="reframe-link" href="https://kt-cloud-mandala.vercel.app/" target="_blank" rel="noreferrer">데모 보기</a>
+              </div>
+
+              <div class="reframe-card is-mint onboarding-tool-card">
+                <div class="reframe-photo onboarding-tool-preview">
+                  <iframe
+                    src="https://thanks-letter-dun.vercel.app/"
+                    title="땡큐레터 작성기 미리보기"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <span class="reframe-eyebrow">Culture 03</span>
+                <h3 class="reframe-heading">땡큐레터 작성기</h3>
+                <p class="reframe-copy">교육 프로그램 출강 사내강사에게 피드백과 함께 보낼 감사 레터 작성</p>
+                <div class="case-link-group">
+                  <a class="reframe-link" href="https://thanks-letter-dun.vercel.app/" target="_blank" rel="noreferrer">데모 보기</a>
+                  <a class="reframe-link" href="https://drive.google.com/file/d/1t44BjWb2dC0hQr_MrSvQ4ZNMVsR_QAd2/view" target="_blank" rel="noreferrer">예시 보기</a>
                 </div>
               </div>
             </div>
@@ -1835,6 +1966,26 @@
     </div>
   </div>
 
+  <div class="guide-modal" id="onboardingGuideModal" aria-hidden="true">
+    <button type="button" class="guide-modal-backdrop" data-guide-close aria-label="가이드 닫기"></button>
+    <div class="guide-modal-dialog" role="dialog" aria-modal="true" aria-label="온보딩 가이드 보기">
+      <button type="button" class="guide-modal-close" data-guide-close aria-label="닫기">×</button>
+      <div class="guide-modal-head">
+        <div>
+          <div class="guide-modal-eyebrow">kt cloud HR Bot Guide</div>
+          <h3 class="guide-modal-title" id="onboardingGuideTitle">온보딩 커피챗 1</h3>
+        </div>
+        <div class="guide-modal-meta">클릭으로 실제 가이드 흐름을 확인할 수 있습니다.</div>
+      </div>
+      <div class="guide-modal-frame">
+        <button type="button" class="guide-modal-nav is-prev" data-guide-prev aria-label="이전 가이드">‹</button>
+        <img id="onboardingGuideImage" alt="온보딩 가이드 이미지">
+        <button type="button" class="guide-modal-nav is-next" data-guide-next aria-label="다음 가이드">›</button>
+      </div>
+      <div class="guide-modal-dots" id="onboardingGuideDots" aria-hidden="true"></div>
+    </div>
+  </div>
+
   <script src="js/hero-text-clip.js"></script>
   <script src="js/beam-effect.js"></script>
   <script type="module">
@@ -2095,17 +2246,22 @@
 	        bodyEl.classList.remove('lightbox-open');
 	      };
 
+	      window.openImageLightbox = (src, alt = '') => {
+	        if (!src) return;
+	        lightboxImg.src = src;
+	        lightboxImg.alt = alt;
+	        lightbox.classList.add('is-open');
+	        lightbox.setAttribute('aria-hidden', 'false');
+	        bodyEl.classList.add('lightbox-open');
+	      };
+
 	      document.querySelectorAll('[data-lightbox-src]').forEach((button) => {
 	        if (button.dataset.bound === 'true') return;
 	        button.dataset.bound = 'true';
 	        button.addEventListener('click', () => {
 	          const src = button.dataset.lightboxSrc;
 	          if (!src) return;
-	          lightboxImg.src = src;
-	          lightboxImg.alt = button.dataset.lightboxAlt || '';
-	          lightbox.classList.add('is-open');
-	          lightbox.setAttribute('aria-hidden', 'false');
-	          bodyEl.classList.add('lightbox-open');
+	          window.openImageLightbox(src, button.dataset.lightboxAlt || '');
 	        });
 	      });
 
@@ -2121,6 +2277,131 @@
 	      document.addEventListener('keydown', (event) => {
 	        if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
 	          closeLightbox();
+	        }
+	      });
+	    }
+
+	    function initOnboardingJourneyToggle() {
+	      document.querySelectorAll('.onboarding-journey-slide [data-onboarding-step-trigger]').forEach((button) => {
+	        if (button.dataset.bound === 'true') return;
+	        button.dataset.bound = 'true';
+	        button.addEventListener('click', () => {
+	          const step = button.closest('.onboarding-journey-step');
+	          const track = button.closest('.onboarding-journey-track');
+	          if (!step || !track) return;
+	          const willOpen = !step.classList.contains('is-active');
+	          track.querySelectorAll('.onboarding-journey-step').forEach((item) => {
+	            item.classList.remove('is-active');
+	            item.querySelector('[data-onboarding-step-trigger]')?.setAttribute('aria-expanded', 'false');
+	          });
+	          if (willOpen) {
+	            step.classList.add('is-active');
+	            button.setAttribute('aria-expanded', 'true');
+	          }
+	        });
+	      });
+	    }
+
+	    function initOnboardingGuideModal() {
+	      const modal = document.getElementById('onboardingGuideModal');
+	      const imageEl = document.getElementById('onboardingGuideImage');
+	      const titleEl = document.getElementById('onboardingGuideTitle');
+	      const dotsEl = document.getElementById('onboardingGuideDots');
+	      if (!modal || !imageEl || !titleEl || !dotsEl) return;
+
+	      const guideImages = [
+	        {
+	          title: '온보딩 커피챗 1',
+	          src: 'https://lh3.googleusercontent.com/d/1DFdcTT9Y4s3ZJs_RokCV4hIeiv7UZdnc=w1600',
+	        },
+	        {
+	          title: '온보딩 커피챗 2',
+	          src: 'https://lh3.googleusercontent.com/d/115DUyFxUtyd_WaFekySqsWxwOxXcEEDf=w1600',
+	        },
+	        {
+	          title: '온보딩 커피챗 3',
+	          src: 'https://lh3.googleusercontent.com/d/1bpRiU3UCekwoCfmyZ21DW3dQZU59eVik=w1600',
+	        },
+	      ];
+
+	      let activeIndex = 0;
+
+	      const renderGuide = () => {
+	        const current = guideImages[activeIndex];
+	        if (!current) return;
+	        titleEl.textContent = current.title;
+	        imageEl.src = current.src;
+	        imageEl.alt = current.title;
+	        dotsEl.innerHTML = guideImages.map((item, index) => (
+	          `<button type="button" class="guide-modal-dot${index === activeIndex ? ' is-active' : ''}" data-guide-dot="${index}" aria-label="${item.title} 보기"></button>`
+	        )).join('');
+	        dotsEl.querySelectorAll('[data-guide-dot]').forEach((dot) => {
+	          dot.addEventListener('click', () => {
+	            activeIndex = Number(dot.dataset.guideDot || '0');
+	            renderGuide();
+	          });
+	        });
+	      };
+
+	      const openModal = () => {
+	        renderGuide();
+	        modal.classList.add('is-open');
+	        modal.setAttribute('aria-hidden', 'false');
+	        bodyEl.classList.add('lightbox-open');
+	      };
+
+	      const closeModal = () => {
+	        modal.classList.remove('is-open');
+	        modal.setAttribute('aria-hidden', 'true');
+	        bodyEl.classList.remove('lightbox-open');
+	      };
+
+	      document.querySelectorAll('[data-onboarding-guide-open]').forEach((button) => {
+	        if (button.dataset.bound === 'true') return;
+	        button.dataset.bound = 'true';
+	        button.addEventListener('click', openModal);
+	      });
+
+	      modal.querySelectorAll('[data-guide-close]').forEach((button) => {
+	        if (button.dataset.bound === 'true') return;
+	        button.dataset.bound = 'true';
+	        button.addEventListener('click', closeModal);
+	      });
+
+	      modal.querySelector('[data-guide-prev]')?.addEventListener('click', () => {
+	        activeIndex = (activeIndex - 1 + guideImages.length) % guideImages.length;
+	        renderGuide();
+	      });
+
+	      modal.querySelector('[data-guide-next]')?.addEventListener('click', () => {
+	        activeIndex = (activeIndex + 1) % guideImages.length;
+	        renderGuide();
+	      });
+
+	      if (imageEl.dataset.bound !== 'true') {
+	        imageEl.dataset.bound = 'true';
+	        imageEl.addEventListener('click', () => {
+	          if (window.openImageLightbox) {
+	            window.openImageLightbox(guideImages[activeIndex].src, guideImages[activeIndex].title);
+	          }
+	        });
+	      }
+
+	      if (modal.dataset.bound === 'true') return;
+	      modal.dataset.bound = 'true';
+
+	      document.addEventListener('keydown', (event) => {
+	        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+	          closeModal();
+	        }
+	        if (!modal.classList.contains('is-open')) return;
+	        if (event.key === 'ArrowLeft') {
+	          activeIndex = (activeIndex - 1 + guideImages.length) % guideImages.length;
+	          renderGuide();
+	        }
+	        if (event.key === 'ArrowRight') {
+	          activeIndex = (activeIndex + 1) % guideImages.length;
+	          renderGuide();
 	        }
 	      });
 	    }
@@ -2159,6 +2440,8 @@
 	    Reveal.on('ready', initMacDemoFullscreen);
 	    Reveal.on('ready', initMacDemoOpenWindow);
 	    Reveal.on('ready', initImageLightbox);
+	    Reveal.on('ready', initOnboardingJourneyToggle);
+	    Reveal.on('ready', initOnboardingGuideModal);
 	    Reveal.on('ready', syncDiscCaseState);
 	    Reveal.on('slidechanged', syncDiscCaseState);
 	    Reveal.on('fragmentshown', syncDiscCaseState);

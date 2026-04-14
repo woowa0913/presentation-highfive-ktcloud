@@ -334,3 +334,38 @@
 
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
+## v1.5.8 (2026-04-15) - 온보딩/조직문화 36~38페이지 재구성
+
+### 현재 상태
+- 36페이지 타이틀을 `온보딩과 조직문화에도 적용했습니다.`로 변경했다.
+- 36페이지는 `Presentation_kt-cloud-coaching-culture`의 20p 구조를 참고해 `뉴케클러 온보딩 커피챗 & 로그 프로세스` 타임라인으로 재구성했다.
+- 각 단계 노드를 클릭하면 해당 주차 설명이 말풍선 형태로 열리도록 인터랙션을 추가했다.
+- 37페이지는 같은 참고 폴더의 21p를 기반으로 블루톤 `Slack HR 봇 자동화` 슬라이드로 재구성했다.
+- 37페이지 우측 `kt cloud HR Bot` 영역을 클릭하면 커피챗 가이드 3장을 넘겨볼 수 있는 모달이 열리도록 구현했다.
+- 38페이지에는 기존 3카드 레이아웃을 되살려 `D툰D툰`, `만다라차트`, `땡큐레터 작성기` 카드와 링크를 배치했다.
+
+### 변경 이력
+- `index.html`
+  - 36페이지의 Expansion 카드 제거 및 타임라인 클릭형 구조 반영
+  - 37페이지의 HR Bot 미리보기와 가이드 모달 마크업 추가
+  - 38페이지 조직문화/온보딩 앱 3카드 슬라이드 추가
+- `css/wanted-theme.css`
+  - 36페이지 타임라인 툴팁/노드/상하 라벨 스타일 추가
+  - 37페이지 블루톤 슬라이드와 HR Bot 모달 스타일 추가
+  - 38페이지 카드형 iframe 미리보기 스타일 추가
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4175`)에서 Playwright로 확인
+- 확인 항목
+  - 36페이지 단계 클릭 툴팁
+  - 37페이지 HR Bot 클릭 시 가이드 모달 오픈
+  - 38페이지 3카드 레이아웃/링크 배치
+- 확인 캡처
+  - `/tmp/check-36-onboarding-timeline.png`
+  - `/tmp/check-37-onboarding-bot.png`
+  - `/tmp/check-37-onboarding-guide-modal.png`
+  - `/tmp/check-38-onboarding-tools.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
