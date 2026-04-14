@@ -3637,6 +3637,7 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .case-app-browser:hover .case-app-float-open,
+.case-disc-browser:hover .case-app-float-open,
 .case-app-float-open:focus-visible {
   opacity: 1;
   transform: translateY(0);
@@ -3828,6 +3829,10 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .case-disc-browser[data-disc-case-state="snapshot"] iframe {
+  display: none;
+}
+
+.case-disc-browser[data-disc-case-state="snapshot"] .case-app-float-open {
   display: none;
 }
 
