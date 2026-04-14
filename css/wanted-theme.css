@@ -3536,35 +3536,48 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   min-height: calc(100% - 38px);
 }
 
+.case-doc-check-slide .case-detail-grid,
+.case-mock-test-slide .case-detail-grid,
+.case-disc-detail-slide .case-disc-detail-grid {
+  align-items: stretch;
+}
+
 .case-doc-check-slide .case-detail-stack {
   padding-top: 18px;
 }
 
+.case-doc-check-slide .case-app-card,
+.case-mock-test-slide .case-app-card {
+  height: 100%;
+}
+
 .case-doc-check-slide .case-app-screen,
 .case-doc-check-slide .case-app-screen iframe {
-  min-height: 500px;
+  min-height: 560px;
 }
 
 .case-mock-test-slide .reframe-stage {
-  padding-bottom: 122px;
-  min-height: calc(100% - 122px);
+  padding-bottom: 38px;
+  min-height: calc(100% - 38px);
 }
 
 .case-mock-test-slide .case-app-browser {
-  min-height: 360px !important;
+  min-height: 560px !important;
 }
 
 .case-mock-test-slide .case-app-screen,
 .case-mock-test-slide .case-app-screen iframe {
-  min-height: 280px;
+  min-height: 560px;
 }
 
 .case-mock-test-slide .case-proof-frame {
-  min-height: 84px;
+  min-height: 176px;
 }
 
 .case-app-card {
   gap: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .case-app-card-head {
@@ -3582,6 +3595,7 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 .case-app-browser {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .case-app-screen {
@@ -3674,6 +3688,15 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   background: rgba(247, 249, 253, 0.92);
 }
 
+.case-proof-zoom {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
 .case-proof-frame img {
   width: 100%;
   height: 100%;
@@ -3681,54 +3704,9 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   object-position: top;
 }
 
-.case-kpi-grid {
-  margin-top: 4px;
-}
-
-.case-kpi-grid-full {
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  bottom: 12px;
-  width: auto;
-  margin-top: 0;
-}
-
-.case-mock-test-slide .case-kpi-grid-full {
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  bottom: 10px;
-  width: auto;
-  margin-top: 0;
-}
-
-.case-mock-test-slide .case-kpi-grid .reframe-card {
-  padding: 12px 14px 10px;
-}
-
-.case-mock-test-slide .case-kpi-grid .reframe-heading {
-  font-size: 0.8em;
-}
-
-.case-mock-test-slide .case-kpi-grid .reframe-copy {
-  font-size: 0.63em;
-}
-
-.case-kpi-grid .reframe-card {
-  min-height: 0;
-  padding: 14px 14px 12px;
-  justify-content: flex-start;
-}
-
-.case-proof-card .reframe-copy,
-.case-kpi-grid .reframe-copy {
+.case-proof-card .reframe-copy {
   font-size: 0.67em;
   line-height: 1.46;
-}
-
-.case-kpi-grid .reframe-heading {
-  font-size: 0.86em;
 }
 
 .case-preview-grid {
@@ -3765,6 +3743,139 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 .case-preview-tile:hover img {
   transform: translateY(-2px);
   box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+}
+
+.case-impact-stack {
+  gap: 28px;
+}
+
+.case-impact-hero {
+  width: min(1020px, 100%);
+  min-width: 0 !important;
+  max-width: none !important;
+  padding: 36px 64px;
+}
+
+.case-impact-hero .reframe-copy {
+  font-size: 0.94em;
+}
+
+.case-impact-kpi-grid {
+  max-width: 1220px;
+}
+
+.case-impact-kpi-grid .reframe-card {
+  min-height: 0;
+  padding: 20px 22px 18px;
+  justify-content: flex-start;
+}
+
+.case-impact-kpi-grid .reframe-heading {
+  font-size: 0.94em;
+}
+
+.case-impact-kpi-grid .reframe-copy {
+  font-size: 0.69em;
+  line-height: 1.46;
+}
+
+.disc-case-trigger {
+  display: none;
+}
+
+.case-disc-view-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-disc-browser {
+  flex: 1;
+}
+
+.case-disc-demo-link {
+  margin-left: auto;
+}
+
+.case-disc-screen {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+.case-disc-zoom,
+.case-disc-screen iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+}
+
+.case-disc-screen iframe {
+  border: 0;
+  background: #fff;
+}
+
+.case-disc-browser[data-disc-case-state="snapshot"] iframe {
+  display: none;
+}
+
+.case-disc-browser[data-disc-case-state="app"] .case-disc-zoom {
+  display: none;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: none;
+}
+
+.image-lightbox.is-open {
+  display: block;
+}
+
+.image-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(12, 18, 32, 0.76);
+  backdrop-filter: blur(10px);
+  cursor: zoom-out;
+}
+
+.image-lightbox-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1400px, calc(100vw - 80px));
+  max-height: calc(100vh - 80px);
+  padding: 22px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.3);
+}
+
+.image-lightbox-dialog img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 124px);
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.82);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .reframe-divider {
