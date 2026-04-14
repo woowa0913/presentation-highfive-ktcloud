@@ -21,6 +21,17 @@
   --wanted-gray: #5E5E5E;
   --wanted-light-gray: #D5D5D5;
   --wanted-text-sub: #E5E8F5;
+  --stitch-surface: #f7f9fd;
+  --stitch-surface-soft: #eef2f8;
+  --stitch-surface-strong: #e6ebf3;
+  --stitch-outline: rgba(70, 84, 120, 0.18);
+  --stitch-ink: #181c1f;
+  --stitch-sub: #50586a;
+  --stitch-blue: #3363ff;
+  --stitch-blue-deep: #0047e4;
+  --stitch-orange: #c74800;
+  --stitch-shadow: 0 18px 40px rgba(12, 32, 90, 0.08);
+  --stitch-shadow-strong: 0 28px 64px rgba(12, 32, 90, 0.14);
 
   --wanted-accent1: #00A2FF;
   --wanted-accent2: #16E7CF;
@@ -254,6 +265,145 @@
   margin-top: auto;
 }
 
+/* ========================================
+   4A. Body Theme Upgrade — Stitch-inspired
+   본문(ch*)에만 적용, intro/title/divider/end는 유지
+   ======================================== */
+.reveal .slides section[data-chapter^="ch"] .slide-body,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(51, 99, 255, 0.12), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(161, 178, 254, 0.16), transparent 24%),
+    linear-gradient(180deg, var(--stitch-surface) 0%, #eef2f8 100%);
+  color: var(--stitch-ink);
+  font-family: 'Inter', 'WantedSans', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body::before,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(51, 99, 255, 0.08) 0.8px, transparent 0.8px);
+  background-size: 26px 26px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body::after,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 140px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(51, 99, 255, 0.22), rgba(51, 99, 255, 0));
+  pointer-events: none;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body > :not(.body-title):not(.body-source),
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap > * {
+  position: relative;
+  z-index: 1;
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-title {
+  position: relative;
+  z-index: 1;
+  padding: 84px 5% 0;
+  max-width: 78%;
+  font-family: 'Plus Jakarta Sans', 'WantedSans', sans-serif;
+  font-size: 1.46em;
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -0.05em;
+  color: var(--stitch-ink);
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-title::before {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: rgba(221, 225, 255, 0.95);
+  border: 1px solid rgba(51, 99, 255, 0.12);
+  color: var(--stitch-blue-deep);
+  font-size: 0.34em;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(12, 32, 90, 0.06);
+}
+
+.reveal .slides section[data-chapter="ch1"] .body-title::before { content: "Chapter 01 · Origin"; }
+.reveal .slides section[data-chapter="ch2"] .body-title::before { content: "Chapter 02 · Why Maker"; }
+.reveal .slides section[data-chapter="ch3"] .body-title::before { content: "Chapter 03 · Vibe Coding"; }
+.reveal .slides section[data-chapter="ch4"] .body-title::before { content: "Chapter 04 · Case Study"; }
+.reveal .slides section[data-chapter="ch5"] .body-title::before { content: "Chapter 05 · Quickstart"; }
+.reveal .slides section[data-chapter="ch6"] .body-title::before { content: "Chapter 06 · Governance"; }
+
+.reveal .slides section[data-chapter^="ch"] .body-source {
+  position: relative;
+  z-index: 1;
+  color: rgba(24, 28, 31, 0.55);
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-crop-a1,
+.reveal .slides section[data-chapter^="ch"] .body-crop-a2,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b2,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b3,
+.reveal .slides section[data-chapter^="ch"] .body-crop-c1,
+.reveal .slides section[data-chapter^="ch"] .body-crop-c3 {
+  position: relative;
+  z-index: 1;
+  padding: 0 5%;
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-crop-a2,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b2,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b3 {
+  gap: 4%;
+  margin-top: 3%;
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-crop-c3,
+.reveal .slides section[data-chapter^="ch"] .body-crop-c1 {
+  gap: 2%;
+  margin-top: 3%;
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-crop-b2 .body-text,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b3 .body-text,
+.reveal .slides section[data-chapter^="ch"] .body-crop-a2 .body-text {
+  color: var(--stitch-sub);
+  font-size: 0.76em;
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-crop-c3 .body-card,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b3 .body-text,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b2 > div,
+.reveal .slides section[data-chapter^="ch"] .body-crop-a2 > div {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--stitch-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-crop-c3 .body-card {
+  border-radius: 24px;
+  padding: 10% 8%;
+}
+
+.reveal .slides section[data-chapter^="ch"] iframe,
+.reveal .slides section[data-chapter^="ch"] img {
+  border-radius: 18px;
+}
+
 /* --- Crop_A_2 (슬라이드 10): 좌 이미지 55% + 우 텍스트 32% --- */
 .body-crop-a2 {
   display: grid;
@@ -428,6 +578,81 @@
   color: #e0e0e0;
 }
 
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark {
+  background:
+    radial-gradient(circle at top right, rgba(51, 99, 255, 0.2), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(161, 178, 254, 0.14), transparent 22%),
+    linear-gradient(180deg, #07090f 0%, #0d1018 100%);
+  color: #f5f7fb;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark::before {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 0.7px, transparent 0.7px);
+  opacity: 0.1;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark::after {
+  background: linear-gradient(90deg, rgba(130, 155, 255, 0.28), rgba(130, 155, 255, 0));
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-title {
+  font-family: 'Plus Jakarta Sans', 'WantedSans', sans-serif;
+  color: #f7f8fb;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-title::before {
+  background: rgba(130, 155, 255, 0.14);
+  border-color: rgba(130, 155, 255, 0.22);
+  color: #b7c4ff;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-c3 .body-card,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-b3 .body-text,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-b2 > div,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-a2 > div {
+  background: rgba(12, 18, 31, 0.68);
+  border: 1px solid rgba(130, 155, 255, 0.16);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-text,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark p,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark li,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark strong {
+  color: #d5dceb;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark h3,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark h4 {
+  color: #ffffff;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap {
+  justify-content: center;
+  gap: 0.2em;
+  padding: 0 12%;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap .impact-number {
+  font-family: 'Plus Jakarta Sans', 'WantedSans', sans-serif;
+  font-size: 6.6em;
+  color: var(--stitch-blue);
+  text-shadow: 0 20px 50px rgba(51, 99, 255, 0.18);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap .impact-label {
+  font-family: 'Plus Jakarta Sans', 'WantedSans', sans-serif;
+  font-size: 1.9em;
+  line-height: 1.2;
+  color: var(--stitch-ink);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap .impact-sub {
+  max-width: 860px;
+  color: var(--stitch-sub);
+  line-height: 1.6;
+}
+
 /* ========================================
    상단 챕터 네비게이션 바
    ======================================== */
@@ -439,40 +664,78 @@
   z-index: 10000;
   display: flex;
   justify-content: center;
-  gap: 2px;
-  padding: 8px 60px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  gap: 8px;
+  padding: 12px 28px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.24s ease, transform 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+  transform: translateY(-6px);
+}
+
+.chapter-nav.nav-light {
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 18px 40px rgba(12, 32, 90, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.chapter-nav.nav-dark {
+  background: rgba(0, 0, 0, 0.34);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 /* JS로 .visible 클래스를 토글하여 표시/숨김 제어 */
 .chapter-nav.visible {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .chapter-btn {
   position: relative;
-  padding: 6px 16px;
-  font-family: 'WantedSans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  border-radius: 6px;
+  padding: 9px 16px;
+  font-family: 'Plus Jakarta Sans', 'WantedSans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
+.chapter-nav.nav-light .chapter-btn {
+  color: rgba(24, 28, 31, 0.62);
+  background: rgba(230, 235, 243, 0.66);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+.chapter-nav.nav-dark .chapter-btn {
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.08);
+}
 .chapter-btn:hover,
 .chapter-btn.active {
+  transform: translateY(-1px);
+}
+.chapter-nav.nav-light .chapter-btn:hover,
+.chapter-nav.nav-light .chapter-btn.active {
+  color: var(--stitch-blue-deep);
+  background: rgba(221, 225, 255, 0.96);
+  border-color: rgba(51, 99, 255, 0.14);
+}
+.chapter-nav.nav-dark .chapter-btn:hover,
+.chapter-nav.nav-dark .chapter-btn.active {
   color: #fff;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.18);
 }
 .chapter-btn.active {
-  background: rgba(0, 162, 255, 0.4);
+  box-shadow: 0 10px 24px rgba(51, 99, 255, 0.18);
+}
+.chapter-nav.nav-light .chapter-btn.active {
+  background: linear-gradient(135deg, rgba(0, 71, 228, 0.92), rgba(51, 99, 255, 0.92));
+  color: #fff;
+}
+.chapter-nav.nav-dark .chapter-btn.active {
+  background: linear-gradient(135deg, rgba(0, 162, 255, 0.72), rgba(130, 155, 255, 0.5));
 }
 
 /* 서브 페이지 드롭다운 */
@@ -539,8 +802,23 @@
   transition: all 0.2s ease;
   white-space: nowrap;
 }
+.chapter-nav.nav-light .effect-toggle {
+  color: rgba(24, 28, 31, 0.55);
+  background: rgba(230, 235, 243, 0.85);
+  border-color: rgba(51, 99, 255, 0.08);
+}
+.chapter-nav.nav-dark .effect-toggle {
+  color: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
 .effect-toggle:hover {
   color: #fff;
+}
+.chapter-nav.nav-light .effect-toggle:hover {
+  background: rgba(51, 99, 255, 0.88);
+}
+.chapter-nav.nav-dark .effect-toggle:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 .effect-toggle.off {
@@ -977,8 +1255,294 @@
 }
 
 .reveal .progress {
-  height: 3px;
-  color: var(--wanted-accent1);
+  position: fixed;
+  top: 70px;
+  left: 28px;
+  right: 28px;
+  width: auto;
+  height: 4px;
+  color: var(--stitch-blue);
+  background: rgba(221, 225, 255, 0.78);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(12, 32, 90, 0.08);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.24s ease, transform 0.24s ease, background 0.24s ease;
+  pointer-events: none;
+  z-index: 9997;
+}
+
+.reveal .progress span {
+  background: linear-gradient(90deg, var(--stitch-blue-deep), var(--stitch-blue));
+  border-radius: inherit;
+  box-shadow: 0 0 18px rgba(51, 99, 255, 0.28);
+}
+
+body.top-ui-visible .reveal .progress {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.ui-on-dark .reveal .progress {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+}
+
+/* ========================================
+   10. Body-specific helper components
+   ======================================== */
+.case-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1.2em;
+  width: 100%;
+  height: 100%;
+  padding: 0 1.2em;
+}
+
+.case-flow-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2.1em;
+  position: relative;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--stitch-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  cursor: pointer;
+}
+
+.case-flow-arrow {
+  display: flex;
+  align-items: center;
+  color: rgba(80, 88, 106, 0.5);
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.kac-step-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.2em;
+  height: 65%;
+}
+
+.kac-step-card {
+  width: 450px;
+  padding: 2.5em;
+  text-align: center;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--stitch-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.kac-step-card-accent {
+  background: linear-gradient(180deg, rgba(230, 244, 255, 0.92), rgba(255, 255, 255, 0.86));
+  border-color: rgba(51, 99, 255, 0.18);
+}
+
+.kac-step-arrow {
+  font-size: 2.8em;
+  color: var(--stitch-blue);
+  text-shadow: 0 8px 24px rgba(51, 99, 255, 0.18);
+}
+
+.onboarding-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.6em;
+  margin-top: 4%;
+  height: 75%;
+}
+
+.onboarding-card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 2em;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  box-shadow: var(--stitch-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.balance-options {
+  display: flex;
+  gap: 2em;
+  margin-bottom: 2em;
+  font-size: 1.2em;
+}
+
+.balance-option {
+  padding: 2em 3em;
+  border-radius: 24px;
+  font-weight: 700;
+  box-shadow: var(--stitch-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.balance-option-primary {
+  border: 2px solid rgba(51, 99, 255, 0.22);
+  background: rgba(230, 244, 255, 0.72);
+}
+
+.balance-option-secondary {
+  border: 2px solid rgba(255, 66, 161, 0.18);
+  background: rgba(255, 240, 246, 0.78);
+}
+
+.balance-vs {
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+  color: rgba(80, 88, 106, 0.45);
+  font-style: italic;
+}
+
+.dopamine-loop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em;
+  height: 76%;
+  padding: 56px 5% 0;
+}
+
+.dopamine-loop-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.2em 6em;
+  align-items: center;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.dopamine-loop-grid::before {
+  content: "";
+  position: absolute;
+  inset: 22% 21%;
+  border: 2px dashed rgba(51, 99, 255, 0.2);
+  border-radius: 999px;
+}
+
+.loop-card {
+  position: relative;
+  padding: 1.8em 2em;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: var(--stitch-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.loop-card.right {
+  margin-left: 2.6em;
+}
+
+.loop-card.left {
+  margin-right: 2.6em;
+}
+
+.loop-card.step-4 {
+  background: linear-gradient(180deg, rgba(230, 252, 249, 0.92), rgba(255, 255, 255, 0.88));
+  border-color: rgba(14, 152, 136, 0.24);
+}
+
+.loop-step {
+  position: absolute;
+  top: -16px;
+  left: 22px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.loop-card.step-1 .loop-step,
+.loop-card.step-2 .loop-step,
+.loop-card.step-3 .loop-step,
+.loop-card.step-5 .loop-step {
+  background: #d46742;
+}
+
+.loop-card.step-4 .loop-step {
+  background: #16a34a;
+}
+
+.loop-card strong {
+  display: block;
+  margin-bottom: 0.35em;
+  font-size: 1.15em;
+}
+
+.loop-card p {
+  margin: 0;
+  font-size: 0.88em;
+  line-height: 1.55;
+}
+
+.loop-card.step-1 strong,
+.loop-card.step-2 strong,
+.loop-card.step-3 strong,
+.loop-card.step-5 strong {
+  color: #d46742;
+}
+
+.loop-card.step-4 strong {
+  color: #0e9888;
+}
+
+.loop-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 118px;
+  height: 118px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(0, 71, 228, 0.96), rgba(51, 99, 255, 0.92));
+  color: #fff;
+  box-shadow: var(--stitch-shadow-strong);
+}
+
+.loop-core-inner {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: 'Plus Jakarta Sans', 'WantedSans', sans-serif;
+  font-size: 0.8em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* ========================================

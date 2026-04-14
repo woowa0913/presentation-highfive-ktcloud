@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=32">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=33">
 </head>
 <body>
 
@@ -763,10 +766,10 @@
           <div class="body-crop-c3" style="margin-top: 4%;">
             
             <!-- 통합 흐름으로 보여주기 -->
-            <div style="display:flex; align-items:stretch; justify-content:space-between; gap:1.5em; width:100%; height:100%; padding:0 2em;">
+            <div class="case-flow">
               
               <!-- STEP 1: KAC -->
-              <div class="fragment fade-right" style="flex:1; display:flex; flex-direction:column; background:#fff; border: 1px solid #E5E8F5; border-radius:16px; padding:2em; position:relative; box-shadow:0 10px 20px rgba(0,0,0,0.05); cursor:pointer;" onclick="Reveal.slide(Reveal.getIndices().h + 1)">
+              <div class="fragment fade-right case-flow-card" onclick="Reveal.slide(Reveal.getIndices().h + 1)">
                 <div style="background:rgba(0,162,255,0.1); color:#00A2FF; padding:4px 12px; border-radius:20px; font-size:0.8em; font-weight:800; display:inline-block; align-self:flex-start; margin-bottom:1em;">STEP 1. 자격 취득 지원</div>
                 <strong style="font-size:1.2em; display:block; margin-bottom:0.5em; color:var(--wanted-dark);">KAC 자격 지원 시스템</strong>
                 <p style="font-size:0.9em; color:#666; line-height:1.6; margin-bottom:1em;">"서류 점검 ➔ 모의고사 ➔ 스파링"</p>
@@ -775,10 +778,10 @@
                 </div>
               </div>
 
-              <div class="fragment fade-right" style="display:flex; align-items:center; font-size:2em; color:#ccc;">➔</div>
+              <div class="fragment fade-right case-flow-arrow">➔</div>
 
               <!-- STEP 2: DISC -->
-              <div class="fragment fade-up" style="flex:1; display:flex; flex-direction:column; background:#fff; border: 1px solid #E5E8F5; border-radius:16px; padding:2em; position:relative; box-shadow:0 10px 20px rgba(0,0,0,0.05); cursor:pointer;" onclick="Reveal.slide(Reveal.getIndices().h + 3)">
+              <div class="fragment fade-up case-flow-card" onclick="Reveal.slide(Reveal.getIndices().h + 3)">
                 <div style="background:rgba(255,100,78,0.1); color:#FF644E; padding:4px 12px; border-radius:20px; font-size:0.8em; font-weight:800; display:inline-block; align-self:flex-start; margin-bottom:1em;">STEP 2. 조직 개발</div>
                 <strong style="font-size:1.2em; display:block; margin-bottom:0.5em; color:var(--wanted-dark);">DISC 다이내믹스 진단</strong>
                 <p style="font-size:0.9em; color:#666; line-height:1.6; margin-bottom:1em;">"개인 진단을 넘어 조직의 대화 도구로"</p>
@@ -787,10 +790,10 @@
                 </div>
               </div>
 
-              <div class="fragment fade-left" style="display:flex; align-items:center; font-size:2em; color:#ccc;">➔</div>
+              <div class="fragment fade-left case-flow-arrow">➔</div>
 
               <!-- STEP 3: Calibration -->
-              <div class="fragment fade-left" style="flex:1; display:flex; flex-direction:column; background:#fff; border: 1px solid #E5E8F5; border-radius:16px; padding:2em; position:relative; box-shadow:0 10px 20px rgba(0,0,0,0.05); cursor:pointer;" onclick="Reveal.slide(Reveal.getIndices().h + 4)">
+              <div class="fragment fade-left case-flow-card" onclick="Reveal.slide(Reveal.getIndices().h + 4)">
                 <div style="background:rgba(22,231,207,0.1); color:#0e9888; padding:4px 12px; border-radius:20px; font-size:0.8em; font-weight:800; display:inline-block; align-self:flex-start; margin-bottom:1em;">STEP 3. 변화 관리</div>
                 <strong style="font-size:1.2em; display:block; margin-bottom:0.5em; color:var(--wanted-dark);">칼리브레이션 1 on 1 시뮬</strong>
                 <p style="font-size:0.9em; color:#666; line-height:1.6; margin-bottom:1em;">"제도 수용성을 높이는 체감형 도구"</p>
@@ -809,16 +812,16 @@
         <div class="slide-body">
           <div class="body-title">대표 사례 1: KAC 서류 점검 → 모의고사</div>
           
-          <div style="display:flex; justify-content:center; align-items:center; height:65%; gap:3em;">
-            <div class="fragment fade-right" style="background:#f8f9fa; padding:2.5em; border-radius:24px; border:2px solid #E5E8F5; text-align:center; width:450px;">
+          <div class="kac-step-stage">
+            <div class="fragment fade-right kac-step-card">
               <div style="font-size:3.5em; margin-bottom:0.2em;">📋</div>
               <div style="font-size:1.2em; font-weight:800; color:var(--wanted-dark); margin-bottom:1em; background:#E5E8F5; display:inline-block; padding:5px 15px; border-radius:20px;">STEP 1: 서류 점검</div>
               <p style="font-size:1.1em; color:#555; line-height:1.5;">자격 취득 선결조건인 코칭 로그와<br>과제 기준을 업로드 즉시 확인합니다.</p>
             </div>
             
-            <div class="fragment fade-up" style="font-size:3em; color:#00A2FF;">➔</div>
+            <div class="fragment fade-up kac-step-arrow">➔</div>
             
-            <div class="fragment fade-left" style="background:rgba(0,162,255,0.05); padding:2.5em; border-radius:24px; border:2px solid #00A2FF; text-align:center; width:450px;">
+            <div class="fragment fade-left kac-step-card kac-step-card-accent">
               <div style="font-size:3.5em; margin-bottom:0.2em;">📝</div>
               <div style="font-size:1.2em; font-weight:800; color:#00A2FF; margin-bottom:1em; background:#e6f4ff; display:inline-block; padding:5px 15px; border-radius:20px;">STEP 2: 모의고사</div>
               <p style="font-size:1.1em; color:#333; line-height:1.5;">시험 환경과 유사한 문제 풀이로<br>부족한 지점을 스스로 자각합니다.</p>
@@ -958,10 +961,10 @@
       <section data-background-color="#FFFFFF" data-chapter="ch4">
         <div class="slide-body">
           <div class="body-title">온보딩에도 적용했습니다</div>
-          <div style="display:flex; justify-content:center; gap:2em; margin-top:4%; height:75%;">
+          <div class="onboarding-grid">
              
              <!-- 1. 온보딩 인터뷰 앱 -->
-             <div class="fragment fade-up" style="background:#f8f9fa; border:1px solid #eee; padding:2em; border-radius:16px; display:flex; flex-direction:column; flex:1; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+             <div class="fragment fade-up onboarding-card">
                <div style="height:150px; background:#e6f4ff; border-radius:12px; margin-bottom:1.5em; overflow:hidden; display:flex; align-items:center; justify-content:center;">
                  <div style="font-size:4em;">🎤</div>
                </div>
@@ -971,7 +974,7 @@
              </div>
 
              <!-- 2. 마니또 시스템 -->
-             <div class="fragment fade-up" style="background:#f8f9fa; border:1px solid #eee; padding:2em; border-radius:16px; display:flex; flex-direction:column; flex:1; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+             <div class="fragment fade-up onboarding-card">
                <div style="height:150px; background:#fff0f6; border-radius:12px; margin-bottom:1.5em; overflow:hidden; display:flex; align-items:center; justify-content:center;">
                  <div style="font-size:4em;">🎭</div>
                </div>
@@ -981,7 +984,7 @@
              </div>
 
              <!-- 3. 회고 시스템 -->
-             <div class="fragment fade-up" style="background:#f8f9fa; border:1px solid #eee; padding:2em; border-radius:16px; display:flex; flex-direction:column; flex:1; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+             <div class="fragment fade-up onboarding-card">
                <div style="height:150px; background:#f0fdf4; border-radius:12px; margin-bottom:1.5em; overflow:hidden; display:flex; align-items:center; justify-content:center;">
                  <div style="font-size:4em;">🔄</div>
                </div>
@@ -999,10 +1002,10 @@
           <div class="body-title">잠깐, 여러분의 선택은? <span style="font-size:0.6em; color:#888;">(🎯 조직 밸런스 게임)</span></div>
           <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:80%;">
              <p style="font-size:1.4em; font-weight:800; color:var(--wanted-dark); margin-bottom:1.5em;">"신입사원에게 당장 더 필요한 것은?"</p>
-             <div style="display:flex; gap:2em; margin-bottom:2em; font-size:1.2em;">
-               <div style="padding:2em 3em; border-radius:16px; border:2px solid #00A2FF; background:rgba(0,162,255,0.05); font-weight:700;">A. 완벽한 A-Z 업무 매뉴얼</div>
-               <div style="display:flex; align-items:center; font-weight:900; color:#ccc; font-style:italic;">VS</div>
-               <div style="padding:2em 3em; border-radius:16px; border:2px solid #FF42A1; background:rgba(255,66,161,0.05); font-weight:700;">B. 따뜻한 커피와 비전 미팅</div>
+             <div class="balance-options">
+               <div class="balance-option balance-option-primary">A. 완벽한 A-Z 업무 매뉴얼</div>
+               <div class="balance-vs">VS</div>
+               <div class="balance-option balance-option-secondary">B. 따뜻한 커피와 비전 미팅</div>
              </div>
              <div style="text-align:center; background:#1A1538; padding:2em; border-radius:20px; color:#fff;">
                 <p style="font-size:1.2em; font-weight:800; margin-bottom:10px;">📱 아래 URL(또는 QR)을 찍고 의견을 제출해주세요!</p>
@@ -1045,47 +1048,42 @@
       <section data-background-color="#FFFFFF" data-chapter="ch4">
         <div class="slide-body">
           <div class="body-title">실행의 동력이 되는 '도파민 루프(Dopamine Loop)'</div>
-          <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:80%;">
-             
-             <!-- Circular Dopamine Loop (이미지 3 반영) -->
-             <div style="position:relative; width:800px; height:400px; margin-top:2em;">
-                <!-- Abstract Loop Path Background -->
-                <svg width="100%" height="100%" style="position:absolute; top:0; left:0; z-index:0;">
-                   <path d="M 200,80 Q 400,20 600,80 T 600,320 Q 400,380 200,320 T 200,80" fill="none" stroke="#f4caaf" stroke-width="20" />
-                   <path d="M 200,80 Q 400,20 600,80 T 600,320 Q 400,380 200,320 T 200,80" fill="none" stroke="#d46742" stroke-width="4" stroke-dasharray="10,10" />
-                </svg>
+          <div class="dopamine-loop">
+            <div class="dopamine-loop-grid">
+              <div class="fragment fade-right loop-card step-1 left">
+                <div class="loop-step">1</div>
+                <strong>불편의 발견</strong>
+                <p>"현업에서 이 부분이 아쉬운데?"라는 문제 제기에서 모든 실행이 시작됩니다.</p>
+              </div>
 
-                <div class="fragment fade-up" style="position:absolute; top:30px; left:250px; background:#fff; padding:1em; border-radius:12px; border:2px solid #d46742; text-align:center; z-index:1; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
-                   <div style="background:#d46742; color:#fff; width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:800; position:absolute; left:-15px; top:-15px;">1</div>
-                   <strong style="color:#d46742;">불편의 발견 (Discomfort)</strong>
-                   <div style="font-size:0.8em; margin-top:5px; color:#555;">"현업에서 이 부분이 아쉬운데?"<br>(문제 제기)</div>
-                </div>
+              <div class="fragment fade-left loop-card step-2 right">
+                <div class="loop-step">2</div>
+                <strong>자연어 프롬프트</strong>
+                <p>"우리 조직 상황에 맞게 이런 기능의 도구를 만들어줘."라고 AI와 싱크를 맞춥니다.</p>
+              </div>
 
-                <div class="fragment fade-up" style="position:absolute; top:30px; right:150px; background:#fff; padding:1em; border-radius:12px; border:2px solid #d46742; text-align:center; z-index:1; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
-                   <div style="background:#d46742; color:#fff; width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:800; position:absolute; left:-15px; top:-15px;">2</div>
-                   <strong style="color:#d46742;">자연어 프롬프트 (Prompt)</strong>
-                   <div style="font-size:0.8em; margin-top:5px; color:#555;">"우리 조직 상황에 맞게<br>이런 기능의 도구를 만들어줘."</div>
-                </div>
+              <div class="fragment fade-right loop-card step-5 left">
+                <div class="loop-step">5</div>
+                <strong>반복 개선</strong>
+                <p>현장 피드백을 바로 반영해 수정하고, 다음 라운드의 더 나은 버전으로 넘어갑니다.</p>
+              </div>
 
-                <div class="fragment fade-left" style="position:absolute; top:180px; right:10px; background:#fff; padding:1em; border-radius:12px; border:2px solid #d46742; text-align:center; z-index:1; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
-                   <div style="background:#d46742; color:#fff; width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:800; position:absolute; left:-15px; top:-15px;">3</div>
-                   <strong style="color:#d46742;">즉각적 프로토타입</strong>
-                   <div style="font-size:0.8em; margin-top:5px; color:#555;">단 몇 시간 만에<br>눈앞에 나타나는 결과물.</div>
-                </div>
+              <div class="fragment fade-left loop-card step-3 right">
+                <div class="loop-step">3</div>
+                <strong>즉각적 프로토타입</strong>
+                <p>단 몇 시간 안에 눈앞에 보이는 결과물이 생기면서 실행의 허들이 급격히 낮아집니다.</p>
+              </div>
 
-                <div class="fragment pulse" style="position:absolute; bottom:30px; right:200px; background:rgba(22,163,74,0.15); padding:1em; border-radius:12px; border:3px solid #16A34A; text-align:center; z-index:1; box-shadow:0 10px 20px rgba(22,163,74,0.2);">
-                   <div style="background:#16A34A; color:#fff; width:36px; height:36px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:800; position:absolute; left:-18px; top:-18px; font-size:1.2em;">4</div>
-                   <strong style="color:#16A34A; font-size:1.2em;">작은 성공 (Micro-Success)</strong>
-                   <div style="font-size:0.9em; margin-top:5px; color:var(--wanted-dark); font-weight:700;">"어? 이게 진짜 되네?"<br>(도파민 분비 및 자신감 상승)</div>
-                </div>
+              <div class="loop-core">
+                <div class="loop-core-inner">Loop</div>
+              </div>
 
-                <div class="fragment fade-right" style="position:absolute; bottom:30px; left:120px; background:#fff; padding:1em; border-radius:12px; border:2px solid #d46742; text-align:center; z-index:1; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
-                   <div style="background:#d46742; color:#fff; width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:800; position:absolute; right:-15px; top:-15px;">5</div>
-                   <strong style="color:#d46742;">반복 개선 (Iterative Debugging)</strong>
-                   <div style="font-size:0.8em; margin-top:5px; color:#555;">현장 피드백을 반영해<br>즉시 수정 및 고도화.</div>
-                </div>
-             </div>
-
+              <div class="fragment fade-up loop-card step-4" style="grid-column:1 / span 2; max-width:540px; margin:0 auto; text-align:center;">
+                <div class="loop-step">4</div>
+                <strong>작은 성공</strong>
+                <p>"어? 이게 진짜 되네?"라는 미세한 성취가 도파민과 자신감을 만들고, 다음 문제 해결을 다시 시작하게 합니다.</p>
+              </div>
+            </div>
           </div>
           <div class="fragment fade-up" style="text-align:center; margin-top:0.5em; background:#e8f0e5; padding:15px; border-radius:12px;">
              <p style="font-size:1.2em; font-weight:800; color:#2c5e2e; margin:0;">거창한 프로젝트가 아닙니다. 작은 성공의 짜릿함이 다음 문제를 해결할 실행력을 만듭니다.</p>
@@ -1370,26 +1368,32 @@
     /* ── 1. 네비게이션 바: 마우스 오버 시 표시, 떠나면 1초 후 숨김 ── */
     const nav = document.getElementById('chapterNav');
     let navTimer = null;
+    const bodyEl = document.body;
+
+    function setTopUiVisible(visible) {
+      nav.classList.toggle('visible', visible);
+      bodyEl.classList.toggle('top-ui-visible', visible);
+    }
 
     document.addEventListener('mousemove', (e) => {
       // 상단 80px 영역 또는 nav 위에 마우스가 있으면 표시
       if (e.clientY < 80 || nav.contains(e.target)) {
-        nav.classList.add('visible');
+        setTopUiVisible(true);
         clearTimeout(navTimer);
       } else {
         clearTimeout(navTimer);
-        navTimer = setTimeout(() => nav.classList.remove('visible'), 1000);
+        navTimer = setTimeout(() => setTopUiVisible(false), 1000);
       }
     });
 
     nav.addEventListener('mouseenter', () => {
-      nav.classList.add('visible');
+      setTopUiVisible(true);
       clearTimeout(navTimer);
     });
 
     nav.addEventListener('mouseleave', () => {
       clearTimeout(navTimer);
-      navTimer = setTimeout(() => nav.classList.remove('visible'), 1000);
+      navTimer = setTimeout(() => setTopUiVisible(false), 1000);
     });
 
     /* ── 2. Hero: hero 슬라이드에서만 표시 ── */
@@ -1449,6 +1453,9 @@
 
       navLeftBtn.classList.toggle('nav-on-dark', isDark);
       navRightBtn.classList.toggle('nav-on-dark', isDark);
+      nav.classList.toggle('nav-dark', isDark || currentSection?.dataset.chapter === 'hero');
+      nav.classList.toggle('nav-light', !isDark && currentSection?.dataset.chapter !== 'hero');
+      bodyEl.classList.toggle('ui-on-dark', isDark || currentSection?.dataset.chapter === 'hero');
     }
 
     Reveal.on('slidechanged', updateNavButtonStyle);
