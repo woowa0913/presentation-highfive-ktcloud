@@ -989,419 +989,650 @@
   .demo-container .demo-fallback { display: block; }
 }
 
+
 /* ================================================================
-   M O N O L I T H   D E S I G N   S Y S T E M
-   Inspired by Google Stitch — dark glass, neon blue, sharp typography
-   Viewport: 1920 x 1080
+   M O N O L I T H   D E S I G N   S Y S T E M   v2
+   Complete rebuild — Google Stitch design language
+   Viewport: 1920 × 1080 (Reveal.js scaled)
    ================================================================ */
 
-/* ---------- MONOLITH Design Tokens ---------- */
+/* ----- Design Tokens ----- */
 :root {
-  /* Dark mode */
-  --mono-bg-dark:       #000000;
-  --mono-text-dark:     #e5e2e1;
-  --mono-neon:          #3363FF;
-  --mono-neon-rgb:      51, 99, 255;
-  --mono-glass:         rgba(255, 255, 255, 0.03);
-  --mono-glass-border:  rgba(255, 255, 255, 0.06);
-  --mono-glass-hover:   rgba(255, 255, 255, 0.06);
+  /* Dark palette */
+  --m-black: #000000;
+  --m-surface: #131313;
+  --m-surface-dim: #1a1a1a;
+  --m-surface-high: #2a2a2a;
+  --m-text: #e5e2e1;
+  --m-text-muted: #9a9a9a;
+  --m-text-variant: #c4c5d8;
 
-  /* Light mode */
-  --mono-bg-light:      #f7f9fd;
-  --mono-text-light:    #181c1f;
-  --mono-primary:       #0047e4;
-  --mono-card-light:    #ffffff;
-  --mono-card-shadow:   0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+  /* Light palette */
+  --m-white: #f7f9fd;
+  --m-white-pure: #ffffff;
+  --m-text-dark: #181c1f;
+  --m-text-dark-muted: #434656;
+  --m-text-dark-subtle: #747687;
+  --m-outline-light: #c4c5d8;
+
+  /* Accent */
+  --m-neon: #3363FF;
+  --m-neon-dim: #b7c4ff;
+  --m-neon-fixed: #dde1ff;
+  --m-primary: #0047e4;
+  --m-error: #ffb4ab;
+  --m-error-solid: #ff6b6b;
+
+  /* Glass */
+  --m-glass: rgba(255, 255, 255, 0.03);
+  --m-glass-border: rgba(255, 255, 255, 0.06);
+  --m-glass-hover: rgba(255, 255, 255, 0.08);
 
   /* Typography */
-  --mono-font-display:  'Plus Jakarta Sans', 'WantedSans', 'Noto Sans KR', sans-serif;
-  --mono-font-body:     'Inter', 'WantedSans', 'Noto Sans KR', sans-serif;
+  --m-font-display: 'Plus Jakarta Sans', 'WantedSans', 'Noto Sans KR', sans-serif;
+  --m-font-body: 'Inter', 'WantedSans', 'Noto Sans KR', sans-serif;
+
+  /* Shadows */
+  --m-shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+  --m-shadow-neon: 0 0 15px rgba(51,99,255,0.3);
+  --m-glow-text: 0 0 8px rgba(51,99,255,0.5), 0 0 24px rgba(51,99,255,0.3), 0 0 64px rgba(51,99,255,0.15);
 }
 
-/* ==============================================
-   1. .slide-body (LIGHT mode — MONOLITH override)
-   ============================================== */
-.slide-body {
-  background: var(--mono-bg-light) !important;
-  font-family: var(--mono-font-body) !important;
-}
-
-/* ==============================================
-   2. .slide-body.dark (DARK mode — MONOLITH override)
-   ============================================== */
-.slide-body.dark {
-  background: var(--mono-bg-dark) !important;
-}
-
-/* ==============================================
-   3. .slide-body .body-title
-   ============================================== */
-.slide-body .body-title {
-  font-family: var(--mono-font-display) !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.03em !important;
-  line-height: 1.15 !important;
-  position: relative;
-  color: var(--mono-text-light) !important;
-}
-
-/* Decorative blue line under title */
-.slide-body .body-title::after {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 3px;
-  background: var(--mono-primary);
-  border-radius: 2px;
-  margin-top: 0.45em;
-}
-
-/* Dark title */
-.slide-body.dark .body-title {
-  color: var(--mono-text-dark) !important;
-}
-
-.slide-body.dark .body-title::after {
-  background: var(--mono-neon);
-  box-shadow: 0 0 12px rgba(var(--mono-neon-rgb), 0.5);
-}
-
-/* ==============================================
-   4. .slide-body .body-card  &  .body-crop-c3 .body-card
-   ============================================== */
-
-/* Light mode cards — clean white with soft shadow */
-.slide-body .body-card,
-.slide-body .body-crop-c3 .body-card {
-  background: var(--mono-card-light) !important;
-  border: 1px solid rgba(0, 0, 0, 0.05) !important;
-  border-radius: 14px !important;
-  box-shadow: var(--mono-card-shadow) !important;
-  color: var(--mono-text-light) !important;
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-.slide-body .body-crop-c3 .body-card strong {
-  font-family: var(--mono-font-display) !important;
-  font-weight: 700 !important;
-  color: var(--mono-text-light) !important;
-}
-
-/* Dark mode cards — glass panels */
-.slide-body.dark .body-card,
-.slide-body.dark .body-crop-c3 .body-card {
-  background: var(--mono-glass) !important;
-  border: 1px solid var(--mono-glass-border) !important;
-  border-radius: 14px !important;
-  box-shadow: none !important;
-  backdrop-filter: blur(24px) saturate(1.2);
-  -webkit-backdrop-filter: blur(24px) saturate(1.2);
-  color: var(--mono-text-dark) !important;
-  transition: background 0.25s ease, border-color 0.25s ease;
-}
-
-.slide-body.dark .body-card:hover,
-.slide-body.dark .body-crop-c3 .body-card:hover {
-  background: var(--mono-glass-hover) !important;
-  border-color: rgba(var(--mono-neon-rgb), 0.25) !important;
-}
-
-.slide-body.dark .body-crop-c3 .body-card strong {
-  font-family: var(--mono-font-display) !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-}
-
-.slide-body.dark .body-crop-c3 .body-card p {
-  color: var(--mono-text-dark) !important;
-}
-
-/* ==============================================
-   5. .slide-body .body-text and variants
-   ============================================== */
-.slide-body .body-text,
-.slide-body .body-text p {
-  font-family: var(--mono-font-body) !important;
-  color: var(--mono-text-light) !important;
-  line-height: 1.75 !important;
-}
-
-.slide-body .body-text strong {
-  font-family: var(--mono-font-body) !important;
-  font-weight: 700 !important;
-  color: var(--mono-text-light) !important;
-}
-
-.slide-body .body-crop-b3 .body-text strong:first-child {
-  font-family: var(--mono-font-display) !important;
-  font-weight: 700 !important;
-  color: var(--mono-text-light) !important;
-}
-
-/* Dark mode text */
-.slide-body.dark .body-text,
-.slide-body.dark .body-text p,
-.slide-body.dark .body-text strong {
-  color: var(--mono-text-dark) !important;
-}
-
-.slide-body.dark .body-text strong:first-child {
-  color: #ffffff !important;
-}
-
-.slide-body.dark .body-crop-b2 .body-text {
-  color: var(--mono-text-dark) !important;
-}
-
-.slide-body.dark .body-crop-b3 .body-text strong:first-child {
-  font-family: var(--mono-font-display) !important;
-  color: #ffffff !important;
-}
-
-/* ==============================================
-   6. .slide-impact-wrap — MONOLITH override
-   ============================================== */
-.slide-impact-wrap {
-  background: var(--mono-bg-dark) !important;
-}
-
-.slide-impact-wrap .impact-number {
-  font-family: var(--mono-font-display) !important;
-  font-weight: 900 !important;
-  color: var(--mono-neon) !important;
-  text-shadow:
-    0 0 20px rgba(var(--mono-neon-rgb), 0.5),
-    0 0 60px rgba(var(--mono-neon-rgb), 0.25),
-    0 10px 30px rgba(var(--mono-neon-rgb), 0.15) !important;
-  letter-spacing: -0.04em;
-}
-
-.slide-impact-wrap .impact-label {
-  font-family: var(--mono-font-display) !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-  letter-spacing: -0.02em;
-}
-
-.slide-impact-wrap .impact-sub {
-  font-family: var(--mono-font-body) !important;
-  color: rgba(255, 255, 255, 0.55) !important;
-}
-
-/* ==============================================
-   7. .theory-box — MONOLITH style
-   ============================================== */
-.theory-box {
-  font-family: var(--mono-font-body) !important;
-  background: var(--mono-bg-light) !important;
-  border: 1px solid rgba(0, 0, 0, 0.06) !important;
-  border-radius: 14px !important;
-  box-shadow: var(--mono-card-shadow) !important;
-}
-
-.theory-box.highlight {
-  background: rgba(var(--mono-neon-rgb), 0.04) !important;
-  border: 2px solid var(--mono-neon) !important;
-  box-shadow: 0 0 20px rgba(var(--mono-neon-rgb), 0.08) !important;
-}
-
-.theory-arrow {
-  color: rgba(var(--mono-neon-rgb), 0.35) !important;
-}
-
-/* ==============================================
-   8. .accent — MONOLITH neon blue
-   ============================================== */
-.accent {
-  color: var(--mono-neon) !important;
-}
-
-/* ==============================================
-   9. .reveal .progress — hover-only, neon blue
-   ============================================== */
+/* ----- Progress Bar: hover only ----- */
 .reveal .progress {
-  height: 2px !important;
-  color: var(--mono-neon) !important;
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.4s ease;
+  height: 2px;
+  color: var(--m-neon);
 }
-
-.reveal:hover .progress {
+.reveal:hover .progress,
+.reveal.overview .progress {
   opacity: 1;
 }
 
-/* ==============================================
-   10. .chapter-nav — MONOLITH darker glass panel
-   ============================================== */
+/* ----- Chapter Nav: MONOLITH glass ----- */
 .chapter-nav {
-  background: rgba(0, 0, 0, 0.55) !important;
-  backdrop-filter: blur(20px) saturate(1.3) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(1.3) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
-
-.chapter-btn {
-  font-family: var(--mono-font-body) !important;
-  color: rgba(255, 255, 255, 0.6) !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-radius: 8px !important;
-  transition: all 0.2s ease;
-}
-
-.chapter-btn:hover {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-}
-
 .chapter-btn.active {
-  color: #ffffff !important;
-  background: rgba(var(--mono-neon-rgb), 0.35) !important;
-  box-shadow: 0 0 12px rgba(var(--mono-neon-rgb), 0.2);
+  background: rgba(51, 99, 255, 0.4);
 }
-
-.chapter-pages {
-  background: rgba(0, 0, 0, 0.8) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px !important;
-}
+.page-dot:hover { background: rgba(51, 99, 255, 0.5); }
+.page-dot.active { background: rgba(51, 99, 255, 0.7); }
 
 /* ================================================================
-   MONOLITH — NEW Utility Classes
+   MONO-SLIDE : 본문 슬라이드 컨테이너
    ================================================================ */
-
-/* ---------- .glass-panel ---------- */
-.glass-panel {
-  background: var(--mono-glass);
-  border: 1px solid var(--mono-glass-border);
-  border-radius: 16px;
-  backdrop-filter: blur(24px) saturate(1.2);
-  -webkit-backdrop-filter: blur(24px) saturate(1.2);
-  padding: 2em;
-  color: var(--mono-text-dark);
-  transition: background 0.25s ease, border-color 0.25s ease;
-}
-
-.glass-panel:hover {
-  background: var(--mono-glass-hover);
-  border-color: rgba(var(--mono-neon-rgb), 0.2);
-}
-
-/* ---------- .neon-glow — blue text glow ---------- */
-.neon-glow {
-  color: var(--mono-neon) !important;
-  text-shadow:
-    0 0 8px  rgba(var(--mono-neon-rgb), 0.6),
-    0 0 24px rgba(var(--mono-neon-rgb), 0.35),
-    0 0 64px rgba(var(--mono-neon-rgb), 0.15);
-}
-
-/* ---------- .neon-glow-box — blue box glow ---------- */
-.neon-glow-box {
-  box-shadow:
-    0 0 8px  rgba(var(--mono-neon-rgb), 0.3),
-    0 0 24px rgba(var(--mono-neon-rgb), 0.15),
-    0 0 64px rgba(var(--mono-neon-rgb), 0.08);
-  border: 1px solid rgba(var(--mono-neon-rgb), 0.3);
-}
-
-/* ---------- .mono-chip — category badge ---------- */
-.mono-chip {
-  display: inline-block;
-  padding: 3px 12px;
-  font-family: var(--mono-font-body);
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  border-radius: 100px;
-  line-height: 1.6;
-  white-space: nowrap;
-}
-
-.mono-chip.dark {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--mono-text-dark);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mono-chip.light {
-  background: rgba(0, 0, 0, 0.04);
-  color: var(--mono-text-light);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* ---------- .mono-mesh-bg — radial gradient mesh for dark slides ---------- */
-.mono-mesh-bg {
+.mono-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--m-font-body);
+  overflow: hidden;
   position: relative;
+  box-sizing: border-box;
 }
 
-.mono-mesh-bg::before {
+/* --- Dark variant --- */
+.mono-slide.dark {
+  background: var(--m-black);
+  color: var(--m-text);
+}
+/* Mesh gradient pseudo-element */
+.mono-slide.dark::before {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 15% 20%, rgba(var(--mono-neon-rgb), 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 85% 75%, rgba(var(--mono-neon-rgb), 0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 40% at 50% 50%, rgba(var(--mono-neon-rgb), 0.02) 0%, transparent 80%);
   pointer-events: none;
+  background-image:
+    radial-gradient(ellipse at 10% 10%, rgba(51,99,255,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(183,196,255,0.04) 0%, transparent 50%);
+  z-index: 0;
 }
 
-.mono-mesh-bg > * {
+/* --- Light variant --- */
+.mono-slide.light {
+  background: var(--m-white);
+  color: var(--m-text-dark);
+}
+
+/* ================================================================
+   MONO-HEADER : 슬라이드 상단 (칩 + 제목 + 라인)
+   ================================================================ */
+.mono-header {
+  padding: 72px 80px 0;
   position: relative;
-  z-index: 1;
+  z-index: 10;
+  flex-shrink: 0;
+}
+.mono-header .mono-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-family: var(--m-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+/* Chip: dark mode */
+.mono-slide.dark .mono-chip {
+  background: rgba(51,99,255,0.15);
+  border: 1px solid rgba(51,99,255,0.35);
+  color: var(--m-neon-dim);
+}
+/* Chip: light mode */
+.mono-slide.light .mono-chip {
+  background: var(--m-neon-fixed);
+  border: 1px solid rgba(0,71,228,0.1);
+  color: #001453;
+}
+/* Chip dot */
+.mono-chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--m-neon);
+  flex-shrink: 0;
+}
+.mono-slide.light .mono-chip-dot {
+  background: var(--m-primary);
 }
 
-/* ---------- .mono-ambient — absolute positioned blur glow circle ---------- */
+/* Title */
+.mono-header h1 {
+  font-family: var(--m-font-display);
+  font-weight: 800;
+  font-size: 52px;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+.mono-slide.dark .mono-header h1 {
+  color: #ffffff;
+}
+.mono-slide.light .mono-header h1 {
+  color: var(--m-text-dark);
+}
+/* Accent line under title */
+.mono-header .mono-line {
+  width: 56px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--m-neon);
+  margin-top: 4px;
+}
+.mono-slide.dark .mono-header .mono-line {
+  box-shadow: var(--m-shadow-neon);
+}
+/* Subtitle */
+.mono-header .mono-sub {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+.mono-slide.dark .mono-header .mono-sub { color: var(--m-text-muted); }
+.mono-slide.light .mono-header .mono-sub { color: var(--m-text-dark-muted); }
+
+/* ================================================================
+   MONO-CONTENT : 메인 콘텐츠 영역
+   ================================================================ */
+.mono-content {
+  flex: 1;
+  padding: 32px 80px 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+  min-height: 0;
+  gap: 24px;
+}
+
+/* ================================================================
+   MONO-GRID : 그리드 레이아웃
+   ================================================================ */
+.mono-grid { display: grid; gap: 28px; align-items: stretch; }
+.mono-grid-2 { grid-template-columns: 1fr 1fr; }
+.mono-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.mono-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.mono-grid-4-8 { grid-template-columns: 4fr 8fr; }
+.mono-grid-5-7 { grid-template-columns: 5fr 7fr; }
+.mono-grid-7-5 { grid-template-columns: 7fr 5fr; }
+.mono-grid-8-4 { grid-template-columns: 8fr 4fr; }
+
+/* ================================================================
+   MONO-CARD : 카드 컴포넌트
+   ================================================================ */
+.mono-card {
+  padding: 36px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+/* Glass card (dark mode) */
+.mono-card.glass {
+  background: var(--m-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--m-glass-border);
+}
+/* Solid card (light mode) */
+.mono-card.solid {
+  background: var(--m-white-pure);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--m-shadow-card);
+}
+/* Card label */
+.mono-card .card-label {
+  font-family: var(--m-font-display);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.mono-slide.dark .mono-card .card-label { color: var(--m-neon); }
+.mono-slide.light .mono-card .card-label { color: var(--m-primary); }
+/* Card title */
+.mono-card h3 {
+  font-family: var(--m-font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.3;
+}
+.mono-slide.dark .mono-card h3 { color: #ffffff; }
+.mono-slide.light .mono-card h3 { color: var(--m-text-dark); }
+/* Card body */
+.mono-card p {
+  font-size: 18px;
+  line-height: 1.65;
+  margin: 0;
+}
+.mono-slide.dark .mono-card p { color: var(--m-text-muted); }
+.mono-slide.light .mono-card p { color: var(--m-text-dark-muted); }
+/* Card icon */
+.mono-card .card-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+.mono-slide.dark .mono-card .card-icon { color: rgba(255,255,255,0.25); }
+.mono-slide.light .mono-card .card-icon { color: var(--m-primary); }
+/* Card progress bar */
+.mono-card .card-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: auto;
+}
+.mono-slide.light .mono-card .card-bar { background: rgba(0,0,0,0.06); }
+.mono-card .card-bar-fill {
+  height: 100%;
+  background: var(--m-neon);
+  border-radius: 2px;
+}
+
+/* Neon accent card (dark) */
+.mono-card.neon {
+  background: var(--m-neon);
+  border: none;
+  box-shadow: var(--m-shadow-neon);
+}
+.mono-card.neon h3,
+.mono-card.neon p,
+.mono-card.neon .card-label {
+  color: #ffffff;
+}
+.mono-card.neon .card-icon { color: rgba(255,255,255,0.7); }
+.mono-card.neon .card-bar { background: rgba(255,255,255,0.2); }
+.mono-card.neon .card-bar-fill { background: #ffffff; }
+
+/* Error/warning card (dark) */
+.mono-card.warn {
+  border-left: 4px solid var(--m-error-solid);
+}
+.mono-card.warn .card-label { color: var(--m-error); }
+
+/* ================================================================
+   MONO-CENTER : 풀스크린 센터 텍스트 (감성/전환 슬라이드)
+   ================================================================ */
+.mono-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 120px;
+  position: relative;
+  z-index: 10;
+}
+.mono-center h1 {
+  font-family: var(--m-font-display);
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  margin: 0 0 20px;
+}
+.mono-center p {
+  font-size: 24px;
+  line-height: 1.7;
+  max-width: 900px;
+}
+.mono-slide.dark .mono-center p { color: var(--m-text-variant); }
+.mono-slide.light .mono-center p { color: var(--m-text-dark-muted); }
+
+/* ================================================================
+   MONO-IMPACT : 빅넘버 슬라이드
+   ================================================================ */
+.mono-impact {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+.mono-impact .impact-num {
+  font-family: var(--m-font-display);
+  font-size: 200px;
+  font-weight: 900;
+  color: var(--m-neon);
+  line-height: 1;
+  text-shadow: var(--m-glow-text);
+  letter-spacing: -0.04em;
+}
+.mono-impact .impact-label {
+  font-family: var(--m-font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 16px;
+  letter-spacing: -0.01em;
+}
+.mono-impact .impact-sub {
+  font-size: 20px;
+  color: var(--m-text-muted);
+  margin-top: 12px;
+  max-width: 700px;
+}
+
+/* ================================================================
+   MONO-FOOTER : 하단 메타 라벨
+   ================================================================ */
+.mono-footer {
+  padding: 16px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+.mono-slide.dark .mono-footer { color: rgba(255,255,255,0.15); }
+.mono-slide.light .mono-footer { color: var(--m-text-dark-subtle); opacity: 0.4; }
+
+/* ================================================================
+   MONO-STEPS : 스텝/프로세스 플로우
+   ================================================================ */
+.mono-steps {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+.mono-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mono-step .step-num {
+  font-family: var(--m-font-display);
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1;
+}
+.mono-slide.dark .mono-step .step-num { color: rgba(255,255,255,0.08); }
+.mono-slide.light .mono-step .step-num { color: rgba(0,71,228,0.08); }
+.mono-step.active .step-num {
+  color: var(--m-neon) !important;
+  text-shadow: var(--m-glow-text);
+}
+/* Step arrow connector */
+.mono-step-arrow {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: rgba(255,255,255,0.1);
+  flex-shrink: 0;
+  padding-top: 28px;
+}
+.mono-slide.light .mono-step-arrow { color: var(--m-outline-light); }
+
+/* ================================================================
+   MONO-COMPARE : Before/After 비교 레이아웃
+   ================================================================ */
+.mono-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.mono-compare .compare-box {
+  padding: 36px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mono-compare .compare-box.old {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.mono-compare .compare-box.new {
+  background: rgba(51,99,255,0.06);
+  border: 1px solid rgba(51,99,255,0.2);
+}
+.mono-slide.light .mono-compare .compare-box.old {
+  background: var(--m-white-pure);
+  border: 1px solid var(--m-outline-light);
+}
+.mono-slide.light .mono-compare .compare-box.new {
+  background: rgba(0,71,228,0.04);
+  border: 2px solid var(--m-primary);
+}
+.mono-compare .compare-label {
+  font-family: var(--m-font-display);
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.mono-compare .compare-box.old .compare-label { color: var(--m-text-muted); }
+.mono-compare .compare-box.new .compare-label { color: var(--m-neon); }
+.mono-slide.light .mono-compare .compare-box.new .compare-label { color: var(--m-primary); }
+
+/* ================================================================
+   MONO-QUOTE : 인용/강조 블록
+   ================================================================ */
+.mono-quote {
+  border-left: 3px solid var(--m-neon);
+  padding: 20px 28px;
+  margin: 0;
+  border-radius: 0 12px 12px 0;
+}
+.mono-slide.dark .mono-quote { background: rgba(51,99,255,0.06); }
+.mono-slide.light .mono-quote { background: rgba(0,71,228,0.04); }
+.mono-quote p {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.mono-slide.dark .mono-quote p { color: var(--m-text); }
+.mono-slide.light .mono-quote p { color: var(--m-text-dark); }
+
+/* ================================================================
+   MONO-TAG : 인라인 태그/뱃지
+   ================================================================ */
+.mono-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.mono-tag.blue { background: rgba(51,99,255,0.12); color: var(--m-neon); }
+.mono-tag.dim { background: rgba(255,255,255,0.06); color: var(--m-text-muted); }
+.mono-slide.light .mono-tag.blue { background: var(--m-neon-fixed); color: var(--m-primary); }
+.mono-slide.light .mono-tag.dim { background: rgba(0,0,0,0.05); color: var(--m-text-dark-muted); }
+
+/* ================================================================
+   MONO-DEMO : iframe / 라이브 데모 래퍼
+   ================================================================ */
+.mono-demo {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--m-surface-dim);
+  border: 1px solid var(--m-glass-border);
+  flex: 1;
+  min-height: 0;
+}
+.mono-slide.light .mono-demo {
+  background: var(--m-white-pure);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: var(--m-shadow-card);
+}
+.mono-demo iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ================================================================
+   NEON GLOW utility
+   ================================================================ */
+.neon-glow {
+  color: var(--m-neon) !important;
+  text-shadow: var(--m-glow-text);
+}
+.neon-glow-box {
+  box-shadow: var(--m-shadow-neon), 0 0 0 1px rgba(51,99,255,0.3);
+}
+
+/* ================================================================
+   Material icon alignment
+   ================================================================ */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+/* ================================================================
+   MONO-AMBIENT : 배경 글로우 서클
+   ================================================================ */
 .mono-ambient {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
-  background: rgba(var(--mono-neon-rgb), 0.08);
+  background: rgba(51,99,255,0.06);
   filter: blur(120px);
   pointer-events: none;
   z-index: 0;
 }
 
-/* ---------- Micro-label utility (uppercase, tiny, wide tracking) ---------- */
+/* ================================================================
+   MONO-DIVIDER : 가로 구분선
+   ================================================================ */
+.mono-divider {
+  width: 100%;
+  height: 1px;
+  flex-shrink: 0;
+}
+.mono-slide.dark .mono-divider { background: rgba(255,255,255,0.06); }
+.mono-slide.light .mono-divider { background: var(--m-outline-light); opacity: 0.4; }
+
+/* ================================================================
+   MICRO LABEL utility
+   ================================================================ */
 .mono-micro {
-  font-family: var(--mono-font-body) !important;
-  font-size: 9px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.4);
-  line-height: 1;
 }
+.mono-slide.dark .mono-micro { color: rgba(255,255,255,0.3); }
+.mono-slide.light .mono-micro { color: var(--m-text-dark-subtle); }
 
-.mono-micro.light {
-  color: rgba(0, 0, 0, 0.4);
+/* ================================================================
+   STRIP : 하단 가로 스트립 (Collaboration Guide 패턴)
+   ================================================================ */
+.mono-strip {
+  flex-shrink: 0;
+  padding: 24px 40px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
-
-/* ---------- MONOLITH dark body-source override ---------- */
-.slide-body.dark .body-source {
-  color: rgba(255, 255, 255, 0.3) !important;
-  font-family: var(--mono-font-body) !important;
+.mono-strip.glass {
+  background: var(--m-glass);
+  border: 1px solid var(--m-glass-border);
+  backdrop-filter: blur(20px);
 }
-
-/* ---------- MONOLITH light body-source override ---------- */
-.slide-body .body-source {
-  font-family: var(--mono-font-body) !important;
-  color: rgba(0, 0, 0, 0.4) !important;
+.mono-strip.solid {
+  background: var(--m-white-pure);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: var(--m-shadow-card);
 }
-
-/* ---------- Dark mode image borders ---------- */
-.slide-body.dark img {
-  border-radius: 10px;
+.mono-strip.neon-left {
+  border-left: 4px solid var(--m-neon);
 }
-
-.slide-body.dark iframe {
-  border-radius: 10px;
+.mono-slide.light .mono-strip.neon-left {
+  border-left-color: var(--m-primary);
 }
 
 /* ================================================================
-   END — MONOLITH Design System
+   FRAGMENT OVERRIDE for Reveal.js
    ================================================================ */
+.reveal .mono-slide .fragment.fade-up {
+  transform: translateY(24px);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal .mono-slide .fragment.fade-up.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ================================================================
+   Responsive font helper
+   ================================================================ */
+.text-xl { font-size: 24px; line-height: 1.5; }
+.text-lg { font-size: 20px; line-height: 1.5; }
+.text-md { font-size: 18px; line-height: 1.6; }
+.text-sm { font-size: 15px; line-height: 1.6; }
+.text-xs { font-size: 13px; line-height: 1.5; }
+.font-display { font-family: var(--m-font-display); }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
+.tracking-tight { letter-spacing: -0.02em; }
+.tracking-wide { letter-spacing: 0.08em; }

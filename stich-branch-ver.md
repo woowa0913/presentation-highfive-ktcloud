@@ -38,8 +38,31 @@
 
 ## 버전 이력
 
+### v2.0 — 2026-04-14
+**design: MONOLITH 디자인으로 본문 36슬라이드 완전 재작성 (Stitch 기반)**
+
+CSS (wanted-theme.css):
+- 기존 MONOLITH 섹션(v1.0) 전체 삭제 → 새 디자인 시스템 v2 재작성 (+647줄)
+- 새 클래스 체계: .mono-slide, .mono-header, .mono-content, .mono-card, .mono-grid-*, .mono-footer
+- 다크: .mono-slide.dark (mesh gradient ::before, glass cards, neon-glow)
+- 라이트: .mono-slide.light (#f7f9fd, solid cards, soft shadow)
+- 레이아웃: mono-compare, mono-steps, mono-center, mono-impact, mono-quote, mono-strip
+- Progress bar: hover-only (opacity 0→1)
+- Chapter nav: darker glass panel, #3363FF active
+
+HTML (index.html):
+- 본문 36슬라이드 **전체 HTML 완전 재작성** (기존 slide-body 패턴 → mono-slide 패턴)
+- 다크 9개: PREAMBLE, ASPIRATION, DOPAMINE LOOP, PARADIGM SHIFT, IMPACT 95%, METHODOLOGY, TOOLKIT, GOVERNANCE, MINDSET
+- 라이트 27개: TRANSFER FAILURE, CHALLENGE, BARRIERS, DISCOVERY, CASE STUDY, BEFORE&AFTER, FIELD REALITY, STRUCTURAL LIMITS, OLD vs NEW, EVOLUTION, METHODOLOGY, ADDIE, CORE COMPETENCIES, MAKER DNA, VIBE CODING, CONVERGENCE, CASE GALLERY, CASE STUDY 01-03, KAC MOCK EXAM, ONBOARDING APPS, BALANCE GAME, DOPAMINE LOOP, TRANSFORMATION, QUICK START, OVERCOMING BARRIERS
+- 콘텐츠(텍스트, 숫자, iframe URL) 100% 보존
+- Material Symbols Outlined 아이콘 적용
+- JS: updateNavButtonStyle()에 mono-slide.dark 감지 추가
+
+보호 슬라이드 (변경 없음):
+- hero, title(intro), 간지 7개, index, closing 4개
+
 ### v1.0 — 2026-04-14
-**design: MONOLITH 디자인 시스템 전면 적용 (Stitch 디자인 원칙 기반)**
+**design: MONOLITH 디자인 시스템 전면 적용 (Stitch 디자인 원칙 기반) — v2.0에서 대체됨**
 
 CSS 변경 (wanted-theme.css +417줄):
 - MONOLITH 디자인 토큰 추가 (다크: #000000/#3363FF, 라이트: #f7f9fd/#0047e4)
