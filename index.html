@@ -1748,9 +1748,16 @@
     const bodyEl = document.body;
     const viewportEl = document.querySelector('.reveal-viewport');
 
+    const TOP_UI_HIDE_DELAY = 1000;
+
     function setTopUiVisible(visible) {
       nav.classList.toggle('visible', visible);
       bodyEl.classList.toggle('top-ui-visible', visible);
+    }
+
+    function scheduleTopUiHide() {
+      clearTimeout(navTimer);
+      navTimer = setTimeout(() => setTopUiVisible(false), TOP_UI_HIDE_DELAY);
     }
 
     document.addEventListener('mousemove', (e) => {
@@ -1759,8 +1766,24 @@
         setTopUiVisible(true);
         clearTimeout(navTimer);
       } else {
+        scheduleTopUiHide();
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      setTopUiVisible(false);
+      clearTimeout(navTimer);
+    });
+
+    window.addEventListener('blur', () => {
+      setTopUiVisible(false);
+      clearTimeout(navTimer);
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        setTopUiVisible(false);
         clearTimeout(navTimer);
-        navTimer = setTimeout(() => setTopUiVisible(false), 1000);
       }
     });
 
@@ -1770,8 +1793,7 @@
     });
 
     nav.addEventListener('mouseleave', () => {
-      clearTimeout(navTimer);
-      navTimer = setTimeout(() => setTopUiVisible(false), 1000);
+      scheduleTopUiHide();
     });
 
     /* ── 2. Hero: hero 슬라이드에서만 표시 ── */

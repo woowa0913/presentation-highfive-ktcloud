@@ -528,18 +528,6 @@
   pointer-events: none;
 }
 
-.reveal .slides section[data-chapter^="ch"] .slide-body::after,
-.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap::after {
-  content: "";
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  top: 140px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(51, 99, 255, 0.22), rgba(51, 99, 255, 0));
-  pointer-events: none;
-}
-
 .reveal .slides section[data-chapter^="ch"] .slide-body > :not(.body-title):not(.body-source),
 .reveal .slides section[data-chapter^="ch"] .slide-impact-wrap > * {
   position: relative;
