@@ -14,7 +14,8 @@
 
 - gemini 기준 원본 링크: `https://presentationvibe-git-gemini-woowa0913s-projects.vercel.app`
 - final 브랜치 링크: `https://presentationvibe-git-final-woowa0913s-projects.vercel.app`
-- 마지막 확인 시각: 2026-04-14 10:51:13 KST
+- 최신 preview 링크: `https://presentationvibe-rmknqposg-woowa0913s-projects.vercel.app`
+- 마지막 확인 시각: 2026-04-14 11:15 KST
 - Vercel 프로젝트: `presentation_vibe`
 
 ## 3. 현재 상태
@@ -23,6 +24,7 @@
 - 현재 차이는 `final` 전용 기록 문서, 좌측 하단 `final 브랜치` 라벨, 그리고 본문 슬라이드의 Stitch 레퍼런스 기반 리스타일링이다.
 - `intro`, 타이틀, 간지, `end` 페이지는 기존 구조와 톤을 유지한다.
 - 본문 슬라이드는 라이트/다크를 의미 단위로 정리하고, 상단 프로그레스바는 hover 시에만 보이도록 유지한다.
+- 최신 커밋: `9477d5d` (`feat: restyle final body slides`)
 - `main` 브랜치는 변경하지 않는다.
 
 ## 4. 변경 이력
