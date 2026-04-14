@@ -13,7 +13,9 @@
 ## 2. 웹 링크
 
 - gemini 기준 원본 링크: `https://presentationvibe-git-gemini-woowa0913s-projects.vercel.app`
-- final 브랜치 링크: 배포 후 갱신
+- final 브랜치 링크: `https://presentationvibe-git-final-woowa0913s-projects.vercel.app`
+- 현재 preview 배포 URL: `https://presentationvibe-og15shyzl-woowa0913s-projects.vercel.app`
+- 마지막 확인 시각: 2026-04-14 10:50:04 KST
 - Vercel 프로젝트: `presentation_vibe`
 
 ## 3. 현재 상태
