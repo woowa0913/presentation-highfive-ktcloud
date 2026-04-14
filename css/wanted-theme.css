@@ -3479,14 +3479,51 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   gap: 18px;
 }
 
+.case-title-accent {
+  color: var(--stitch-blue);
+}
+
 .case-study-split-slide .body-title {
   padding-top: 66px;
+  font-size: 1.18em;
 }
 
 .case-study-split-slide .reframe-stage {
   padding-top: 14px;
   padding-bottom: 116px;
   min-height: calc(100% - 116px);
+}
+
+.case-doc-check-slide .reframe-stage {
+  padding-bottom: 38px;
+  min-height: calc(100% - 38px);
+}
+
+.case-doc-check-slide .case-detail-stack {
+  padding-top: 18px;
+}
+
+.case-doc-check-slide .case-app-screen,
+.case-doc-check-slide .case-app-screen iframe {
+  min-height: 500px;
+}
+
+.case-mock-test-slide .reframe-stage {
+  padding-bottom: 122px;
+  min-height: calc(100% - 122px);
+}
+
+.case-mock-test-slide .case-app-browser {
+  min-height: 360px !important;
+}
+
+.case-mock-test-slide .case-app-screen,
+.case-mock-test-slide .case-app-screen iframe {
+  min-height: 280px;
+}
+
+.case-mock-test-slide .case-proof-frame {
+  min-height: 84px;
 }
 
 .case-app-card {
@@ -3615,9 +3652,30 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   position: absolute;
   left: 5%;
   right: 5%;
-  bottom: 18px;
+  bottom: 12px;
   width: auto;
   margin-top: 0;
+}
+
+.case-mock-test-slide .case-kpi-grid-full {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 10px;
+  width: auto;
+  margin-top: 0;
+}
+
+.case-mock-test-slide .case-kpi-grid .reframe-card {
+  padding: 12px 14px 10px;
+}
+
+.case-mock-test-slide .case-kpi-grid .reframe-heading {
+  font-size: 0.8em;
+}
+
+.case-mock-test-slide .case-kpi-grid .reframe-copy {
+  font-size: 0.63em;
 }
 
 .case-kpi-grid .reframe-card {
