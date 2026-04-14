@@ -335,6 +335,31 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.2 (2026-04-15) - 12p 여백 조정 및 55p 슬라이드 추가
+
+### 현재 상태
+- 12페이지 하단에 여백을 추가해 브라우저 영역이 화면 하단에 너무 붙어 보이지 않도록 조정했다.
+- 기존 2페이지의 인트로 읽기 슬라이드를 복사해 55페이지 바로 앞에 같은 내용으로 추가했다.
+
+### 변경 이력
+- `css/wanted-theme.css`
+  - 12페이지 전용 `.case-live-stage` 하단 패딩을 `22px`로 추가
+- `index.html`
+  - `syncIntroReadingState()`를 다중 `.intro-reading-section` 대응으로 보강
+  - 기존 2페이지 내용을 `data-chapter="closing"` 슬라이드로 복제해 현재 55페이지 위치에 삽입
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4177`)에서 Playwright 캡처로 확인
+- 확인 항목
+  - 12페이지 하단 여백 반영
+  - 새 55페이지 슬라이드 삽입 및 렌더링
+- 확인 캡처
+  - `/tmp/presentation-vibe-check-5/12-case-live-bottom-gap.png`
+  - `/tmp/presentation-vibe-check-5/55-intro-copy.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.1 (2026-04-15) - 7p/10p/12p gemini 레퍼런스 반영
 
 ### 현재 상태

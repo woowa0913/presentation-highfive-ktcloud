@@ -2239,6 +2239,32 @@
         </div>
       </section>
 
+      <section data-background-color="#FFFFFF" data-chapter="closing" class="intro-reading-section" data-intro-step="0">
+        <div class="intro-reading-stage">
+          <p class="intro-reading-topline">오늘 이 자리, <span>여러분에게 새로운 읽을거리가 되길 바랍니다.</span></p>
+          <h2 class="intro-reading-question">글을 잘 쓰려면 어떻게 해야 할까요?</h2>
+
+          <div class="intro-reading-maxim">
+            <span class="is-active">다문(多聞)</span>
+            <span class="is-active">다독(多讀)</span>
+            <span>다작(多作)</span>
+            <span class="is-active">다상량(多商量)</span>
+          </div>
+          <p class="intro-reading-credit">- 송나라 문인 구양수</p>
+
+          <p class="intro-reading-context">바이브 코딩도 마찬가지입니다. HRD에는 참고할 만한 사례가 아직은 부족합니다.</p>
+
+          <div class="intro-reading-quotes">
+            <p>"저런 것도 만들 수 있구나."</p>
+            <p>"우리 조직에 맞게 바꿔볼까?"</p>
+          </div>
+
+          <span class="fragment intro-reading-trigger" aria-hidden="true"></span>
+          <span class="fragment intro-reading-trigger" aria-hidden="true"></span>
+          <span class="fragment intro-reading-trigger" aria-hidden="true"></span>
+        </div>
+      </section>
+
 	      <!-- Q&A + QR -->
 	      <section data-background-image="assets/pptx-media/image7.png" data-background-size="cover" data-chapter="closing">
 	        <div class="slide-qa-wrap">
@@ -2460,12 +2486,12 @@
     }
 
     function syncIntroReadingState() {
-      const section = document.querySelector('.intro-reading-section');
-      if (!section) return;
-      const step = section.classList.contains('present')
-        ? section.querySelectorAll('.intro-reading-trigger.visible').length
-        : 0;
-      section.dataset.introStep = String(step);
+      document.querySelectorAll('.intro-reading-section').forEach((section) => {
+        const step = section.classList.contains('present')
+          ? section.querySelectorAll('.intro-reading-trigger.visible').length
+          : 0;
+        section.dataset.introStep = String(step);
+      });
     }
 
     function syncDiscoveryCarouselState() {
