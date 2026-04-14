@@ -2,17 +2,18 @@
 
 > 브랜치: `claude`  
 > 배포 링크: https://presentationvibe-git-claude-woowa0913s-projects.vercel.app  
-> 마지막 업데이트: 2026-04-13
+> 마지막 업데이트: 2026-04-14
 
 ---
 
-## 현재 슬라이드 구조 (20슬라이드)
+## 현재 슬라이드 구조 (21슬라이드)
 
 | # | data-chapter | 내용 | 배경 |
 |---|-------------|------|------|
 | 0 | hero | 영상 배경 Intro | 영상 fullscreen |
-| 1 | intro | Title 슬라이드 | image1.png |
-| 2 | index | 목차 | image2.png |
+| 1 | intro | **[신규]** 다독 슬라이드 — "오늘 이 자리는 다독의 시간입니다" | #FFFFFF |
+| 2 | intro | Title 슬라이드 | image1.png |
+| 3 | index | 목차 | image2.png |
 | 3 | ch1 간지 | HRD, 왜 '메이커'가 되어야 하는가 | image3.png |
 | 4 | ch1 | 아이디어는 있는데, 만들 수가 없다 | #FFFFFF |
 | 5 | ch1 | HRD는 어디로 진화하는가 | #FFFFFF |
@@ -34,6 +35,14 @@
 ---
 
 ## 버전 이력
+
+### v1.0 — 2026-04-14 (`TBD`)
+**feat: 다독 슬라이드 추가 — 발표 도입부 "오늘 이 자리는 다독의 시간입니다"**
+- 위치: hero(영상) 다음, Title 슬라이드 바로 앞 (slide #1, data-chapter="intro")
+- 배경: #FFFFFF (라이트 슬라이드)
+- 2단계 fragment 구성:
+  - Fragment 1: "글을 잘 쓰려면..." 질문 + `다독(多讀) · 다상량(多商量) · 다작(多作)` 강조 타이포 (2.4em, var(--wanted-accent1) 파란색)
+  - Fragment 2: 문제 제기 문단 + 두 개의 인용구 (accent1 파랑 / accent2 민트) + 마무리 메시지 (왼쪽 파란 보더라인)
 
 ### v0.9 — 2026-04-13 (`f95509b`)
 **fix: dark slide text visibility and rail sequential fragments**
