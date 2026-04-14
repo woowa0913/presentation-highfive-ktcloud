@@ -675,52 +675,89 @@
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch2">
-        <div class="slide-body addie-stack-slide">
+        <div class="slide-body addie-card-slide">
           <div class="body-title">AI-Augmented ADDIE: 모델의 재발견</div>
-          <div class="addie-title-row fragment fade-up">
-            <span class="addie-title-icon">🤖</span>
-            <h3>AI-Augmented ADDIE: 모델의 재발견</h3>
-          </div>
-          <div class="addie-stack-list">
-            <div class="addie-list-row fragment fade-up">
-              <div class="addie-stage-tag">A 분석</div>
-              <div class="addie-stage-copy">
-                <strong>학습 데이터와 현장 신호를 더 빠르게 읽는다</strong>
-                <span>니즈 파악과 이슈 감지가 더 촘촘해지고, 분석이 실시간에 가까워집니다.</span>
+          <div class="reframe-stage">
+            <div class="reframe-addie-grid addie-card-grid" style="flex:1;">
+              <div class="reframe-card addie-card fragment fade-up">
+                <div class="addie-card-top">
+                  <span class="reframe-eyebrow">A — 분석</span>
+                  <span class="addie-blue-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M4 17l4-5 4 3 5-8 3 4" />
+                      <path d="M14.5 17.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                    </svg>
+                  </span>
+                </div>
+                <h3 class="reframe-heading">분석</h3>
+                <p class="reframe-copy">학습 데이터 AI 분석으로 실시간 니즈 도출</p>
+                <p class="addie-card-detail">니즈 파악과 이슈 감지가 더 촘촘해지고, 분석이 실시간에 가까워집니다.</p>
               </div>
-              <div class="addie-stage-icon">🔎</div>
+              <div class="reframe-card addie-card fragment fade-up">
+                <div class="addie-card-top">
+                  <span class="reframe-eyebrow">D — 설계</span>
+                  <span class="addie-blue-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M8 20l4-14 4 14" />
+                      <path d="M5 20h14" />
+                      <circle cx="12" cy="6" r="2" />
+                    </svg>
+                  </span>
+                </div>
+                <h3 class="reframe-heading">설계</h3>
+                <p class="reframe-copy">AI 기반 모듈 구성과 코스웨어 구조화</p>
+                <p class="addie-card-detail">과정, 화면, 평가, 인터랙션의 뼈대를 빠르게 시뮬레이션할 수 있습니다.</p>
+              </div>
+              <div class="reframe-card is-accent addie-card fragment fade-up">
+                <div class="addie-card-top">
+                  <span class="reframe-eyebrow">D — 개발</span>
+                  <span class="addie-blue-icon is-inverse" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <rect x="4" y="5" width="16" height="14" rx="2" />
+                      <path d="m10 10-2 2 2 2" />
+                      <path d="m14 10 2 2-2 2" />
+                    </svg>
+                  </span>
+                </div>
+                <h3 class="reframe-heading" style="color:#fff;">개발</h3>
+                <p class="reframe-copy" style="color:#eef3ff;">바이브 코딩으로 프로토타입 즉시 제작</p>
+                <p class="addie-card-detail is-inverse">설계 후 개발이 아니라, 설계와 개발이 거의 동시에 진행됩니다.</p>
+              </div>
+              <div class="reframe-card addie-card fragment fade-up">
+                <div class="addie-card-top">
+                  <span class="reframe-eyebrow">I — 실행</span>
+                  <span class="addie-blue-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <rect x="5" y="7" width="14" height="10" rx="2" />
+                      <path d="M9 7V5h6v2" />
+                      <path d="M9 13h6" />
+                    </svg>
+                  </span>
+                </div>
+                <h3 class="reframe-heading">실행</h3>
+                <p class="reframe-copy">AI 튜터와 피드백 루프로 개별화된 적용 지원</p>
+                <p class="addie-card-detail">실제 사용 장면을 빨리 확보하고, 학습 경험을 현장에서 조정할 수 있습니다.</p>
+              </div>
+              <div class="reframe-card addie-card fragment fade-up">
+                <div class="addie-card-top">
+                  <span class="reframe-eyebrow">E — 평가</span>
+                  <span class="addie-blue-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 18V10" />
+                      <path d="M10 18V6" />
+                      <path d="M15 18v-4" />
+                      <path d="M20 18V3" />
+                      <path d="M4 18h17" />
+                    </svg>
+                  </span>
+                </div>
+                <h3 class="reframe-heading">평가</h3>
+                <p class="reframe-copy">성과 데이터 분석 후 다음 학습 경로 추천</p>
+                <p class="addie-card-detail">평가가 종료 단계가 아니라 다음 실험을 여는 입력값이 됩니다.</p>
+              </div>
             </div>
-            <div class="addie-list-row fragment fade-up">
-              <div class="addie-stage-tag">D 설계</div>
-              <div class="addie-stage-copy">
-                <strong>프롬프트와 정보 구조가 설계 문서가 된다</strong>
-                <span>과정, 화면, 평가, 인터랙션의 뼈대를 빠르게 시뮬레이션할 수 있습니다.</span>
-              </div>
-              <div class="addie-stage-icon">🧩</div>
-            </div>
-            <div class="addie-list-row fragment fade-up">
-              <div class="addie-stage-tag">D 개발</div>
-              <div class="addie-stage-copy">
-                <strong>프로토타입이 곧 대화의 결과물이 된다</strong>
-                <span>설계 후 개발이 아니라, 설계와 개발이 거의 동시에 진행됩니다.</span>
-              </div>
-              <div class="addie-stage-icon is-accent">⚡</div>
-            </div>
-            <div class="addie-list-row fragment fade-up">
-              <div class="addie-stage-tag">I 실행</div>
-              <div class="addie-stage-copy">
-                <strong>현업 적용과 피드백 루프가 짧아진다</strong>
-                <span>실제 사용 장면을 빨리 확보하고, 학습 경험을 현장에서 조정할 수 있습니다.</span>
-              </div>
-              <div class="addie-stage-icon">🚀</div>
-            </div>
-            <div class="addie-list-row fragment fade-up">
-              <div class="addie-stage-tag">E 평가</div>
-              <div class="addie-stage-copy">
-                <strong>성과 확인이 다음 개선으로 즉시 연결된다</strong>
-                <span>평가가 종료 단계가 아니라 다음 실험을 여는 입력값이 됩니다.</span>
-              </div>
-              <div class="addie-stage-icon">📈</div>
+            <div class="reframe-card is-blue fragment fade-up addie-bottom-note">
+              <p class="reframe-copy">ADDIE는 오래된 모델이 아니라, <strong>AI와 만나면서 실시간 실행 모델로 재구성</strong>될 수 있습니다. 핵심은 개발 단계가 더 이상 병목이 아니라는 점입니다.</p>
             </div>
           </div>
         </div>

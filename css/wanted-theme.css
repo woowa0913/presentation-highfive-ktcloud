@@ -3966,3 +3966,85 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .mac-demo-window.is-loaded .mac-demo-body iframe { opacity: 1; }
+
+.addie-card-slide .body-title {
+  margin-bottom: 32px;
+}
+
+.addie-card-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.addie-card {
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 26px 22px 24px;
+}
+
+.addie-card.is-accent {
+  border: 2px solid rgba(51, 99, 255, 0.18);
+  box-shadow: 0 18px 44px rgba(51, 99, 255, 0.18);
+}
+
+.addie-card-top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.addie-card .reframe-eyebrow {
+  margin-bottom: 0;
+}
+
+.addie-blue-icon {
+  width: 34px;
+  height: 34px;
+  color: var(--stitch-blue);
+}
+
+.addie-blue-icon.is-inverse {
+  color: #ffffff;
+}
+
+.addie-blue-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.addie-card .reframe-heading {
+  font-size: 1.44em;
+  margin-bottom: 0;
+}
+
+.addie-card .reframe-copy {
+  font-size: 0.92em;
+  line-height: 1.56;
+  color: var(--wanted-dark);
+  font-weight: 700;
+}
+
+.addie-card-detail {
+  margin-top: auto;
+  font-size: 0.8em;
+  line-height: 1.62;
+  color: #667085;
+}
+
+.addie-card-detail.is-inverse {
+  color: rgba(237, 243, 255, 0.9);
+}
+
+.addie-bottom-note {
+  min-height: auto;
+  padding: 20px 24px;
+}
