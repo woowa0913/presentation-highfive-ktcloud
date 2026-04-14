@@ -649,7 +649,7 @@
         <div class="slide-body">
           <div class="body-title">이미 우리 안에 있는 '메이커'의 DNA</div>
           <div class="reframe-stage">
-            <div class="reframe-process" style="grid-template-columns: repeat(5, 1fr); flex:1;">
+            <div class="reframe-process reframe-motion-flow" style="grid-template-columns: repeat(5, 1fr); flex:1;">
               <div class="reframe-process-step fragment fade-up"><div class="reframe-step-no">T</div><strong>Thinking</strong><p class="reframe-copy">니즈를 솔루션 아키텍처로 전환</p></div>
               <div class="reframe-process-step fragment fade-up"><div class="reframe-step-no">C</div><strong>Context</strong><p class="reframe-copy">조직의 언어를 프롬프트로 변환</p></div>
               <div class="reframe-process-step fragment fade-up"><div class="reframe-step-no">F</div><strong>Framework</strong><p class="reframe-copy">모델을 실행 가능한 앱으로 가시화</p></div>
@@ -923,7 +923,7 @@
         <div class="slide-body dark">
           <div class="body-title">KAC 사례의 임팩트</div>
           <div class="reframe-center-stack" style="padding:0 8%;">
-            <div class="fragment fade-up reframe-card is-accent" style="min-width:680px; max-width:760px; text-align:center;">
+            <div class="fragment fade-up reframe-card is-accent reframe-motion-impact" style="min-width:680px; max-width:760px; text-align:center;">
               <div class="reframe-stat" style="font-size:6.2em; color:#fff;">95%</div>
               <h3 class="reframe-heading" style="color:#fff;">KAC 자격 취득 과정 최종 합격률</h3>
               <p class="reframe-copy" style="color:#ecf1ff;">단순 공지를 넘어, 선결조건을 직접 점검하고 시험 흐름을 미리 경험하도록 바꿨을 때 실제 성과가 따라왔습니다.</p>
@@ -1216,7 +1216,7 @@
               <h3 class="reframe-heading" style="color:#fff;">바이브 코딩의 진짜 힘은 기술 자체보다, 작은 성공이 다시 시도를 부르는 심리적 루프에 있습니다.</h3>
             </div>
 
-            <div class="reframe-process" style="grid-template-columns: repeat(5, 1fr); flex:1;">
+            <div class="reframe-process reframe-motion-loop" style="grid-template-columns: repeat(5, 1fr); flex:1;">
               <div class="reframe-process-step fragment fade-up">
                 <div class="reframe-step-no">1</div>
                 <strong>불편의 발견</strong>
@@ -1649,6 +1649,7 @@
       e.stopPropagation();
       effectOn = !effectOn;
       beamCanvas.style.display = effectOn ? 'block' : 'none';
+      bodyEl.classList.toggle('effects-off', !effectOn);
       effectBtn.textContent = effectOn ? 'Effect ON' : 'Effect OFF';
       effectBtn.classList.toggle('off', !effectOn);
     });
