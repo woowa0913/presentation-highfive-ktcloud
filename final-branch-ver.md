@@ -414,6 +414,55 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.15 (2026-04-15) - 초반 흐름 재배치 및 인터랙션 보정
+
+### 현재 상태
+- 9p의 중간 텍스트 줄바꿈과 마지막 이미지 캡션을 요청 문구 기준으로 정리했다.
+- 9p 이미지 위 캡션의 대괄호를 제거하고, 캡션 박스의 투명도/폭/위치를 조정했다.
+- 10p 맥 단축키 앱 실행 화면에 마우스 오버 시 새창 열기 버튼이 보이도록 추가했다.
+- 12p 키 메시지 폰트 크기를 키우고, 마지막 fragment에서 노란 도파민 이펙트가 다시 보이도록 보정했다.
+- 기존 14p(`slide-15`)는 사례 간지 뒤, 사례 목록 앞 위치로 이동했다.
+- 챕터2 간지(`slide-14`)를 삭제 상태로 전환하고, 기존 챕터3를 챕터2로 당겼다.
+- 기존 15p/16p(`slide-17`, `slide-19`)는 밸런스게임 뒤로 이동했다.
+- 밸런스게임 화면에 마우스 오버 시 새창 열기 버튼을 추가했다.
+- 밸런스게임 QR이 발표 슬라이드 루트가 아니라 밸런스게임 접속 URL(`/assets/balance-game/index.html#/join?...`)을 가리키도록 보정했다.
+- 사례 간지 타이틀을 `실제 사례 — / 문제를 도구로 바꾼 기록`으로 수정했다.
+- 새 접속/빈 `localStorage` 기준 표시 슬라이드는 50장 → 49장으로 조정된다.
+
+### 변경 이력
+- `index.html`
+  - 기본 관리자 상태 버전을 `2026-04-15-reflow-chapters-01`로 갱신
+  - `slide-14`를 삭제 대상에 추가하고, `DEFAULT_ADMIN_STATE.order`를 새 발표 순서에 맞게 조정
+  - 챕터 번호를 2~5장 체계로 당기고, `ch6` 네비게이션 버튼 제거
+  - 9p/10p/12p/밸런스게임/사례 간지 마크업 수정
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=45`로 업데이트
+- `css/wanted-theme.css`
+  - 챕터 칩 문구를 새 챕터 체계에 맞게 수정
+  - 9p 캡션 박스, 10p/밸런스게임 새창 버튼 hover, 12p 도파민 이펙트와 키 메시지 크기 보정
+- `assets/balance-game/index.html`
+  - 밸런스게임 앱 내부 QR 이미지의 join URL을 앱 기준 경로로 재작성하는 안전장치 추가
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4191`)에서 Playwright로 확인
+- 확인 항목
+  - 빈 `localStorage` 기준 Reveal 표시 슬라이드 수 49장 확인
+  - `slide-14` 포함 삭제 대상 7개가 표시 흐름에서 제외되는지 확인
+  - `slide-20 → slide-21 → slide-17 → slide-19 → slide-18` 순서 확인
+  - `slide-27 → slide-15 → slide-28` 순서 확인
+  - `slide-27` 간지 타이틀과 `slide-15`의 `ch3` 이동 확인
+  - 10p 앱 실행 새창 버튼 hover 표시 확인
+  - 밸런스게임 새창 버튼 hover 표시 확인
+  - 밸런스게임 QR URL이 앱 접속 경로로 재작성되는지 확인
+  - 12p 마지막 fragment에서 노란 도파민 이펙트와 키 메시지 크기 확인
+- 확인 캡처
+  - `/tmp/final-p9-discovery.png`
+  - `/tmp/final-p10-mac-open-hover.png`
+  - `/tmp/final-p12-dopamine-v2.png`
+  - `/tmp/final-balance-open-hover.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.14 (2026-04-15) - 관리자 삭제 장표 반영 및 레일 스위치 장표 보정
 
 ### 현재 상태

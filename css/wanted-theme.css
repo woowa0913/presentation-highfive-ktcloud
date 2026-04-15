@@ -637,11 +637,10 @@
 }
 
 .reveal .slides section[data-chapter="ch1"] .body-title::before { content: "Chapter 01 · Origin"; }
-.reveal .slides section[data-chapter="ch2"] .body-title::before { content: "Chapter 02 · Why Maker"; }
-.reveal .slides section[data-chapter="ch3"] .body-title::before { content: "Chapter 03 · HRD의 바이브 코딩"; }
-.reveal .slides section[data-chapter="ch4"] .body-title::before { content: "Chapter 04 · Case Study"; }
-.reveal .slides section[data-chapter="ch5"] .body-title::before { content: "Chapter 05 · Team Expansion"; }
-.reveal .slides section[data-chapter="ch6"] .body-title::before { content: "Chapter 06 · Governance"; }
+.reveal .slides section[data-chapter="ch2"] .body-title::before { content: "Chapter 02 · HRD의 바이브 코딩"; }
+.reveal .slides section[data-chapter="ch3"] .body-title::before { content: "Chapter 03 · Case Study"; }
+.reveal .slides section[data-chapter="ch4"] .body-title::before { content: "Chapter 04 · Team Expansion"; }
+.reveal .slides section[data-chapter="ch5"] .body-title::before { content: "Chapter 05 · Governance"; }
 
 .reveal .slides #slide-rail-anim .rail-slide-title {
   padding: 34px 12% 0;
@@ -2874,6 +2873,10 @@ body.ui-on-dark .reveal .progress {
   position: relative;
 }
 
+.dopamine-pivot-slide .reframe-stage {
+  overflow: visible;
+}
+
 .gen-confidence-stage {
   display: flex;
   flex-direction: column;
@@ -2943,6 +2946,7 @@ body.ui-on-dark .reveal .progress {
 .dopamine-sparkle-layer {
   position: absolute;
   inset: -4% -3% 0;
+  z-index: 4;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.32s ease;
@@ -2950,6 +2954,10 @@ body.ui-on-dark .reveal .progress {
 }
 
 .reframe-quote-band--plain.visible + .dopamine-sparkle-layer {
+  opacity: 1;
+}
+
+.dopamine-pivot-slide.present .dopamine-bottom-message.visible ~ .dopamine-sparkle-layer {
   opacity: 1;
 }
 
@@ -3339,15 +3347,15 @@ body.effects-off .sparkle-item {
 
 .reframe-discovery-caption {
   position: absolute;
-  top: 10%;
+  top: 16%;
   left: 50%;
   right: auto;
   bottom: auto;
-  width: 74%;
+  width: 62%;
   transform: translate(-50%, 12px);
-  padding: 18px 20px;
+  padding: 15px 18px;
   border-radius: 18px;
-  background: rgba(8, 12, 20, 0.82);
+  background: rgba(8, 12, 20, 0.68);
   color: #eef4ff;
   font-family: 'WantedSans', sans-serif;
   font-size: 0.82em;
@@ -3662,6 +3670,13 @@ body.effects-off .sparkle-item {
 
 .case-live-browser[data-case-live-state="app"] .case-live-app-stage {
   display: block;
+}
+
+.case-live-app-stage:hover .case-app-float-open,
+.balance-game-opening-slide .mac-demo-window:hover .case-app-float-open,
+.balance-game-opening-slide .case-app-float-open:focus-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .case-live-search-stage {
@@ -6292,6 +6307,6 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .dopamine-bottom-message p {
-  font-size: 1.18em;
-  line-height: 1.34;
+  font-size: 1.34em;
+  line-height: 1.32;
 }

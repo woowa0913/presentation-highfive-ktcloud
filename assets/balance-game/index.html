@@ -77,6 +77,39 @@
         animation: bounce-subtle 2s ease-in-out infinite;
       }
     </style>
+    <script>
+      (() => {
+        const appBaseUrl = () => new URL(window.location.href.split('#')[0], window.location.href).href;
+        const rewriteJoinQr = (img) => {
+          const src = img.getAttribute('src') || '';
+          if (!src.includes('api.qrserver.com') || !src.includes('data=')) return;
+          try {
+            const url = new URL(src, window.location.href);
+            const rawData = url.searchParams.get('data') || '';
+            const code = new URL(rawData).hash.match(/code=([^&]+)/)?.[1];
+            if (!code) return;
+            const nextJoinUrl = `${appBaseUrl()}#/join?code=${code}`;
+            if (rawData === nextJoinUrl) return;
+            url.searchParams.set('data', nextJoinUrl);
+            img.setAttribute('src', url.toString());
+          } catch (error) {
+            console.warn('balance game QR rewrite skipped', error);
+          }
+        };
+        const fixAllJoinQr = () => {
+          document.querySelectorAll('img[src*="api.qrserver.com"]').forEach(rewriteJoinQr);
+        };
+        window.addEventListener('DOMContentLoaded', () => {
+          fixAllJoinQr();
+          new MutationObserver(fixAllJoinQr).observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['src'],
+          });
+        });
+      })();
+    </script>
 
   <script type="importmap">
 {
