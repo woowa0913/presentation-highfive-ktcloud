@@ -335,6 +335,54 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.3 (2026-04-15) - 초반 슬라이드 톤/문구 재정리
+
+### 현재 상태
+- 2페이지 구양수 표기 위치를 다문·다독·다작·다상량 바로 아래로 당겨 재배치했다.
+- 6페이지 도입 문구를 요청하신 문장 순서로 수정했다.
+- 7페이지는 하단 메시지를 블루 텍스트로 바꾸고, 퍼널/카드 톤을 블루·그레이·블랙 중심으로 정리했다.
+- 8페이지는 카드 색상 톤을 전체 덱과 맞추고, 첫 화면에서 카드가 바로 보이도록 조정했다.
+- 9페이지는 카드/카피 전체를 위로 올려 밀도를 맞췄다.
+- 10페이지는 이전 레이아웃으로 되돌리면서 이미지 위 보조 문구를 유지했다.
+- 12페이지는 상단 카드 가독성을 올리고, 하단 검색 이미지를 `mac-shortcut.png`로 교체했다.
+
+### 변경 이력
+- `index.html`
+  - 6페이지 문구 교체
+  - 7페이지 퍼널/카드 색상 마크업 조정 및 하단 메시지 plain 스타일 적용
+  - 8페이지 카드 문장 줄바꿈/강조 반영 및 fragment 제거
+  - 9페이지 상단 이동용 클래스 추가
+  - 10페이지 `discovery-books-section` 레이아웃 복원
+  - 12페이지 검색 스테이지를 실제 PNG 이미지로 교체
+- `css/wanted-theme.css`
+  - 2페이지 구양수 크레딧 위치 재조정
+  - 8페이지 전용 카드 색상/노트 스타일 조정
+  - 9페이지 상단 이동 스타일 추가
+  - 10페이지 보조 카피 오버레이 스타일 추가
+  - 12페이지 상단 카드 간격/패딩/텍스트 대비 보정 및 검색 이미지 스타일 추가
+- `assets/pptx-media/mac-shortcut.png`
+  - 원본 프로젝트 자산을 final 작업 폴더로 복사해 12페이지 검색 이미지에 사용
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4177`)에서 Playwright 캡처로 확인
+- 확인 항목
+  - 2페이지 크레딧 위치
+  - 7페이지 톤 변경 및 하단 메시지 스타일
+  - 8페이지 카드 가시성/톤 변경
+  - 9페이지 콘텐츠 상향 이동
+  - 10페이지 이전 레이아웃 복원
+  - 12페이지 상단 카드 가독성 및 하단 PNG 교체
+- 확인 캡처
+  - `/tmp/presentation-vibe-check-7/02-intro-credit-final.png`
+  - `/tmp/presentation-vibe-check-6/07-transfer-gap.png`
+  - `/tmp/presentation-vibe-check-7/08-route-options-final.png`
+  - `/tmp/presentation-vibe-check-6/09-barrier-lift.png`
+  - `/tmp/presentation-vibe-check-7/10-discovery-restored-final.png`
+  - `/tmp/presentation-vibe-check-6/12-case-live-mac-shortcut.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.2 (2026-04-15) - 12p 여백 조정 및 55p 슬라이드 추가
 
 ### 현재 상태

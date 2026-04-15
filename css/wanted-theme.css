@@ -325,15 +325,16 @@
 
 .intro-reading-credit {
   position: absolute;
-  top: 58.8%;
-  right: 11.4%;
+  top: 49.2%;
+  left: 50%;
   margin: 0;
+  text-align: center;
   font-size: 1em;
   font-weight: 500;
   letter-spacing: -0.03em;
   color: #1b1d23;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translate(-50%, 10px);
   transition: opacity 0.32s ease, transform 0.32s ease;
 }
 
@@ -405,7 +406,7 @@
 .intro-reading-section[data-intro-step="2"] .intro-reading-credit,
 .intro-reading-section[data-intro-step="3"] .intro-reading-credit {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
 }
 
 .intro-reading-section[data-intro-step="2"] .intro-reading-context,
@@ -2762,6 +2763,23 @@ body.effects-off .sparkle-item {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.reframe-discovery-emphasis {
+  position: absolute;
+  left: 50%;
+  bottom: 84px;
+  z-index: 2;
+  width: 62%;
+  transform: translateX(-50%);
+  font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.72em;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+  color: #16e7cf;
+  text-align: center;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
 .reframe-discovery-steps {
   position: absolute;
   left: 24px;
@@ -2810,6 +2828,11 @@ body.effects-off .sparkle-item {
   transform: translateY(0);
 }
 
+.discovery-books-section .reframe-discovery-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .case-live-stage {
   position: relative;
   z-index: 1;
@@ -2819,6 +2842,105 @@ body.effects-off .sparkle-item {
   padding: 0 5% 22px;
   flex: 1;
   min-height: 0;
+}
+
+.transfer-gap-slide .transfer-gap-neutral {
+  background: linear-gradient(180deg, rgba(242, 245, 250, 0.96), rgba(255, 255, 255, 0.86));
+  border-color: rgba(90, 104, 130, 0.16);
+}
+
+.transfer-gap-slide .transfer-gap-neutral .reframe-eyebrow {
+  background: rgba(229, 234, 243, 0.94);
+  color: #3c4860;
+  border-color: rgba(90, 104, 130, 0.14);
+}
+
+.transfer-gap-slide .transfer-gap-quote {
+  padding-top: 0;
+}
+
+.route-options-slide .route-tone-blue {
+  background: linear-gradient(180deg, rgba(237, 244, 255, 0.96), rgba(255, 255, 255, 0.86));
+  border-color: rgba(51, 99, 255, 0.16);
+}
+
+.route-options-slide .route-tone-slate {
+  background: linear-gradient(180deg, rgba(243, 246, 250, 0.98), rgba(255, 255, 255, 0.88));
+  border-color: rgba(90, 104, 130, 0.14);
+}
+
+.route-options-slide .route-tone-dark {
+  background: linear-gradient(180deg, rgba(19, 26, 38, 0.98), rgba(34, 44, 61, 0.96));
+  border-color: rgba(120, 148, 255, 0.18);
+  box-shadow: 0 26px 54px rgba(16, 22, 38, 0.18);
+}
+
+.route-options-slide .route-tone-dark .reframe-route-title,
+.route-options-slide .route-tone-dark .reframe-route-line,
+.route-options-slide .route-tone-dark .reframe-route-summary {
+  color: rgba(239, 243, 255, 0.96);
+}
+
+.route-options-slide .route-tone-dark .reframe-route-summary {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.route-options-slide .route-tone-dark .reframe-route-line {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.route-options-slide .reframe-route-line strong {
+  font-weight: 800;
+  color: var(--stitch-ink);
+}
+
+.route-options-slide .route-tone-dark .reframe-route-line strong {
+  color: #ffffff;
+}
+
+.route-options-slide .reframe-route-note::before {
+  display: none;
+}
+
+.route-options-slide .reframe-route-note {
+  justify-content: center;
+}
+
+.barrier-slide-lift .reframe-barrier-stage {
+  transform: translateY(-30px);
+}
+
+.case-live-slide .case-live-stage {
+  gap: 18px;
+  padding-top: 14px;
+}
+
+.case-live-slide .case-live-brief {
+  padding: 20px 28px;
+}
+
+.case-live-slide .case-live-point {
+  padding: 14px 18px;
+  background: rgba(240, 245, 255, 0.9);
+}
+
+.case-live-slide .case-live-point-copy {
+  color: #253247;
+  font-weight: 700;
+}
+
+.case-live-slide .case-live-search-stage {
+  padding: 10px;
+  background: linear-gradient(180deg, rgba(247, 249, 253, 0.96), rgba(234, 239, 248, 0.96));
+}
+
+.case-live-search-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(70, 84, 120, 0.08);
 }
 
 .case-live-brief {
