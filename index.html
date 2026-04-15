@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=37">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=38">
 </head>
 <body>
 
@@ -53,6 +53,24 @@
     <!-- 이펙트 토글 -->
     <button class="effect-toggle" id="effectToggle">Effect ON</button>
   </nav>
+
+  <aside class="admin-mode-panel" id="adminModePanel" aria-hidden="true">
+    <div class="admin-mode-head">
+      <div>
+        <div class="admin-mode-kicker">Admin Mode</div>
+        <h2>슬라이드 구성 관리</h2>
+      </div>
+      <button type="button" class="admin-mode-close" data-admin-close aria-label="관리자 모드 닫기">×</button>
+    </div>
+    <div class="admin-mode-help">
+      <strong>순서 변경</strong>은 항목 드래그 또는 ↑/↓ 버튼으로 조정하고, <strong>숨김</strong>은 발표 흐름에서 제외합니다.
+    </div>
+    <div class="admin-mode-toolbar">
+      <button type="button" data-admin-reset>초기화</button>
+      <span id="adminSlideCount">0 / 0 visible</span>
+    </div>
+    <div class="admin-slide-list" id="adminSlideList" aria-label="슬라이드 순서 관리"></div>
+  </aside>
 
   <div class="reveal">
     <div class="slides">
@@ -2298,6 +2316,14 @@
     const NAV_ARROW_SHOW_DELAY = 500;
     const NAV_EDGE_THRESHOLD = 72;
 
+    function getHorizontalSlides() {
+      return Reveal.getSlides ? Reveal.getSlides() : Array.from(document.querySelectorAll('.reveal .slides > section'));
+    }
+
+    function getCurrentSection() {
+      return getHorizontalSlides()[Reveal.getIndices().h] || document.querySelector('.reveal .slides > section.present');
+    }
+
     function setTopUiVisible(visible) {
       nav.classList.toggle('visible', visible);
       bodyEl.classList.toggle('top-ui-visible', visible);
@@ -2395,7 +2421,7 @@
     const heroFs = document.getElementById('heroFullscreen');
 
     function updateHeroVideo() {
-      const currentSection = document.querySelectorAll('.reveal .slides > section')[Reveal.getIndices().h];
+      const currentSection = getCurrentSection();
       const isHero = currentSection?.dataset.chapter === 'hero';
       heroFs.style.display = isHero ? 'block' : 'none';
       document.querySelector('.reveal-viewport')?.classList.toggle('hero-active', isHero);
@@ -2436,7 +2462,7 @@
     window.addEventListener('resize', updateHeroLogoLayout);
 
     function updateViewportSurface() {
-      const currentSection = document.querySelectorAll('.reveal .slides > section')[Reveal.getIndices().h];
+      const currentSection = getCurrentSection();
       if (!viewportEl || !currentSection) return;
 
       viewportEl.classList.remove(
@@ -2798,7 +2824,7 @@
     const navRightBtn = document.getElementById('navRight');
 
     function updateNavButtonStyle() {
-      const currentSection = document.querySelectorAll('.reveal .slides > section')[Reveal.getIndices().h];
+      const currentSection = getCurrentSection();
       const bgColor = currentSection?.dataset.backgroundColor || '';
       const isDark = bgColor === '#0a0a0a' || bgColor === '#000000' ||
                      currentSection?.querySelector('.slide-body.dark') !== null ||
@@ -2836,8 +2862,12 @@
     Reveal.on('slidechanged', updateChapterNav);
 
     function buildChapterNav() {
-      const sections = document.querySelectorAll('.reveal .slides > section');
+      const sections = getHorizontalSlides();
       const chapters = {};
+
+      document.querySelectorAll('.chapter-pages').forEach((container) => {
+        container.innerHTML = '';
+      });
 
       sections.forEach((sec, idx) => {
         const ch = sec.dataset.chapter || 'other';
@@ -2850,11 +2880,11 @@
         if (!container) return;
         const btn = container.parentElement;
 
-        btn.addEventListener('click', (e) => {
+        btn.onclick = (e) => {
           if (e.target === btn || e.target.nodeType === 3) {
             Reveal.slide(chapters[ch][0]);
           }
-        });
+        };
 
         chapters[ch].forEach((slideIdx, pageNum) => {
           const dot = document.createElement('button');
@@ -2881,7 +2911,7 @@
 
     function updateChapterNav() {
       const currentIdx = Reveal.getIndices().h;
-      const currentSection = document.querySelectorAll('.reveal .slides > section')[currentIdx];
+      const currentSection = getCurrentSection();
       const currentChapter = currentSection?.dataset.chapter || '';
 
       document.querySelectorAll('.chapter-btn').forEach(btn => {
@@ -2894,6 +2924,280 @@
 
       updateNavButtonStyle();
     }
+
+    /* ── 5. 관리자 모드: Intro 더블클릭으로 슬라이드 순서/숨김 관리 ── */
+    const ADMIN_PASSWORD = '0401';
+    const ADMIN_STATE_KEY = 'presentation-vibe-admin-state-v1';
+    const adminPanel = document.getElementById('adminModePanel');
+    const adminList = document.getElementById('adminSlideList');
+    const adminSlideCount = document.getElementById('adminSlideCount');
+    const adminIntroButton = document.querySelector('.chapter-btn[data-chapter="hero"]');
+    let originalSections = [];
+    let draggedAdminSlideId = null;
+
+    function loadAdminState() {
+      try {
+        return JSON.parse(localStorage.getItem(ADMIN_STATE_KEY)) || { order: [], hidden: [] };
+      } catch (error) {
+        console.warn('admin state load failed', error);
+        return { order: [], hidden: [] };
+      }
+    }
+
+    function saveAdminState(state) {
+      try {
+        localStorage.setItem(ADMIN_STATE_KEY, JSON.stringify(state));
+      } catch (error) {
+        console.warn('admin state save failed', error);
+      }
+    }
+
+    function normalizeAdminState(state = loadAdminState()) {
+      const knownIds = originalSections.map((section) => section.dataset.adminSlideId);
+      const order = [
+        ...state.order.filter((id) => knownIds.includes(id)),
+        ...knownIds.filter((id) => !state.order.includes(id)),
+      ];
+      let hidden = state.hidden.filter((id) => knownIds.includes(id));
+      if (hidden.length >= order.length) {
+        hidden = [];
+      }
+      return { order, hidden };
+    }
+
+    function getSlideLabel(section, index) {
+      const titleNode = section.querySelector('.body-title, h1, h2, .intro-reading-question, .hero-main-title');
+      const rawTitle = titleNode?.textContent?.replace(/\s+/g, ' ').trim();
+      if (rawTitle) return rawTitle;
+
+      const chapterName = {
+        hero: 'Intro',
+        intro: 'Title / Opening',
+        index: 'Index',
+        closing: 'Closing',
+      }[section.dataset.chapter];
+
+      return chapterName || `Slide ${index + 1}`;
+    }
+
+    function escapeAdminText(value = '') {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function applyAdminSlideState(options = {}) {
+      if (!originalSections.length) return;
+
+      const state = normalizeAdminState();
+      const slidesRoot = document.querySelector('.reveal .slides');
+      const currentId = getCurrentSection()?.dataset.adminSlideId;
+      const currentTarget = options.targetSlideId || currentId;
+
+      state.order.forEach((id) => {
+        const section = originalSections.find((item) => item.dataset.adminSlideId === id);
+        if (!section) return;
+        const hidden = state.hidden.includes(id);
+        section.classList.toggle('admin-slide-is-hidden', hidden);
+
+        if (hidden) {
+          section.dataset.adminHidden = 'true';
+          if (section.parentElement === slidesRoot) {
+            slidesRoot.removeChild(section);
+          }
+        } else if (section.dataset.originalVisibility) {
+          section.dataset.adminHidden = 'false';
+          section.setAttribute('data-visibility', section.dataset.originalVisibility);
+          slidesRoot.appendChild(section);
+        } else {
+          section.dataset.adminHidden = 'false';
+          section.removeAttribute('data-visibility');
+          slidesRoot.appendChild(section);
+        }
+      });
+
+      saveAdminState(state);
+      Reveal.sync?.();
+      Reveal.layout?.();
+      buildChapterNav();
+      renderAdminPanel();
+      updateViewportSurface();
+      updateNavButtonStyle();
+
+      const nextTarget = state.hidden.includes(currentTarget) ? state.order.find((id) => !state.hidden.includes(id)) : currentTarget;
+      const nextIndex = getHorizontalSlides().findIndex((section) => section.dataset.adminSlideId === nextTarget);
+      if (nextIndex >= 0) {
+        Reveal.slide(nextIndex);
+      }
+    }
+
+    function renderAdminPanel() {
+      if (!adminList || !originalSections.length) return;
+      const state = normalizeAdminState();
+      const visibleCount = state.order.length - state.hidden.length;
+
+      adminSlideCount.textContent = `${visibleCount} / ${state.order.length} visible`;
+      adminList.innerHTML = state.order.map((id, index) => {
+        const section = originalSections.find((item) => item.dataset.adminSlideId === id);
+        const hidden = state.hidden.includes(id);
+        const chapter = section?.dataset.chapter || 'slide';
+        const title = getSlideLabel(section, index);
+
+        return `
+          <div class="admin-slide-row${hidden ? ' is-hidden' : ''}" draggable="true" data-admin-slide-id="${id}">
+            <button type="button" class="admin-slide-jump" data-admin-jump="${id}" ${hidden ? 'disabled' : ''}>
+              <span class="admin-slide-number">${String(index + 1).padStart(2, '0')}</span>
+              <span class="admin-slide-meta">
+                <span class="admin-slide-chapter">${escapeAdminText(chapter)}</span>
+                <span class="admin-slide-title">${escapeAdminText(title)}</span>
+              </span>
+            </button>
+            <div class="admin-slide-actions">
+              <button type="button" data-admin-move="${id}" data-admin-direction="up" aria-label="위로 이동">↑</button>
+              <button type="button" data-admin-move="${id}" data-admin-direction="down" aria-label="아래로 이동">↓</button>
+              <button type="button" class="admin-hide-toggle" data-admin-hide="${id}">${hidden ? '표시' : '숨김'}</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function moveAdminSlide(id, direction) {
+      const state = normalizeAdminState();
+      const from = state.order.indexOf(id);
+      if (from < 0) return;
+      const to = direction === 'up' ? from - 1 : from + 1;
+      if (to < 0 || to >= state.order.length) return;
+      state.order.splice(from, 1);
+      state.order.splice(to, 0, id);
+      saveAdminState(state);
+      applyAdminSlideState({ targetSlideId: id });
+    }
+
+    function moveAdminSlideTo(id, targetId) {
+      if (!id || !targetId || id === targetId) return;
+      const state = normalizeAdminState();
+      const from = state.order.indexOf(id);
+      const to = state.order.indexOf(targetId);
+      if (from < 0 || to < 0) return;
+      state.order.splice(from, 1);
+      state.order.splice(to, 0, id);
+      saveAdminState(state);
+      applyAdminSlideState({ targetSlideId: id });
+    }
+
+    function toggleAdminSlideHidden(id) {
+      const state = normalizeAdminState();
+      const isHidden = state.hidden.includes(id);
+      if (!isHidden && state.order.length - state.hidden.length <= 1) return;
+      state.hidden = isHidden ? state.hidden.filter((item) => item !== id) : [...state.hidden, id];
+      saveAdminState(state);
+      applyAdminSlideState({ targetSlideId: id });
+    }
+
+    function setAdminMode(active) {
+      bodyEl.classList.toggle('admin-mode-active', active);
+      adminPanel?.classList.toggle('is-open', active);
+      adminPanel?.setAttribute('aria-hidden', active ? 'false' : 'true');
+      if (active) {
+        renderAdminPanel();
+        setTopUiVisible(true);
+        clearTimeout(navTimer);
+      }
+    }
+
+    function initAdminMode() {
+      const sections = Array.from(document.querySelectorAll('.reveal .slides > section'));
+      originalSections = sections.map((section, index) => {
+        section.dataset.adminSlideId = section.dataset.adminSlideId || `slide-${index + 1}`;
+        section.dataset.originalIndex = String(index);
+        if (section.hasAttribute('data-visibility')) {
+          section.dataset.originalVisibility = section.getAttribute('data-visibility');
+        }
+        return section;
+      });
+
+      applyAdminSlideState();
+
+      adminIntroButton?.addEventListener('dblclick', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (bodyEl.classList.contains('admin-mode-active')) {
+          setAdminMode(false);
+          return;
+        }
+        const password = window.prompt('관리자 비밀번호를 입력해주세요.');
+        if (password === ADMIN_PASSWORD) {
+          setAdminMode(true);
+        } else if (password !== null) {
+          window.alert('비밀번호가 맞지 않습니다.');
+        }
+      });
+
+      adminPanel?.querySelector('[data-admin-close]')?.addEventListener('click', () => setAdminMode(false));
+      adminPanel?.querySelector('[data-admin-reset]')?.addEventListener('click', () => {
+        if (!window.confirm('관리자 모드에서 조정한 순서와 숨김 상태를 초기화할까요?')) return;
+        localStorage.removeItem(ADMIN_STATE_KEY);
+        applyAdminSlideState({ targetSlideId: originalSections[0]?.dataset.adminSlideId });
+      });
+
+      adminList?.addEventListener('click', (event) => {
+        const jumpId = event.target.closest('[data-admin-jump]')?.dataset.adminJump;
+        const hideId = event.target.closest('[data-admin-hide]')?.dataset.adminHide;
+        const moveButton = event.target.closest('[data-admin-move]');
+
+        if (hideId) {
+          toggleAdminSlideHidden(hideId);
+          return;
+        }
+
+        if (moveButton) {
+          moveAdminSlide(moveButton.dataset.adminMove, moveButton.dataset.adminDirection);
+          return;
+        }
+
+        if (jumpId) {
+          const targetIndex = getHorizontalSlides().findIndex((section) => section.dataset.adminSlideId === jumpId);
+          if (targetIndex >= 0) Reveal.slide(targetIndex);
+        }
+      });
+
+      adminList?.addEventListener('dragstart', (event) => {
+        const row = event.target.closest('[data-admin-slide-id]');
+        if (!row) return;
+        draggedAdminSlideId = row.dataset.adminSlideId;
+        row.classList.add('is-dragging');
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/plain', draggedAdminSlideId);
+      });
+
+      adminList?.addEventListener('dragend', () => {
+        draggedAdminSlideId = null;
+        adminList.querySelectorAll('.is-dragging, .is-drop-target').forEach((row) => {
+          row.classList.remove('is-dragging', 'is-drop-target');
+        });
+      });
+
+      adminList?.addEventListener('dragover', (event) => {
+        const row = event.target.closest('[data-admin-slide-id]');
+        if (!row || row.dataset.adminSlideId === draggedAdminSlideId) return;
+        event.preventDefault();
+        adminList.querySelectorAll('.is-drop-target').forEach((item) => item.classList.remove('is-drop-target'));
+        row.classList.add('is-drop-target');
+      });
+
+      adminList?.addEventListener('drop', (event) => {
+        const row = event.target.closest('[data-admin-slide-id]');
+        if (!row) return;
+        event.preventDefault();
+        moveAdminSlideTo(draggedAdminSlideId || event.dataTransfer.getData('text/plain'), row.dataset.adminSlideId);
+      });
+    }
+
+    Reveal.on('ready', initAdminMode);
   </script>
 </body>
 </html>
