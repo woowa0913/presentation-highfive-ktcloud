@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=38">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=39">
 </head>
 <body>
 
@@ -63,13 +63,27 @@
       <button type="button" class="admin-mode-close" data-admin-close aria-label="관리자 모드 닫기">×</button>
     </div>
     <div class="admin-mode-help">
-      <strong>순서 변경</strong>은 항목 드래그 또는 ↑/↓ 버튼으로 조정하고, <strong>숨김</strong>은 발표 흐름에서 제외합니다.
+      <strong>순서 변경</strong>과 <strong>숨김</strong>을 관리하고, 선택한 페이지의 텍스트를 바로 추가·수정·삭제할 수 있습니다.
     </div>
     <div class="admin-mode-toolbar">
       <button type="button" data-admin-reset>초기화</button>
       <span id="adminSlideCount">0 / 0 visible</span>
     </div>
     <div class="admin-slide-list" id="adminSlideList" aria-label="슬라이드 순서 관리"></div>
+    <div class="admin-text-editor" id="adminTextEditor">
+      <div class="admin-text-editor-head">
+        <div>
+          <span>Text CRUD</span>
+          <strong id="adminTextSlideTitle">슬라이드를 선택하세요</strong>
+        </div>
+        <button type="button" data-admin-text-refresh>새로고침</button>
+      </div>
+      <div class="admin-text-list" id="adminTextList"></div>
+      <div class="admin-text-create">
+        <textarea id="adminTextCreateInput" rows="3" placeholder="선택한 슬라이드에 추가할 텍스트를 입력하세요."></textarea>
+        <button type="button" data-admin-text-add>텍스트 추가</button>
+      </div>
+    </div>
   </aside>
 
   <div class="reveal">
@@ -2931,16 +2945,47 @@
     const adminPanel = document.getElementById('adminModePanel');
     const adminList = document.getElementById('adminSlideList');
     const adminSlideCount = document.getElementById('adminSlideCount');
+    const adminTextList = document.getElementById('adminTextList');
+    const adminTextSlideTitle = document.getElementById('adminTextSlideTitle');
+    const adminTextCreateInput = document.getElementById('adminTextCreateInput');
     const adminIntroButton = document.querySelector('.chapter-btn[data-chapter="hero"]');
+    const ADMIN_EDITABLE_SELECTOR = [
+      '.body-title',
+      '.hero-main-title',
+      '.hero-sub-en',
+      '.hero-sub-kr',
+      '.intro-reading-topline',
+      '.intro-reading-question',
+      '.intro-reading-credit',
+      '.intro-reading-context',
+      '.intro-reading-quotes p',
+      '.speaker-info',
+      '.body-source',
+      '.reframe-heading',
+      '.reframe-subheading',
+      '.reframe-copy',
+      '.reframe-list-item',
+      '.reframe-stat-label',
+      '.reframe-chip',
+      '.body-text p',
+      '.body-text strong',
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'p',
+      'li',
+    ].join(',');
     let originalSections = [];
     let draggedAdminSlideId = null;
+    let selectedAdminSlideId = null;
 
     function loadAdminState() {
       try {
-        return JSON.parse(localStorage.getItem(ADMIN_STATE_KEY)) || { order: [], hidden: [] };
+        return JSON.parse(localStorage.getItem(ADMIN_STATE_KEY)) || {};
       } catch (error) {
         console.warn('admin state load failed', error);
-        return { order: [], hidden: [] };
+        return {};
       }
     }
 
@@ -2954,15 +2999,33 @@
 
     function normalizeAdminState(state = loadAdminState()) {
       const knownIds = originalSections.map((section) => section.dataset.adminSlideId);
+      const rawOrder = Array.isArray(state.order) ? state.order : [];
+      const rawHidden = Array.isArray(state.hidden) ? state.hidden : [];
       const order = [
-        ...state.order.filter((id) => knownIds.includes(id)),
-        ...knownIds.filter((id) => !state.order.includes(id)),
+        ...rawOrder.filter((id) => knownIds.includes(id)),
+        ...knownIds.filter((id) => !rawOrder.includes(id)),
       ];
-      let hidden = state.hidden.filter((id) => knownIds.includes(id));
+      let hidden = rawHidden.filter((id) => knownIds.includes(id));
       if (hidden.length >= order.length) {
         hidden = [];
       }
-      return { order, hidden };
+
+      const textEdits = state.textEdits && typeof state.textEdits === 'object' ? state.textEdits : {};
+      const textDeleted = Array.isArray(state.textDeleted) ? state.textDeleted : [];
+      const textAdded = state.textAdded && typeof state.textAdded === 'object' ? state.textAdded : {};
+      const normalizedAdded = {};
+
+      knownIds.forEach((slideId) => {
+        const addedItems = Array.isArray(textAdded[slideId]) ? textAdded[slideId] : [];
+        normalizedAdded[slideId] = addedItems
+          .filter((item) => item && typeof item.text === 'string')
+          .map((item, index) => ({
+            id: item.id || `${slideId}-added-${Date.now()}-${index}`,
+            text: item.text,
+          }));
+      });
+
+      return { order, hidden, textEdits, textDeleted, textAdded: normalizedAdded };
     }
 
     function getSlideLabel(section, index) {
@@ -2987,6 +3050,201 @@
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
+    }
+
+    function isAdminEditableTextNode(node) {
+      if (!node || !node.textContent?.trim()) return false;
+      if (node.hasAttribute('data-admin-added-text')) return false;
+      if (node.children.length > 0) return false;
+      if (node.closest('button, a, svg, script, style, iframe, .chapter-nav, .admin-mode-panel, .image-lightbox, .guide-modal')) return false;
+      if (node.getAttribute('aria-hidden') === 'true') return false;
+      if (node.classList.contains('fragment') && !node.textContent.trim()) return false;
+      return true;
+    }
+
+    function getEditableTextNodes(section) {
+      if (!section) return [];
+      return Array.from(section.querySelectorAll(ADMIN_EDITABLE_SELECTOR))
+        .filter(isAdminEditableTextNode);
+    }
+
+    function initAdminTextTargets(section) {
+      if (!section?.dataset.adminSlideId) return;
+      getEditableTextNodes(section).forEach((node, index) => {
+        node.dataset.adminTextId = node.dataset.adminTextId || `${section.dataset.adminSlideId}-text-${index + 1}`;
+        if (!node.dataset.adminOriginalText) {
+          node.dataset.adminOriginalText = node.textContent;
+        }
+      });
+    }
+
+    function applyAdminTextState() {
+      if (!originalSections.length) return;
+      const state = normalizeAdminState();
+
+      originalSections.forEach((section) => {
+        const slideId = section.dataset.adminSlideId;
+        getEditableTextNodes(section).forEach((node) => {
+          const textId = node.dataset.adminTextId;
+          if (!textId) return;
+          const nextText = Object.prototype.hasOwnProperty.call(state.textEdits, textId)
+            ? state.textEdits[textId]
+            : node.dataset.adminOriginalText;
+
+          if (typeof nextText === 'string' && node.textContent !== nextText) {
+            node.textContent = nextText;
+          }
+
+          const isDeleted = state.textDeleted.includes(textId);
+          node.classList.toggle('admin-text-is-deleted', isDeleted);
+          node.style.display = isDeleted ? 'none' : '';
+        });
+
+        section.querySelectorAll('[data-admin-added-text]').forEach((node) => node.remove());
+        const addedItems = state.textAdded[slideId] || [];
+        const target = section.querySelector('.slide-body, .intro-reading-stage, .slide-title-wrap') || section;
+
+        addedItems.forEach((item) => {
+          const addedNode = document.createElement('p');
+          addedNode.className = 'admin-added-text';
+          addedNode.dataset.adminAddedText = item.id;
+          addedNode.textContent = item.text;
+          target.appendChild(addedNode);
+        });
+      });
+    }
+
+    function getSelectedAdminSection() {
+      if (!selectedAdminSlideId) {
+        selectedAdminSlideId = getCurrentSection()?.dataset.adminSlideId || originalSections[0]?.dataset.adminSlideId || null;
+      }
+      return originalSections.find((section) => section.dataset.adminSlideId === selectedAdminSlideId) || originalSections[0] || null;
+    }
+
+    function renderAdminTextEditor() {
+      if (!adminTextList || !adminTextSlideTitle || !originalSections.length) return;
+
+      const state = normalizeAdminState();
+      const section = getSelectedAdminSection();
+      if (!section) {
+        adminTextSlideTitle.textContent = '슬라이드를 선택하세요';
+        adminTextList.innerHTML = '<div class="admin-empty-text">편집할 슬라이드가 없습니다.</div>';
+        return;
+      }
+
+      const slideId = section.dataset.adminSlideId;
+      const slideIndex = state.order.indexOf(slideId);
+      const title = getSlideLabel(section, slideIndex);
+      const editableNodes = getEditableTextNodes(section);
+      const addedItems = state.textAdded[slideId] || [];
+
+      adminTextSlideTitle.textContent = `${String(slideIndex + 1).padStart(2, '0')} · ${title}`;
+
+      const existingRows = editableNodes.map((node, index) => {
+        const textId = node.dataset.adminTextId;
+        const isDeleted = state.textDeleted.includes(textId);
+        const value = Object.prototype.hasOwnProperty.call(state.textEdits, textId)
+          ? state.textEdits[textId]
+          : node.dataset.adminOriginalText || node.textContent;
+
+        return `
+          <div class="admin-text-row${isDeleted ? ' is-deleted' : ''}" data-admin-text-row="${textId}">
+            <div class="admin-text-row-head">
+              <span>${String(index + 1).padStart(2, '0')} · ${escapeAdminText(node.tagName.toLowerCase())}</span>
+              <div>
+                <button type="button" data-admin-text-save="${textId}">저장</button>
+                <button type="button" data-admin-text-delete="${textId}">${isDeleted ? '복구' : '삭제'}</button>
+              </div>
+            </div>
+            <textarea rows="2" data-admin-text-input="${textId}" ${isDeleted ? 'disabled' : ''}>${escapeAdminText(value)}</textarea>
+          </div>
+        `;
+      }).join('');
+
+      const addedRows = addedItems.map((item, index) => `
+        <div class="admin-text-row is-added" data-admin-added-row="${item.id}">
+          <div class="admin-text-row-head">
+            <span>추가 텍스트 ${index + 1}</span>
+            <div>
+              <button type="button" data-admin-added-save="${item.id}">저장</button>
+              <button type="button" data-admin-added-delete="${item.id}">삭제</button>
+            </div>
+          </div>
+          <textarea rows="2" data-admin-added-input="${item.id}">${escapeAdminText(item.text)}</textarea>
+        </div>
+      `).join('');
+
+      adminTextList.innerHTML = (existingRows || addedRows)
+        ? `${existingRows}${addedRows}`
+        : '<div class="admin-empty-text">이 슬라이드에서 편집 가능한 텍스트를 찾지 못했습니다.</div>';
+    }
+
+    function updateExistingAdminText(textId, value) {
+      const state = normalizeAdminState();
+      state.textEdits[textId] = value;
+      state.textDeleted = state.textDeleted.filter((id) => id !== textId);
+      saveAdminState(state);
+      applyAdminTextState();
+      renderAdminTextEditor();
+      renderAdminPanel();
+    }
+
+    function toggleExistingAdminTextDeleted(textId) {
+      const state = normalizeAdminState();
+      state.textDeleted = state.textDeleted.includes(textId)
+        ? state.textDeleted.filter((id) => id !== textId)
+        : [...state.textDeleted, textId];
+      saveAdminState(state);
+      applyAdminTextState();
+      renderAdminTextEditor();
+      renderAdminPanel();
+    }
+
+    function addAdminTextToSelectedSlide() {
+      const section = getSelectedAdminSection();
+      const value = adminTextCreateInput?.value?.trim();
+      if (!section || !value) return;
+
+      const state = normalizeAdminState();
+      const slideId = section.dataset.adminSlideId;
+      const nextItem = {
+        id: `${slideId}-added-${Date.now()}`,
+        text: value,
+      };
+      state.textAdded[slideId] = [...(state.textAdded[slideId] || []), nextItem];
+      saveAdminState(state);
+      adminTextCreateInput.value = '';
+      applyAdminTextState();
+      renderAdminTextEditor();
+      renderAdminPanel();
+    }
+
+    function updateAddedAdminText(addedId, value) {
+      const section = getSelectedAdminSection();
+      if (!section) return;
+
+      const state = normalizeAdminState();
+      const slideId = section.dataset.adminSlideId;
+      state.textAdded[slideId] = (state.textAdded[slideId] || []).map((item) => (
+        item.id === addedId ? { ...item, text: value } : item
+      ));
+      saveAdminState(state);
+      applyAdminTextState();
+      renderAdminTextEditor();
+      renderAdminPanel();
+    }
+
+    function deleteAddedAdminText(addedId) {
+      const section = getSelectedAdminSection();
+      if (!section) return;
+
+      const state = normalizeAdminState();
+      const slideId = section.dataset.adminSlideId;
+      state.textAdded[slideId] = (state.textAdded[slideId] || []).filter((item) => item.id !== addedId);
+      saveAdminState(state);
+      applyAdminTextState();
+      renderAdminTextEditor();
+      renderAdminPanel();
     }
 
     function applyAdminSlideState(options = {}) {
@@ -3020,10 +3278,12 @@
       });
 
       saveAdminState(state);
+      applyAdminTextState();
       Reveal.sync?.();
       Reveal.layout?.();
       buildChapterNav();
       renderAdminPanel();
+      renderAdminTextEditor();
       updateViewportSurface();
       updateNavButtonStyle();
 
@@ -3047,7 +3307,7 @@
         const title = getSlideLabel(section, index);
 
         return `
-          <div class="admin-slide-row${hidden ? ' is-hidden' : ''}" draggable="true" data-admin-slide-id="${id}">
+          <div class="admin-slide-row${hidden ? ' is-hidden' : ''}${id === selectedAdminSlideId ? ' is-selected' : ''}" draggable="true" data-admin-slide-id="${id}">
             <button type="button" class="admin-slide-jump" data-admin-jump="${id}" ${hidden ? 'disabled' : ''}>
               <span class="admin-slide-number">${String(index + 1).padStart(2, '0')}</span>
               <span class="admin-slide-meta">
@@ -3103,10 +3363,19 @@
       adminPanel?.classList.toggle('is-open', active);
       adminPanel?.setAttribute('aria-hidden', active ? 'false' : 'true');
       if (active) {
+        selectedAdminSlideId = getCurrentSection()?.dataset.adminSlideId || selectedAdminSlideId || originalSections[0]?.dataset.adminSlideId || null;
         renderAdminPanel();
+        renderAdminTextEditor();
         setTopUiVisible(true);
         clearTimeout(navTimer);
       }
+    }
+
+    function syncAdminSelectionWithCurrentSlide() {
+      if (!bodyEl.classList.contains('admin-mode-active')) return;
+      selectedAdminSlideId = getCurrentSection()?.dataset.adminSlideId || selectedAdminSlideId;
+      renderAdminPanel();
+      renderAdminTextEditor();
     }
 
     function initAdminMode() {
@@ -3117,10 +3386,12 @@
         if (section.hasAttribute('data-visibility')) {
           section.dataset.originalVisibility = section.getAttribute('data-visibility');
         }
+        initAdminTextTargets(section);
         return section;
       });
 
       applyAdminSlideState();
+      Reveal.on('slidechanged', syncAdminSelectionWithCurrentSlide);
 
       adminIntroButton?.addEventListener('dblclick', (event) => {
         event.preventDefault();
@@ -3139,15 +3410,22 @@
 
       adminPanel?.querySelector('[data-admin-close]')?.addEventListener('click', () => setAdminMode(false));
       adminPanel?.querySelector('[data-admin-reset]')?.addEventListener('click', () => {
-        if (!window.confirm('관리자 모드에서 조정한 순서와 숨김 상태를 초기화할까요?')) return;
+        if (!window.confirm('관리자 모드에서 조정한 순서, 숨김 상태, 텍스트 편집 내용을 초기화할까요?')) return;
         localStorage.removeItem(ADMIN_STATE_KEY);
         applyAdminSlideState({ targetSlideId: originalSections[0]?.dataset.adminSlideId });
       });
 
       adminList?.addEventListener('click', (event) => {
+        const row = event.target.closest('[data-admin-slide-id]');
         const jumpId = event.target.closest('[data-admin-jump]')?.dataset.adminJump;
         const hideId = event.target.closest('[data-admin-hide]')?.dataset.adminHide;
         const moveButton = event.target.closest('[data-admin-move]');
+
+        if (row) {
+          selectedAdminSlideId = row.dataset.adminSlideId;
+          renderAdminPanel();
+          renderAdminTextEditor();
+        }
 
         if (hideId) {
           toggleAdminSlideHidden(hideId);
@@ -3162,6 +3440,50 @@
         if (jumpId) {
           const targetIndex = getHorizontalSlides().findIndex((section) => section.dataset.adminSlideId === jumpId);
           if (targetIndex >= 0) Reveal.slide(targetIndex);
+        }
+      });
+
+      adminPanel?.querySelector('[data-admin-text-refresh]')?.addEventListener('click', () => {
+        const section = getSelectedAdminSection();
+        initAdminTextTargets(section);
+        applyAdminTextState();
+        renderAdminTextEditor();
+      });
+
+      adminPanel?.querySelector('[data-admin-text-add]')?.addEventListener('click', addAdminTextToSelectedSlide);
+
+      adminTextCreateInput?.addEventListener('keydown', (event) => {
+        if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
+          event.preventDefault();
+          addAdminTextToSelectedSlide();
+        }
+      });
+
+      adminTextList?.addEventListener('click', (event) => {
+        const saveId = event.target.closest('[data-admin-text-save]')?.dataset.adminTextSave;
+        const deleteId = event.target.closest('[data-admin-text-delete]')?.dataset.adminTextDelete;
+        const addedSaveId = event.target.closest('[data-admin-added-save]')?.dataset.adminAddedSave;
+        const addedDeleteId = event.target.closest('[data-admin-added-delete]')?.dataset.adminAddedDelete;
+
+        if (saveId) {
+          const input = adminTextList.querySelector(`[data-admin-text-input="${CSS.escape(saveId)}"]`);
+          updateExistingAdminText(saveId, input?.value || '');
+          return;
+        }
+
+        if (deleteId) {
+          toggleExistingAdminTextDeleted(deleteId);
+          return;
+        }
+
+        if (addedSaveId) {
+          const input = adminTextList.querySelector(`[data-admin-added-input="${CSS.escape(addedSaveId)}"]`);
+          updateAddedAdminText(addedSaveId, input?.value || '');
+          return;
+        }
+
+        if (addedDeleteId) {
+          deleteAddedAdminText(addedDeleteId);
         }
       });
 
