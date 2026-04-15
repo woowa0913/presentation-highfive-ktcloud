@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=41">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=42">
 </head>
 <body>
 
@@ -66,9 +66,13 @@
       <strong>순서 변경</strong>, <strong>숨김</strong>, <strong>텍스트 편집</strong>은 입력 즉시 실제 슬라이드에 반영되고 자동 저장됩니다.
     </div>
     <div class="admin-mode-toolbar">
-      <button type="button" data-admin-reset>초기화</button>
+      <div class="admin-mode-actions">
+        <button type="button" data-admin-export>수정본 복사</button>
+        <button type="button" data-admin-reset>초기화</button>
+      </div>
       <span id="adminSlideCount">0 / 0 visible</span>
     </div>
+    <div class="admin-export-status" id="adminExportStatus" aria-live="polite"></div>
     <div class="admin-slide-list" id="adminSlideList" aria-label="슬라이드 순서 관리"></div>
     <div class="admin-text-editor" id="adminTextEditor">
       <div class="admin-text-editor-head">
@@ -2948,6 +2952,7 @@
     const adminTextList = document.getElementById('adminTextList');
     const adminTextSlideTitle = document.getElementById('adminTextSlideTitle');
     const adminTextCreateInput = document.getElementById('adminTextCreateInput');
+    const adminExportStatus = document.getElementById('adminExportStatus');
     const adminIntroButton = document.querySelector('.chapter-btn[data-chapter="hero"]');
     const ADMIN_TEXT_EXCLUDE_SELECTOR = [
       'script',
@@ -2984,6 +2989,57 @@
         localStorage.setItem(ADMIN_STATE_KEY, JSON.stringify(state));
       } catch (error) {
         console.warn('admin state save failed', error);
+      }
+    }
+
+    function setAdminExportStatus(message, type = 'info') {
+      if (!adminExportStatus) return;
+      adminExportStatus.textContent = message;
+      adminExportStatus.dataset.statusType = type;
+      if (!message) return;
+      window.clearTimeout(setAdminExportStatus.timer);
+      setAdminExportStatus.timer = window.setTimeout(() => {
+        adminExportStatus.textContent = '';
+        adminExportStatus.dataset.statusType = '';
+      }, 3200);
+    }
+
+    function fallbackCopyText(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      textarea.style.top = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      const copied = document.execCommand('copy');
+      textarea.remove();
+      if (!copied) {
+        throw new Error('clipboard fallback failed');
+      }
+    }
+
+    async function copyTextToClipboard(text) {
+      if (navigator.clipboard?.writeText && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+      fallbackCopyText(text);
+    }
+
+    async function exportAdminStateToClipboard() {
+      const state = normalizeAdminState();
+      saveAdminState(state);
+      const exportText = JSON.stringify(state, null, 2);
+
+      try {
+        await copyTextToClipboard(exportText);
+        setAdminExportStatus('수정본 JSON이 클립보드에 복사됐습니다.', 'success');
+      } catch (error) {
+        console.warn('admin export copy failed', error);
+        setAdminExportStatus('자동 복사가 막혔습니다. 열린 창에서 JSON을 복사해주세요.', 'error');
+        window.prompt('아래 JSON을 복사해서 Codex에게 보내주세요.', exportText);
       }
     }
 
@@ -3438,6 +3494,8 @@
           window.alert('비밀번호가 맞지 않습니다.');
         }
       });
+
+      adminPanel?.querySelector('[data-admin-export]')?.addEventListener('click', exportAdminStateToClipboard);
 
       adminPanel?.querySelector('[data-admin-close]')?.addEventListener('click', () => setAdminMode(false));
       adminPanel?.querySelector('[data-admin-reset]')?.addEventListener('click', () => {

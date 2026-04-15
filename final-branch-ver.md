@@ -414,6 +414,36 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.12 (2026-04-15) - 관리자 수정본 내보내기 버튼 추가
+
+### 현재 상태
+- 관리자 패널 상단에 `수정본 복사` 버튼을 추가했다.
+- 버튼 클릭 시 현재 브라우저에 저장된 슬라이드 순서, 숨김, 텍스트 수정/삭제/추가 상태를 JSON으로 정규화해 클립보드에 복사한다.
+- 클립보드 자동 복사가 막히는 환경에서는 JSON을 직접 복사할 수 있도록 prompt fallback을 제공한다.
+- 복사 성공/실패 상태를 관리자 패널 안에 표시한다.
+
+### 변경 이력
+- `index.html`
+  - 관리자 툴바에 `수정본 복사` 버튼과 복사 상태 표시 영역 추가
+  - 관리자 상태 JSON 정규화/복사 함수 추가
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=42`로 업데이트
+- `css/wanted-theme.css`
+  - 관리자 툴바 버튼 그룹 스타일 추가
+  - 내보내기 상태 메시지 성공/실패 스타일 추가
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4187`)에서 Playwright로 확인
+- 확인 항목
+  - `Intro` 더블클릭 후 비밀번호 `0401` 입력 시 관리자 패널 오픈
+  - 텍스트 수정 후 `수정본 복사` 클릭 시 클립보드에 JSON 복사 확인
+  - 복사된 JSON에 수정 문구, `order`, `hidden`, `textEdits`가 포함되는지 확인
+  - 복사 성공 상태 문구 표시 확인
+- 확인 캡처
+  - `/tmp/admin-export-button.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.11 (2026-04-15) - 관리자 자동 저장 및 전체 텍스트 편집 보강
 
 ### 현재 상태
