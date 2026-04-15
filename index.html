@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=36">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=37">
 </head>
 <body>
 
@@ -880,17 +880,22 @@
       <section data-background-color="#FFFFFF" data-chapter="ch3">
         <div class="slide-body">
           <div class="body-title">HRD 메이커의 5대 핵심 역량</div>
-          <div class="reframe-stage">
-            <div class="reframe-process maker-capability-flow" style="grid-template-columns: repeat(5, 1fr); flex:1;">
-              <div class="reframe-process-step fragment fade-up"><div class="reframe-step-no">T</div><strong>Thinking</strong><p class="reframe-copy">니즈를 솔루션 아키텍처로 전환</p></div>
-              <div class="reframe-process-step fragment fade-up"><div class="reframe-step-no">C</div><strong>Context</strong><p class="reframe-copy">조직의 언어를 프롬프트로 변환</p></div>
-              <div class="reframe-process-step fragment fade-up"><div class="reframe-step-no">F</div><strong>Framework</strong><p class="reframe-copy">모델을 실행 가능한 앱으로 가시화</p></div>
-              <div class="reframe-process-step fragment fade-up"><div class="reframe-step-no">C</div><strong>Checkpoint</strong><p class="reframe-copy">운영을 넘어 제품의 이정표 수립</p></div>
-              <div class="reframe-process-step fragment fade-up"><div class="reframe-step-no">D</div><strong>Debugging</strong><p class="reframe-copy">피드백을 도구 고도화에 바로 정렬</p></div>
+          <div class="reframe-stage maker-capability-stage">
+            <div class="reframe-grid-3 maker-capability-grid">
+              <div class="reframe-card fragment fade-up"><span class="reframe-eyebrow">T</span><h3 class="reframe-heading">Thinking</h3><p class="reframe-copy">문제를 정확히 정의하는 힘</p><p class="maker-capability-subcopy">니즈를 솔루션 아키텍처로 전환</p></div>
+              <div class="reframe-card fragment fade-up"><span class="reframe-eyebrow">C</span><h3 class="reframe-heading">Context</h3><p class="reframe-copy">조직 맥락과 언어를 읽는 힘</p><p class="maker-capability-subcopy">조직의 언어를 프롬프트로 변환</p></div>
+              <div class="reframe-card fragment fade-up"><span class="reframe-eyebrow">F</span><h3 class="reframe-heading">Framework</h3><p class="reframe-copy">흐름과 구조를 설계하는 힘</p><p class="maker-capability-subcopy">모델을 실행 가능한 앱으로 가시화</p></div>
+              <div class="reframe-card fragment fade-up"><span class="reframe-eyebrow">C</span><h3 class="reframe-heading">Checkpoint</h3><p class="reframe-copy">이정표와 측정 지점을 두는 힘</p><p class="maker-capability-subcopy">운영을 넘어 제품의 이정표 수립</p></div>
+              <div class="reframe-card fragment fade-up"><span class="reframe-eyebrow">D</span><h3 class="reframe-heading">Debugging</h3><p class="reframe-copy">피드백을 즉시 개선으로 연결하는 힘</p><p class="maker-capability-subcopy">피드백을 도구 고도화에 바로 정렬</p></div>
+              <div class="reframe-card is-accent fragment fade-up">
+                <h3 class="reframe-heading" style="color:#fff;">핵심은 타이핑이 아니라 논리와 맥락</h3>
+                <p class="reframe-copy" style="color:#ebf0ff;">코딩 능력보다 중요한 것은 우리 조직을 깊이 이해하고 문제를 날카롭게 정의하는 역량입니다.</p>
+              </div>
             </div>
-            <div class="maker-capability-message fragment fade-up">
-              바이브 코딩은 새로운 기술을 배우는 일이 아니라, HRD가 원래 잘하던 문제 발견, 설계, 피드백 역량을 소프트웨어로 실체화하는 방식입니다.
-            </div>
+            <p class="maker-capability-message fragment fade-up">
+              바이브 코딩은 새로운 기술을 배우는 일이 아니라,<br>
+              <span class="maker-capability-emphasis">HRD</span>가 원래 잘하던 <strong>문제 발견, 설계, 피드백 역량</strong>을 소프트웨어로 실체화하는 방식입니다.
+            </p>
           </div>
         </div>
       </section>
@@ -2287,8 +2292,11 @@
     let navTimer = null;
     const bodyEl = document.body;
     const viewportEl = document.querySelector('.reveal-viewport');
+    let navArrowTimer = null;
 
     const TOP_UI_HIDE_DELAY = 1000;
+    const NAV_ARROW_SHOW_DELAY = 500;
+    const NAV_EDGE_THRESHOLD = 72;
 
     function setTopUiVisible(visible) {
       nav.classList.toggle('visible', visible);
@@ -2300,7 +2308,38 @@
       navTimer = setTimeout(() => setTopUiVisible(false), TOP_UI_HIDE_DELAY);
     }
 
+    function setEdgeNavState(side = null) {
+      bodyEl.classList.toggle('nav-arrow-left-active', side === 'left');
+      bodyEl.classList.toggle('nav-arrow-right-active', side === 'right');
+    }
+
+    function hideTransientNavArrows() {
+      bodyEl.classList.remove('nav-arrows-active');
+      clearTimeout(navArrowTimer);
+      navArrowTimer = null;
+    }
+
+    function flashNavArrows() {
+      bodyEl.classList.add('nav-arrows-active');
+      clearTimeout(navArrowTimer);
+      navArrowTimer = setTimeout(() => {
+        bodyEl.classList.remove('nav-arrows-active');
+        navArrowTimer = null;
+      }, NAV_ARROW_SHOW_DELAY);
+    }
+
     document.addEventListener('mousemove', (e) => {
+      const nearLeftEdge = e.clientX <= NAV_EDGE_THRESHOLD;
+      const nearRightEdge = e.clientX >= window.innerWidth - NAV_EDGE_THRESHOLD;
+
+      if (nearLeftEdge && !nearRightEdge) {
+        setEdgeNavState('left');
+      } else if (nearRightEdge && !nearLeftEdge) {
+        setEdgeNavState('right');
+      } else {
+        setEdgeNavState(null);
+      }
+
       // 상단 80px 영역 또는 nav 위에 마우스가 있으면 표시
       if (e.clientY < 80 || nav.contains(e.target)) {
         setTopUiVisible(true);
@@ -2312,20 +2351,36 @@
 
     document.addEventListener('mouseleave', () => {
       setTopUiVisible(false);
+      setEdgeNavState(null);
+      hideTransientNavArrows();
       clearTimeout(navTimer);
     });
 
     window.addEventListener('blur', () => {
       setTopUiVisible(false);
+      setEdgeNavState(null);
+      hideTransientNavArrows();
       clearTimeout(navTimer);
     });
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         setTopUiVisible(false);
+        setEdgeNavState(null);
+        hideTransientNavArrows();
         clearTimeout(navTimer);
       }
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (['ArrowLeft', 'ArrowRight', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) {
+        flashNavArrows();
+      }
+    });
+
+    document.addEventListener('wheel', () => {
+      flashNavArrows();
+    }, { passive: true });
 
     nav.addEventListener('mouseenter', () => {
       setTopUiVisible(true);
@@ -2756,7 +2811,10 @@
       bodyEl.classList.toggle('ui-on-dark', isDark || currentSection?.dataset.chapter === 'hero');
     }
 
-    Reveal.on('slidechanged', updateNavButtonStyle);
+    Reveal.on('slidechanged', () => {
+      updateNavButtonStyle();
+      flashNavArrows();
+    });
     Reveal.on('ready', updateNavButtonStyle);
 
     /* ── 3. 이펙트 토글 ── */
