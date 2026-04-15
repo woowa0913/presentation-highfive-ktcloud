@@ -414,6 +414,42 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.14 (2026-04-15) - 관리자 삭제 장표 반영 및 레일 스위치 장표 보정
+
+### 현재 상태
+- 관리자 패널에서 숨김 처리되어 있던 `slide-9`, `slide-16`을 기본 흐름의 숨김이 아니라 삭제 상태로 전환했다.
+- 사용자 요청 기준 삭제 대상인 36p 간지(`slide-38`), 47p(`slide-49`), 49p(`slide-51`), 50p(`slide-52`)를 기본 발표 흐름에서 제거했다.
+- 새 접속/빈 `localStorage` 기준 표시 슬라이드는 54장 → 50장으로 조정된다.
+- 레일 스위치 장표의 타이틀 색상을 흰색으로 보정하고, 위치를 상단 중앙으로 정리했다.
+- `Rail Switch` 버튼 높이를 2배로 키우고, 초록색 작은 레일이 버튼 영역을 통과하도록 위치를 상향 조정했다.
+- 초록색 레일 스위치 영역의 `레벨스위치` 텍스트는 삭제했다.
+
+### 변경 이력
+- `index.html`
+  - 기본 관리자 상태 버전을 `2026-04-15-delete-pages-01`로 갱신
+  - `DEFAULT_ADMIN_STATE.deleted`를 추가해 삭제 대상 슬라이드가 관리자 패널과 발표 흐름에서 빠지도록 처리
+  - `normalizeAdminState`, `applyAdminSlideState`가 삭제 상태를 우선 반영하도록 보정
+  - 레일 스위치 SVG의 타이틀, 버튼, 작은 레일 위치와 텍스트를 조정
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=44`로 업데이트
+- `css/wanted-theme.css`
+  - 레일 스위치 장표 전용 타이틀 패딩과 챕터 칩 위치 보정
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4190`)에서 Playwright로 확인
+- 확인 항목
+  - 빈 `localStorage` 기준 Reveal 표시 슬라이드 수 50장 확인
+  - `slide-9`, `slide-16`, `slide-38`, `slide-49`, `slide-51`, `slide-52`가 표시 흐름에서 제외되는지 확인
+  - 관리자 기본 상태의 `hidden`이 빈 배열이고, 삭제 대상이 `deleted` 배열로 저장되는지 확인
+  - 레일 스위치 장표 타이틀 색상 흰색 적용 확인
+  - `레벨스위치` 텍스트 삭제 확인
+  - 레일 스위치 기본/fragment 상태 캡처 확인
+- 확인 캡처
+  - `/tmp/final-rail-switch-update-v2.png`
+  - `/tmp/final-rail-switch-update-v2-fragments.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.13 (2026-04-15) - 관리자 JSON 수정본 기본 발표 흐름 반영
 
 ### 현재 상태

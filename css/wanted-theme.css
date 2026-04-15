@@ -643,6 +643,15 @@
 .reveal .slides section[data-chapter="ch5"] .body-title::before { content: "Chapter 05 · Team Expansion"; }
 .reveal .slides section[data-chapter="ch6"] .body-title::before { content: "Chapter 06 · Governance"; }
 
+.reveal .slides #slide-rail-anim .rail-slide-title {
+  padding: 34px 12% 0;
+}
+
+.reveal .slides #slide-rail-anim .rail-slide-title::before {
+  top: 18px;
+  right: 2%;
+}
+
 body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::before {
   opacity: 0;
   transform: translateY(-6px);
