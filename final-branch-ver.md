@@ -414,6 +414,37 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.13 (2026-04-15) - 관리자 JSON 수정본 기본 발표 흐름 반영
+
+### 현재 상태
+- 사용자가 관리자 패널에서 내보낸 JSON을 브랜치 기본 관리자 상태로 반영했다.
+- 새 접속자 기준으로 슬라이드 순서, 숨김, 텍스트 수정이 실제 발표 흐름에 자동 적용된다.
+- `slide-9`, `slide-16`은 기본 발표 흐름에서 숨김 처리되어 전체 표시 슬라이드가 56장 → 54장으로 조정된다.
+- `slide-11`/`slide-12`, `slide-16`/`slide-17`, `slide-18` 위치 변경 등 JSON의 순서 조정이 기본값으로 적용된다.
+- `slide-27-text-2`는 `실제 사례 :`로 기본 반영된다.
+
+### 변경 이력
+- `index.html`
+  - 사용자 JSON 기반 `DEFAULT_ADMIN_STATE`와 기본 상태 버전 추가
+  - 기존 stale `localStorage`가 최신 기본 흐름을 덮어쓰지 않도록 상태 버전 검증 추가
+  - 현재 보이지 않는 슬라이드의 텍스트도 기본 수정이 적용되도록 관리자 텍스트 수집 제외 조건에서 `aria-hidden` 제외
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=43`로 업데이트
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4188`)에서 Playwright로 확인
+- 확인 항목
+  - 새 접속/빈 `localStorage` 기준 Reveal 표시 슬라이드 수 54장 확인
+  - `slide-9`, `slide-16`이 표시 흐름에서 제외되는지 확인
+  - `slide-10 → slide-12 → slide-11` 순서 확인
+  - `slide-15 → slide-17 → slide-19 → slide-20 → slide-21 → slide-18` 순서 확인
+  - `slide-27-text-2`가 `실제 사례 :`로 반영되는지 확인
+  - 관리자 패널 카운터 `54 / 56 visible`, 숨김 행 2개 확인
+- 확인 캡처
+  - `/tmp/admin-json-applied.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.12 (2026-04-15) - 관리자 수정본 내보내기 버튼 추가
 
 ### 현재 상태

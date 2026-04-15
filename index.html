@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=42">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=43">
 </head>
 <body>
 
@@ -2946,6 +2946,74 @@
     /* ── 5. 관리자 모드: Intro 더블클릭으로 슬라이드 순서/숨김 관리 ── */
     const ADMIN_PASSWORD = '0401';
     const ADMIN_STATE_KEY = 'presentation-vibe-admin-state-v1';
+    const ADMIN_DEFAULT_STATE_VERSION = '2026-04-15-user-export-01';
+    const DEFAULT_ADMIN_STATE = Object.freeze({
+      __defaultStateVersion: ADMIN_DEFAULT_STATE_VERSION,
+      order: [
+        'slide-1',
+        'slide-2',
+        'slide-3',
+        'slide-4',
+        'slide-5',
+        'slide-6',
+        'slide-7',
+        'slide-8',
+        'slide-9',
+        'slide-10',
+        'slide-12',
+        'slide-11',
+        'slide-13',
+        'slide-14',
+        'slide-15',
+        'slide-17',
+        'slide-16',
+        'slide-19',
+        'slide-20',
+        'slide-21',
+        'slide-18',
+        'slide-22',
+        'slide-23',
+        'slide-24',
+        'slide-25',
+        'slide-26',
+        'slide-27',
+        'slide-28',
+        'slide-29',
+        'slide-30',
+        'slide-31',
+        'slide-32',
+        'slide-33',
+        'slide-34',
+        'slide-35',
+        'slide-36',
+        'slide-37',
+        'slide-38',
+        'slide-39',
+        'slide-40',
+        'slide-41',
+        'slide-42',
+        'slide-43',
+        'slide-44',
+        'slide-45',
+        'slide-46',
+        'slide-47',
+        'slide-48',
+        'slide-49',
+        'slide-50',
+        'slide-51',
+        'slide-52',
+        'slide-53',
+        'slide-54',
+        'slide-55',
+        'slide-56',
+      ],
+      hidden: ['slide-9', 'slide-16'],
+      textEdits: {
+        'slide-27-text-2': '실제 사례 :',
+      },
+      textDeleted: [],
+      textAdded: {},
+    });
     const adminPanel = document.getElementById('adminModePanel');
     const adminList = document.getElementById('adminSlideList');
     const adminSlideCount = document.getElementById('adminSlideCount');
@@ -2968,20 +3036,26 @@
       '.guide-modal',
       '.custom-nav',
       '[data-admin-added-text]',
-      '[aria-hidden="true"]',
     ].join(',');
     const adminTextMeta = new WeakMap();
     let originalSections = [];
     let draggedAdminSlideId = null;
     let selectedAdminSlideId = null;
 
+    function cloneAdminState(state) {
+      return JSON.parse(JSON.stringify(state));
+    }
+
     function loadAdminState() {
       try {
-        return JSON.parse(localStorage.getItem(ADMIN_STATE_KEY)) || {};
+        const state = JSON.parse(localStorage.getItem(ADMIN_STATE_KEY));
+        if (state?.__defaultStateVersion === ADMIN_DEFAULT_STATE_VERSION) {
+          return state;
+        }
       } catch (error) {
         console.warn('admin state load failed', error);
-        return {};
       }
+      return cloneAdminState(DEFAULT_ADMIN_STATE);
     }
 
     function saveAdminState(state) {
@@ -3071,7 +3145,14 @@
           }));
       });
 
-      return { order, hidden, textEdits, textDeleted, textAdded: normalizedAdded };
+      return {
+        __defaultStateVersion: state.__defaultStateVersion || ADMIN_DEFAULT_STATE_VERSION,
+        order,
+        hidden,
+        textEdits,
+        textDeleted,
+        textAdded: normalizedAdded,
+      };
     }
 
     function getSlideLabel(section, index) {
