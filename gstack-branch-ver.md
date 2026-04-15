@@ -26,7 +26,8 @@
 ## 4. 웹 링크
 
 - 기준 원본 링크: `https://presentationvibe-git-final-woowa0913s-projects.vercel.app`
-- gstack 전용 alias: `설정 후 갱신`
+- gstack 전용 alias: `https://presentationvibe-git-gstack-woowa0913s-projects.vercel.app`
+- 이번 배포 preview: `https://presentationvibe-rky25juxr-woowa0913s-projects.vercel.app`
 - 마지막 확인 시각: 2026-04-15 KST
 - Vercel 프로젝트: `presentation_vibe`
 
@@ -38,4 +39,4 @@
 - 좌측 하단 브랜치 라벨을 `gstack 브랜치`로 변경
 - `gstack-branch-ver.md` 생성
 - `gstack` 전용 alias 운영 시작
-
+- branch alias: `presentationvibe-git-gstack-woowa0913s-projects.vercel.app`
