@@ -414,6 +414,60 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.16 (2026-04-15) - 후반 슬라이드 순서 및 메시지 스타일 정리
+
+### 현재 상태
+- 기존 24p였던 `현장에서 반복되는 장면`은 25p 뒤로 이동해 사례 허브 다음에 이어지도록 조정했다.
+- 기존 35p와 43p, 그리고 관리자 패널에서 삭제 상태로 관리되던 숨김 장표들은 기본 발표 흐름에서 제외했다.
+- 29p/39p/44p의 키 메시지는 박스 없이 블루톤 텍스트로 보이도록 정리했다.
+- 레일 스위치 장표는 다른 본문 장표와 같은 타이틀 위계로 맞추고, `대 딸깍`과 `HRD × AI × 바이브코딩` 위치를 바꿨다.
+- 레일 스위치 장표의 초록색 보조 레일은 버튼을 가리지 않도록 아래쪽에 배치했고, 메인 레일은 조금 줄여 하단 여백을 줄였다.
+- 성과 그래프 장표는 중복 라벨을 제거하고, `AI 미사용 → AI 활용 → AI · 바이브코딩` 순으로 곡선이 자동 등장하도록 보정했다.
+- 팀 진화 장표에는 삭제 예정이던 1on1 시뮬레이터 진화 사례 카드를 `진화 사례` 섹션으로 흡수했다.
+- 후반 장벽/태도 장표는 박스와 색상 수를 줄이고 기존 다크 본문 톤에 맞춘 순차 노출형 카드로 정리했다.
+- 새 접속/빈 `localStorage` 기준 표시 슬라이드는 49장 → 47장으로 조정된다.
+
+### 변경 이력
+- `index.html`
+  - 기본 관리자 상태 버전을 `2026-04-15-late-flow-refine-01`로 갱신
+  - `DEFAULT_ADMIN_STATE.order`에서 `slide-15`를 `slide-28` 뒤로 이동
+  - `slide-39`, `slide-47`을 삭제 대상에 추가하고 기본 순서에서 제외
+  - 29p/39p/44p 키 메시지 마크업을 박스형 카드에서 텍스트형 메시지로 변경
+  - 레일 스위치 SVG의 타이틀/레일/보조 레일/중앙 텍스트 배치를 재조정
+  - 성과 그래프 SVG의 중복 라벨 제거 및 순차 draw 애니메이션 추가
+  - 팀 진화 장표 하단에 `진화 사례` 카드 3개와 링크 버튼 추가
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=46`으로 업데이트
+- `css/wanted-theme.css`
+  - 레일 스위치 타이틀을 본문 공통 타이틀 위치와 맞춤
+  - 박스 없는 키 메시지, 팀 진화 사례 카드, 후반 다크 카드 톤 보정 스타일 추가
+  - 기존 24p 타이틀 상단 위치를 본문 공통 위치에 맞게 조정
+
+### 검증
+- 로컬 서버(`python3 -m http.server 8017`)에서 Playwright로 확인
+- 확인 항목
+  - 빈 `localStorage` 기준 Reveal 표시 슬라이드 수 47장 확인
+  - 24p `HRD가 직접 만든 문제 해결 도구들` → 25p `현장에서 반복되는 장면` 순서 확인
+  - 삭제 대상 `slide-39`, `slide-47`이 표시 흐름에서 제외되는지 확인
+  - 29p/39p/44p 키 메시지 박스 제거 확인
+  - 레일 스위치 장표의 보조 레일이 버튼을 가리지 않는지 확인
+  - 성과 그래프의 중복 라벨 제거 및 순차 애니메이션 확인
+  - 팀 진화 장표의 `진화 사례` 카드 추가 확인
+  - 후반 장벽/태도 장표의 색상과 박스 톤 축소 확인
+- 확인 캡처
+  - `/tmp/pv-final-check/p24.png`
+  - `/tmp/pv-final-check/p25.png`
+  - `/tmp/pv-final-check/all/p29-all.png`
+  - `/tmp/pv-final-check/all/p36-all.png`
+  - `/tmp/pv-final-check/all/p37-all.png`
+  - `/tmp/pv-final-check/all/p38-all.png`
+  - `/tmp/pv-final-check/all/p40-all.png`
+  - `/tmp/pv-final-check/all/p42-all.png`
+  - `/tmp/pv-final-check/all/p43-all.png`
+  - `/tmp/pv-final-check/all/p44-all.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.15 (2026-04-15) - 초반 흐름 재배치 및 인터랙션 보정
 
 ### 현재 상태

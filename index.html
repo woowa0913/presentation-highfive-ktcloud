@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=45">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=46">
 </head>
 <body>
 
@@ -1209,7 +1209,7 @@
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch3">
-        <div class="slide-body">
+        <div class="slide-body case-prereq-shift-slide">
           <div class="body-title">선결조건부터 경험으로 바꾸다</div>
           <div class="reframe-stage">
             <div class="reframe-compare" style="flex:1;">
@@ -1242,7 +1242,7 @@
               </div>
             </div>
 
-            <div class="reframe-quote-band fragment fade-up">
+            <div class="case-key-message fragment fade-up">
               <p>이 사례의 포인트는 AI를 썼다는 사실보다, 선결조건을 사람을 움직이는 경험으로 다시 설계했다는 점입니다.</p>
             </div>
           </div>
@@ -1781,16 +1781,16 @@
 
       <section data-background-color="#0a0a0f" data-chapter="ch3" id="slide-rail-anim">
         <div style="position:absolute; inset:0; overflow:hidden;">
-          <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:88%; text-align:center; z-index:2;">
-            <div class="body-title rail-slide-title" style="font-size:clamp(1.02em,2.4vw,1.45em); margin:0; color:#fff; text-shadow:0 18px 42px rgba(0,0,0,0.45);">
+          <div style="position:absolute; top:0; left:0; width:100%; text-align:left; z-index:2; pointer-events:none;">
+            <div class="body-title rail-slide-title" style="margin:0; color:#fff; text-shadow:0 18px 42px rgba(0,0,0,0.45);">
               직원이 AI &amp; 바이브 코딩으로 <span class="accent-mint">성과를 만드는 흐름의 변화</span>
             </div>
           </div>
 
           <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet" style="position:absolute; inset:0; width:100%; height:100%;" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <path id="rail-outer-path" d="M 1500,560 A 540,295 0 1,0 420,560 A 540,295 0 1,0 1500,560"></path>
-              <path id="rail-inner-path" d="M 1135,318 A 175,74 0 1,0 785,318 A 175,74 0 1,0 1135,318"></path>
+              <path id="rail-outer-path" d="M 1460,620 A 500,250 0 1,0 460,620 A 500,250 0 1,0 1460,620"></path>
+              <path id="rail-inner-path" d="M 1138,405 A 178,72 0 1,0 782,405 A 178,72 0 1,0 1138,405"></path>
               <filter id="glow-v" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="6" result="blur"></feGaussianBlur>
                 <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
@@ -1801,31 +1801,31 @@
               </filter>
             </defs>
 
-            <ellipse cx="960" cy="560" rx="540" ry="295" fill="none" stroke="rgba(108,99,255,0.12)" stroke-width="60"></ellipse>
-            <ellipse cx="960" cy="560" rx="540" ry="295" fill="none" stroke="#0D0D18" stroke-width="38"></ellipse>
-            <ellipse cx="960" cy="560" rx="540" ry="295" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="34" stroke-dasharray="5,28"></ellipse>
-            <ellipse cx="960" cy="560" rx="552" ry="303" fill="none" stroke="rgba(108,99,255,0.55)" stroke-width="2.5"></ellipse>
-            <ellipse cx="960" cy="560" rx="528" ry="287" fill="none" stroke="rgba(108,99,255,0.35)" stroke-width="2"></ellipse>
+            <ellipse cx="960" cy="620" rx="500" ry="250" fill="none" stroke="rgba(108,99,255,0.12)" stroke-width="54"></ellipse>
+            <ellipse cx="960" cy="620" rx="500" ry="250" fill="none" stroke="#0D0D18" stroke-width="34"></ellipse>
+            <ellipse cx="960" cy="620" rx="500" ry="250" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="30" stroke-dasharray="5,28"></ellipse>
+            <ellipse cx="960" cy="620" rx="512" ry="258" fill="none" stroke="rgba(108,99,255,0.55)" stroke-width="2.5"></ellipse>
+            <ellipse cx="960" cy="620" rx="488" ry="238" fill="none" stroke="rgba(108,99,255,0.35)" stroke-width="2"></ellipse>
 
             <rect x="790" y="130" width="130" height="52" rx="12" fill="rgba(0,212,170,0.14)" stroke="rgba(0,212,170,0.65)" stroke-width="2"></rect>
             <text x="855" y="162" text-anchor="middle" font-size="28" font-weight="800" fill="#00D4AA">START</text>
             <rect x="1000" y="130" width="130" height="52" rx="12" fill="rgba(108,99,255,0.14)" stroke="rgba(108,99,255,0.65)" stroke-width="2"></rect>
             <text x="1065" y="162" text-anchor="middle" font-size="28" font-weight="800" fill="#6C63FF">GOAL</text>
 
-            <text x="318" y="548" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.6)" font-weight="500">문제 인식</text>
-            <circle cx="388" cy="560" r="7" fill="rgba(255,255,255,0.2)"></circle>
-            <text x="400" y="790" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.6)" font-weight="500">요구 분석</text>
-            <circle cx="472" cy="762" r="7" fill="rgba(255,255,255,0.2)"></circle>
-            <text x="748" y="900" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.6)" font-weight="500">솔루션 기획</text>
-            <circle cx="806" cy="858" r="7" fill="rgba(255,255,255,0.2)"></circle>
-            <text x="1178" y="900" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.6)" font-weight="500">개발 &amp; 제작</text>
-            <circle cx="1118" cy="858" r="7" fill="rgba(255,255,255,0.2)"></circle>
-            <text x="1608" y="538" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.6)" font-weight="500">실행 &amp; 운영</text>
-            <circle cx="1532" cy="556" r="7" fill="rgba(255,255,255,0.2)"></circle>
-            <text x="1518" y="322" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.6)" font-weight="500">효과 측정</text>
-            <circle cx="1446" cy="352" r="7" fill="rgba(255,255,255,0.2)"></circle>
-            <text x="392" y="312" text-anchor="middle" font-size="19" fill="rgba(176,176,192,0.32)">기존의 역할 밖</text>
-            <text x="1545" y="782" text-anchor="middle" font-size="19" fill="rgba(176,176,192,0.32)">시험 · 검증 · 배포</text>
+            <text x="360" y="610" text-anchor="middle" font-size="21" fill="rgba(255,255,255,0.6)" font-weight="500">문제 인식</text>
+            <circle cx="460" cy="620" r="7" fill="rgba(255,255,255,0.2)"></circle>
+            <text x="438" y="820" text-anchor="middle" font-size="21" fill="rgba(255,255,255,0.6)" font-weight="500">요구 분석</text>
+            <circle cx="530" cy="790" r="7" fill="rgba(255,255,255,0.2)"></circle>
+            <text x="748" y="900" text-anchor="middle" font-size="21" fill="rgba(255,255,255,0.6)" font-weight="500">솔루션 기획</text>
+            <circle cx="806" cy="846" r="7" fill="rgba(255,255,255,0.2)"></circle>
+            <text x="1178" y="900" text-anchor="middle" font-size="21" fill="rgba(255,255,255,0.6)" font-weight="500">개발 &amp; 제작</text>
+            <circle cx="1118" cy="846" r="7" fill="rgba(255,255,255,0.2)"></circle>
+            <text x="1560" y="610" text-anchor="middle" font-size="21" fill="rgba(255,255,255,0.6)" font-weight="500">실행 &amp; 운영</text>
+            <circle cx="1460" cy="620" r="7" fill="rgba(255,255,255,0.2)"></circle>
+            <text x="1450" y="398" text-anchor="middle" font-size="21" fill="rgba(255,255,255,0.6)" font-weight="500">효과 측정</text>
+            <circle cx="1378" cy="418" r="7" fill="rgba(255,255,255,0.2)"></circle>
+            <text x="392" y="360" text-anchor="middle" font-size="18" fill="rgba(176,176,192,0.32)">기존의 역할 밖</text>
+            <text x="1515" y="808" text-anchor="middle" font-size="18" fill="rgba(176,176,192,0.32)">시험 · 검증 · 배포</text>
 
             <g filter="url(#glow-v)">
               <rect x="-30" y="-13" width="60" height="26" rx="6" fill="#6C63FF"></rect>
@@ -1846,22 +1846,21 @@
             <text x="960" y="254" text-anchor="middle" dominant-baseline="middle" font-size="31" font-weight="800" fill="#9C96FF" style="pointer-events:none;">⇄ Rail Switch</text>
 
             <g id="rail-daltak-group" opacity="0">
-              <line x1="960" y1="281" x2="960" y2="300" stroke="rgba(108,99,255,0.5)" stroke-width="1.5" stroke-dasharray="3,3"></line>
-              <text x="960" y="370" text-anchor="middle" font-size="72" font-weight="900" fill="#6C63FF" filter="url(#glow-v)">대 딸깍</text>
-              <line x1="960" y1="384" x2="960" y2="400" stroke="rgba(108,99,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"></line>
+              <line x1="960" y1="281" x2="960" y2="350" stroke="rgba(108,99,255,0.38)" stroke-width="1.5" stroke-dasharray="3,3"></line>
+              <text x="960" y="408" text-anchor="middle" font-size="26" fill="rgba(0,212,170,0.94)" font-weight="800" filter="url(#glow-m)">HRD × AI × 바이브코딩</text>
             </g>
 
             <g id="rail-center-group" opacity="0">
-              <ellipse cx="960" cy="560" rx="235" ry="138" fill="rgba(8,8,18,0.96)" stroke="rgba(108,99,255,0.45)" stroke-width="2"></ellipse>
-              <text x="960" y="575" text-anchor="middle" font-size="24" fill="rgba(0,212,170,0.9)" font-weight="700">HRD × AI × 바이브코딩</text>
+              <ellipse cx="960" cy="620" rx="220" ry="118" fill="rgba(8,8,18,0.96)" stroke="rgba(108,99,255,0.45)" stroke-width="2"></ellipse>
+              <text x="960" y="642" text-anchor="middle" font-size="68" font-weight="900" fill="#6C63FF" filter="url(#glow-v)">대 딸깍</text>
             </g>
 
             <g id="inner-rail-group" opacity="0">
-              <ellipse cx="960" cy="318" rx="175" ry="74" fill="none" stroke="rgba(0,212,170,0.2)" stroke-width="30"></ellipse>
-              <ellipse cx="960" cy="318" rx="175" ry="74" fill="none" stroke="#080812" stroke-width="22"></ellipse>
-              <ellipse cx="960" cy="318" rx="175" ry="74" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="18" stroke-dasharray="4,18"></ellipse>
-              <ellipse cx="960" cy="318" rx="183" ry="80" fill="none" stroke="rgba(0,212,170,0.72)" stroke-width="2.5" filter="url(#glow-m)"></ellipse>
-              <ellipse cx="960" cy="318" rx="167" ry="68" fill="none" stroke="rgba(0,212,170,0.46)" stroke-width="1.5"></ellipse>
+              <ellipse cx="960" cy="405" rx="178" ry="72" fill="none" stroke="rgba(0,212,170,0.2)" stroke-width="28"></ellipse>
+              <ellipse cx="960" cy="405" rx="178" ry="72" fill="none" stroke="#080812" stroke-width="20"></ellipse>
+              <ellipse cx="960" cy="405" rx="178" ry="72" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="16" stroke-dasharray="4,18"></ellipse>
+              <ellipse cx="960" cy="405" rx="186" ry="78" fill="none" stroke="rgba(0,212,170,0.72)" stroke-width="2.5" filter="url(#glow-m)"></ellipse>
+              <ellipse cx="960" cy="405" rx="170" ry="66" fill="none" stroke="rgba(0,212,170,0.46)" stroke-width="1.5"></ellipse>
               <g filter="url(#glow-m)">
                 <rect x="-20" y="-10" width="40" height="20" rx="4" fill="#00D4AA"></rect>
                 <rect x="-17" y="-6" width="10" height="12" rx="1.5" fill="rgba(255,255,255,0.4)"></rect>
@@ -1881,7 +1880,7 @@
         </div>
       </section>
 
-      <section data-background-color="#FFFFFF" data-chapter="ch3">
+      <section data-background-color="#FFFFFF" data-chapter="ch3" class="performance-graph-slide">
         <div class="slide-body">
           <div class="body-title">AI를 <span class="accent">어떻게 쓰느냐</span>가 성과를 가른다</div>
           <div style="flex:1; display:flex; flex-direction:column; padding:0 4%; gap:2%;">
@@ -1889,10 +1888,22 @@
               <svg id="perf-graph" viewBox="0 0 960 310" style="width:100%; display:block; overflow:visible;" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <style>
-                    #path-ai-none { stroke-dasharray: 540; stroke-dashoffset: 540; animation: draw-line 1.8s ease-out 0.2s forwards; }
-                    #path-ai-use  { stroke-dasharray: 560; stroke-dashoffset: 560; animation: draw-line 1.8s ease-out 0.7s forwards; }
-                    #path-vibe    { stroke-dasharray: 620; stroke-dashoffset: 620; animation: draw-line 1.8s ease-out 1.2s forwards; }
+                    #path-ai-none { stroke-dasharray: 540; stroke-dashoffset: 540; }
+                    #path-ai-use  { stroke-dasharray: 560; stroke-dashoffset: 560; }
+                    #path-vibe    { stroke-dasharray: 620; stroke-dashoffset: 620; }
+                    #point-ai-none, #point-ai-use, #point-vibe,
+                    #label-ai-none, #label-ai-use, #label-vibe { opacity: 0; }
+                    .performance-graph-slide.present #path-ai-none { animation: draw-line 1.2s ease-out 0.15s forwards; }
+                    .performance-graph-slide.present #path-ai-use { animation: draw-line 1.2s ease-out 1.15s forwards; }
+                    .performance-graph-slide.present #path-vibe { animation: draw-line 1.2s ease-out 2.15s forwards; }
+                    .performance-graph-slide.present #point-ai-none,
+                    .performance-graph-slide.present #label-ai-none { animation: fade-graph-label 0.42s ease-out 1.05s forwards; }
+                    .performance-graph-slide.present #point-ai-use,
+                    .performance-graph-slide.present #label-ai-use { animation: fade-graph-label 0.42s ease-out 2.05s forwards; }
+                    .performance-graph-slide.present #point-vibe,
+                    .performance-graph-slide.present #label-vibe { animation: fade-graph-label 0.42s ease-out 3.05s forwards; }
                     @keyframes draw-line { to { stroke-dashoffset: 0; } }
+                    @keyframes fade-graph-label { to { opacity: 1; } }
                   </style>
                 </defs>
                 <line x1="70" y1="255" x2="820" y2="255" stroke="#e5e5e5" stroke-width="2"></line>
@@ -1906,15 +1917,12 @@
                 <path id="path-ai-none" d="M80,245 C200,240 450,232 810,215" fill="none" stroke="#d0d0d0" stroke-width="3.5" stroke-dasharray="10,5"></path>
                 <path id="path-ai-use" d="M80,245 C200,215 420,168 810,105" fill="none" stroke="#00A2FF" stroke-width="4" stroke-dasharray="10,5"></path>
                 <path id="path-vibe" d="M80,245 C180,192 350,112 810,28" fill="none" stroke="#6C63FF" stroke-width="5.5" stroke-linecap="round"></path>
-                <circle cx="810" cy="215" r="6" fill="#d0d0d0"></circle>
-                <circle cx="810" cy="105" r="6" fill="#00A2FF"></circle>
-                <circle cx="810" cy="28" r="8" fill="#6C63FF"></circle>
-                <text x="818" y="220" font-size="13" fill="#bbb" font-family="sans-serif">AI 미사용</text>
-                <text x="818" y="110" font-size="13" fill="#00A2FF" font-family="sans-serif" font-weight="700">AI 활용</text>
-                <text x="818" y="33" font-size="13" fill="#6C63FF" font-family="sans-serif" font-weight="700">AI · 바이브코딩</text>
-                <text x="320" y="248" font-size="12" fill="#c0c0c0" font-family="sans-serif">AI 미사용</text>
-                <text x="350" y="190" font-size="12" fill="#5BB8FF" font-family="sans-serif" font-weight="600">AI 활용</text>
-                <text x="240" y="138" font-size="12" fill="#9C96FF" font-family="sans-serif" font-weight="700">AI · 바이브코딩</text>
+                <circle id="point-ai-none" cx="810" cy="215" r="6" fill="#d0d0d0"></circle>
+                <circle id="point-ai-use" cx="810" cy="105" r="6" fill="#00A2FF"></circle>
+                <circle id="point-vibe" cx="810" cy="28" r="8" fill="#6C63FF"></circle>
+                <text id="label-ai-none" x="836" y="220" font-size="14" fill="#9ca3af" font-family="sans-serif" font-weight="700">AI 미사용</text>
+                <text id="label-ai-use" x="836" y="110" font-size="14" fill="#00A2FF" font-family="sans-serif" font-weight="800">AI 활용</text>
+                <text id="label-vibe" x="836" y="34" font-size="14" fill="#6C63FF" font-family="sans-serif" font-weight="800">AI · 바이브코딩</text>
                 <text x="820" y="298" text-anchor="end" font-size="11" fill="#ccc" font-family="sans-serif" font-style="italic">* Ethan Mollick (Wharton, 2023) — AI 적극 활용 그룹 성과 격차 ~40%</text>
               </svg>
             </div>
@@ -1961,9 +1969,7 @@
               </div>
             </div>
 
-            <div class="reframe-card is-accent fragment fade-up">
-              <h3 class="reframe-heading" style="color:#fff;">거창한 개발 스택이 아니라, 문제를 발견한 사람이 실험을 끝까지 이어갈 수 있는 최소 도구 세트면 충분합니다.</h3>
-            </div>
+            <p class="toolbox-key-message fragment fade-up">거창한 개발 스택이 아니라, 문제를 발견한 사람이 실험을 끝까지 이어갈 수 있는 최소 도구 세트면 충분합니다.</p>
           </div>
         </div>
       </section>
@@ -1991,6 +1997,31 @@
             <div class="body-card fragment fade-up">
               <strong>함께 빌드</strong>
               <p>PI 평가, kt cloud 2033, 1on1 시뮬레이터처럼 동료들의 사례로 확장되고 있다.</p>
+            </div>
+          </div>
+          <div class="team-evolution-cases fragment fade-up">
+            <div class="team-evolution-cases-title">진화 사례</div>
+            <div class="team-evolution-case-grid">
+              <article class="team-mini-case-card">
+                <strong>v1. 텍스트 기반 웹앱</strong>
+                <p>빠르게 만들 수 있었지만 실제 대화감과 몰입도는 낮았다.</p>
+              </article>
+              <article class="team-mini-case-card">
+                <strong>v2. GPTs 대화형</strong>
+                <p>상대의 맥락 입력이 가능해졌지만, 사용 데이터 축적은 어려웠다.</p>
+                <div class="team-link-group">
+                  <a class="team-link-button" href="https://ktcloud.atlassian.net/wiki/x/8IUrSg" target="_blank" rel="noreferrer">가이드 1</a>
+                  <a class="team-link-button" href="https://drive.google.com/file/d/1476PHKtcQ4kTTxdJze5Iaakkjicjurow/view" target="_blank" rel="noreferrer">가이드 2</a>
+                  <a class="team-link-button" href="https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view" target="_blank" rel="noreferrer">데모 보기</a>
+                </div>
+              </article>
+              <article class="team-mini-case-card">
+                <strong>v3. 게임화 + 데이터화</strong>
+                <p>몰입도를 높이고 활용 데이터를 쌓아 조직적으로 확장할 수 있게 됐다.</p>
+                <div class="team-link-group">
+                  <a class="team-link-button" href="https://workspaceapi-server-production-03e0.up.railway.app/login" target="_blank" rel="noreferrer">웹앱 열기</a>
+                </div>
+              </article>
             </div>
           </div>
         </div>
@@ -2055,7 +2086,7 @@
       </section>
 
       <section data-background-color="#FFFFFF" data-chapter="ch4">
-        <div class="slide-body">
+        <div class="slide-body workstyle-shift-slide">
           <div class="body-title">바이브 코딩으로 일하는 방식의 변화</div>
           <div class="reframe-stage">
             <div class="reframe-compare" style="flex:1;">
@@ -2081,9 +2112,7 @@
               </div>
             </div>
 
-            <div class="reframe-card is-blue fragment fade-up">
-              <h3 class="reframe-heading">핵심 변화는 개발 속도가 아니라, 문제를 다루는 팀의 리듬이 짧아졌다는 점입니다.</h3>
-            </div>
+            <p class="workstyle-key-message fragment fade-up">핵심 변화는 개발 속도가 아니라, 문제를 다루는 팀의 리듬이 짧아졌다는 점입니다.</p>
           </div>
         </div>
       </section>
@@ -2123,7 +2152,7 @@
 
 
       <section data-background-color="#0a0a0f" data-chapter="ch4">
-        <div class="slide-body dark">
+        <div class="slide-body dark barrier-plain-slide">
           <div class="body-title">가장 큰 장벽: "내가 어떻게 해..."</div>
           <div class="reframe-stage">
             <div class="reframe-center-stack" style="padding:0 12%; flex:1;">
@@ -2195,7 +2224,7 @@
       </section>
 
       <section data-background-color="#0a0a0f" data-chapter="ch5">
-        <div class="slide-body dark">
+        <div class="slide-body dark attitude-plain-slide">
           <div class="body-title">결국, 도구보다 중요한 것은 태도</div>
           <div class="reframe-stage">
             <div class="reframe-center-stack" style="padding:0 12%; flex:1;">
@@ -2955,7 +2984,7 @@
     /* ── 5. 관리자 모드: Intro 더블클릭으로 슬라이드 순서/숨김 관리 ── */
     const ADMIN_PASSWORD = '0401';
     const ADMIN_STATE_KEY = 'presentation-vibe-admin-state-v1';
-    const ADMIN_DEFAULT_STATE_VERSION = '2026-04-15-reflow-chapters-01';
+    const ADMIN_DEFAULT_STATE_VERSION = '2026-04-15-late-flow-refine-01';
     const DEFAULT_ADMIN_STATE = Object.freeze({
       __defaultStateVersion: ADMIN_DEFAULT_STATE_VERSION,
       order: [
@@ -2982,8 +3011,8 @@
         'slide-25',
         'slide-26',
         'slide-27',
-        'slide-15',
         'slide-28',
+        'slide-15',
         'slide-29',
         'slide-30',
         'slide-31',
@@ -2993,7 +3022,6 @@
         'slide-35',
         'slide-36',
         'slide-37',
-        'slide-39',
         'slide-40',
         'slide-41',
         'slide-42',
@@ -3001,7 +3029,6 @@
         'slide-44',
         'slide-45',
         'slide-46',
-        'slide-47',
         'slide-48',
         'slide-50',
         'slide-53',
@@ -3010,7 +3037,7 @@
         'slide-56',
       ],
       hidden: [],
-      deleted: ['slide-9', 'slide-14', 'slide-16', 'slide-38', 'slide-49', 'slide-51', 'slide-52'],
+      deleted: ['slide-9', 'slide-14', 'slide-16', 'slide-38', 'slide-39', 'slide-47', 'slide-49', 'slide-51', 'slide-52'],
       textEdits: {},
       textDeleted: [],
       textAdded: {},

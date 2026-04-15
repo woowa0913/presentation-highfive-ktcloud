@@ -643,12 +643,14 @@
 .reveal .slides section[data-chapter="ch5"] .body-title::before { content: "Chapter 05 · Governance"; }
 
 .reveal .slides #slide-rail-anim .rail-slide-title {
-  padding: 34px 12% 0;
+  padding: 92px 5% 0;
+  font-size: clamp(0.92em, 2.05vw, 1.2em);
+  letter-spacing: -0.055em;
 }
 
 .reveal .slides #slide-rail-anim .rail-slide-title::before {
-  top: 18px;
-  right: 2%;
+  top: 50px;
+  right: 5%;
 }
 
 body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::before {
@@ -997,6 +999,81 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
   display: flex;
   flex-direction: column;
   min-height: 320px;
+}
+
+.team-evolution {
+  flex: 0 0 auto;
+  height: auto !important;
+  min-height: 0;
+}
+
+.team-evolution .body-card {
+  min-height: 188px;
+  padding: 24px 26px;
+}
+
+.team-evolution .body-card strong {
+  font-size: 1.08em;
+}
+
+.team-evolution .body-card p {
+  font-size: 0.84em;
+  line-height: 1.65;
+}
+
+.team-evolution-cases {
+  width: 90%;
+  margin: 26px auto 0;
+}
+
+.team-evolution-cases-title {
+  margin-bottom: 14px;
+  color: #9fd2ff;
+  font-size: 0.84em;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.team-evolution-case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.team-mini-case-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 184px;
+  padding: 22px 22px 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(159, 210, 255, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035));
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.22);
+}
+
+.team-mini-case-card strong {
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 1.02em;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+}
+
+.team-mini-case-card p {
+  margin: 10px 0 0;
+  color: rgba(226, 233, 244, 0.78);
+  font-size: 0.78em;
+  line-height: 1.62;
+}
+
+.team-mini-case-card .team-link-group {
+  gap: 8px;
+  padding-top: 12px;
+}
+
+.team-mini-case-card .team-link-button {
+  padding: 8px 11px;
+  font-size: 0.72em;
 }
 
 .team-link-group {
@@ -2867,6 +2944,41 @@ body.ui-on-dark .reveal .progress {
   text-align: center;
 }
 
+.case-key-message,
+.toolbox-key-message,
+.workstyle-key-message {
+  width: min(1120px, 88%);
+  margin: 18px auto 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #245dff;
+  font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.18em;
+  font-weight: 900;
+  line-height: 1.42;
+  letter-spacing: -0.045em;
+  text-align: center;
+}
+
+.case-key-message p {
+  margin: 0;
+  color: inherit;
+}
+
+.toolbox-key-message {
+  margin-top: 34px;
+  color: #7bbcff;
+  text-shadow: 0 0 28px rgba(51, 99, 255, 0.16);
+}
+
+.workstyle-key-message {
+  margin-top: 34px;
+  color: #245dff;
+}
+
 .turning-point-gen-slide .reframe-stage,
 .dopamine-pivot-slide .reframe-stage,
 .field-scene-gen-slide .reframe-stage {
@@ -3017,7 +3129,7 @@ body.ui-on-dark .reveal .progress {
 }
 
 .field-scene-gen-slide .body-title {
-  padding-top: 106px;
+  padding-top: 92px;
 }
 
 .gen-scene-stage {
@@ -5666,6 +5778,45 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 .reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-metric .reframe-stat-label,
 .reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-split-note {
   color: var(--stitch-ink);
+}
+
+.barrier-plain-slide .reframe-center-stack,
+.attitude-plain-slide .reframe-center-stack {
+  gap: 20px;
+}
+
+.barrier-plain-slide .reframe-card,
+.attitude-plain-slide .reframe-card {
+  border: 1px solid rgba(159, 210, 255, 0.14);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: none;
+}
+
+.barrier-plain-slide .reframe-card:not(.is-accent),
+.attitude-plain-slide .reframe-card:not(.is-accent) {
+  color: rgba(238, 243, 250, 0.9);
+}
+
+.barrier-plain-slide .reframe-card:not(.is-accent) .reframe-heading,
+.barrier-plain-slide .reframe-card:not(.is-accent) .reframe-copy,
+.attitude-plain-slide .reframe-card:not(.is-accent) .reframe-heading,
+.attitude-plain-slide .reframe-card:not(.is-accent) .reframe-copy {
+  color: rgba(238, 243, 250, 0.9) !important;
+}
+
+.barrier-plain-slide .reframe-card.is-accent,
+.attitude-plain-slide .reframe-card.is-accent {
+  border-color: rgba(51, 99, 255, 0.34);
+  background: linear-gradient(135deg, rgba(51, 99, 255, 0.24), rgba(35, 200, 255, 0.08));
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22);
+}
+
+.attitude-plain-slide .reframe-kpi-grid {
+  gap: 18px;
+}
+
+.attitude-plain-slide .reframe-kpi-grid .reframe-card {
+  padding: 24px 22px;
 }
 
 /* ========================================
