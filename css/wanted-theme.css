@@ -5668,48 +5668,16 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.maker-capability-addon {
-  padding: 18px 20px 20px;
-  border-radius: 24px;
-  background: linear-gradient(180deg, rgba(240, 243, 248, 0.96), rgba(248, 250, 253, 0.94));
-  border: 1px solid rgba(90, 104, 130, 0.12);
-  box-shadow: 0 18px 36px rgba(57, 70, 94, 0.08);
-}
-
-.maker-capability-addon-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-  margin-bottom: 14px;
-}
-
-.maker-capability-addon-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-height: 94px;
-  padding: 14px 14px 12px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(90, 104, 130, 0.08);
-}
-
-.maker-capability-addon-item strong {
-  font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.76em;
-  font-weight: 800;
-  line-height: 1.2;
-  color: var(--stitch-blue-deep);
-}
-
-.maker-capability-addon-item span {
-  font-size: 0.66em;
-  line-height: 1.5;
-  color: #4d5a72;
+.maker-capability-subcopy {
+  margin: 4px 0 0;
+  font-size: 0.72em;
+  line-height: 1.56;
+  color: #5c6880;
   letter-spacing: -0.02em;
 }
 
 .maker-capability-message {
+  margin: 2px 0 0;
   text-align: center;
   font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
   font-size: 0.94em;

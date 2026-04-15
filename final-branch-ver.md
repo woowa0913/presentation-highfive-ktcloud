@@ -335,28 +335,30 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
-## v1.6.5 (2026-04-15) - 25p 원복 후 보조 설명 추가
+## v1.6.5 (2026-04-15) - 25p 원복 후 카드 내 설명 정리
 
 ### 현재 상태
 - 25페이지를 이전의 6카드 레이아웃으로 되돌렸다.
-- 기존 내용을 삭제하지 않고, 그 아래에 회색톤 보조 설명 영역으로 5단계 설명과 키 메시지를 추가했다.
+- 기존 내용을 삭제하지 않고, 5단계 보조 설명을 각 카드 안의 두 번째 문장으로 합쳤다.
+- 하단 키 메시지는 박스 없이 텍스트만 배치했다.
 - 26페이지는 다시 만들지 않고 25페이지 안에서 기존 내용과 추가 내용을 함께 보이도록 정리했다.
 
 ### 변경 이력
 - `index.html`
   - 25페이지를 원래의 `reframe-grid-3` 6카드 구조로 복원
-  - 카드 하단에 회색톤 `maker-capability-addon` 블록 추가
+  - 5개 카드 안에 보조 설명 문장을 직접 배치하고 하단 키 메시지를 텍스트만 남기도록 정리
 - `css/wanted-theme.css`
-  - 25페이지 전용 회색 보조 영역 레이아웃/타이포 스타일 추가
+  - 25페이지 카드 내부 보조 설명 타이포 스타일 추가
   - 기존 임시 `maker-capability-flow` 기반 스타일 제거 후 원복 구조에 맞게 정리
 
 ### 검증
 - 로컬 서버(`python3 -m http.server 4177`)에서 Playwright 캡처로 확인
 - 확인 항목
   - 25페이지 기존 6카드 레이아웃 복원
-  - 하단 회색 보조 설명 영역 추가
+  - 각 카드 내부 보조 설명 반영
+  - 하단 키 메시지 텍스트 단독 배치
 - 확인 캡처
-  - `/tmp/presentation-vibe-check-10/25-restored-with-gray-addon-final.png`
+  - `/tmp/presentation-vibe-check-11/25-card-integrated-copy.png`
 
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
