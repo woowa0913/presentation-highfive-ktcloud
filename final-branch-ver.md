@@ -335,6 +335,64 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.4 (2026-04-15) - 초반 구조/위치 미세 조정 및 26p 정리
+
+### 현재 상태
+- 2페이지 구양수 출처를 우측 정렬로 옮겨 원문 출처처럼 보이도록 조정했다.
+- 3페이지 하단 발표자 표기를 조금 더 키우고 아래로 내렸다.
+- 8페이지 `지인에게 부탁` 카드를 옅은 회색톤으로 바꿨다.
+- 9페이지 카드와 하단 메시지를 더 위로 올렸다.
+- 10페이지는 4번째 이미지에서만 상단/하단 문구가 등장하도록 복구했고, 상단 문구는 이미지 상단 중앙으로 재배치했다.
+- 13페이지 하단 키 메시지를 두 줄 구성으로 키웠다.
+- 15페이지 카드 안 메시지 줄간격을 넓혔다.
+- 21페이지는 밸런스게임 창 상단바 높이를 줄이고 상단 여백을 조금 더 확보했다.
+- 24페이지 하단 긴 카드를 제거하고 큰 텍스트 메시지로 바꿨다.
+- 25페이지는 기존 26페이지의 핵심 단계 흐름을 이관해 재구성했고, 26페이지는 삭제했다.
+
+### 변경 이력
+- `index.html`
+  - 13페이지 하단 메시지를 두 줄 텍스트로 수정
+  - 24페이지 하단 메시지를 카드형에서 텍스트형으로 교체
+  - 25페이지를 5단계 흐름 + 키 메시지 구조로 재구성
+  - 26페이지 `이미 우리 안에 있는 '메이커'의 DNA` 섹션 삭제
+- `css/wanted-theme.css`
+  - 2페이지 출처 위치 우측 정렬화
+  - 3페이지 발표자 표기 크기/위치 조정
+  - 8페이지 우측 카드 회색톤 보정
+  - 9페이지 상향 이동 폭 확대
+  - 10페이지 4번째 이미지에서만 문구가 보이도록 discovery 캡션/강조 문구 제어
+  - 15페이지 강조 카드 줄간격 확대
+  - 21페이지 밸런스게임 상단바 높이 및 여백 조정
+  - 24/25페이지 전용 텍스트/프로세스 스타일 추가
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4177`)에서 Playwright 캡처로 확인
+- 확인 항목
+  - 2페이지 우측 출처 위치
+  - 3페이지 하단 표기 위치
+  - 8페이지 회색 카드 톤
+  - 9페이지 상향 이동
+  - 10페이지 1단계 무문구 / 4단계 문구 노출
+  - 13페이지 2줄 키 메시지
+  - 21페이지 상단 여백
+  - 24페이지 텍스트형 하단 메시지
+  - 25페이지 5단계 흐름
+  - 전체 섹션 수 `56`개로 26페이지 삭제 반영
+- 확인 캡처
+  - `/tmp/presentation-vibe-check-8/02-intro-right-credit.png`
+  - `/tmp/presentation-vibe-check-8/03-title-lower-message.png`
+  - `/tmp/presentation-vibe-check-8/08-light-gray-card.png`
+  - `/tmp/presentation-vibe-check-8/09-barrier-more-up.png`
+  - `/tmp/presentation-vibe-check-8/10-step0-no-message.png`
+  - `/tmp/presentation-vibe-check-8/10-step3-message.png`
+  - `/tmp/presentation-vibe-check-8/13-two-line-key-message.png`
+  - `/tmp/presentation-vibe-check-8/21-balance-gap.png`
+  - `/tmp/presentation-vibe-check-8/24-addie-text-only.png`
+  - `/tmp/presentation-vibe-check-8/25-maker-capabilities.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.3 (2026-04-15) - 초반 슬라이드 톤/문구 재정리
 
 ### 현재 상태
