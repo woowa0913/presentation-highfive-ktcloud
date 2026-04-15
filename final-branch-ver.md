@@ -386,6 +386,34 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.7 (2026-04-15) - 본문 배경 전체폭 및 좌우 버튼 표시 방식 조정
+
+### 현재 상태
+- Intro, Title, Index, End, 간지 장표는 건드리지 않고 본문 공통 레이어만 조정했다.
+- 본문 슬라이드의 공통 배경이 Reveal 슬라이드 박스 안에만 보이지 않도록, 뷰포트 전체 폭으로 이어지게 정리했다.
+- 좌우 전환 버튼은 평소에는 숨기고, 마우스가 좌우 끝에 갔을 때 또는 키보드/휠 이동 직후 0.5초 동안만 보이도록 바꿨다.
+
+### 변경 이력
+- `index.html`
+  - Reveal 초기화 스크립트에 좌우 버튼 임시 노출/가장자리 감지 로직 추가
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=37`로 업데이트
+- `css/wanted-theme.css`
+  - 본문 공통 배경을 뷰포트 전체에 깔리도록 조정하고 본문 내부 배경은 투명화
+  - 커스텀 좌우 버튼 기본 숨김 및 edge/flash 노출 스타일 추가
+
+### 검증
+- 로컬 서버(`python3 -m http.server 4182`)에서 Playwright로 확인
+- 확인 항목
+  - 본문 슬라이드 배경이 좌우 끝까지 이어지는지 확인
+  - 좌우 버튼 기본 숨김
+  - 좌우 끝 호버 시 한쪽 버튼만 표시
+  - 키보드 이동 직후 0.5초 노출 후 다시 숨김
+- 확인 캡처
+  - `/tmp/body-bg-after.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.4 (2026-04-15) - 초반 구조/위치 미세 조정 및 26p 정리
 
 ### 현재 상태

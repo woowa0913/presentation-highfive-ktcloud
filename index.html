@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=36">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=37">
 </head>
 <body>
 
@@ -2292,8 +2292,11 @@
     let navTimer = null;
     const bodyEl = document.body;
     const viewportEl = document.querySelector('.reveal-viewport');
+    let navArrowTimer = null;
 
     const TOP_UI_HIDE_DELAY = 1000;
+    const NAV_ARROW_SHOW_DELAY = 500;
+    const NAV_EDGE_THRESHOLD = 72;
 
     function setTopUiVisible(visible) {
       nav.classList.toggle('visible', visible);
@@ -2305,7 +2308,38 @@
       navTimer = setTimeout(() => setTopUiVisible(false), TOP_UI_HIDE_DELAY);
     }
 
+    function setEdgeNavState(side = null) {
+      bodyEl.classList.toggle('nav-arrow-left-active', side === 'left');
+      bodyEl.classList.toggle('nav-arrow-right-active', side === 'right');
+    }
+
+    function hideTransientNavArrows() {
+      bodyEl.classList.remove('nav-arrows-active');
+      clearTimeout(navArrowTimer);
+      navArrowTimer = null;
+    }
+
+    function flashNavArrows() {
+      bodyEl.classList.add('nav-arrows-active');
+      clearTimeout(navArrowTimer);
+      navArrowTimer = setTimeout(() => {
+        bodyEl.classList.remove('nav-arrows-active');
+        navArrowTimer = null;
+      }, NAV_ARROW_SHOW_DELAY);
+    }
+
     document.addEventListener('mousemove', (e) => {
+      const nearLeftEdge = e.clientX <= NAV_EDGE_THRESHOLD;
+      const nearRightEdge = e.clientX >= window.innerWidth - NAV_EDGE_THRESHOLD;
+
+      if (nearLeftEdge && !nearRightEdge) {
+        setEdgeNavState('left');
+      } else if (nearRightEdge && !nearLeftEdge) {
+        setEdgeNavState('right');
+      } else {
+        setEdgeNavState(null);
+      }
+
       // 상단 80px 영역 또는 nav 위에 마우스가 있으면 표시
       if (e.clientY < 80 || nav.contains(e.target)) {
         setTopUiVisible(true);
@@ -2317,20 +2351,36 @@
 
     document.addEventListener('mouseleave', () => {
       setTopUiVisible(false);
+      setEdgeNavState(null);
+      hideTransientNavArrows();
       clearTimeout(navTimer);
     });
 
     window.addEventListener('blur', () => {
       setTopUiVisible(false);
+      setEdgeNavState(null);
+      hideTransientNavArrows();
       clearTimeout(navTimer);
     });
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         setTopUiVisible(false);
+        setEdgeNavState(null);
+        hideTransientNavArrows();
         clearTimeout(navTimer);
       }
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (['ArrowLeft', 'ArrowRight', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) {
+        flashNavArrows();
+      }
+    });
+
+    document.addEventListener('wheel', () => {
+      flashNavArrows();
+    }, { passive: true });
 
     nav.addEventListener('mouseenter', () => {
       setTopUiVisible(true);
@@ -2718,8 +2768,8 @@
 	      });
 	    }
 
-	    Reveal.on('slidechanged', updateViewportSurface);
-	    Reveal.on('ready', updateViewportSurface);
+    Reveal.on('slidechanged', updateViewportSurface);
+    Reveal.on('ready', updateViewportSurface);
     Reveal.on('ready', syncIntroReadingState);
     Reveal.on('slidechanged', syncIntroReadingState);
     Reveal.on('fragmentshown', syncIntroReadingState);
@@ -2761,7 +2811,10 @@
       bodyEl.classList.toggle('ui-on-dark', isDark || currentSection?.dataset.chapter === 'hero');
     }
 
-    Reveal.on('slidechanged', updateNavButtonStyle);
+    Reveal.on('slidechanged', () => {
+      updateNavButtonStyle();
+      flashNavArrows();
+    });
     Reveal.on('ready', updateNavButtonStyle);
 
     /* ── 3. 이펙트 토글 ── */

@@ -45,11 +45,23 @@
    Base Reveal.js Overrides
    ======================================== */
 .reveal-viewport {
+  position: relative;
+  overflow: hidden;
   background:
     radial-gradient(circle at top right, rgba(51, 99, 255, 0.12), transparent 28%),
     radial-gradient(circle at bottom left, rgba(161, 178, 254, 0.16), transparent 24%),
     linear-gradient(180deg, var(--stitch-surface) 0%, #eef2f8 100%);
   transition: background 0.28s ease;
+}
+
+.reveal-viewport::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.28s ease;
 }
 
 .reveal-viewport.viewport-intro-reading {
@@ -75,6 +87,18 @@
 .reveal-viewport.viewport-soft-light {
   background: #eef2f8;
 }
+
+.reveal-viewport.viewport-body-light::before {
+  background-image: radial-gradient(rgba(51, 99, 255, 0.08) 0.8px, transparent 0.8px);
+  background-size: 26px 26px;
+  opacity: 0.18;
+}
+
+.reveal-viewport.viewport-body-dark::before {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 0.7px, transparent 0.7px);
+  background-size: 26px 26px;
+  opacity: 0.1;
+}
 /* Hero 슬라이드일 때 모든 배경 투명 — 영상이 뒤에서 보임 */
 .reveal-viewport.hero-active {
   background: transparent;
@@ -90,6 +114,8 @@
 }
 
 .reveal {
+  position: relative;
+  z-index: 1;
   font-family: 'WantedSans', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
   font-weight: 400;
   color: var(--wanted-dark);
@@ -557,23 +583,14 @@
 .reveal .slides section[data-chapter^="ch"] .slide-impact-wrap {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at top right, rgba(51, 99, 255, 0.12), transparent 28%),
-    radial-gradient(circle at bottom left, rgba(161, 178, 254, 0.16), transparent 24%),
-    linear-gradient(180deg, var(--stitch-surface) 0%, #eef2f8 100%);
+  background: transparent;
   color: var(--stitch-ink);
   font-family: 'WantedSans', 'Inter', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
 }
 
 .reveal .slides section[data-chapter^="ch"] .slide-body::before,
 .reveal .slides section[data-chapter^="ch"] .slide-impact-wrap::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(51, 99, 255, 0.08) 0.8px, transparent 0.8px);
-  background-size: 26px 26px;
-  opacity: 0.18;
-  pointer-events: none;
+  display: none;
 }
 
 .reveal .slides section[data-chapter^="ch"] .slide-body > :not(.body-title):not(.body-source),
@@ -995,20 +1012,16 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 }
 
 .reveal .slides section[data-chapter^="ch"] .slide-body.dark {
-  background:
-    radial-gradient(circle at top right, rgba(51, 99, 255, 0.2), transparent 30%),
-    radial-gradient(circle at bottom left, rgba(161, 178, 254, 0.14), transparent 22%),
-    linear-gradient(180deg, #07090f 0%, #0d1018 100%);
+  background: transparent;
   color: #f5f7fb;
 }
 
 .reveal .slides section[data-chapter^="ch"] .slide-body.dark::before {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 0.7px, transparent 0.7px);
-  opacity: 0.1;
+  display: none;
 }
 
 .reveal .slides section[data-chapter^="ch"] .slide-body.dark::after {
-  background: linear-gradient(90deg, rgba(130, 155, 255, 0.28), rgba(130, 155, 255, 0));
+  display: none;
 }
 
 .reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-title {
@@ -1621,11 +1634,16 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
   display: none !important;
 }
 
+.reveal-viewport.viewport-body-light .slide-background.present,
+.reveal-viewport.viewport-body-dark .slide-background.present {
+  background: transparent !important;
+}
+
 /* 커스텀 좌우 버튼 — .reveal-viewport에 직접 배치 */
 .custom-nav {
   position: fixed;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(0.92);
   z-index: 100;
   width: 44px;
   height: 44px;
@@ -1636,7 +1654,9 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease, background 0.2s;
 }
 .custom-nav:hover {
   background: rgba(26, 21, 56, 0.18);
@@ -1655,6 +1675,14 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 }
 .custom-nav-right {
   right: 16px;
+}
+
+body.nav-arrows-active .custom-nav,
+body.nav-arrow-left-active #navLeft,
+body.nav-arrow-right-active #navRight {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) scale(1);
 }
 
 /* ========================================
