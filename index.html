@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=46">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=47">
 </head>
 <body>
 
@@ -79,9 +79,68 @@
         <button type="button" data-admin-text-refresh>새로고침</button>
       </div>
       <div class="admin-text-list" id="adminTextList"></div>
-      <div class="admin-text-create">
-        <textarea id="adminTextCreateInput" rows="3" placeholder="선택한 슬라이드에 추가할 텍스트를 입력하세요."></textarea>
-        <button type="button" data-admin-text-add>텍스트 추가</button>
+    <div class="admin-text-create">
+      <textarea id="adminTextCreateInput" rows="3" placeholder="선택한 슬라이드에 추가할 텍스트를 입력하세요."></textarea>
+      <button type="button" data-admin-text-add>텍스트 추가</button>
+    </div>
+  </div>
+    <div class="admin-element-inspector" id="adminElementInspector">
+      <div class="admin-text-editor-head">
+        <div>
+          <span>Design Inspector</span>
+          <strong id="adminElementTitle">요소를 선택하세요</strong>
+        </div>
+        <button type="button" data-admin-element-clear>선택 해제</button>
+      </div>
+      <div class="admin-inspector-empty" id="adminElementEmpty">
+        우측 슬라이드에서 텍스트, 카드, 박스 요소를 클릭하면 위치·색상·타이포를 조정할 수 있습니다.
+      </div>
+      <div class="admin-inspector-controls" id="adminElementControls" hidden>
+        <label class="admin-control-wide">
+          <span>직접 텍스트 / HTML</span>
+          <textarea id="adminElementHtmlInput" rows="2" placeholder="텍스트 요소를 선택하면 직접 수정할 수 있습니다."></textarea>
+        </label>
+
+        <div class="admin-control-grid">
+          <label><span>X</span><input type="number" data-admin-style-control="x" min="-800" max="800" step="1"></label>
+          <label><span>Y</span><input type="number" data-admin-style-control="y" min="-800" max="800" step="1"></label>
+          <label><span>Scale</span><input type="number" data-admin-style-control="scale" min="0.2" max="3" step="0.05"></label>
+          <label><span>Width</span><input type="text" data-admin-style-control="width" placeholder="auto / 720px"></label>
+          <label><span>Height</span><input type="text" data-admin-style-control="height" placeholder="auto / 280px"></label>
+          <label><span>Radius</span><input type="text" data-admin-style-control="borderRadius" placeholder="24px"></label>
+        </div>
+
+        <div class="admin-control-grid">
+          <label><span>Font</span><input type="number" data-admin-style-control="fontSize" min="8" max="140" step="1"></label>
+          <label><span>Weight</span><select data-admin-style-control="fontWeight"><option value="">Auto</option><option value="400">400</option><option value="600">600</option><option value="700">700</option><option value="800">800</option><option value="900">900</option></select></label>
+          <label><span>Align</span><select data-admin-style-control="textAlign"><option value="">Auto</option><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></label>
+          <label><span>Spacing</span><input type="number" data-admin-style-control="letterSpacing" min="-8" max="20" step="0.1"></label>
+        </div>
+
+        <div class="admin-color-stack">
+          <label class="admin-color-row"><span>Text</span><input type="color" data-admin-color-control="color"><button type="button" data-admin-eyedropper="color">스포이드</button></label>
+          <label class="admin-color-row"><span>Fill</span><input type="color" data-admin-color-control="backgroundColor"><button type="button" data-admin-eyedropper="backgroundColor">스포이드</button></label>
+          <label class="admin-color-row"><span>Border</span><input type="color" data-admin-color-control="borderColor"><button type="button" data-admin-eyedropper="borderColor">스포이드</button></label>
+        </div>
+
+        <div class="admin-palette" aria-label="색상 팔레트">
+          <button type="button" style="--swatch:#245dff" data-admin-swatch="#245dff"></button>
+          <button type="button" style="--swatch:#9fd2ff" data-admin-swatch="#9fd2ff"></button>
+          <button type="button" style="--swatch:#0a0a0f" data-admin-swatch="#0a0a0f"></button>
+          <button type="button" style="--swatch:#ffffff" data-admin-swatch="#ffffff"></button>
+          <button type="button" style="--swatch:#ffd648" data-admin-swatch="#ffd648"></button>
+          <button type="button" style="--swatch:#00d4aa" data-admin-swatch="#00d4aa"></button>
+        </div>
+
+        <label class="admin-opacity-control">
+          <span>Opacity</span>
+          <input type="range" data-admin-style-control="opacity" min="0" max="1" step="0.05">
+          <em id="adminOpacityValue">1</em>
+        </label>
+
+        <div class="admin-inspector-actions">
+          <button type="button" data-admin-element-reset>요소 초기화</button>
+        </div>
       </div>
     </div>
   </aside>
@@ -3072,6 +3131,7 @@
       textEdits: {},
       textDeleted: [],
       textAdded: {},
+      elementEdits: {},
     });
     const adminPanel = document.getElementById('adminModePanel');
     const adminList = document.getElementById('adminSlideList');
@@ -3079,6 +3139,12 @@
     const adminTextList = document.getElementById('adminTextList');
     const adminTextSlideTitle = document.getElementById('adminTextSlideTitle');
     const adminTextCreateInput = document.getElementById('adminTextCreateInput');
+    const adminElementInspector = document.getElementById('adminElementInspector');
+    const adminElementTitle = document.getElementById('adminElementTitle');
+    const adminElementEmpty = document.getElementById('adminElementEmpty');
+    const adminElementControls = document.getElementById('adminElementControls');
+    const adminElementHtmlInput = document.getElementById('adminElementHtmlInput');
+    const adminOpacityValue = document.getElementById('adminOpacityValue');
     const adminExportStatus = document.getElementById('adminExportStatus');
     const adminIntroButton = document.querySelector('.chapter-btn[data-chapter="hero"]');
     const ADMIN_TEXT_EXCLUDE_SELECTOR = [
@@ -3096,10 +3162,74 @@
       '.custom-nav',
       '[data-admin-added-text]',
     ].join(',');
+    const ADMIN_ELEMENT_SELECTOR = [
+      '.body-title',
+      '.slide-section-wrap',
+      '.slide-title-wrap h1',
+      '.slide-title-wrap .speaker-info',
+      '.hero-main-title',
+      '.hero-sub-en',
+      '.hero-sub-kr',
+      '.intro-reading-stage p',
+      '.intro-reading-stage h2',
+      '.intro-reading-maxim span',
+      '.reframe-card',
+      '.body-card',
+      '.team-story-card',
+      '.team-mini-case-card',
+      '.reframe-compare-col',
+      '.reframe-process-step',
+      '.maker-role-card',
+      '.structural-limit-row',
+      '.reframe-quote-band',
+      '.case-key-message',
+      '.toolbox-key-message',
+      '.workstyle-key-message',
+      '.reframe-heading',
+      '.reframe-copy',
+      '.reframe-stat',
+      '.reframe-browser',
+      '.gen-scene-line',
+      '.gen-scene-emphasis',
+      'section[data-chapter="index"] .index-numbers',
+      'section[data-chapter="index"] .index-items',
+    ].join(',');
+    const ADMIN_TEXT_ELEMENT_SELECTOR = [
+      '.body-title',
+      'h1',
+      'h2',
+      'h3',
+      'p',
+      'strong',
+      'span',
+      '.reframe-heading',
+      '.reframe-copy',
+      '.reframe-stat',
+      '.index-numbers',
+      '.index-items',
+    ].join(',');
+    const ADMIN_ELEMENT_STYLE_PROPS = [
+      'translate',
+      'scale',
+      'width',
+      'height',
+      'minHeight',
+      'fontSize',
+      'fontWeight',
+      'textAlign',
+      'letterSpacing',
+      'color',
+      'backgroundColor',
+      'borderColor',
+      'borderRadius',
+      'opacity',
+    ];
     const adminTextMeta = new WeakMap();
     let originalSections = [];
     let draggedAdminSlideId = null;
     let selectedAdminSlideId = null;
+    let selectedAdminElementId = null;
+    let lastAdminColorTarget = 'color';
 
     function cloneAdminState(state) {
       return JSON.parse(JSON.stringify(state));
@@ -3196,6 +3326,15 @@
       const textEdits = state.textEdits && typeof state.textEdits === 'object' ? state.textEdits : {};
       const textDeleted = Array.isArray(state.textDeleted) ? state.textDeleted : [];
       const textAdded = state.textAdded && typeof state.textAdded === 'object' ? state.textAdded : {};
+      const rawElementEdits = state.elementEdits && typeof state.elementEdits === 'object' ? state.elementEdits : {};
+      const knownElementIds = originalSections.flatMap((section) => (
+        Array.from(section.querySelectorAll('[data-admin-element-id]')).map((element) => element.dataset.adminElementId)
+      ));
+      const elementEdits = Object.fromEntries(
+        Object.entries(rawElementEdits).filter(([elementId]) => (
+          !knownElementIds.length || knownElementIds.includes(elementId)
+        ))
+      );
       const normalizedAdded = {};
 
       activeIds.forEach((slideId) => {
@@ -3216,6 +3355,7 @@
         textEdits,
         textDeleted,
         textAdded: normalizedAdded,
+        elementEdits,
       };
     }
 
@@ -3474,6 +3614,241 @@
       renderAdminPanel();
     }
 
+    function initAdminElementTargets(section) {
+      if (!section?.dataset.adminSlideId) return;
+      const elements = Array.from(section.querySelectorAll(ADMIN_ELEMENT_SELECTOR))
+        .filter((element) => !element.closest(ADMIN_TEXT_EXCLUDE_SELECTOR));
+
+      elements.forEach((element, index) => {
+        element.dataset.adminElementId = element.dataset.adminElementId || `${section.dataset.adminSlideId}-element-${index + 1}`;
+      });
+    }
+
+    function getAdminElementById(elementId) {
+      if (!elementId) return null;
+      for (const section of originalSections) {
+        const match = Array.from(section.querySelectorAll('[data-admin-element-id]'))
+          .find((element) => element.dataset.adminElementId === elementId);
+        if (match) return match;
+      }
+      return null;
+    }
+
+    function isAdminTextElement(element) {
+      return Boolean(element?.matches?.(ADMIN_TEXT_ELEMENT_SELECTOR));
+    }
+
+    function parseCssPx(value) {
+      const number = Number.parseFloat(value);
+      return Number.isFinite(number) ? number : '';
+    }
+
+    function rgbaToHex(value, fallback = '#245dff') {
+      const match = String(value || '').match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+      if (!match) return fallback;
+      return `#${[1, 2, 3].map((index) => {
+        const hex = Number(match[index]).toString(16).padStart(2, '0');
+        return hex;
+      }).join('')}`;
+    }
+
+    function getElementEditEntry(state, elementId) {
+      state.elementEdits[elementId] = state.elementEdits[elementId] || { styles: {} };
+      state.elementEdits[elementId].styles = state.elementEdits[elementId].styles || {};
+      return state.elementEdits[elementId];
+    }
+
+    function clearAdminElementInlineStyles(element) {
+      ADMIN_ELEMENT_STYLE_PROPS.forEach((prop) => {
+        element.style[prop] = '';
+      });
+    }
+
+    function applyAdminElementStyles(element, styles = {}) {
+      clearAdminElementInlineStyles(element);
+      const x = Number.parseFloat(styles.x || 0);
+      const y = Number.parseFloat(styles.y || 0);
+      if (x || y) element.style.translate = `${x}px ${y}px`;
+      if (styles.scale && Number.parseFloat(styles.scale) !== 1) element.style.scale = String(styles.scale);
+      if (styles.width) element.style.width = styles.width;
+      if (styles.height) element.style.height = styles.height;
+      if (styles.minHeight) element.style.minHeight = styles.minHeight;
+      if (styles.fontSize) element.style.fontSize = `${styles.fontSize}px`;
+      if (styles.fontWeight) element.style.fontWeight = styles.fontWeight;
+      if (styles.textAlign) element.style.textAlign = styles.textAlign;
+      if (styles.letterSpacing || Number.parseFloat(styles.letterSpacing) === 0) element.style.letterSpacing = `${styles.letterSpacing}px`;
+      if (styles.color) element.style.color = styles.color;
+      if (styles.backgroundColor) element.style.backgroundColor = styles.backgroundColor;
+      if (styles.borderColor) element.style.borderColor = styles.borderColor;
+      if (styles.borderRadius) element.style.borderRadius = styles.borderRadius;
+      if (styles.opacity || Number.parseFloat(styles.opacity) === 0) element.style.opacity = styles.opacity;
+    }
+
+    function applyAdminElementState() {
+      const state = normalizeAdminState();
+      originalSections.forEach((section) => {
+        initAdminElementTargets(section);
+        section.querySelectorAll('[data-admin-element-id]').forEach((element) => {
+          element.removeAttribute('data-admin-selected-element');
+          if (element.getAttribute('contenteditable') === 'true') {
+            element.removeAttribute('contenteditable');
+            element.removeAttribute('spellcheck');
+          }
+
+          const elementId = element.dataset.adminElementId;
+          const edit = state.elementEdits[elementId];
+          clearAdminElementInlineStyles(element);
+          if (!edit) return;
+          if (typeof edit.html === 'string' && isAdminTextElement(element) && element.innerHTML !== edit.html) {
+            element.innerHTML = edit.html;
+          }
+          applyAdminElementStyles(element, edit.styles || {});
+        });
+      });
+
+      const selectedElement = getAdminElementById(selectedAdminElementId);
+      if (selectedElement && bodyEl.classList.contains('admin-mode-active')) {
+        selectedElement.dataset.adminSelectedElement = 'true';
+        if (isAdminTextElement(selectedElement)) {
+          selectedElement.setAttribute('contenteditable', 'true');
+          selectedElement.setAttribute('spellcheck', 'false');
+        }
+      }
+    }
+
+    function getAdminElementLabel(element) {
+      if (!element) return '요소를 선택하세요';
+      const tag = element.tagName.toLowerCase();
+      const className = element.className && typeof element.className === 'string'
+        ? element.className.trim().split(/\s+/).filter((name) => !name.startsWith('fragment')).slice(0, 2).join('.')
+        : '';
+      const text = element.textContent?.replace(/\s+/g, ' ').trim().slice(0, 32);
+      return `${tag}${className ? `.${className}` : ''}${text ? ` · ${text}` : ''}`;
+    }
+
+    function renderAdminElementInspector() {
+      if (!adminElementTitle || !adminElementEmpty || !adminElementControls) return;
+      const element = getAdminElementById(selectedAdminElementId);
+      if (!element) {
+        adminElementTitle.textContent = '요소를 선택하세요';
+        adminElementEmpty.hidden = false;
+        adminElementControls.hidden = true;
+        return;
+      }
+
+      const state = normalizeAdminState();
+      const edit = state.elementEdits[selectedAdminElementId] || { styles: {} };
+      const styles = edit.styles || {};
+      const computed = window.getComputedStyle(element);
+      const isText = isAdminTextElement(element);
+
+      adminElementTitle.textContent = getAdminElementLabel(element);
+      adminElementEmpty.hidden = true;
+      adminElementControls.hidden = false;
+
+      const setValue = (selector, value) => {
+        const input = adminElementControls.querySelector(selector);
+        if (input) input.value = value ?? '';
+      };
+
+      setValue('[data-admin-style-control="x"]', styles.x ?? 0);
+      setValue('[data-admin-style-control="y"]', styles.y ?? 0);
+      setValue('[data-admin-style-control="scale"]', styles.scale ?? 1);
+      setValue('[data-admin-style-control="width"]', styles.width ?? '');
+      setValue('[data-admin-style-control="height"]', styles.height ?? '');
+      setValue('[data-admin-style-control="borderRadius"]', styles.borderRadius ?? '');
+      setValue('[data-admin-style-control="fontSize"]', styles.fontSize ?? Math.round(parseCssPx(computed.fontSize)));
+      setValue('[data-admin-style-control="fontWeight"]', styles.fontWeight ?? '');
+      setValue('[data-admin-style-control="textAlign"]', styles.textAlign ?? '');
+      setValue('[data-admin-style-control="letterSpacing"]', styles.letterSpacing ?? (parseCssPx(computed.letterSpacing) || 0));
+      setValue('[data-admin-style-control="opacity"]', styles.opacity ?? computed.opacity ?? 1);
+      setValue('[data-admin-color-control="color"]', rgbaToHex(styles.color || computed.color, '#245dff'));
+      setValue('[data-admin-color-control="backgroundColor"]', rgbaToHex(styles.backgroundColor || computed.backgroundColor, '#ffffff'));
+      setValue('[data-admin-color-control="borderColor"]', rgbaToHex(styles.borderColor || computed.borderColor, '#245dff'));
+
+      if (adminOpacityValue) {
+        adminOpacityValue.textContent = String(styles.opacity ?? computed.opacity ?? 1);
+      }
+
+      if (adminElementHtmlInput) {
+        adminElementHtmlInput.disabled = !isText;
+        adminElementHtmlInput.value = isText ? (edit.html ?? element.innerHTML) : '';
+        adminElementHtmlInput.placeholder = isText ? '이 요소의 텍스트/간단한 HTML을 수정합니다.' : '카드/박스는 텍스트 직접 편집 대상이 아닙니다.';
+      }
+    }
+
+    function setSelectedAdminElement(element) {
+      const previous = getAdminElementById(selectedAdminElementId);
+      if (previous) {
+        previous.removeAttribute('data-admin-selected-element');
+        previous.removeAttribute('contenteditable');
+        previous.removeAttribute('spellcheck');
+      }
+      selectedAdminElementId = element?.dataset.adminElementId || null;
+      if (element) {
+        element.dataset.adminSelectedElement = 'true';
+        if (isAdminTextElement(element)) {
+          element.setAttribute('contenteditable', 'true');
+          element.setAttribute('spellcheck', 'false');
+          element.focus({ preventScroll: true });
+        }
+      }
+      renderAdminElementInspector();
+    }
+
+    function updateSelectedElementStyle(prop, value) {
+      if (!selectedAdminElementId) return;
+      const state = normalizeAdminState();
+      const entry = getElementEditEntry(state, selectedAdminElementId);
+      if (value === '' || value === null || value === undefined || value === 'auto') {
+        delete entry.styles[prop];
+      } else {
+        entry.styles[prop] = value;
+      }
+      saveAdminState(state);
+      applyAdminElementState();
+      renderAdminElementInspector();
+    }
+
+    function updateSelectedElementHtml(value, options = {}) {
+      if (!selectedAdminElementId) return;
+      const element = getAdminElementById(selectedAdminElementId);
+      if (!isAdminTextElement(element)) return;
+      const state = normalizeAdminState();
+      const entry = getElementEditEntry(state, selectedAdminElementId);
+      entry.html = value;
+      saveAdminState(state);
+      if (options.apply !== false && element.innerHTML !== value) {
+        element.innerHTML = value;
+      }
+    }
+
+    function resetSelectedElementEdit() {
+      if (!selectedAdminElementId) return;
+      const state = normalizeAdminState();
+      delete state.elementEdits[selectedAdminElementId];
+      saveAdminState(state);
+      applyAdminTextState();
+      applyAdminElementState();
+      renderAdminElementInspector();
+    }
+
+    async function pickAdminColor(prop) {
+      if (!selectedAdminElementId) return;
+      if (!window.EyeDropper) {
+        window.alert('이 브라우저는 스포이드 기능을 지원하지 않습니다. 컬러 피커를 사용해주세요.');
+        return;
+      }
+      try {
+        const result = await new window.EyeDropper().open();
+        if (result?.sRGBHex) {
+          updateSelectedElementStyle(prop, result.sRGBHex);
+        }
+      } catch (error) {
+        if (error?.name !== 'AbortError') console.warn('eyedropper failed', error);
+      }
+    }
+
     function applyAdminSlideState(options = {}) {
       if (!originalSections.length) return;
 
@@ -3513,11 +3888,13 @@
 
       saveAdminState(state);
       applyAdminTextState();
+      applyAdminElementState();
       Reveal.sync?.();
       Reveal.layout?.();
       buildChapterNav();
       renderAdminPanel();
       renderAdminTextEditor();
+      renderAdminElementInspector();
       updateViewportSurface();
       updateNavButtonStyle();
 
@@ -3600,8 +3977,12 @@
         selectedAdminSlideId = getCurrentSection()?.dataset.adminSlideId || selectedAdminSlideId || originalSections[0]?.dataset.adminSlideId || null;
         renderAdminPanel();
         renderAdminTextEditor();
+        applyAdminElementState();
+        renderAdminElementInspector();
         setTopUiVisible(true);
         clearTimeout(navTimer);
+      } else {
+        setSelectedAdminElement(null);
       }
       requestAnimationFrame(() => {
         Reveal.layout?.();
@@ -3615,6 +3996,7 @@
       selectedAdminSlideId = getCurrentSection()?.dataset.adminSlideId || selectedAdminSlideId;
       renderAdminPanel();
       renderAdminTextEditor();
+      renderAdminElementInspector();
     }
 
     function initAdminMode() {
@@ -3626,6 +4008,7 @@
           section.dataset.originalVisibility = section.getAttribute('data-visibility');
         }
         initAdminTextTargets(section);
+        initAdminElementTargets(section);
         return section;
       });
 
@@ -3693,6 +4076,55 @@
 
       adminPanel?.querySelector('[data-admin-text-add]')?.addEventListener('click', addAdminTextToSelectedSlide);
 
+      adminPanel?.querySelector('[data-admin-element-clear]')?.addEventListener('click', () => setSelectedAdminElement(null));
+      adminPanel?.querySelector('[data-admin-element-reset]')?.addEventListener('click', resetSelectedElementEdit);
+
+      adminElementHtmlInput?.addEventListener('input', (event) => {
+        updateSelectedElementHtml(event.target.value);
+      });
+
+      adminElementControls?.addEventListener('input', (event) => {
+        const styleInput = event.target.closest('[data-admin-style-control]');
+        const colorInput = event.target.closest('[data-admin-color-control]');
+
+        if (styleInput) {
+          const prop = styleInput.dataset.adminStyleControl;
+          let value = styleInput.value;
+          if (['x', 'y', 'scale', 'fontSize', 'letterSpacing', 'opacity'].includes(prop)) {
+            value = value === '' ? '' : Number.parseFloat(value);
+          }
+          updateSelectedElementStyle(prop, value);
+          return;
+        }
+
+        if (colorInput) {
+          lastAdminColorTarget = colorInput.dataset.adminColorControl;
+          updateSelectedElementStyle(lastAdminColorTarget, colorInput.value);
+        }
+      });
+
+      adminElementControls?.addEventListener('change', (event) => {
+        const colorInput = event.target.closest('[data-admin-color-control]');
+        if (colorInput) {
+          lastAdminColorTarget = colorInput.dataset.adminColorControl;
+        }
+      });
+
+      adminElementControls?.addEventListener('click', (event) => {
+        const eyedropper = event.target.closest('[data-admin-eyedropper]');
+        const swatch = event.target.closest('[data-admin-swatch]');
+
+        if (eyedropper) {
+          lastAdminColorTarget = eyedropper.dataset.adminEyedropper;
+          pickAdminColor(lastAdminColorTarget);
+          return;
+        }
+
+        if (swatch) {
+          updateSelectedElementStyle(lastAdminColorTarget, swatch.dataset.adminSwatch);
+        }
+      });
+
       adminTextCreateInput?.addEventListener('keydown', (event) => {
         if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
           event.preventDefault();
@@ -3758,6 +4190,29 @@
         event.preventDefault();
         moveAdminSlideTo(draggedAdminSlideId || event.dataTransfer.getData('text/plain'), row.dataset.adminSlideId);
       });
+
+      document.addEventListener('click', (event) => {
+        if (!bodyEl.classList.contains('admin-mode-active')) return;
+        if (event.target.closest('.admin-mode-panel, .chapter-nav, .custom-nav, .guide-modal, .image-lightbox')) return;
+
+        const currentSection = getCurrentSection();
+        if (!currentSection?.contains(event.target)) return;
+
+        const element = event.target.closest('[data-admin-element-id]');
+        if (!element || !currentSection.contains(element)) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        setSelectedAdminElement(element);
+      }, true);
+
+      document.addEventListener('input', (event) => {
+        if (!bodyEl.classList.contains('admin-mode-active')) return;
+        const element = event.target.closest('[data-admin-element-id][contenteditable="true"]');
+        if (!element || element.dataset.adminElementId !== selectedAdminElementId) return;
+        updateSelectedElementHtml(element.innerHTML, { apply: false });
+        renderAdminElementInspector();
+      }, true);
     }
 
     Reveal.on('ready', initAdminMode);

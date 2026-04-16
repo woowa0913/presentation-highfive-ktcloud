@@ -414,6 +414,40 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.19 (2026-04-16) - 관리자 디자인 Inspector 추가
+
+### 현재 상태
+- 관리자 모드에서 우측 실제 슬라이드 요소를 클릭해 선택할 수 있도록 확장했다.
+- 텍스트 요소는 슬라이드 위에서 직접 편집할 수 있고, Inspector 패널에서도 HTML/텍스트를 수정할 수 있다.
+- 선택한 요소의 X/Y 이동, scale, width/height, border radius, 폰트 크기, 굵기, 정렬, 자간, 텍스트색, 배경색, 테두리색, 투명도를 조정할 수 있다.
+- 컬러 팔레트와 브라우저 지원 시 `EyeDropper API` 기반 스포이드 버튼을 제공한다.
+- 수정값은 `elementEdits` 형태로 관리자 JSON에 포함되어, 브라우저 수정본을 실제 브랜치에 반영할 수 있는 구조로 저장된다.
+- 관리자 패널은 기존 순서/숨김/Text CRUD 영역에 Design Inspector 영역을 추가하는 방식으로 확장했다.
+
+### 변경 이력
+- `index.html`
+  - 관리자 패널에 `Design Inspector` UI 추가
+  - 선택 가능한 슬라이드 요소에 안정적인 `data-admin-element-id`를 부여하는 로직 추가
+  - `elementEdits` 상태 정규화/저장/적용 로직 추가
+  - 슬라이드 요소 클릭 선택, contenteditable 직접 편집, 스타일 컨트롤, 컬러 팔레트, 스포이드, 요소 초기화 기능 추가
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=47`로 업데이트
+- `css/wanted-theme.css`
+  - Inspector 패널, 입력 컨트롤, 팔레트, 선택 요소 hover/outline 스타일 추가
+  - 기존 관리자 패널 내 슬라이드 리스트/Text CRUD/Inspector 비율 재조정
+
+### 검증
+- 인라인 module script를 `node --check`로 문법 확인
+- 로컬 서버(`python3 -m http.server 8020`)에서 Playwright로 확인
+- 확인 항목
+  - 관리자 비밀번호 `0401`로 진입 확인
+  - Index 페이지의 `.index-items` 요소 클릭 선택 확인
+  - 선택 요소의 폰트 크기와 텍스트 색상 변경 확인
+  - Inspector 텍스트/HTML 입력값이 실제 슬라이드와 `localStorage`의 `elementEdits` JSON에 반영되는지 확인
+  - `/tmp/final-admin-inspector.png` 캡처로 선택 outline 및 Inspector 패널 표시 확인
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.18 (2026-04-16) - Index 페이지 실제 챕터 흐름 반영
 
 ### 현재 상태
