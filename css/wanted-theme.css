@@ -1029,10 +1029,22 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 .team-practice-slide .team-evolution .body-card,
 .team-practice-slide .team-story-card,
 .team-practice-slide .team-mini-case-card {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)) !important;
   border: 1px solid rgba(159, 210, 255, 0.14) !important;
   box-shadow: 0 24px 54px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(12px);
+}
+
+.team-practice-slide .team-evolution .body-card::before,
+.team-practice-slide .team-story-card::before,
+.team-practice-slide .team-mini-case-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(159, 210, 255, 0.08), transparent 54%);
+  pointer-events: none;
 }
 
 .team-practice-slide .team-evolution .body-card strong,
@@ -1079,7 +1091,23 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 }
 
 .team-practice-slide .team-story-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(85, 126, 255, 0.92), rgba(66, 198, 255, 0.82));
+  color: #ffffff;
+  font-size: 0.82em;
+  font-weight: 900;
+  letter-spacing: 0.02em;
   box-shadow: 0 16px 34px rgba(5, 9, 20, 0.28);
+}
+
+.team-practice-slide .team-story-badge.is-violet {
+  background: linear-gradient(135deg, rgba(112, 119, 255, 0.92), rgba(82, 143, 255, 0.82));
+}
+
+.team-practice-slide .team-story-badge.is-magenta {
+  background: linear-gradient(135deg, rgba(70, 154, 255, 0.92), rgba(60, 207, 228, 0.82));
 }
 
 .iteration-track .body-card {
@@ -3467,11 +3495,11 @@ body.ui-on-dark .reveal .progress {
 }
 
 .field-scene-gen-slide .slide-body {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .field-scene-gen-slide .body-title {
-  padding-top: 138px !important;
+  padding-top: 96px !important;
 }
 
 .gen-scene-stage {
@@ -3480,8 +3508,9 @@ body.ui-on-dark .reveal .progress {
   justify-content: center;
   align-items: center;
   gap: 34px;
-  min-height: 100%;
-  padding: 34px 10% 0;
+  flex: 1;
+  min-height: 0;
+  padding: 54px 10% 28px;
   text-align: center;
 }
 
@@ -5169,14 +5198,14 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 
 .case-doc-check-slide .case-app-browser,
 .case-mock-test-slide .case-app-browser {
-  height: 611px;
-  min-height: 611px !important;
+  height: 678px;
+  min-height: 678px !important;
 }
 
 .case-doc-check-slide .case-app-screen,
 .case-doc-check-slide .case-app-screen iframe {
-  min-height: 611px;
-  height: 611px;
+  min-height: 678px;
+  height: 678px;
 }
 
 .case-mock-test-slide .reframe-stage {
@@ -5185,13 +5214,13 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .case-mock-test-slide .case-app-browser {
-  min-height: 611px !important;
+  min-height: 678px !important;
 }
 
 .case-mock-test-slide .case-app-screen,
 .case-mock-test-slide .case-app-screen iframe {
-  min-height: 611px;
-  height: 611px;
+  min-height: 678px;
+  height: 678px;
 }
 
 .case-mock-test-slide .case-proof-frame {
@@ -5431,8 +5460,8 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .case-disc-browser[data-disc-case-state="snapshot"] {
-  min-height: 715px !important;
-  height: 715px;
+  min-height: 782px !important;
+  height: 782px;
 }
 
 .case-disc-demo-link {

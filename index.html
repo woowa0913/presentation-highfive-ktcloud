@@ -1945,8 +1945,7 @@
                     #path-ai-none,
                     #path-ai-use,
                     #path-vibe {
-                      stroke-dashoffset: 0;
-                      opacity: 0;
+                      opacity: 1;
                     }
                     #path-ai-none { stroke-dasharray: 540; stroke-dashoffset: 540; }
                     #path-ai-use  { stroke-dasharray: 560; stroke-dashoffset: 560; }
@@ -1964,9 +1963,7 @@
                     .performance-graph-slide.graph-active #point-vibe,
                     .performance-graph-slide.graph-active #label-vibe { animation: fade-graph-label 0.42s ease-out 3.05s forwards; }
                     @keyframes draw-line {
-                      0% { opacity: 0; }
-                      8% { opacity: 1; }
-                      100% { opacity: 1; stroke-dashoffset: 0; }
+                      to { stroke-dashoffset: 0; }
                     }
                     @keyframes fade-graph-label { to { opacity: 1; transform: translateX(0); } }
                   </style>
@@ -2101,19 +2098,19 @@
           </div>
           <div class="team-story-grid">
             <article class="team-story-card">
-              <div class="team-story-badge">📋</div>
+              <div class="team-story-badge">01</div>
               <div class="team-story-name">박창윤</div>
               <p class="team-story-copy">PI 프로젝트 발표 평가를 수작업에서 <strong>실시간 자동화</strong>로 전환.</p>
               <span class="team-story-tag is-mint">PI 평가 시스템</span>
             </article>
             <article class="team-story-card">
-              <div class="team-story-badge is-violet">🎮</div>
+              <div class="team-story-badge is-violet">02</div>
               <div class="team-story-name">박창윤</div>
               <p class="team-story-copy">경력입사자 온보딩을 <strong>텍스트 어드벤처 게임</strong>으로 재설계.</p>
               <span class="team-story-tag is-violet">kt cloud 2033</span>
             </article>
             <article class="team-story-card">
-              <div class="team-story-badge is-magenta">💬</div>
+              <div class="team-story-badge is-magenta">03</div>
               <div class="team-story-name">김성환</div>
               <p class="team-story-copy">1on1 리더십 스킬을 <strong>선택형 시뮬레이션</strong>으로 반복 학습.</p>
               <span class="team-story-tag is-magenta">1on1 시뮬레이터</span>
@@ -3021,7 +3018,7 @@
           if (!path) return;
           const length = Math.ceil(path.getTotalLength());
           path.style.animation = 'none';
-          path.style.opacity = '0';
+          path.style.opacity = '1';
           path.style.strokeDasharray = `${length}`;
           path.style.strokeDashoffset = `${length}`;
         });
@@ -3053,26 +3050,6 @@
           });
           void slide.offsetWidth;
           slide.classList.add('graph-active');
-          lineIds.forEach((id) => {
-            const path = slide.querySelector(`#${id}`);
-            if (!path) return;
-            path.style.opacity = '1';
-            path.style.strokeDashoffset = '0';
-          });
-          performanceGraphTimer = setTimeout(() => {
-            const visibleSlide = window.Reveal && typeof Reveal.getCurrentSlide === 'function'
-              ? Reveal.getCurrentSlide()
-              : null;
-            if (visibleSlide !== slide && !slide.classList.contains('present')) return;
-            markerIds.forEach((id) => {
-              const node = slide.querySelector(`#${id}`);
-              if (!node) return;
-              node.style.opacity = '1';
-              if (id.startsWith('label-')) {
-                node.style.transform = 'translateX(0)';
-              }
-            });
-          }, 3600);
         };
 
         void slide.offsetWidth;
