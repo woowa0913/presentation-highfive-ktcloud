@@ -414,6 +414,28 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.18 (2026-04-16) - Index 페이지 실제 챕터 흐름 반영
+
+### 현재 상태
+- Index 페이지가 실제 발표 흐름과 같은 5개 챕터 기준으로 정리되었다.
+- 기존에 남아 있던 6번째 항목과 분리된 `왜 HRD는 메이커가 되어야 하는가` 항목을 제거했다.
+- 3번 항목은 실제 사례 간지 문구와 맞춰 `실제 사례 — 문제를 도구로 바꾼 기록`으로 수정했다.
+
+### 변경 이력
+- `index.html`
+  - Index 페이지 번호를 `01~06`에서 `01~05`로 변경
+  - 목차 항목을 현재 발표 챕터 체계에 맞게 재정렬
+
+### 검증
+- 로컬 서버(`python3 -m http.server 8019`)에서 Playwright로 확인
+- 확인 항목
+  - 빈 `localStorage` 기준 표시 슬라이드 수 47장 유지 확인
+  - Index 페이지 텍스트가 5개 항목으로 표시되는지 확인
+  - `/tmp/final-index-updated.png` 캡처로 시각 정렬 확인
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.17 (2026-04-16) - 마우스 휠 슬라이드 이동 추가
 
 ### 현재 상태
