@@ -2371,6 +2371,9 @@
     const TOP_UI_HIDE_DELAY = 1000;
     const NAV_ARROW_SHOW_DELAY = 500;
     const NAV_EDGE_THRESHOLD = 72;
+    const WHEEL_NAV_THRESHOLD = 42;
+    const WHEEL_NAV_COOLDOWN = 620;
+    let lastWheelNavAt = 0;
 
     function getHorizontalSlides() {
       return Reveal.getSlides ? Reveal.getSlides() : Array.from(document.querySelectorAll('.reveal .slides > section'));
@@ -2460,9 +2463,38 @@
       }
     });
 
-    document.addEventListener('wheel', () => {
+    function shouldIgnoreWheelNavigation(event) {
+      if (event.ctrlKey || event.metaKey || event.altKey) return true;
+      if (bodyEl.classList.contains('admin-mode-active')) return true;
+
+      const target = event.target;
+      return Boolean(target?.closest?.(
+        '.admin-mode-panel, .guide-modal, .image-lightbox, input, textarea, select, [contenteditable="true"]'
+      ));
+    }
+
+    document.addEventListener('wheel', (event) => {
+      if (shouldIgnoreWheelNavigation(event)) return;
+
+      const deltaY = event.deltaY || 0;
+      const deltaX = event.deltaX || 0;
+      const dominantDelta = Math.abs(deltaY) >= Math.abs(deltaX) ? deltaY : deltaX;
+
+      if (Math.abs(dominantDelta) < WHEEL_NAV_THRESHOLD) return;
+
+      event.preventDefault();
       flashNavArrows();
-    }, { passive: true });
+
+      const now = window.performance.now();
+      if (now - lastWheelNavAt < WHEEL_NAV_COOLDOWN) return;
+      lastWheelNavAt = now;
+
+      if (dominantDelta > 0) {
+        Reveal.next();
+      } else {
+        Reveal.prev();
+      }
+    }, { passive: false });
 
     nav.addEventListener('mouseenter', () => {
       setTopUiVisible(true);
