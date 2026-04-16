@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=47">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=48">
 </head>
 <body>
 
@@ -59,7 +59,7 @@
       <button type="button" class="admin-mode-close" data-admin-close aria-label="관리자 모드 닫기">×</button>
     </div>
     <div class="admin-mode-help">
-      <strong>순서 변경</strong>, <strong>숨김</strong>, <strong>텍스트 편집</strong>은 입력 즉시 실제 슬라이드에 반영되고 자동 저장됩니다.
+      <strong>순서 변경</strong>, <strong>숨김</strong>, <strong>디자인 편집</strong>은 입력 즉시 실제 슬라이드에 반영되고 자동 저장됩니다.
     </div>
     <div class="admin-mode-toolbar">
       <div class="admin-mode-actions">
@@ -70,20 +70,6 @@
     </div>
     <div class="admin-export-status" id="adminExportStatus" aria-live="polite"></div>
     <div class="admin-slide-list" id="adminSlideList" aria-label="슬라이드 순서 관리"></div>
-    <div class="admin-text-editor" id="adminTextEditor">
-      <div class="admin-text-editor-head">
-        <div>
-          <span>Text CRUD</span>
-          <strong id="adminTextSlideTitle">슬라이드를 선택하세요</strong>
-        </div>
-        <button type="button" data-admin-text-refresh>새로고침</button>
-      </div>
-      <div class="admin-text-list" id="adminTextList"></div>
-    <div class="admin-text-create">
-      <textarea id="adminTextCreateInput" rows="3" placeholder="선택한 슬라이드에 추가할 텍스트를 입력하세요."></textarea>
-      <button type="button" data-admin-text-add>텍스트 추가</button>
-    </div>
-  </div>
     <div class="admin-element-inspector" id="adminElementInspector">
       <div class="admin-text-editor-head">
         <div>
@@ -93,12 +79,12 @@
         <button type="button" data-admin-element-clear>선택 해제</button>
       </div>
       <div class="admin-inspector-empty" id="adminElementEmpty">
-        우측 슬라이드에서 텍스트, 카드, 박스 요소를 클릭하면 위치·색상·타이포를 조정할 수 있습니다.
+        우측 슬라이드에서 텍스트, 카드, 박스 요소를 클릭하면 내용·위치·색상·타이포를 조정할 수 있습니다.
       </div>
       <div class="admin-inspector-controls" id="adminElementControls" hidden>
         <label class="admin-control-wide">
           <span>직접 텍스트 / HTML</span>
-          <textarea id="adminElementHtmlInput" rows="2" placeholder="텍스트 요소를 선택하면 직접 수정할 수 있습니다."></textarea>
+          <textarea id="adminElementHtmlInput" rows="3" placeholder="선택한 요소의 텍스트 또는 HTML을 직접 수정합니다."></textarea>
         </label>
 
         <div class="admin-control-grid">
@@ -3074,7 +3060,7 @@
     /* ── 5. 관리자 모드: Intro 더블클릭으로 슬라이드 순서/숨김 관리 ── */
     const ADMIN_PASSWORD = '0401';
     const ADMIN_STATE_KEY = 'presentation-vibe-admin-state-v1';
-    const ADMIN_DEFAULT_STATE_VERSION = '2026-04-15-late-flow-refine-01';
+    const ADMIN_DEFAULT_STATE_VERSION = '2026-04-16-admin-design-edits-01';
     const DEFAULT_ADMIN_STATE = Object.freeze({
       __defaultStateVersion: ADMIN_DEFAULT_STATE_VERSION,
       order: [
@@ -3131,7 +3117,21 @@
       textEdits: {},
       textDeleted: [],
       textAdded: {},
-      elementEdits: {},
+      elementEdits: {
+        'slide-7-element-10': {
+          styles: {
+            color: '#ffffff',
+          },
+        },
+        'slide-7-element-8': {
+          styles: {},
+          html: '전이는 <strong>Classroom</strong>이 아니라 <strong>Workflow</strong>에서 일어나고,&nbsp;<div>우리는 그 구간의 도구가 필요했습니다.</div>',
+        },
+        'slide-7-element-11': {
+          styles: {},
+          html: '현업 적용의 구간을 설계하지 않으면 교육 직후 만족도는&nbsp;<div>실제 변화로 이어지지 않습니다.</div>',
+        },
+      },
     });
     const adminPanel = document.getElementById('adminModePanel');
     const adminList = document.getElementById('adminSlideList');
@@ -3635,7 +3635,10 @@
     }
 
     function isAdminTextElement(element) {
-      return Boolean(element?.matches?.(ADMIN_TEXT_ELEMENT_SELECTOR));
+      if (!element) return false;
+      if (element.matches?.('svg, iframe, canvas, video, audio, img')) return false;
+      if (element.querySelector?.('iframe, canvas, video, audio')) return false;
+      return true;
     }
 
     function parseCssPx(value) {
@@ -3740,7 +3743,7 @@
       const edit = state.elementEdits[selectedAdminElementId] || { styles: {} };
       const styles = edit.styles || {};
       const computed = window.getComputedStyle(element);
-      const isText = isAdminTextElement(element);
+      const canEditHtml = isAdminTextElement(element);
 
       adminElementTitle.textContent = getAdminElementLabel(element);
       adminElementEmpty.hidden = true;
@@ -3771,9 +3774,11 @@
       }
 
       if (adminElementHtmlInput) {
-        adminElementHtmlInput.disabled = !isText;
-        adminElementHtmlInput.value = isText ? (edit.html ?? element.innerHTML) : '';
-        adminElementHtmlInput.placeholder = isText ? '이 요소의 텍스트/간단한 HTML을 수정합니다.' : '카드/박스는 텍스트 직접 편집 대상이 아닙니다.';
+        adminElementHtmlInput.disabled = !canEditHtml;
+        adminElementHtmlInput.value = canEditHtml ? (edit.html ?? element.innerHTML) : '';
+        adminElementHtmlInput.placeholder = canEditHtml
+          ? '선택한 요소의 텍스트 또는 HTML을 직접 수정합니다.'
+          : '이미지/iframe/비디오 요소는 직접 HTML 편집을 지원하지 않습니다.';
       }
     }
 

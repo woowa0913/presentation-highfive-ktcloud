@@ -414,6 +414,35 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.20 (2026-04-16) - 관리자 Inspector 단일화 및 JSON 반영
+
+### 현재 상태
+- 관리자 모드에서 별도 Text CRUD 패널을 제거하고, 우측 슬라이드 요소를 직접 선택해 수정하는 `Design Inspector` 중심으로 정리했다.
+- 카드/박스 요소도 더 이상 `텍스트 직접 편집 대상이 아닙니다`로 막히지 않고, Inspector의 HTML 입력으로 직접 수정할 수 있다.
+- 사용자가 전달한 관리자 JSON의 기본 흐름과 `slide-7` 요소 수정값을 기본 상태로 반영했다.
+- 기본 관리자 상태 버전을 `2026-04-16-admin-design-edits-01`로 갱신해 stale `localStorage`가 새 기본값을 덮지 않도록 했다.
+
+### 변경 이력
+- `index.html`
+  - 관리자 패널에서 Text CRUD 마크업 제거
+  - Design Inspector 안내 문구와 HTML 입력 placeholder를 카드/박스 편집 가능 기준으로 수정
+  - `isAdminTextElement` 기준을 완화해 iframe/image/canvas/video/audio가 아닌 카드/박스 요소의 HTML 편집 허용
+  - `DEFAULT_ADMIN_STATE.elementEdits`에 `slide-7-element-8`, `slide-7-element-10`, `slide-7-element-11` 수정값 반영
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=48`로 업데이트
+
+### 검증
+- 인라인 module script를 `node --check`로 문법 확인
+- 로컬 서버(`python3 -m http.server 8022`)에서 Playwright로 확인
+- 확인 항목
+  - 기본 상태 버전이 `2026-04-16-admin-design-edits-01`인지 확인
+  - `slide-7`의 전달 JSON 기반 HTML/색상 수정값 적용 확인
+  - 관리자 패널에 Text CRUD 영역이 더 이상 표시되지 않는지 확인
+  - 카드/박스형 `DIV` 요소 선택 후 HTML 직접 수정 및 `localStorage.elementEdits` 저장 확인
+  - `/tmp/final-admin-no-textcrud.png` 캡처로 패널/Inspector 표시 확인
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.19 (2026-04-16) - 관리자 디자인 Inspector 추가
 
 ### 현재 상태
