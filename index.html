@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=48">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=51">
 </head>
 <body>
 
@@ -1744,7 +1744,7 @@
         </div>
       </section>
 
-      <section data-background-color="#0a0a0a" data-chapter="ch3">
+      <section data-background-color="#0a0a0a" data-chapter="ch3" class="toolbox-essentials-slide">
         <div class="slide-body dark">
           <div class="body-title">도구 개발 접근법의 진화</div>
           <div class="reframe-stage">
@@ -1937,6 +1937,7 @@
                     #path-vibe    { stroke-dasharray: 620; stroke-dashoffset: 620; }
                     #point-ai-none, #point-ai-use, #point-vibe,
                     #label-ai-none, #label-ai-use, #label-vibe { opacity: 0; }
+                    #label-ai-none, #label-ai-use, #label-vibe { transform: translateX(-18px); }
                     .performance-graph-slide.present #path-ai-none { animation: draw-line 1.2s ease-out 0.15s forwards; }
                     .performance-graph-slide.present #path-ai-use { animation: draw-line 1.2s ease-out 1.15s forwards; }
                     .performance-graph-slide.present #path-vibe { animation: draw-line 1.2s ease-out 2.15s forwards; }
@@ -1947,7 +1948,7 @@
                     .performance-graph-slide.present #point-vibe,
                     .performance-graph-slide.present #label-vibe { animation: fade-graph-label 0.42s ease-out 3.05s forwards; }
                     @keyframes draw-line { to { stroke-dashoffset: 0; } }
-                    @keyframes fade-graph-label { to { opacity: 1; } }
+                    @keyframes fade-graph-label { to { opacity: 1; transform: translateX(0); } }
                   </style>
                 </defs>
                 <line x1="70" y1="255" x2="820" y2="255" stroke="#e5e5e5" stroke-width="2"></line>
@@ -1958,8 +1959,8 @@
                 <line x1="70" y1="55" x2="820" y2="55" stroke="#f5f5f5" stroke-width="1.5"></line>
                 <text x="28" y="140" text-anchor="middle" font-size="16" fill="#bbb" font-family="sans-serif" transform="rotate(-90 28 140)">성과 / 역량</text>
                 <text x="445" y="278" text-anchor="middle" font-size="16" fill="#bbb" font-family="sans-serif">시간 (경험 누적)</text>
-                <path id="path-ai-none" d="M80,245 C200,240 450,232 810,215" fill="none" stroke="#d0d0d0" stroke-width="3.5" stroke-dasharray="10,5"></path>
-                <path id="path-ai-use" d="M80,245 C200,215 420,168 810,105" fill="none" stroke="#00A2FF" stroke-width="4" stroke-dasharray="10,5"></path>
+                <path id="path-ai-none" d="M80,245 C200,240 450,232 810,215" fill="none" stroke="#d0d0d0" stroke-width="3.5" stroke-linecap="round"></path>
+                <path id="path-ai-use" d="M80,245 C200,215 420,168 810,105" fill="none" stroke="#00A2FF" stroke-width="4" stroke-linecap="round"></path>
                 <path id="path-vibe" d="M80,245 C180,192 350,112 810,28" fill="none" stroke="#6C63FF" stroke-width="5.5" stroke-linecap="round"></path>
                 <circle id="point-ai-none" cx="810" cy="215" r="6" fill="#d0d0d0"></circle>
                 <circle id="point-ai-use" cx="810" cy="105" r="6" fill="#00A2FF"></circle>
@@ -2224,7 +2225,7 @@
         </div>
       </section>
 
-      <section data-background-color="#0a0a0f" data-chapter="ch5">
+      <section data-background-color="#0a0a0f" data-chapter="ch4">
         <div class="slide-body dark">
           <div class="body-title">리스크와 극복 방안 (Governance)</div>
           <div class="reframe-stage">
@@ -2267,7 +2268,7 @@
         </div>
       </section>
 
-      <section data-background-color="#0a0a0f" data-chapter="ch5">
+      <section data-background-color="#0a0a0f" data-chapter="ch4">
         <div class="slide-body dark attitude-plain-slide">
           <div class="body-title">결국, 도구보다 중요한 것은 태도</div>
           <div class="reframe-stage">
@@ -2415,7 +2416,7 @@
     const TOP_UI_HIDE_DELAY = 1000;
     const NAV_ARROW_SHOW_DELAY = 500;
     const NAV_EDGE_THRESHOLD = 72;
-    const WHEEL_NAV_THRESHOLD = 42;
+    const WHEEL_NAV_THRESHOLD = 1;
     const WHEEL_NAV_COOLDOWN = 620;
     let lastWheelNavAt = 0;
 
@@ -3125,11 +3126,176 @@
         },
         'slide-7-element-8': {
           styles: {},
-          html: '전이는 <strong>Classroom</strong>이 아니라 <strong>Workflow</strong>에서 일어나고,&nbsp;<div>우리는 그 구간의 도구가 필요했습니다.</div>',
+          html: `전이는 <strong>Classroom</strong>이 아니라 <strong>Workflow</strong>에서 일어나고,&nbsp;<div>우리는 그 구간의 도구가 필요했습니다.</div>`,
         },
         'slide-7-element-11': {
           styles: {},
-          html: '현업 적용의 구간을 설계하지 않으면 교육 직후 만족도는&nbsp;<div>실제 변화로 이어지지 않습니다.</div>',
+          html: `현업 적용의 구간을 설계하지 않으면 교육 직후 만족도는&nbsp;<div>실제 변화로 이어지지 않습니다.</div>`,
+        },
+        'slide-7-element-12': {
+          styles: {
+            fontSize: 40,
+            y: 30,
+          },
+          html: `
+              <p>교육 직후가 아니라, 현업 적용이 일어나는 순간에 전이가 완성됩니다. 그래서 새로운 도구가 필요했습니다.</p>
+            `,
+        },
+        'slide-22-element-6': {
+          styles: {},
+          html: `현장에서 반복되는 불편과&nbsp;<div>학습의 막힘을 포착합니다.</div>`,
+        },
+        'slide-22-element-8': {
+          styles: {},
+          html: `원하는 경험, 화면, 흐름을&nbsp;<div>문장으로 구체화합니다.</div>`,
+        },
+        'slide-22-element-10': {
+          styles: {},
+          html: `AI와 대화하며 앱, 웹,&nbsp;<div>시뮬레이션의 첫 버전을 만듭니다.</div>`,
+        },
+        'slide-22-element-12': {
+          styles: {},
+          html: `실제 사용자의 반응으로&nbsp;<div>작동 여부와 핏을 확인합니다.</div>`,
+        },
+        'slide-22-element-14': {
+          styles: {},
+          html: `피드백을 반영해 하루 안에도&nbsp;<div>여러 버전을 순환시킵니다.</div>`,
+        },
+        'slide-22-element-16': {
+          styles: {},
+          html: `HRD는 원래부터 문제를 해석하고&nbsp;<div>학습 흐름을 설계하던 직무였습니다.</div>`,
+        },
+        'slide-22-element-19': {
+          styles: {},
+          html: `문제 해결의 마지막 단계를 외주와 의존의 영역에만 남겨두지 말고,&nbsp;<div><strong>우리 조직에 필요한 경험을 직접 형태로 만들 수 있는 힘</strong>을 갖자는 이야기입니다.</div>`,
+        },
+        'slide-24-element-4': {
+          styles: {},
+          html: `학습 데이터 AI 분석으로&nbsp;<div>실시간 니즈 도출</div>`,
+        },
+        'slide-24-element-7': {
+          styles: {},
+          html: `AI 기반 모듈 구성과&nbsp;<div>코스웨어 구조화</div>`,
+        },
+        'slide-24-element-13': {
+          styles: {},
+          html: `AI 튜터와 피드백 루프로&nbsp;<div>개별화된 적용 지원</div>`,
+        },
+        'slide-24-element-16': {
+          styles: {},
+          html: `성과 데이터 분석 후 다음&nbsp;<div>학습 경로 추천</div>`,
+        },
+        'slide-24-element-5': {
+          styles: {},
+          html: `
+                <div class="addie-card-top">
+                  <span class="reframe-eyebrow">D — 설계</span>
+                  <span class="addie-blue-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M8 20l4-14 4 14"></path>
+                      <path d="M5 20h14"></path>
+                      <circle cx="12" cy="6" r="2"></circle>
+                    </svg>
+                  </span>
+                </div>
+                <h3 class="reframe-heading" data-admin-element-id="slide-24-element-6">설계</h3>
+                <p class="reframe-copy" data-admin-element-id="slide-24-element-7">AI 기반 모듈 구성과&nbsp;<div>코스웨어 구조화</div></p>
+                <p class="addie-card-detail">과정, 화면, 평가, 인터랙션의 <br>뼈대를 빠르게 시뮬레이션할 수 있습니다.</p>
+              `,
+        },
+        'slide-31-element-3': {
+          styles: {
+            color: '#ffffff',
+          },
+        },
+        'slide-32-element-10': {
+          styles: {},
+          html: `
+              <p>이 사례의 포인트는 AI를 썼다는 사실보다,&nbsp;</p><p>선결조건을 사람을 움직이는 경험으로 다시 설계했다는 점입니다.</p>
+            `,
+        },
+        'slide-33-element-5': {
+          styles: {},
+          html: `개인 성향 진단은 많았지만,&nbsp;<div>조직의 맥락으로 번역된 도구는 부족했습니다.</div>`,
+        },
+        'slide-33-element-9': {
+          styles: {},
+          html: `같이 일하는 방식, 협업 가이드, 리더의 대화 포인트를 함께 읽을 수 있도록 <br>설계했습니다.`,
+        },
+        'slide-33-element-12': {
+          styles: {},
+          html: `진단 결과가 리포트에서 끝나지 않고, 팀 회의와 피드백 대화의 소재로 <br>이어지도록 설계했습니다.`,
+        },
+        'slide-34-element-4': {
+          styles: {},
+          html: `엑셀과 표로는 임원들이 감을 잡기 어려웠고, 설명만으로는 제도 수용성과 공감대를 만들기 <br>힘들었습니다.`,
+        },
+        'slide-37-element-4': {
+          styles: {},
+          html: `AI로 그린 나의 캐릭터가 들려주는 사내 공지, 이벤트, 교육, <br>조직문화, 업무 가이드 이야기`,
+        },
+        'slide-37-element-7': {
+          styles: {},
+          html: `신입사원들이 교육을 수료하며 한 해 성장 계획을 수립하고 <br>서로 응원하는 웹앱`,
+        },
+        'slide-37-element-10': {
+          styles: {},
+          html: `교육 프로그램 출강 사내강사에게 피드백과 함께 보낼 감사 <br>레터 작성`,
+        },
+        'slide-40-element-15': {
+          styles: {
+            fontSize: 28,
+          },
+        },
+        'slide-40-element-5': {
+          styles: {},
+          html: `"이 부분이 아쉬운데?"라는 <br>문제 제기`,
+        },
+        'slide-40-element-7': {
+          styles: {},
+          html: `필요한 경험과 기능을 <br>문장으로 설계`,
+        },
+        'slide-40-element-9': {
+          styles: {},
+          html: `몇 줄의 프롬프트로, <br>눈앞에 결과물이 빠르게 등장`,
+        },
+        'slide-40-element-11': {
+          styles: {},
+          html: `"어? 이게 진짜 되네?"라는 <br>자신감 확보`,
+        },
+        'slide-40-element-13': {
+          styles: {},
+          html: `더 큰 문제에 <br>다시 도전하게 만드는 동력`,
+        },
+        'slide-45-element-2': {
+          styles: {
+            fontSize: 28,
+          },
+        },
+        'slide-45-element-3': {
+          styles: {
+            fontSize: 28,
+          },
+        },
+        'slide-45-element-4': {
+          styles: {
+            fontSize: 28,
+          },
+        },
+        'slide-45-element-5': {
+          styles: {
+            y: 50,
+          },
+        },
+        'slide-45-element-6': {
+          styles: {
+            y: 50,
+          },
+        },
+        'slide-45-element-7': {
+          styles: {
+            y: 50,
+          },
         },
       },
     });
@@ -3193,6 +3359,23 @@
       '.gen-scene-emphasis',
       'section[data-chapter="index"] .index-numbers',
       'section[data-chapter="index"] .index-items',
+    ].join(',');
+    const ADMIN_EXTRA_ELEMENT_SELECTOR = [
+      '.methodology-key-message',
+      '.title-key-message',
+      '.dopamine-bottom-message',
+      '.maker-capability-message',
+      '.addie-card',
+      '.addie-card-detail',
+      '.reframe-route-card',
+      '.case-app-card',
+      '.onboarding-tool-card',
+      '.reframe-barrier-card',
+      '.case-step-card',
+      '.case-proof-card',
+      '.case-calibration-note-card',
+      '.case-calibration-app-card',
+      '.case-disc-view-card',
     ].join(',');
     const ADMIN_TEXT_ELEMENT_SELECTOR = [
       '.body-title',
@@ -3622,6 +3805,16 @@
       elements.forEach((element, index) => {
         element.dataset.adminElementId = element.dataset.adminElementId || `${section.dataset.adminSlideId}-element-${index + 1}`;
       });
+
+      const extraElements = Array.from(section.querySelectorAll(ADMIN_EXTRA_ELEMENT_SELECTOR))
+        .filter((element) => !element.closest(ADMIN_TEXT_EXCLUDE_SELECTOR))
+        .filter((element) => !element.dataset.adminElementId);
+
+      let nextIndex = elements.length;
+      extraElements.forEach((element) => {
+        nextIndex += 1;
+        element.dataset.adminElementId = `${section.dataset.adminSlideId}-element-${nextIndex}`;
+      });
     }
 
     function getAdminElementById(elementId) {
@@ -3639,6 +3832,22 @@
       if (element.matches?.('svg, iframe, canvas, video, audio, img')) return false;
       if (element.querySelector?.('iframe, canvas, video, audio')) return false;
       return true;
+    }
+
+    function getAdminElementFromEvent(event, currentSection) {
+      const directTarget = event.target instanceof Element ? event.target.closest('[data-admin-element-id]') : null;
+      if (directTarget && currentSection.contains(directTarget)) {
+        return directTarget;
+      }
+
+      if (typeof event.clientX !== 'number' || typeof event.clientY !== 'number') {
+        return null;
+      }
+
+      const stackedElements = document.elementsFromPoint(event.clientX, event.clientY);
+      return stackedElements.find((element) => (
+        currentSection.contains(element) && element.matches?.('[data-admin-element-id]')
+      )) || null;
     }
 
     function parseCssPx(value) {
@@ -4203,7 +4412,7 @@
         const currentSection = getCurrentSection();
         if (!currentSection?.contains(event.target)) return;
 
-        const element = event.target.closest('[data-admin-element-id]');
+        const element = getAdminElementFromEvent(event, currentSection);
         if (!element || !currentSection.contains(element)) return;
 
         event.preventDefault();

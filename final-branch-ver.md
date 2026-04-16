@@ -414,6 +414,55 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.21 (2026-04-16) - 관리자 선택 범위 확장 및 후반 슬라이드 보정
+
+### 현재 상태
+- 관리자 모드에서는 fragment가 항상 펼쳐진 상태로 보이도록 바꿔, 하단 키 메시지와 일부 카드가 가려져 선택되지 않던 문제를 줄였다.
+- 기존 선택 대상 외에도 `methodology`, `addie`, `case app`, `onboarding` 계열 카드/메시지를 추가 선택 후보로 등록했고, 클릭 좌표 기준 `elementsFromPoint` 보정으로 겹친 요소도 더 잘 잡히게 했다.
+- 전달받은 최신 JSON의 `elementEdits`를 기본 관리자 상태에 반영해 slide 7 / 22 / 24 / 31 / 32 / 33 / 34 / 37 / 40 / 45 텍스트 수정값이 기본 적용된다.
+- `바이브 코딩 필수 도구함` 슬라이드는 예전 다크 톤으로 되돌리고, 키 메시지는 밝은 화이트 톤으로 정리했다.
+- 마우스 휠은 작은 입력(`deltaY=5`)도 한 칸 이동으로 반응하도록 민감도를 낮췄다.
+- 본문 공통 `slide-body`에는 `gap: 10px`를 넣어 타이틀과 카드가 너무 붙는 장면을 완화했다.
+- 36p 역할의 레일 슬라이드는 제목 가독성과 챕터 칩 표시를 본문 타이틀 규칙에 맞게 보강했다.
+- 37p 역할의 성과 그래프 슬라이드는 선 애니메이션이 덜 어색하게 보이도록 점선 속성을 제거하고 라벨 슬라이드 인을 정리했다.
+- 28p 역할의 `KAC 사례의 임팩트` 슬라이드는 카드 높이를 낮추고 타이틀 아래 여백을 더 확보했다.
+- 후반 `결국, 도구보다 중요한 것은 태도` 슬라이드는 챕터 표기를 `Chapter 04` 흐름에 맞췄다.
+
+### 변경 이력
+- `index.html`
+  - 관리자 기본 `elementEdits`를 최신 JSON 기준으로 확장 반영
+  - 추가 선택 후보 selector와 `elementsFromPoint` 기반 클릭 보정 추가
+  - `WHEEL_NAV_THRESHOLD`를 `1`로 조정
+  - 성과 그래프 라인의 점선 속성 제거 및 라벨 애니메이션 보정
+  - `toolbox-essentials-slide` 클래스 추가
+  - 후반 `attitude`/`governance` 슬라이드 챕터 태그를 `ch4`로 정렬
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=51`로 업데이트
+- `css/wanted-theme.css`
+  - 관리자 모드에서 `.fragment`를 항상 보이게 하는 스타일 추가
+  - 본문 공통 `slide-body` 간격 조정
+  - 레일 슬라이드 타이틀 최대 너비/그림자 보강
+  - `바이브 코딩 필수 도구함` 전용 다크 배경/카드/키 메시지 복원
+  - `KAC 사례의 임팩트` 카드 패딩과 스택 간격 축소
+
+### 검증
+- 인라인 module script를 `node --check`로 문법 확인
+- `git diff --check` 확인
+- 로컬 서버(`python3 -m http.server 8023`, `8024`) + Playwright로 확인
+- 확인 항목
+  - 관리자 모드에서 `toolbox-key-message`가 `slide-43-element-14`로 선택되고 Inspector HTML 편집이 활성화되는지 확인
+  - 관리자 모드에서 fragment가 `opacity: 1`로 펼쳐져 하단 메시지가 선택 가능한지 확인
+  - `methodology-key-message`가 별도 `data-admin-element-id`를 갖는지 확인
+  - 성과 그래프의 `path-ai-none`, `path-ai-use`에 기존 점선 속성이 남아 있지 않은지 확인
+  - `결국, 도구보다 중요한 것은 태도` 슬라이드의 `data-chapter`가 `ch4`인지 확인
+  - 본문 공통 `gap`이 `10px`인지 확인
+  - 작은 휠 입력(`deltaY=5`)에서 `0 → 1 → 0`으로 한 장씩 이동하는지 확인
+- 확인 캡처
+  - `/tmp/final-toolbox-restored.png`
+  - `/tmp/final-rail-title-check.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.20 (2026-04-16) - 관리자 Inspector 단일화 및 JSON 반영
 
 ### 현재 상태
