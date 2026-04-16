@@ -414,6 +414,38 @@
 ### 웹 링크
 - 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
 
+## v1.6.22 (2026-04-16) - 도구함 색상/도파민/메이커 카드 보정
+
+### 현재 상태
+- 38p 역할의 `바이브 코딩 필수 도구함` 슬라이드에 전용 클래스가 다시 올바르게 연결되어, 카드 안 영문 키워드 `AI / IDE / URL` 색상이 원본 톤으로 복원됐다.
+- 12p 역할의 `달라진 것 (Before vs After)` 슬라이드에서 도파민 스파클 이펙트가 마지막 fragment에서도 다시 보이도록 `current-fragment` 조건을 보강했다.
+- 22p 역할의 `HRD × Vibe Coding = HRD 메이커` 슬라이드에서 가운데 `Maker` 카드는 흰색 텍스트로 복원했고, `The Shift` 카드 헤더 기준에 맞게 상단 정렬로 정리했다.
+
+### 변경 이력
+- `index.html`
+  - `toolbox-essentials-slide` 클래스를 실제 `바이브 코딩 필수 도구함` 슬라이드로 이동
+  - `Maker` 중앙 카드를 `maker-shift-card` 클래스로 분리
+  - CSS 캐시 갱신을 위해 `wanted-theme.css?v=52`로 업데이트
+- `css/wanted-theme.css`
+  - 도파민 스파클이 `current-fragment` 상태에서도 보이도록 선택자 보강
+  - 도구함 슬라이드 3개 카드의 `AI / IDE / URL` 색상을 강제 복원
+  - `maker-shift-card`를 상단 정렬/좌측 정렬로 조정하고 `Maker` 텍스트를 흰색으로 고정
+
+### 검증
+- 로컬 서버(`python3 -m http.server 8025`) + Playwright로 확인
+- 확인 항목
+  - `toolbox-essentials-slide`가 실제 `바이브 코딩 필수 도구함` 슬라이드에만 적용되는지 확인
+  - `AI / IDE / URL` 색상이 각각 `rgb(159, 210, 255)`, `rgb(248, 212, 109)`, `rgb(255, 171, 148)`인지 확인
+  - 도파민 슬라이드 마지막 fragment에서 `.dopamine-sparkle-layer`의 `opacity`가 `1`인지 확인
+  - `Maker` 카드의 텍스트 색상이 `rgb(255, 255, 255)`이고 카드 정렬이 `align-items: flex-start`, `text-align: left`인지 확인
+- 확인 캡처
+  - `/tmp/final-toolbox-colors.png`
+  - `/tmp/final-dopamine-restored.png`
+  - `/tmp/final-maker-card.png`
+
+### 웹 링크
+- 기준 링크: https://presentationvibe-git-final-woowa0913s-projects.vercel.app
+
 ## v1.6.21 (2026-04-16) - 관리자 선택 범위 확장 및 후반 슬라이드 보정
 
 ### 현재 상태
