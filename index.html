@@ -1885,17 +1885,31 @@
             <rect x="990" y="176" width="130" height="48" rx="12" fill="rgba(8,8,18,0.95)" stroke="rgba(108,99,255,0.65)" stroke-width="2"></rect>
             <text x="1055" y="206" text-anchor="middle" font-size="26" font-weight="800" fill="#6C63FF">Goal</text>
 
-            <!-- Station dots and labels -->
-            <circle cx="480" cy="200" r="8" fill="rgba(255,255,255,0.25)"></circle>
-            <text x="480" y="180" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">분석</text>
-            <circle cx="1440" cy="200" r="8" fill="rgba(255,255,255,0.25)"></circle>
-            <text x="1440" y="180" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">평가</text>
-            <circle cx="1640" cy="560" r="8" fill="rgba(255,255,255,0.25)"></circle>
-            <text x="1690" y="568" text-anchor="start" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">실행</text>
-            <circle cx="960" cy="920" r="8" fill="rgba(255,255,255,0.25)"></circle>
+            <!-- Station dots (ADDIE letters inside circles) and labels -->
+            <!-- A — Analysis (분석) top-left -->
+            <circle cx="480" cy="200" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="480" y="207" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">A</text>
+            <text x="480" y="170" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">분석</text>
+
+            <!-- E — Evaluation (평가) top-right -->
+            <circle cx="1440" cy="200" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="1440" y="207" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">E</text>
+            <text x="1440" y="170" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">평가</text>
+
+            <!-- I — Implementation (실행) right -->
+            <circle cx="1640" cy="560" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="1640" y="567" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">I</text>
+            <text x="1698" y="568" text-anchor="start" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">실행</text>
+
+            <!-- D2 — Development (개발) bottom -->
+            <circle cx="960" cy="920" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="960" y="927" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">D</text>
             <text x="960" y="960" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">개발</text>
-            <circle cx="280" cy="560" r="8" fill="rgba(255,255,255,0.25)"></circle>
-            <text x="232" y="568" text-anchor="end" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">설계</text>
+
+            <!-- D1 — Design (설계) left -->
+            <circle cx="280" cy="560" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="280" y="567" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">D</text>
+            <text x="222" y="568" text-anchor="end" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">설계</text>
 
             <!-- Connector from Start/Goal down to Rail Switch -->
             <line x1="865" y1="224" x2="865" y2="244" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"></line>

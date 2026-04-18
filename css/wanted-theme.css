@@ -650,6 +650,7 @@
   font-size: clamp(0.92em, 2.05vw, 1.2em);
   letter-spacing: -0.055em;
   line-height: 1.14;
+  color: #fff;
   text-shadow: 0 20px 46px rgba(3, 7, 18, 0.56);
 }
 
