@@ -5198,14 +5198,14 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 
 .case-doc-check-slide .case-app-browser,
 .case-mock-test-slide .case-app-browser {
-  height: 678px;
-  min-height: 678px !important;
+  height: 611px;
+  min-height: 611px !important;
 }
 
 .case-doc-check-slide .case-app-screen,
 .case-doc-check-slide .case-app-screen iframe {
-  min-height: 678px;
-  height: 678px;
+  min-height: 611px;
+  height: 611px;
 }
 
 .case-mock-test-slide .reframe-stage {
@@ -5214,13 +5214,13 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .case-mock-test-slide .case-app-browser {
-  min-height: 678px !important;
+  min-height: 611px !important;
 }
 
 .case-mock-test-slide .case-app-screen,
 .case-mock-test-slide .case-app-screen iframe {
-  min-height: 678px;
-  height: 678px;
+  min-height: 611px;
+  height: 611px;
 }
 
 .case-mock-test-slide .case-proof-frame {
@@ -5460,8 +5460,8 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .case-disc-browser[data-disc-case-state="snapshot"] {
-  min-height: 782px !important;
-  height: 782px;
+  min-height: 715px !important;
+  height: 715px;
 }
 
 .case-disc-demo-link {
