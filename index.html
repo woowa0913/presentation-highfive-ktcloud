@@ -1842,8 +1842,8 @@
             <defs>
               <!-- Outer rail: CCW, passes through Start/Goal at top -->
               <path id="rail-outer-path" d="M 960,200 L 380,200 A 100,100 0 0,0 280,300 L 280,820 A 100,100 0 0,0 380,920 L 1540,920 A 100,100 0 0,0 1640,820 L 1640,300 A 100,100 0 0,0 1540,200 Z"></path>
-              <!-- Inner rail: CCW, starts below Rail Switch -->
-              <path id="rail-inner-path" d="M 960,340 L 730,340 A 40,40 0 0,0 690,380 L 690,680 A 40,40 0 0,0 730,720 L 1190,720 A 40,40 0 0,0 1230,680 L 1230,380 A 40,40 0 0,0 1190,340 Z"></path>
+              <!-- Inner rail: CCW, passes through Rail Switch button -->
+              <path id="rail-inner-path" d="M 960,283 L 730,283 A 40,40 0 0,0 690,323 L 690,680 A 40,40 0 0,0 730,720 L 1190,720 A 40,40 0 0,0 1230,680 L 1230,323 A 40,40 0 0,0 1190,283 Z"></path>
               <!-- Domain rail paths (CCW) -->
               <path id="rail-dom-1" d="M 445,380 L 378,380 A 18,18 0 0,0 360,398 L 360,462 A 18,18 0 0,0 378,480 L 512,480 A 18,18 0 0,0 530,462 L 530,398 A 18,18 0 0,0 512,380 Z"></path>
               <path id="rail-dom-2" d="M 1475,380 L 1408,380 A 18,18 0 0,0 1390,398 L 1390,462 A 18,18 0 0,0 1408,480 L 1542,480 A 18,18 0 0,0 1560,462 L 1560,398 A 18,18 0 0,0 1542,380 Z"></path>
@@ -1917,23 +1917,19 @@
             <line x1="865" y1="244" x2="1055" y2="244" stroke="rgba(176,176,192,0.2)" stroke-width="1"></line>
             <line x1="960" y1="244" x2="960" y2="258" stroke="rgba(108,99,255,0.4)" stroke-width="2" stroke-dasharray="4,4"></line>
 
-            <!-- Rail Switch button (close to Start/Goal, ABOVE inner rail) -->
-            <rect id="rail-switch-btn" x="840" y="258" width="240" height="50" rx="14" fill="rgba(8,8,18,0.95)" stroke="rgba(108,99,255,0.9)" stroke-width="2.5" style="cursor:pointer;" onclick="window.Reveal && window.Reveal.nextFragment()"></rect>
-            <text x="960" y="290" text-anchor="middle" font-size="25" font-weight="700" fill="#9C96FF" style="pointer-events:none;">⇄ Rail Switch</text>
-
             <!-- ═══ "대 딸깍": visible by default, hidden on fragment 1 ═══ -->
             <g id="rail-daltak-group" opacity="1">
               <text x="960" y="570" text-anchor="middle" font-size="72" font-weight="900" fill="#6C63FF" filter="url(#glow-v)">대 딸깍</text>
             </g>
 
-            <!-- ═══ Fragment 1: Inner green rail (below Rail Switch) + HRD text ═══ -->
+            <!-- ═══ Fragment 1: Inner green rail (passes through Rail Switch) + HRD text ═══ -->
             <g id="rail-center-group" opacity="0">
-              <!-- Inner rail track (top at y=340, below Rail Switch bottom y=308) -->
-              <rect x="690" y="340" width="540" height="380" rx="40" fill="none" stroke="rgba(0,212,170,0.18)" stroke-width="28"></rect>
-              <rect x="690" y="340" width="540" height="380" rx="40" fill="none" stroke="#080812" stroke-width="20"></rect>
-              <rect x="690" y="340" width="540" height="380" rx="40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="16" stroke-dasharray="4,18"></rect>
-              <rect x="682" y="332" width="556" height="396" rx="48" fill="none" stroke="rgba(0,212,170,0.7)" stroke-width="2.5" filter="url(#glow-m)"></rect>
-              <rect x="698" y="348" width="524" height="364" rx="32" fill="none" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"></rect>
+              <!-- Inner rail track (top at y=283, passing through Rail Switch button) -->
+              <rect x="690" y="283" width="540" height="437" rx="40" fill="none" stroke="rgba(0,212,170,0.18)" stroke-width="28"></rect>
+              <rect x="690" y="283" width="540" height="437" rx="40" fill="none" stroke="#080812" stroke-width="20"></rect>
+              <rect x="690" y="283" width="540" height="437" rx="40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="16" stroke-dasharray="4,18"></rect>
+              <rect x="682" y="275" width="556" height="453" rx="48" fill="none" stroke="rgba(0,212,170,0.7)" stroke-width="2.5" filter="url(#glow-m)"></rect>
+              <rect x="698" y="291" width="524" height="421" rx="32" fill="none" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"></rect>
               <!-- Center text -->
               <text x="960" y="510" text-anchor="middle" font-size="22" fill="rgba(176,176,192,0.7)" letter-spacing="2">레벨스위치</text>
               <text x="960" y="555" text-anchor="middle" font-size="28" fill="rgba(0,212,170,0.94)" font-weight="800" filter="url(#glow-m)">HRD × AI × 바이브코딩</text>
@@ -1949,6 +1945,10 @@
                 </animateMotion>
               </g>
             </g>
+
+            <!-- Rail Switch button (always visible, drawn ON TOP of green rail) -->
+            <rect id="rail-switch-btn" x="840" y="258" width="240" height="50" rx="14" fill="rgba(8,8,18,0.95)" stroke="rgba(108,99,255,0.9)" stroke-width="2.5" style="cursor:pointer;" onclick="window.Reveal && window.Reveal.nextFragment()"></rect>
+            <text x="960" y="290" text-anchor="middle" font-size="25" font-weight="700" fill="#9C96FF" style="pointer-events:none;">⇄ Rail Switch</text>
 
             <!-- ═══ Fragment 2: Domain rail loops ═══ -->
             <g id="inner-rail-group" opacity="0">
