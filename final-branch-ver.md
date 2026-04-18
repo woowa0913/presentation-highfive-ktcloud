@@ -41,6 +41,28 @@
 
 ## 4. 변경 이력
 
+### v1.6.25 (2026-04-18) - DISC 사례 스냅샷 레이어 겹침 및 우측 카드 잘림 보정
+
+### 현재 상태
+- 30페이지 `DISC 조직 다이내믹스 진단`은 스냅샷 이미지가 카드 전체를 채우도록 다시 고정했고, 앱 iframe과 겹쳐 보이던 상태를 제거했다.
+- `snapshot/app` 상태 전환 시 각각 필요한 레이어만 보이도록 분리해, 직접 진입하거나 다시 돌아왔을 때도 겹침이 남지 않게 정리했다.
+- 우측 `Problem / Intervention / Outcome` 카드 스택의 패딩과 간격을 줄여 하단 카드가 잘리지 않도록 맞췄다.
+
+### 변경 이력
+- `css/wanted-theme.css`
+  - 30페이지 `case-disc-view-card`, `case-disc-browser`, `case-disc-screen`, `case-disc-zoom` 레이아웃 보강
+  - 스냅샷 이미지에 `object-fit: cover`를 적용해 카드 전체를 한 장처럼 채우도록 수정
+  - `snapshot` 상태의 iframe 숨김과 `app` 상태의 zoom 숨김을 `!important` 기준으로 분리
+  - 우측 카드 스택 간격과 패딩을 줄여 `Outcome` 카드가 화면 내에 안정적으로 들어오도록 조정
+
+### 검증
+- `git diff --check`
+- 로컬 서버(`python3 -m http.server 4311`) + Playwright 확인
+- 확인 항목
+  - 30페이지 좌측 카드에 스냅샷 단일 레이어만 노출
+  - 30페이지 우측 `Outcome` 카드 전체 노출
+  - 26/27페이지 기존 브라우저 비율 유지
+
 ### v1.6.24 (2026-04-18) - KAC/DISC 사례 화면 비율 직전 안정 상태 복원
 
 ### 현재 상태

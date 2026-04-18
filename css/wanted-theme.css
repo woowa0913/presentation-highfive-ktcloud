@@ -5453,15 +5453,17 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
 }
 
 .case-disc-browser {
   flex: 1;
+  overflow: hidden;
 }
 
 .case-disc-browser[data-disc-case-state="snapshot"] {
-  min-height: 715px !important;
-  height: 715px;
+  min-height: 662px !important;
+  height: 662px;
 }
 
 .case-disc-demo-link {
@@ -5470,6 +5472,8 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 
 .case-disc-screen {
   position: relative;
+  display: flex;
+  min-height: 0;
   padding: 0;
   overflow: hidden;
 }
@@ -5478,10 +5482,26 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 .case-disc-screen iframe {
   width: 100%;
   height: 100%;
-  min-height: 364px;
+  min-height: 0;
+}
+
+.case-disc-zoom {
+  display: block;
+  flex: 1;
+  overflow: hidden;
+}
+
+.case-disc-zoom img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .case-disc-screen iframe {
+  display: block;
+  flex: 1;
   border: 0;
   background: #fff;
 }
@@ -5489,7 +5509,12 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 .case-disc-detail-slide .reframe-stack {
   height: 100%;
   justify-content: space-between;
-  gap: 14px;
+  gap: 12px;
+}
+
+.case-disc-detail-slide .reframe-stack > .reframe-card {
+  min-height: 0;
+  padding: 22px 24px;
 }
 
 .case-disc-browser[data-disc-case-state="app"] {
@@ -5506,7 +5531,10 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .case-disc-browser[data-disc-case-state="snapshot"] iframe {
-  display: none;
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .case-disc-browser[data-disc-case-state="snapshot"] .case-app-float-open {
@@ -5514,7 +5542,7 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .case-disc-browser[data-disc-case-state="app"] .case-disc-zoom {
-  display: none;
+  display: none !important;
 }
 
 .case-calibration-grid {
