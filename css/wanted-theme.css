@@ -3795,9 +3795,9 @@ body.ui-on-dark .reveal .progress {
 }
 
 .bridge-reset-stage {
-  justify-content: center;
-  gap: 22px;
-  padding: 12px 4% 16px;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 0 4% 8px;
   position: relative;
   overflow: hidden;
 }
@@ -3825,8 +3825,12 @@ body.ui-on-dark .reveal .progress {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-align: center;
+}
+
+.bridge-reset-slide .body-title {
+  margin-bottom: 10px;
 }
 
 .bridge-reset-chip {
@@ -3845,7 +3849,7 @@ body.ui-on-dark .reveal .progress {
 
 .bridge-reset-super {
   font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(3.6em, 7vw, 6.5em);
+  font-size: clamp(3.2em, 6.4vw, 5.8em);
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.11em;
@@ -3855,7 +3859,7 @@ body.ui-on-dark .reveal .progress {
 
 .bridge-reset-hero h3 {
   margin: 0;
-  font-size: 1.72em;
+  font-size: 1.56em;
   line-height: 1.14;
   letter-spacing: -0.06em;
   color: #ffffff;
@@ -3864,8 +3868,8 @@ body.ui-on-dark .reveal .progress {
 .bridge-reset-hero p {
   width: min(1080px, 84%);
   margin: 0;
-  font-size: 0.9em;
-  line-height: 1.62;
+  font-size: 0.86em;
+  line-height: 1.56;
   color: rgba(223, 232, 247, 0.8);
 }
 
@@ -3877,12 +3881,12 @@ body.ui-on-dark .reveal .progress {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 110px minmax(0, 1fr);
   align-items: stretch;
-  gap: 16px;
+  gap: 14px;
 }
 
 .bridge-reset-card {
-  min-height: 204px;
-  padding: 24px 26px 22px;
+  min-height: 184px;
+  padding: 20px 22px 18px;
   border-radius: 30px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(159, 210, 255, 0.14);
@@ -3908,8 +3912,8 @@ body.ui-on-dark .reveal .progress {
 }
 
 .bridge-reset-card h4 {
-  margin: 18px 0 12px;
-  font-size: 1.8em;
+  margin: 14px 0 10px;
+  font-size: 1.58em;
   line-height: 1.06;
   letter-spacing: -0.06em;
   color: #ffffff;
@@ -3917,8 +3921,8 @@ body.ui-on-dark .reveal .progress {
 
 .bridge-reset-card p {
   margin: 0;
-  font-size: 0.84em;
-  line-height: 1.58;
+  font-size: 0.78em;
+  line-height: 1.5;
   color: rgba(223, 232, 247, 0.8);
 }
 
@@ -3927,7 +3931,7 @@ body.ui-on-dark .reveal .progress {
   align-items: center;
   justify-content: center;
   font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
-  font-size: 2.4em;
+  font-size: 2.1em;
   font-weight: 900;
   color: rgba(159, 210, 255, 0.88);
   text-shadow: 0 0 30px rgba(108, 99, 255, 0.28);
@@ -3936,12 +3940,12 @@ body.ui-on-dark .reveal .progress {
 .bridge-reset-footer {
   width: min(1160px, 90%);
   margin: 0 auto;
-  padding: 14px 24px;
+  padding: 11px 20px;
   border-radius: 999px;
   text-align: center;
-  font-size: 0.94em;
+  font-size: 0.84em;
   font-weight: 800;
-  line-height: 1.42;
+  line-height: 1.34;
   letter-spacing: -0.04em;
   color: #b9cfff;
   background: rgba(255, 255, 255, 0.05);
@@ -3954,31 +3958,31 @@ body.ui-on-dark .reveal .progress {
 
 @media (max-height: 940px) {
   .bridge-reset-stage {
-    gap: 18px;
-    padding-top: 6px;
-    padding-bottom: 10px;
+    gap: 12px;
+    padding-top: 0;
+    padding-bottom: 4px;
   }
 
   .bridge-reset-super {
-    font-size: clamp(3.2em, 6.1vw, 5.6em);
+    font-size: clamp(2.8em, 5.4vw, 4.8em);
   }
 
   .bridge-reset-hero h3 {
-    font-size: 1.5em;
+    font-size: 1.36em;
   }
 
   .bridge-reset-card {
-    min-height: 184px;
-    padding: 20px 22px 18px;
+    min-height: 164px;
+    padding: 17px 18px 15px;
   }
 
   .bridge-reset-card h4 {
-    font-size: 1.58em;
+    font-size: 1.42em;
   }
 
   .bridge-reset-footer {
-    font-size: 0.88em;
-    padding: 12px 20px;
+    font-size: 0.8em;
+    padding: 10px 18px;
   }
 }
 
@@ -6533,18 +6537,19 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .onboarding-tool-body {
-  min-height: 316px;
+  min-height: 334px;
   background: #ffffff;
+  overflow: hidden;
 }
 
 .onboarding-tool-body iframe {
-  width: calc(100% / 0.83);
-  height: calc(100% / 0.83);
-  min-height: 380px;
+  display: block;
+  width: 104%;
+  height: 104%;
+  min-height: 334px;
   border: 0;
   background: #ffffff;
-  transform: scale(0.83);
-  transform-origin: top left;
+  transform: translate(-2%, -2%);
 }
 
 .onboarding-tool-eyebrow {
