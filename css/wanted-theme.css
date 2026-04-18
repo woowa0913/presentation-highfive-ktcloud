@@ -5730,3 +5730,710 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   font-size: 1.18em;
   line-height: 1.34;
 }
+
+/* ========================================
+   17. BRIX Body Theme — gstack branch only
+   본문(ch1~ch6)의 디자인 톤을 밝은 그리드 + 네이비 타이포 + 소프트 블루 포인트로 재구성
+   intro/title/index/end/간지 페이지는 건드리지 않음
+   ======================================== */
+:root {
+  --brix-bg: #f7faff;
+  --brix-bg-soft: #edf4ff;
+  --brix-bg-strong: #dce9ff;
+  --brix-navy: #1f294f;
+  --brix-navy-soft: #6f7da3;
+  --brix-blue: #2f86f6;
+  --brix-blue-strong: #0f6be6;
+  --brix-line: rgba(54, 97, 180, 0.08);
+  --brix-card-border: rgba(47, 134, 246, 0.1);
+  --brix-card-shadow: 0 22px 60px rgba(108, 142, 196, 0.14);
+  --brix-card-shadow-strong: 0 28px 80px rgba(18, 40, 82, 0.18);
+  --brix-dark: #1d2953;
+  --brix-dark-2: #22335f;
+  --brix-dark-line: rgba(116, 147, 223, 0.12);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 5.5%;
+  background:
+    radial-gradient(circle at 78% 14%, rgba(47, 134, 246, 0.14), transparent 20%),
+    radial-gradient(circle at 18% 92%, rgba(201, 222, 255, 0.72), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 247, 255, 0.98));
+  color: var(--brix-navy);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body::before,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-image:
+    linear-gradient(var(--brix-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--brix-line) 1px, transparent 1px);
+  background-size: 11.5% 18%;
+  pointer-events: none;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body::after,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.86), transparent 16%),
+    radial-gradient(circle at 84% 68%, rgba(192, 220, 255, 0.32), transparent 22%);
+  pointer-events: none;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap.dark {
+  background:
+    radial-gradient(circle at 15% 100%, rgba(47, 134, 246, 0.2), transparent 28%),
+    radial-gradient(circle at 85% 10%, rgba(47, 134, 246, 0.15), transparent 22%),
+    linear-gradient(135deg, var(--brix-dark), var(--brix-dark-2));
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark::before,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap.dark::before {
+  background-image:
+    linear-gradient(var(--brix-dark-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--brix-dark-line) 1px, transparent 1px);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark::after,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap.dark::after {
+  background:
+    radial-gradient(circle at 22% 88%, rgba(32, 122, 255, 0.18), transparent 20%),
+    radial-gradient(circle at 78% 12%, rgba(74, 140, 255, 0.14), transparent 18%);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body > :not(.body-title):not(.body-source),
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap > * {
+  position: relative;
+  z-index: 2;
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-title {
+  position: relative;
+  z-index: 2;
+  padding: 86px 5% 0;
+  max-width: 92%;
+  font-family: 'WantedSans', sans-serif;
+  font-size: 1.66em;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.065em;
+  color: var(--brix-navy);
+  text-wrap: balance;
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-title::before {
+  top: 42px;
+  left: 5%;
+  right: auto;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(47, 134, 246, 0.12);
+  border: 1px solid rgba(47, 134, 246, 0.1);
+  color: var(--brix-blue);
+  box-shadow: none;
+  font-size: 0.34em;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-title {
+  color: #ffffff;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-title::before {
+  background: rgba(64, 127, 255, 0.16);
+  border-color: rgba(120, 163, 255, 0.16);
+  color: rgba(187, 213, 255, 0.96);
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-source,
+.reveal .slides section[data-chapter^="ch"] .body-text,
+.reveal .slides section[data-chapter^="ch"] p,
+.reveal .slides section[data-chapter^="ch"] li {
+  color: var(--brix-navy-soft);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-source,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-text,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark p,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark li {
+  color: rgba(218, 226, 245, 0.76);
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-crop-a1,
+.reveal .slides section[data-chapter^="ch"] .body-crop-a2,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b2,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b3,
+.reveal .slides section[data-chapter^="ch"] .body-crop-c1,
+.reveal .slides section[data-chapter^="ch"] .body-crop-c3 {
+  position: relative;
+  z-index: 2;
+  padding: 0 5%;
+  margin-top: 3.2%;
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-crop-c3 .body-card,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b3 .body-text,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b2 > div,
+.reveal .slides section[data-chapter^="ch"] .body-crop-a2 > div,
+.reveal .slides section[data-chapter^="ch"] .reframe-card,
+.reveal .slides section[data-chapter^="ch"] .reframe-browser,
+.reveal .slides section[data-chapter^="ch"] .reframe-process-step,
+.reveal .slides section[data-chapter^="ch"] .reframe-compare-col,
+.reveal .slides section[data-chapter^="ch"] .reframe-metric,
+.reveal .slides section[data-chapter^="ch"] .reframe-split-note,
+.reveal .slides section[data-chapter^="ch"] .balance-option,
+.reveal .slides section[data-chapter^="ch"] .onboarding-card,
+.reveal .slides section[data-chapter^="ch"] .loop-card,
+.reveal .slides section[data-chapter^="ch"] .case-live-brief,
+.reveal .slides section[data-chapter^="ch"] .case-proof-card,
+.reveal .slides section[data-chapter^="ch"] .case-impact-hero,
+.reveal .slides section[data-chapter^="ch"] .case-impact-kpi-grid .reframe-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--brix-card-border);
+  box-shadow: var(--brix-card-shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-c3 .body-card,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-b3 .body-text,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-b2 > div,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-a2 > div,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-card:not(.is-accent),
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-browser,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-process-step,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-compare-col,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-metric,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-split-note,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .balance-option,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .onboarding-card,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .loop-card,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-live-brief,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-proof-card,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-impact-hero,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-impact-kpi-grid .reframe-card {
+  background: rgba(18, 32, 72, 0.72);
+  border: 1px solid rgba(101, 149, 255, 0.14);
+  box-shadow: var(--brix-card-shadow-strong);
+}
+
+.reveal .slides section[data-chapter^="ch"] .body-crop-c3 .body-card,
+.reveal .slides section[data-chapter^="ch"] .reframe-card {
+  border-radius: 30px;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-card::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 42%);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-card.is-accent,
+.reveal .slides section[data-chapter^="ch"] .reframe-quote-band,
+.reveal .slides section[data-chapter^="ch"] .reframe-route-summary,
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-card.is-blue {
+  background: linear-gradient(180deg, var(--brix-blue), var(--brix-blue-strong));
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  box-shadow: 0 24px 68px rgba(33, 98, 203, 0.26);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-heading,
+.reveal .slides section[data-chapter^="ch"] .body-crop-c3 .body-card strong,
+.reveal .slides section[data-chapter^="ch"] .body-crop-a2 .body-text strong,
+.reveal .slides section[data-chapter^="ch"] .body-crop-b2 .body-text strong,
+.reveal .slides section[data-chapter^="ch"] .reframe-route-title,
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-title,
+.reveal .slides section[data-chapter^="ch"] .case-title-accent,
+.reveal .slides section[data-chapter^="ch"] .body-text strong:first-child {
+  color: var(--brix-navy);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-heading,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-c3 .body-card strong,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-a2 .body-text strong,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-crop-b2 .body-text strong,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-route-title,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-barrier-title,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-title-accent,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .body-text strong:first-child {
+  color: #ffffff;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-copy,
+.reveal .slides section[data-chapter^="ch"] .reframe-subheading,
+.reveal .slides section[data-chapter^="ch"] .reframe-list-item,
+.reveal .slides section[data-chapter^="ch"] .reframe-stat-label,
+.reveal .slides section[data-chapter^="ch"] .reframe-chip,
+.reveal .slides section[data-chapter^="ch"] .reframe-route-line,
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-copy {
+  color: var(--brix-navy-soft);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-copy,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-subheading,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-list-item,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-stat-label,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-chip,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-route-line,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-barrier-copy {
+  color: rgba(221, 230, 247, 0.72);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-eyebrow,
+.reveal .slides section[data-chapter^="ch"] .reframe-bullet,
+.reveal .slides section[data-chapter^="ch"] .loop-step,
+.reveal .slides section[data-chapter^="ch"] .case-live-toggle.is-active,
+.reveal .slides section[data-chapter^="ch"] .case-live-result-chip {
+  background: rgba(47, 134, 246, 0.12);
+  color: var(--brix-blue-strong);
+  border-color: rgba(47, 134, 246, 0.1);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-eyebrow,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-bullet,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-live-toggle.is-active,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-live-result-chip {
+  background: rgba(79, 145, 255, 0.16);
+  color: rgba(205, 222, 255, 0.96);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-stat,
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap .impact-number,
+.reveal .slides section[data-chapter^="ch"] .case-impact-hero .impact-metric,
+.reveal .slides section[data-chapter^="ch"] .case-impact-kpi-grid .reframe-stat {
+  color: var(--brix-blue-strong);
+  text-shadow: none;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-browser,
+.reveal .slides section[data-chapter^="ch"] .reframe-browser.case-live-browser {
+  border-radius: 34px;
+  overflow: hidden;
+  border: 1px solid rgba(47, 134, 246, 0.12);
+  box-shadow: 0 30px 90px rgba(90, 124, 187, 0.18);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-browser-bar,
+.reveal .slides section[data-chapter^="ch"] .case-live-browser .reframe-browser-bar {
+  min-height: 64px;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(47, 134, 246, 0.08);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-browser-dots span {
+  background: rgba(47, 134, 246, 0.28);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-browser-screen,
+.reveal .slides section[data-chapter^="ch"] .case-live-app-stage,
+.reveal .slides section[data-chapter^="ch"] .case-live-search-stage {
+  background:
+    radial-gradient(circle at 72% 18%, rgba(47, 134, 246, 0.12), transparent 18%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(238, 246, 255, 0.95));
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-browser,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-browser.case-live-browser {
+  background: rgba(17, 28, 59, 0.84);
+  border-color: rgba(112, 156, 255, 0.16);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-browser-bar,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-live-browser .reframe-browser-bar {
+  background: rgba(14, 25, 53, 0.92);
+  border-bottom-color: rgba(112, 156, 255, 0.1);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-browser-screen,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-live-app-stage,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-live-search-stage {
+  background:
+    radial-gradient(circle at 80% 18%, rgba(47, 134, 246, 0.18), transparent 20%),
+    linear-gradient(180deg, rgba(18, 30, 64, 0.98), rgba(19, 37, 75, 0.94));
+}
+
+.reveal .slides section[data-chapter^="ch"] .case-live-slide {
+  background: transparent;
+}
+
+.reveal .slides section[data-chapter^="ch"] .case-live-stage {
+  gap: 26px;
+  padding: 24px 5% 5%;
+}
+
+.reveal .slides section[data-chapter^="ch"] .case-live-slide .case-live-stage,
+.reveal .slides section[data-chapter^="ch"] .case-study-split-slide,
+.reveal .slides section[data-chapter^="ch"] .case-disc-detail-slide,
+.reveal .slides section[data-chapter^="ch"] .case-calibration-detail-slide {
+  align-items: stretch;
+}
+
+.reveal .slides section[data-chapter^="ch"] .case-live-point {
+  border-radius: 20px;
+  background: rgba(47, 134, 246, 0.08);
+  border: 1px solid rgba(47, 134, 246, 0.08);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .case-live-point {
+  background: rgba(75, 129, 242, 0.12);
+  border-color: rgba(110, 161, 255, 0.08);
+}
+
+.reveal .slides section[data-chapter^="ch"] .balance-option-primary,
+.reveal .slides section[data-chapter^="ch"] .balance-option-secondary {
+  border-width: 1px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.reveal .slides section[data-chapter^="ch"] .balance-vs {
+  color: rgba(31, 41, 79, 0.34);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .balance-vs {
+  color: rgba(214, 223, 247, 0.28);
+}
+
+.reveal .slides section[data-chapter^="ch"] .old-new-panel,
+.reveal .slides section[data-chapter^="ch"] .methodology-panel,
+.reveal .slides section[data-chapter^="ch"] .maker-role-card,
+.reveal .slides section[data-chapter^="ch"] .addie-card,
+.reveal .slides section[data-chapter^="ch"] .onboarding-tool-card,
+.reveal .slides section[data-chapter^="ch"] .toolkit-card,
+.reveal .slides section[data-chapter^="ch"] .risk-card {
+  border-radius: 30px;
+  border: 1px solid var(--brix-card-border);
+  box-shadow: var(--brix-card-shadow);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .old-new-panel,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .methodology-panel,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .maker-role-card,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .addie-card,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .onboarding-tool-card,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .toolkit-card,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .risk-card {
+  box-shadow: var(--brix-card-shadow-strong);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap {
+  justify-content: center;
+  gap: 0.4em;
+  padding: 0 10%;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap .impact-number {
+  font-size: 6.1em;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap .impact-label {
+  font-size: 1.68em;
+  line-height: 1.18;
+  letter-spacing: -0.05em;
+  color: var(--brix-navy);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-impact-wrap .impact-sub {
+  max-width: 900px;
+  color: var(--brix-navy-soft);
+  font-size: 0.72em;
+  line-height: 1.7;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .slide-impact-wrap .impact-label,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .slide-impact-wrap .impact-sub {
+  color: rgba(233, 240, 255, 0.9);
+}
+
+.reveal .slides section[data-chapter^="ch"] img,
+.reveal .slides section[data-chapter^="ch"] iframe {
+  border-radius: 28px;
+}
+
+.transfer-gap-slide .body-title,
+.route-options-slide .body-title,
+.barrier-slide-lift .body-title,
+.case-portfolio-slide .body-title,
+.methodology-shift-slide .body-title,
+.addie-card-slide .body-title,
+.balance-game-opening-slide .body-title {
+  max-width: 86%;
+}
+
+.team-evolution .body-card,
+.iteration-track .body-card {
+  min-height: 340px;
+}
+
+.reveal .slides section[data-chapter^="ch"] .team-link-button {
+  background: rgba(47, 134, 246, 0.12);
+  border-color: rgba(47, 134, 246, 0.14);
+  color: var(--brix-blue-strong);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .team-link-button {
+  background: rgba(70, 132, 255, 0.16);
+  border-color: rgba(112, 156, 255, 0.16);
+  color: #dbe8ff;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-quote-band {
+  background: linear-gradient(135deg, var(--brix-blue), var(--brix-blue-strong));
+  border: 1px solid rgba(123, 180, 255, 0.26);
+  box-shadow: 0 26px 52px rgba(29, 78, 216, 0.22);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-quote-band p,
+.reveal .slides section[data-chapter^="ch"] .reframe-quote-band strong,
+.reveal .slides section[data-chapter^="ch"] .reframe-card.is-blue .reframe-eyebrow,
+.reveal .slides section[data-chapter^="ch"] .reframe-card.is-blue .reframe-heading,
+.reveal .slides section[data-chapter^="ch"] .reframe-card.is-blue .reframe-copy,
+.reveal .slides section[data-chapter^="ch"] .reframe-card.is-accent .reframe-heading,
+.reveal .slides section[data-chapter^="ch"] .reframe-card.is-accent .reframe-copy,
+.reveal .slides section[data-chapter^="ch"] .reframe-card.is-accent .reframe-stat,
+.reveal .slides section[data-chapter^="ch"] .reframe-card.is-accent .reframe-eyebrow {
+  color: #f7fbff !important;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-card.is-blue {
+  background: linear-gradient(135deg, var(--brix-blue), var(--brix-blue-strong));
+  border-color: rgba(123, 180, 255, 0.24);
+  box-shadow: 0 24px 48px rgba(29, 78, 216, 0.2);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-quote-band--plain {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-quote-band--plain p {
+  color: var(--brix-navy) !important;
+}
+
+.reveal .slides section[data-chapter^="ch"] .field-scene-gen-slide .slide-body {
+  justify-content: flex-start;
+}
+
+.reveal .slides section[data-chapter^="ch"] .gen-scene-stage {
+  max-width: 1080px;
+  margin: auto;
+  padding-top: 3%;
+  gap: 28px;
+}
+
+.reveal .slides section[data-chapter^="ch"] .gen-scene-line,
+.reveal .slides section[data-chapter^="ch"] .gen-scene-line.is-muted {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  color: rgba(56, 73, 112, 0.72);
+}
+
+.reveal .slides section[data-chapter^="ch"] .gen-scene-line {
+  font-size: 1.1em;
+  line-height: 1.52;
+}
+
+.reveal .slides section[data-chapter^="ch"] .gen-scene-line.is-muted {
+  font-size: 1em;
+}
+
+.reveal .slides section[data-chapter^="ch"] .gen-scene-emphasis {
+  width: min(920px, 100%);
+  margin: 10px auto 0;
+  padding: 34px 42px;
+  border-radius: 32px;
+  background: linear-gradient(145deg, rgba(24, 35, 71, 0.98), rgba(22, 31, 63, 0.96));
+  box-shadow: 0 30px 60px rgba(28, 51, 110, 0.2);
+}
+
+.reveal .slides section[data-chapter^="ch"] .gen-scene-emphasis p {
+  color: rgba(232, 240, 255, 0.62);
+  font-size: 1.18em;
+  line-height: 1.42;
+}
+
+.reveal .slides section[data-chapter^="ch"] .gen-scene-emphasis span {
+  color: #f7fbff;
+}
+
+.reveal .slides section[data-chapter^="ch"] .structural-limits-stack {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.reveal .slides section[data-chapter^="ch"] .structural-limit-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 290px;
+  padding: 34px 30px 30px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--brix-card-border);
+  box-shadow: var(--brix-card-shadow);
+}
+
+.reveal .slides section[data-chapter^="ch"] .structural-limit-emoji {
+  font-size: 2.3em;
+  margin-bottom: 18px;
+}
+
+.reveal .slides section[data-chapter^="ch"] .structural-limit-copy strong {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 1.08em;
+  line-height: 1.2;
+}
+
+.reveal .slides section[data-chapter^="ch"] .structural-limit-copy span {
+  font-size: 0.82em;
+  line-height: 1.62;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-stage {
+  justify-content: center;
+  gap: 36px;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-grid {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-card {
+  min-height: 260px;
+  padding: 34px 30px 28px;
+  justify-content: flex-start;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-card.is-blue {
+  background: linear-gradient(145deg, rgba(79, 145, 252, 0.96), rgba(34, 117, 245, 0.96));
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-title,
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-copy {
+  color: #f7fbff !important;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-barrier-quote {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.34em;
+  line-height: 1.34;
+  color: rgba(71, 86, 125, 0.88);
+}
+
+.reveal .slides section[data-chapter^="ch"] .team-evolution {
+  align-items: start;
+  align-content: start;
+}
+
+.reveal .slides section[data-chapter^="ch"] .team-evolution .body-card,
+.reveal .slides section[data-chapter^="ch"] .iteration-track .body-card {
+  min-height: 0;
+  height: auto;
+  padding: 34px 30px 28px;
+}
+
+.reveal .slides section[data-chapter^="ch"] .team-evolution .body-card strong,
+.reveal .slides section[data-chapter^="ch"] .iteration-track .body-card strong {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 1.04em;
+  line-height: 1.22;
+}
+
+.reveal .slides section[data-chapter^="ch"] .team-evolution .body-card p,
+.reveal .slides section[data-chapter^="ch"] .iteration-track .body-card p {
+  color: rgba(232, 240, 255, 0.72);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-center-stack .reframe-card:not(.is-accent) .reframe-heading,
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-center-stack .reframe-card:not(.is-accent) .reframe-copy {
+  color: rgba(236, 243, 255, 0.88) !important;
+}
+
+.reveal .slides section[data-chapter^="ch"] .team-story-card {
+  min-height: 332px;
+  padding: 30px 28px 24px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(125, 156, 230, 0.14);
+  box-shadow: 0 24px 46px rgba(4, 10, 31, 0.24);
+}
+
+.reveal .slides section[data-chapter^="ch"] .team-story-copy {
+  color: rgba(230, 238, 255, 0.78);
+}
+
+.reveal .slides section[data-chapter^="ch"] .team-story-intro {
+  padding: 18px 22px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(71, 125, 247, 0.12), rgba(43, 77, 155, 0.16));
+  border: 1px solid rgba(109, 149, 243, 0.16);
+}
+
+.reveal .slides section[data-chapter^="ch"] .onboarding-tool-preview {
+  min-height: 250px;
+  background: linear-gradient(180deg, rgba(220, 231, 252, 0.8), rgba(239, 244, 255, 0.96));
+}
+
+.reveal .slides section[data-chapter^="ch"] .onboarding-tool-preview img,
+.reveal .slides section[data-chapter^="ch"] .case-app-static-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.reveal .slides section[data-chapter^="ch"] .case-calibration-screen {
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(232, 238, 255, 0.16), rgba(255, 255, 255, 0.06));
+}
+
+.reveal .slides section[data-chapter^="ch"] .case-calibration-screen .case-app-static-preview {
+  min-height: 560px;
+  object-position: top center;
+}
+
+.reveal .slides section[data-chapter^="ch"] .quickstart-step-card,
+.reveal .slides section[data-chapter^="ch"] .reframe-grid-3 > .reframe-card {
+  overflow: hidden;
+}
+
+.reveal .slides section[data-chapter^="ch"] .reframe-grid-3 > .reframe-card .reframe-stat[style*="font-size:3em"] {
+  font-size: 3.8em !important;
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+  color: var(--brix-blue-strong);
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-center-stack {
+  gap: 18px;
+}
+
+.reveal .slides section[data-chapter^="ch"] .slide-body.dark .reframe-center-stack .reframe-card {
+  box-shadow: var(--brix-card-shadow-strong);
+}
