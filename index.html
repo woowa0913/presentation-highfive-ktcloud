@@ -1840,16 +1840,16 @@
 
           <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet" style="position:absolute; inset:0; width:100%; height:100%;" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <!-- Outer rail: CCW, passes through Start/Goal at top -->
-              <path id="rail-outer-path" d="M 960,200 L 380,200 A 100,100 0 0,0 280,300 L 280,820 A 100,100 0 0,0 380,920 L 1540,920 A 100,100 0 0,0 1640,820 L 1640,300 A 100,100 0 0,0 1540,200 Z"></path>
+              <!-- Outer rail: CCW, passes through Start/Goal at top (+40px down) -->
+              <path id="rail-outer-path" d="M 960,240 L 380,240 A 100,100 0 0,0 280,340 L 280,860 A 100,100 0 0,0 380,960 L 1540,960 A 100,100 0 0,0 1640,860 L 1640,340 A 100,100 0 0,0 1540,240 Z"></path>
               <!-- Inner rail: CCW, passes through Rail Switch button -->
-              <path id="rail-inner-path" d="M 960,283 L 730,283 A 40,40 0 0,0 690,323 L 690,680 A 40,40 0 0,0 730,720 L 1190,720 A 40,40 0 0,0 1230,680 L 1230,323 A 40,40 0 0,0 1190,283 Z"></path>
-              <!-- Domain rail paths (CCW) -->
-              <path id="rail-dom-1" d="M 445,380 L 378,380 A 18,18 0 0,0 360,398 L 360,462 A 18,18 0 0,0 378,480 L 512,480 A 18,18 0 0,0 530,462 L 530,398 A 18,18 0 0,0 512,380 Z"></path>
-              <path id="rail-dom-2" d="M 1475,380 L 1408,380 A 18,18 0 0,0 1390,398 L 1390,462 A 18,18 0 0,0 1408,480 L 1542,480 A 18,18 0 0,0 1560,462 L 1560,398 A 18,18 0 0,0 1542,380 Z"></path>
-              <path id="rail-dom-3" d="M 445,720 L 378,720 A 18,18 0 0,0 360,738 L 360,802 A 18,18 0 0,0 378,820 L 512,820 A 18,18 0 0,0 530,802 L 530,738 A 18,18 0 0,0 512,720 Z"></path>
-              <path id="rail-dom-4" d="M 870,780 L 803,780 A 18,18 0 0,0 785,798 L 785,862 A 18,18 0 0,0 803,880 L 937,880 A 18,18 0 0,0 955,862 L 955,798 A 18,18 0 0,0 937,780 Z"></path>
-              <path id="rail-dom-5" d="M 1250,720 L 1183,720 A 18,18 0 0,0 1165,738 L 1165,802 A 18,18 0 0,0 1183,820 L 1317,820 A 18,18 0 0,0 1335,802 L 1335,738 A 18,18 0 0,0 1317,720 Z"></path>
+              <path id="rail-inner-path" d="M 960,323 L 730,323 A 40,40 0 0,0 690,363 L 690,720 A 40,40 0 0,0 730,760 L 1190,760 A 40,40 0 0,0 1230,720 L 1230,363 A 40,40 0 0,0 1190,323 Z"></path>
+              <!-- Domain rail paths (CCW) — top ones +40, bottom ones below green rail -->
+              <path id="rail-dom-1" d="M 445,420 L 378,420 A 18,18 0 0,0 360,438 L 360,502 A 18,18 0 0,0 378,520 L 512,520 A 18,18 0 0,0 530,502 L 530,438 A 18,18 0 0,0 512,420 Z"></path>
+              <path id="rail-dom-2" d="M 1475,420 L 1408,420 A 18,18 0 0,0 1390,438 L 1390,502 A 18,18 0 0,0 1408,520 L 1542,520 A 18,18 0 0,0 1560,502 L 1560,438 A 18,18 0 0,0 1542,420 Z"></path>
+              <path id="rail-dom-3" d="M 445,790 L 378,790 A 18,18 0 0,0 360,808 L 360,872 A 18,18 0 0,0 378,890 L 512,890 A 18,18 0 0,0 530,872 L 530,808 A 18,18 0 0,0 512,790 Z"></path>
+              <path id="rail-dom-4" d="M 870,840 L 803,840 A 18,18 0 0,0 785,858 L 785,922 A 18,18 0 0,0 803,940 L 937,940 A 18,18 0 0,0 955,922 L 955,858 A 18,18 0 0,0 937,840 Z"></path>
+              <path id="rail-dom-5" d="M 1250,790 L 1183,790 A 18,18 0 0,0 1165,808 L 1165,872 A 18,18 0 0,0 1183,890 L 1317,890 A 18,18 0 0,0 1335,872 L 1335,808 A 18,18 0 0,0 1317,790 Z"></path>
               <filter id="glow-v" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="6" result="blur"></feGaussianBlur>
                 <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
@@ -1860,12 +1860,12 @@
               </filter>
             </defs>
 
-            <!-- ═══ Outer rail track ═══ -->
-            <rect x="280" y="200" width="1360" height="720" rx="100" fill="none" stroke="rgba(108,99,255,0.12)" stroke-width="54"></rect>
-            <rect x="280" y="200" width="1360" height="720" rx="100" fill="none" stroke="#0D0D18" stroke-width="34"></rect>
-            <rect x="280" y="200" width="1360" height="720" rx="100" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="30" stroke-dasharray="5,28"></rect>
-            <rect x="272" y="192" width="1376" height="736" rx="108" fill="none" stroke="rgba(108,99,255,0.55)" stroke-width="2.5"></rect>
-            <rect x="288" y="208" width="1344" height="704" rx="92" fill="none" stroke="rgba(108,99,255,0.35)" stroke-width="2"></rect>
+            <!-- ═══ Outer rail track (+40px down) ═══ -->
+            <rect x="280" y="240" width="1360" height="720" rx="100" fill="none" stroke="rgba(108,99,255,0.12)" stroke-width="54"></rect>
+            <rect x="280" y="240" width="1360" height="720" rx="100" fill="none" stroke="#0D0D18" stroke-width="34"></rect>
+            <rect x="280" y="240" width="1360" height="720" rx="100" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="30" stroke-dasharray="5,28"></rect>
+            <rect x="272" y="232" width="1376" height="736" rx="108" fill="none" stroke="rgba(108,99,255,0.55)" stroke-width="2.5"></rect>
+            <rect x="288" y="248" width="1344" height="704" rx="92" fill="none" stroke="rgba(108,99,255,0.35)" stroke-width="2"></rect>
 
             <!-- Outer train (CCW, drawn BEFORE Start/Goal so it passes behind them) -->
             <g filter="url(#glow-v)">
@@ -1879,60 +1879,60 @@
               </animateMotion>
             </g>
 
-            <!-- Start / Goal boxes ON the outer rail top edge -->
-            <rect x="800" y="176" width="130" height="48" rx="12" fill="rgba(8,8,18,0.95)" stroke="rgba(0,212,170,0.65)" stroke-width="2"></rect>
-            <text x="865" y="206" text-anchor="middle" font-size="26" font-weight="800" fill="#00D4AA">Start</text>
-            <rect x="990" y="176" width="130" height="48" rx="12" fill="rgba(8,8,18,0.95)" stroke="rgba(108,99,255,0.65)" stroke-width="2"></rect>
-            <text x="1055" y="206" text-anchor="middle" font-size="26" font-weight="800" fill="#6C63FF">Goal</text>
+            <!-- Start / Goal boxes ON the outer rail top edge (+40) -->
+            <rect x="800" y="216" width="130" height="48" rx="12" fill="rgba(8,8,18,0.95)" stroke="rgba(0,212,170,0.65)" stroke-width="2"></rect>
+            <text x="865" y="246" text-anchor="middle" font-size="26" font-weight="800" fill="#00D4AA">Start</text>
+            <rect x="990" y="216" width="130" height="48" rx="12" fill="rgba(8,8,18,0.95)" stroke="rgba(108,99,255,0.65)" stroke-width="2"></rect>
+            <text x="1055" y="246" text-anchor="middle" font-size="26" font-weight="800" fill="#6C63FF">Goal</text>
 
-            <!-- Station dots (ADDIE letters inside circles) and labels -->
+            <!-- Station dots (ADDIE letters inside circles) and labels (+40) -->
             <!-- A — Analysis (분석) top-left -->
-            <circle cx="480" cy="200" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
-            <text x="480" y="207" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">A</text>
-            <text x="480" y="170" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">분석</text>
+            <circle cx="480" cy="240" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="480" y="247" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">A</text>
+            <text x="480" y="210" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">분석</text>
 
             <!-- E — Evaluation (평가) top-right -->
-            <circle cx="1440" cy="200" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
-            <text x="1440" y="207" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">E</text>
-            <text x="1440" y="170" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">평가</text>
+            <circle cx="1440" cy="240" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="1440" y="247" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">E</text>
+            <text x="1440" y="210" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">평가</text>
 
             <!-- I — Implementation (실행) right -->
-            <circle cx="1640" cy="560" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
-            <text x="1640" y="567" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">I</text>
-            <text x="1698" y="568" text-anchor="start" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">실행</text>
+            <circle cx="1640" cy="600" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="1640" y="607" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">I</text>
+            <text x="1698" y="608" text-anchor="start" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">실행</text>
 
             <!-- D2 — Development (개발) bottom -->
-            <circle cx="960" cy="920" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
-            <text x="960" y="927" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">D</text>
-            <text x="960" y="960" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">개발</text>
+            <circle cx="960" cy="960" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="960" y="967" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">D</text>
+            <text x="960" y="1000" text-anchor="middle" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">개발</text>
 
             <!-- D1 — Design (설계) left -->
-            <circle cx="280" cy="560" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
-            <text x="280" y="567" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">D</text>
-            <text x="222" y="568" text-anchor="end" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">설계</text>
+            <circle cx="280" cy="600" r="18" fill="rgba(108,99,255,0.25)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"></circle>
+            <text x="280" y="607" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">D</text>
+            <text x="222" y="608" text-anchor="end" font-size="22" fill="rgba(255,255,255,0.7)" font-weight="600">설계</text>
 
-            <!-- Connector from Start/Goal down to Rail Switch -->
-            <line x1="865" y1="224" x2="865" y2="244" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"></line>
-            <line x1="1055" y1="224" x2="1055" y2="244" stroke="rgba(108,99,255,0.4)" stroke-width="1.5"></line>
-            <line x1="865" y1="244" x2="1055" y2="244" stroke="rgba(176,176,192,0.2)" stroke-width="1"></line>
-            <line x1="960" y1="244" x2="960" y2="258" stroke="rgba(108,99,255,0.4)" stroke-width="2" stroke-dasharray="4,4"></line>
+            <!-- Connector from Start/Goal down to Rail Switch (+40) -->
+            <line x1="865" y1="264" x2="865" y2="284" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"></line>
+            <line x1="1055" y1="264" x2="1055" y2="284" stroke="rgba(108,99,255,0.4)" stroke-width="1.5"></line>
+            <line x1="865" y1="284" x2="1055" y2="284" stroke="rgba(176,176,192,0.2)" stroke-width="1"></line>
+            <line x1="960" y1="284" x2="960" y2="298" stroke="rgba(108,99,255,0.4)" stroke-width="2" stroke-dasharray="4,4"></line>
 
             <!-- ═══ "대 딸깍": visible by default, hidden on fragment 1 ═══ -->
             <g id="rail-daltak-group" opacity="1">
-              <text x="960" y="570" text-anchor="middle" font-size="72" font-weight="900" fill="#6C63FF" filter="url(#glow-v)">대 딸깍</text>
+              <text x="960" y="610" text-anchor="middle" font-size="72" font-weight="900" fill="#6C63FF" filter="url(#glow-v)">대 딸깍</text>
             </g>
 
             <!-- ═══ Fragment 1: Inner green rail (passes through Rail Switch) + HRD text ═══ -->
             <g id="rail-center-group" opacity="0">
-              <!-- Inner rail track (top at y=283, passing through Rail Switch button) -->
-              <rect x="690" y="283" width="540" height="437" rx="40" fill="none" stroke="rgba(0,212,170,0.18)" stroke-width="28"></rect>
-              <rect x="690" y="283" width="540" height="437" rx="40" fill="none" stroke="#080812" stroke-width="20"></rect>
-              <rect x="690" y="283" width="540" height="437" rx="40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="16" stroke-dasharray="4,18"></rect>
-              <rect x="682" y="275" width="556" height="453" rx="48" fill="none" stroke="rgba(0,212,170,0.7)" stroke-width="2.5" filter="url(#glow-m)"></rect>
-              <rect x="698" y="291" width="524" height="421" rx="32" fill="none" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"></rect>
+              <!-- Inner rail track (top at y=323, passing through Rail Switch button) -->
+              <rect x="690" y="323" width="540" height="437" rx="40" fill="none" stroke="rgba(0,212,170,0.18)" stroke-width="28"></rect>
+              <rect x="690" y="323" width="540" height="437" rx="40" fill="none" stroke="#080812" stroke-width="20"></rect>
+              <rect x="690" y="323" width="540" height="437" rx="40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="16" stroke-dasharray="4,18"></rect>
+              <rect x="682" y="315" width="556" height="453" rx="48" fill="none" stroke="rgba(0,212,170,0.7)" stroke-width="2.5" filter="url(#glow-m)"></rect>
+              <rect x="698" y="331" width="524" height="421" rx="32" fill="none" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"></rect>
               <!-- Center text -->
-              <text x="960" y="510" text-anchor="middle" font-size="22" fill="rgba(176,176,192,0.7)" letter-spacing="2">레벨스위치</text>
-              <text x="960" y="555" text-anchor="middle" font-size="28" fill="rgba(0,212,170,0.94)" font-weight="800" filter="url(#glow-m)">HRD × AI × 바이브코딩</text>
+              <text x="960" y="540" text-anchor="middle" font-size="22" fill="rgba(176,176,192,0.7)" letter-spacing="2">레벨스위치</text>
+              <text x="960" y="585" text-anchor="middle" font-size="28" fill="rgba(0,212,170,0.94)" font-weight="800" filter="url(#glow-m)">HRD × AI × 바이브코딩</text>
               <!-- Inner train (CCW) -->
               <g filter="url(#glow-m)">
                 <rect x="-20" y="-10" width="40" height="20" rx="4" fill="#00D4AA"></rect>
@@ -1946,17 +1946,17 @@
               </g>
             </g>
 
-            <!-- Rail Switch button (always visible, drawn ON TOP of green rail) -->
-            <rect id="rail-switch-btn" x="840" y="258" width="240" height="50" rx="14" fill="rgba(8,8,18,0.95)" stroke="rgba(108,99,255,0.9)" stroke-width="2.5" style="cursor:pointer;" onclick="window.Reveal && window.Reveal.nextFragment()"></rect>
-            <text x="960" y="290" text-anchor="middle" font-size="25" font-weight="700" fill="#9C96FF" style="pointer-events:none;">⇄ Rail Switch</text>
+            <!-- Rail Switch button (always visible, drawn ON TOP of green rail, +40) -->
+            <rect id="rail-switch-btn" x="840" y="298" width="240" height="50" rx="14" fill="rgba(8,8,18,0.95)" stroke="rgba(108,99,255,0.9)" stroke-width="2.5" style="cursor:pointer;" onclick="window.Reveal && window.Reveal.nextFragment()"></rect>
+            <text x="960" y="330" text-anchor="middle" font-size="25" font-weight="700" fill="#9C96FF" style="pointer-events:none;">⇄ Rail Switch</text>
 
             <!-- ═══ Fragment 2: Domain rail loops ═══ -->
             <g id="inner-rail-group" opacity="0">
               <!-- 리더십 (orange) — upper-left -->
-              <rect x="360" y="380" width="170" height="100" rx="18" fill="none" stroke="rgba(255,160,60,0.22)" stroke-width="16"></rect>
-              <rect x="360" y="380" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
-              <rect x="356" y="376" width="178" height="108" rx="22" fill="none" stroke="rgba(255,160,60,0.6)" stroke-width="2"></rect>
-              <text x="445" y="440" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(255,160,60,0.9)">리더십</text>
+              <rect x="360" y="420" width="170" height="100" rx="18" fill="none" stroke="rgba(255,160,60,0.22)" stroke-width="16"></rect>
+              <rect x="360" y="420" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
+              <rect x="356" y="416" width="178" height="108" rx="22" fill="none" stroke="rgba(255,160,60,0.6)" stroke-width="2"></rect>
+              <text x="445" y="480" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(255,160,60,0.9)">리더십</text>
               <g>
                 <rect x="-14" y="-7" width="28" height="14" rx="3" fill="rgba(255,160,60,0.9)"></rect>
                 <circle cx="12" cy="0" r="2.5" fill="rgba(255,240,100,0.9)"></circle>
@@ -1966,10 +1966,10 @@
               </g>
 
               <!-- 조직문화 (blue) — upper-right -->
-              <rect x="1390" y="380" width="170" height="100" rx="18" fill="none" stroke="rgba(60,140,255,0.22)" stroke-width="16"></rect>
-              <rect x="1390" y="380" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
-              <rect x="1386" y="376" width="178" height="108" rx="22" fill="none" stroke="rgba(60,140,255,0.6)" stroke-width="2"></rect>
-              <text x="1475" y="440" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(60,140,255,0.9)">조직문화</text>
+              <rect x="1390" y="420" width="170" height="100" rx="18" fill="none" stroke="rgba(60,140,255,0.22)" stroke-width="16"></rect>
+              <rect x="1390" y="420" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
+              <rect x="1386" y="416" width="178" height="108" rx="22" fill="none" stroke="rgba(60,140,255,0.6)" stroke-width="2"></rect>
+              <text x="1475" y="480" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(60,140,255,0.9)">조직문화</text>
               <g>
                 <rect x="-14" y="-7" width="28" height="14" rx="3" fill="rgba(60,140,255,0.9)"></rect>
                 <circle cx="12" cy="0" r="2.5" fill="rgba(255,240,100,0.9)"></circle>
@@ -1979,10 +1979,10 @@
               </g>
 
               <!-- 온보딩 (magenta) — lower-left -->
-              <rect x="360" y="720" width="170" height="100" rx="18" fill="none" stroke="rgba(210,60,180,0.22)" stroke-width="16"></rect>
-              <rect x="360" y="720" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
-              <rect x="356" y="716" width="178" height="108" rx="22" fill="none" stroke="rgba(210,60,180,0.6)" stroke-width="2"></rect>
-              <text x="445" y="780" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(210,60,180,0.9)">온보딩</text>
+              <rect x="360" y="790" width="170" height="100" rx="18" fill="none" stroke="rgba(210,60,180,0.22)" stroke-width="16"></rect>
+              <rect x="360" y="790" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
+              <rect x="356" y="786" width="178" height="108" rx="22" fill="none" stroke="rgba(210,60,180,0.6)" stroke-width="2"></rect>
+              <text x="445" y="850" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(210,60,180,0.9)">온보딩</text>
               <g>
                 <rect x="-14" y="-7" width="28" height="14" rx="3" fill="rgba(210,60,180,0.9)"></rect>
                 <circle cx="12" cy="0" r="2.5" fill="rgba(255,240,100,0.9)"></circle>
@@ -1992,10 +1992,10 @@
               </g>
 
               <!-- 직무 역량 (light blue) — lower-center -->
-              <rect x="785" y="780" width="170" height="100" rx="18" fill="none" stroke="rgba(160,210,255,0.22)" stroke-width="16"></rect>
-              <rect x="785" y="780" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
-              <rect x="781" y="776" width="178" height="108" rx="22" fill="none" stroke="rgba(160,210,255,0.6)" stroke-width="2"></rect>
-              <text x="870" y="840" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(160,210,255,0.9)">직무 역량</text>
+              <rect x="785" y="840" width="170" height="100" rx="18" fill="none" stroke="rgba(160,210,255,0.22)" stroke-width="16"></rect>
+              <rect x="785" y="840" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
+              <rect x="781" y="836" width="178" height="108" rx="22" fill="none" stroke="rgba(160,210,255,0.6)" stroke-width="2"></rect>
+              <text x="870" y="900" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(160,210,255,0.9)">직무 역량</text>
               <g>
                 <rect x="-14" y="-7" width="28" height="14" rx="3" fill="rgba(160,210,255,0.9)"></rect>
                 <circle cx="12" cy="0" r="2.5" fill="rgba(255,240,100,0.9)"></circle>
@@ -2005,10 +2005,10 @@
               </g>
 
               <!-- 핵심인재 (yellow) — lower-right -->
-              <rect x="1165" y="720" width="170" height="100" rx="18" fill="none" stroke="rgba(255,220,60,0.22)" stroke-width="16"></rect>
-              <rect x="1165" y="720" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
-              <rect x="1161" y="716" width="178" height="108" rx="22" fill="none" stroke="rgba(255,220,60,0.6)" stroke-width="2"></rect>
-              <text x="1250" y="780" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(255,220,60,0.9)">핵심인재</text>
+              <rect x="1165" y="790" width="170" height="100" rx="18" fill="none" stroke="rgba(255,220,60,0.22)" stroke-width="16"></rect>
+              <rect x="1165" y="790" width="170" height="100" rx="18" fill="none" stroke="#0a0a0f" stroke-width="10"></rect>
+              <rect x="1161" y="786" width="178" height="108" rx="22" fill="none" stroke="rgba(255,220,60,0.6)" stroke-width="2"></rect>
+              <text x="1250" y="850" text-anchor="middle" font-size="22" font-weight="700" fill="rgba(255,220,60,0.9)">핵심인재</text>
               <g>
                 <rect x="-14" y="-7" width="28" height="14" rx="3" fill="rgba(255,220,60,0.9)"></rect>
                 <circle cx="12" cy="0" r="2.5" fill="rgba(255,240,100,0.9)"></circle>
