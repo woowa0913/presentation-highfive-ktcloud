@@ -1,0 +1,22 @@
+{
+  "name": "방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대",
+  "short_name": "HRD Maker",
+  "description": "HIGH FIVE 26 - HRD 메이커 시대 발표자료",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
