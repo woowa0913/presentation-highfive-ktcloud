@@ -1,0 +1,364 @@
+/**
+ * leadership-theme.css
+ * BRIX AI 디자인 톤 기반 오버라이드
+ * wanted-theme.css 이후 로드 — 모든 규칙이 우선적용
+ *
+ * 디자인 레퍼런스: BRIX AI (brixagency.com)
+ * - 배경: 순백/연한 블루-화이트
+ * - 텍스트: 딥 네이비 #0F172A
+ * - 강조: 브라이트 블루 #2563EB
+ * - 카드: 플랫 + 얇은 파란 테두리
+ * - 타이틀: 크고 굵게 (800w)
+ */
+
+/* ==============================================
+   1. BRIX 색상 토큰 오버라이드
+   ============================================== */
+:root {
+  --stitch-surface:         #FFFFFF;
+  --stitch-surface-soft:    #F4F7FF;
+  --stitch-surface-strong:  #E8EFFF;
+  --stitch-outline:         rgba(37, 99, 235, 0.13);
+  --stitch-ink:             #0F172A;
+  --stitch-sub:             #475569;
+  --stitch-blue:            #2563EB;
+  --stitch-blue-deep:       #1D4ED8;
+  --stitch-orange:          #c74800;
+  --stitch-shadow:          0 4px 20px rgba(37, 99, 235, 0.07);
+  --stitch-shadow-strong:   0 12px 40px rgba(37, 99, 235, 0.13);
+
+  /* Wanted 토큰도 BRIX 팔레트로 맞춤 */
+  --wanted-accent1:         #2563EB;
+  --wanted-dark:            #0F172A;
+  --wanted-gray:            #64748B;
+}
+
+/* ==============================================
+   2. Reveal Viewport — 클린 라이트 배경
+   ============================================== */
+.reveal-viewport,
+.reveal-viewport.viewport-body-light,
+.reveal-viewport.viewport-body-dark,
+.reveal-viewport.viewport-soft-light {
+  background:
+    radial-gradient(circle at 80% 10%, rgba(37, 99, 235, 0.06), transparent 30%),
+    radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.05), transparent 25%),
+    linear-gradient(160deg, #F8FAFF 0%, #EDF2FF 100%) !important;
+  transition: none !important;
+}
+
+/* 도트 패턴 제거 */
+.reveal-viewport::before,
+.reveal-viewport.viewport-body-light::before,
+.reveal-viewport.viewport-body-dark::before {
+  opacity: 0 !important;
+}
+
+/* ==============================================
+   3. Slide Body — 항상 라이트
+   ============================================== */
+.slide-body,
+.slide-body.dark {
+  background: #FFFFFF !important;
+}
+
+/* ==============================================
+   4. Body Title — BRIX editorial: 크고 굵게
+   ============================================== */
+.slide-body .body-title,
+.slide-body.dark .body-title {
+  font-size: 1.65em !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  color: var(--stitch-ink) !important;
+  padding: 4.5% 5.5% 0 !important;
+  line-height: 1.18 !important;
+}
+
+/* ==============================================
+   5. 카드 시스템 — 플랫 BRIX 스타일
+   ============================================== */
+
+/* 기본 카드: 흰 배경 + 파란 얇은 border */
+.reframe-card {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(37, 99, 235, 0.13) !important;
+  box-shadow: 0 2px 16px rgba(37, 99, 235, 0.06) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* glassmorphism 광택 레이어 제거 */
+.reframe-card::after {
+  display: none !important;
+}
+
+/* is-dark → 연한 파란 배경 */
+.reframe-card.is-dark {
+  background: #EEF4FF !important;
+  border: 1.5px solid rgba(37, 99, 235, 0.16) !important;
+  box-shadow: 0 2px 16px rgba(37, 99, 235, 0.08) !important;
+}
+
+/* is-dark 내 텍스트 → 다크 네이비로 */
+.reframe-card.is-dark .reframe-heading,
+.reframe-card.is-dark h3.reframe-heading,
+.reframe-card.is-dark .reframe-subheading,
+.reframe-card.is-dark .reframe-copy,
+.reframe-card.is-dark .reframe-stat,
+.reframe-card.is-dark .reframe-list {
+  color: var(--stitch-ink) !important;
+}
+
+.reframe-card.is-dark .reframe-eyebrow {
+  background: rgba(37, 99, 235, 0.1) !important;
+  color: var(--stitch-blue) !important;
+  border-color: rgba(37, 99, 235, 0.16) !important;
+}
+
+/* is-accent → BRIX 블루 (유지) */
+.reframe-card.is-accent {
+  background: linear-gradient(135deg, #1D4ED8, #2563EB) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.28) !important;
+}
+
+/* is-warm, is-mint, is-blue, is-rose: 흰 배경 + 색상 border */
+.reframe-card.is-warm {
+  background: #FFFAF7 !important;
+  border-color: rgba(199, 72, 0, 0.16) !important;
+  box-shadow: 0 2px 16px rgba(199, 72, 0, 0.06) !important;
+}
+.reframe-card.is-mint {
+  background: #F0FDFA !important;
+  border-color: rgba(18, 182, 161, 0.18) !important;
+  box-shadow: 0 2px 16px rgba(18, 182, 161, 0.07) !important;
+}
+.reframe-card.is-blue {
+  background: #EEF4FF !important;
+  border-color: rgba(37, 99, 235, 0.18) !important;
+  box-shadow: 0 2px 16px rgba(37, 99, 235, 0.08) !important;
+}
+.reframe-card.is-rose {
+  background: #FFF0F8 !important;
+  border-color: rgba(219, 39, 119, 0.14) !important;
+  box-shadow: 0 2px 16px rgba(219, 39, 119, 0.06) !important;
+}
+
+/* ==============================================
+   6. Eyebrow — BRIX 블루 레이블
+   ============================================== */
+.reframe-eyebrow {
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #1D4ED8 !important;
+  border-color: rgba(37, 99, 235, 0.14) !important;
+}
+
+/* ==============================================
+   7. Quote Band — BRIX 블루 그라디언트
+   ============================================== */
+.reframe-quote-band {
+  background: linear-gradient(135deg, #1D4ED8, #2563EB) !important;
+  box-shadow: 0 8px 28px rgba(37, 99, 235, 0.22) !important;
+}
+
+/* ==============================================
+   8. Split Notes — 라이트 버전
+   ============================================== */
+.reframe-split-note {
+  background: rgba(37, 99, 235, 0.06) !important;
+  border-left: 3px solid #2563EB !important;
+  color: var(--stitch-ink) !important;
+}
+
+/* is-accent 카드 안 split-note는 흰 텍스트 유지 */
+.reframe-card.is-accent .reframe-split-note {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-left-color: rgba(255, 255, 255, 0.5) !important;
+  color: #fff !important;
+}
+
+/* ==============================================
+   9. Process Steps — 라이트 버전
+   ============================================== */
+.reframe-process-step {
+  background: #F4F7FF !important;
+  border: 1px solid rgba(37, 99, 235, 0.14) !important;
+  box-shadow: none !important;
+}
+
+.reframe-process-step .reframe-step-no {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+}
+
+/* ==============================================
+   10. Compare Columns — BRIX 라이트
+   ============================================== */
+.reframe-compare-col.is-before {
+  background: #F8FAFF !important;
+  border: 1px solid rgba(37, 99, 235, 0.1) !important;
+}
+
+.reframe-compare-col.is-after {
+  background: #EEF4FF !important;
+  border: 1px solid rgba(37, 99, 235, 0.2) !important;
+}
+
+.reframe-compare-badge {
+  background: rgba(37, 99, 235, 0.09) !important;
+  color: #1D4ED8 !important;
+  border-color: rgba(37, 99, 235, 0.18) !important;
+}
+
+/* ==============================================
+   11. 다크 컨텍스트 인라인 색상 수정
+       (slide-body.dark에서 light로 전환 후 잔류하는 밝은 색상들)
+   ============================================== */
+
+/* reframe-stat in is-dark cards */
+.reframe-card.is-dark .reframe-stat {
+  color: var(--stitch-blue) !important;
+}
+
+/* 다크 카드 안 chip */
+.reframe-card.is-dark .reframe-chip {
+  background: rgba(37, 99, 235, 0.1) !important;
+  color: var(--stitch-blue-deep) !important;
+}
+
+/* reframe-bullet in is-dark */
+.reframe-card.is-dark .reframe-bullet {
+  background: rgba(37, 99, 235, 0.12) !important;
+  color: var(--stitch-blue-deep) !important;
+}
+
+/* route card */
+.reframe-route-summary {
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: var(--stitch-blue-deep) !important;
+}
+
+/* ==============================================
+   12. Gen Confidence 다크 텍스트 → 라이트로
+   ============================================== */
+.gen-confidence-line {
+  color: var(--stitch-ink) !important;
+}
+
+.gen-confidence-line.is-blue {
+  color: var(--stitch-blue) !important;
+  text-shadow: none !important;
+}
+
+.gen-confidence-note,
+.gen-confidence-sub {
+  color: var(--stitch-sub) !important;
+}
+
+.gen-scene-line {
+  color: var(--stitch-ink) !important;
+}
+
+.gen-scene-line.is-muted {
+  color: var(--stitch-sub) !important;
+}
+
+.gen-scene-emphasis {
+  background: var(--stitch-surface-strong) !important;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1) !important;
+}
+
+.gen-scene-emphasis p {
+  color: var(--stitch-ink) !important;
+}
+
+.gen-scene-emphasis span {
+  color: var(--stitch-blue) !important;
+}
+
+/* ==============================================
+   13. Body Cards (body-crop-c3)
+   ============================================== */
+.body-crop-c3 .body-card {
+  background: #EEF4FF !important;
+  border: 1px solid rgba(37, 99, 235, 0.12) !important;
+  color: var(--stitch-ink) !important;
+}
+
+.body-crop-c3 .body-card strong {
+  color: var(--stitch-ink) !important;
+}
+
+/* ==============================================
+   14. Metric & Tags
+   ============================================== */
+.reframe-metric {
+  background: #F4F7FF !important;
+  border-color: rgba(37, 99, 235, 0.12) !important;
+}
+
+.reframe-chip {
+  background: #EEF4FF !important;
+  color: var(--stitch-blue-deep) !important;
+}
+
+/* ==============================================
+   15. 챕터 네비게이션 — 다크 배경 유지
+   ============================================== */
+.chapter-nav {
+  background: rgba(15, 23, 42, 0.88) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+.chapter-btn.active {
+  background: rgba(37, 99, 235, 0.55) !important;
+}
+
+/* ==============================================
+   16. Leadership 브랜치 라벨
+   ============================================== */
+#branch-label {
+  color: rgba(15, 23, 42, 0.65) !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  border: 1px solid rgba(37, 99, 235, 0.18) !important;
+}
+
+/* ==============================================
+   17. Progress Bar — BRIX 블루
+   ============================================== */
+.reveal .progress {
+  color: #2563EB !important;
+}
+
+/* ==============================================
+   18. Tour / Intro reading 다크 텍스트
+   ============================================== */
+.intro-reading-stage {
+  background: #FFFFFF !important;
+}
+
+/* ==============================================
+   19. Custom nav on dark — light 배경에서는 어둡게
+   ============================================== */
+.custom-nav {
+  background: rgba(15, 23, 42, 0.08) !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+}
+
+.custom-nav svg {
+  stroke: var(--stitch-ink) !important;
+}
+
+.custom-nav:hover {
+  background: rgba(37, 99, 235, 0.12) !important;
+}
+
+.custom-nav.nav-on-dark {
+  background: rgba(15, 23, 42, 0.12) !important;
+}
+
+.custom-nav.nav-on-dark svg {
+  stroke: var(--stitch-ink) !important;
+}
