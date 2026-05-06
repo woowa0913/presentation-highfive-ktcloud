@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=59">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=60">
 </head>
 <body>
 
@@ -2373,6 +2373,28 @@
         </div>
       </section>
 
+	      <!-- Q&A + QR -->
+	      <section data-background-image="assets/pptx-media/image7.png" data-background-size="cover" data-chapter="closing" data-audio-toggle="speaker">
+	        <div class="slide-qa-wrap">
+	        </div>
+	      </section>
+
+      <section data-background-color="#0a0a0f" data-chapter="closing" class="qa-question-slide">
+        <div class="qa-question-brand">HIGH FIVE 26</div>
+        <div class="qa-question-content">
+          <div class="qa-question-mark">Q.</div>
+          <h2>실제 HRD 현장에서 가장 먼저<br>자동화할 수 있는 업무는 무엇인가요?</h2>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f" data-chapter="closing" class="qa-question-slide">
+        <div class="qa-question-brand">HIGH FIVE 26</div>
+        <div class="qa-question-content">
+          <div class="qa-question-mark">Q.</div>
+          <h2>앞으로 HRD 담당자에게 필요한<br>새로운 역량은 무엇이라고 생각하시나요?</h2>
+        </div>
+      </section>
+
       <section data-background-color="#FFFFFF" data-chapter="closing" class="intro-reading-section" data-intro-step="0">
         <div class="intro-reading-stage">
           <p class="intro-reading-topline">오늘 이 자리, <span>여러분에게 새로운 읽을거리가 되길 바랍니다.</span></p>
@@ -2398,28 +2420,6 @@
           <span class="fragment intro-reading-trigger" aria-hidden="true"></span>
         </div>
       </section>
-
-      <section data-background-color="#0a0a0f" data-chapter="closing" class="qa-question-slide">
-        <div class="qa-question-brand">HIGH FIVE 26</div>
-        <div class="qa-question-content">
-          <div class="qa-question-mark">Q.</div>
-          <h2>실제 HRD 현장에서 가장 먼저<br>자동화할 수 있는 업무는 무엇인가요?</h2>
-        </div>
-      </section>
-
-      <section data-background-color="#0a0a0f" data-chapter="closing" class="qa-question-slide">
-        <div class="qa-question-brand">HIGH FIVE 26</div>
-        <div class="qa-question-content">
-          <div class="qa-question-mark">Q.</div>
-          <h2>앞으로 HRD 담당자에게 필요한<br>새로운 역량은 무엇이라고 생각하시나요?</h2>
-        </div>
-      </section>
-
-	      <!-- Q&A + QR -->
-	      <section data-background-image="assets/pptx-media/image7.png" data-background-size="cover" data-chapter="closing" data-audio-toggle="speaker">
-	        <div class="slide-qa-wrap">
-	        </div>
-	      </section>
 
       <!-- CLOSING -->
       <section data-background-image="assets/pptx-media/image10.png" data-background-size="cover" data-chapter="closing" data-audio-toggle="speaker">
@@ -2693,7 +2693,8 @@
         'viewport-body-light',
         'viewport-body-dark',
         'viewport-soft-light',
-        'viewport-toolbox-essentials'
+        'viewport-toolbox-essentials',
+        'viewport-qa-question'
       );
 
       if (currentSection.dataset.chapter === 'hero') return;
@@ -2708,6 +2709,11 @@
 
       if (currentSection.classList.contains('toolbox-essentials-slide')) {
         viewportEl.classList.add('viewport-body-dark', 'viewport-toolbox-essentials');
+        return;
+      }
+
+      if (currentSection.classList.contains('qa-question-slide')) {
+        viewportEl.classList.add('viewport-body-dark', 'viewport-qa-question');
         return;
       }
 

@@ -111,6 +111,16 @@
 .reveal-viewport.viewport-toolbox-essentials::before {
   opacity: 0;
 }
+
+.reveal-viewport.viewport-qa-question {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(120, 126, 172, 0.06), transparent 34%),
+    linear-gradient(180deg, #090911 0%, #070710 100%);
+}
+
+.reveal-viewport.viewport-qa-question::before {
+  opacity: 0;
+}
 /* Hero 슬라이드일 때 모든 배경 투명 — 영상이 뒤에서 보임 */
 .reveal-viewport.hero-active {
   background: transparent;
@@ -2785,7 +2795,7 @@ body.admin-mode-active .custom-nav-right {
   color: rgba(239, 241, 250, 0.94);
   font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
   font-size: 38px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 
@@ -2806,7 +2816,7 @@ body.admin-mode-active .custom-nav-right {
   color: #e9ebf7;
   font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
   font-size: 104px;
-  font-weight: 900;
+  font-weight: 800;
   line-height: 0.8;
   letter-spacing: -0.07em;
 }
@@ -2816,7 +2826,7 @@ body.admin-mode-active .custom-nav-right {
   color: #e9ebf7;
   font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
   font-size: 82px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.42;
   letter-spacing: -0.055em;
   word-break: keep-all;
