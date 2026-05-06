@@ -101,6 +101,16 @@
   background-size: 26px 26px;
   opacity: 0.1;
 }
+
+.reveal-viewport.viewport-toolbox-essentials {
+  background:
+    radial-gradient(circle at 50% 120%, rgba(120, 168, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, #060a15 0%, #0b1020 46%, #090d18 100%);
+}
+
+.reveal-viewport.viewport-toolbox-essentials::before {
+  opacity: 0;
+}
 /* Hero 슬라이드일 때 모든 배경 투명 — 영상이 뒤에서 보임 */
 .reveal-viewport.hero-active {
   background: transparent;
@@ -1272,6 +1282,7 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 .team-practice-member-card {
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
   border-radius: 30px;
   border: 1px solid rgba(159, 210, 255, 0.14);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
@@ -1304,6 +1315,7 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
   font-size: 1.64em;
   line-height: 1.2;
   letter-spacing: -0.05em;
+  word-break: keep-all;
   color: #ffffff;
 }
 
@@ -1313,6 +1325,8 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
   margin: 0;
   font-size: 0.84em;
   line-height: 1.66;
+  word-break: keep-all;
+  overflow-wrap: normal;
   color: rgba(228, 236, 248, 0.82);
 }
 
@@ -1379,14 +1393,17 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 .team-practice-flow-card p {
   margin: 0;
   color: rgba(228, 236, 248, 0.76);
-  font-size: 0.78em;
+  font-size: 0.74em;
   line-height: 1.58;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .team-practice-version-panel {
   width: min(1280px, 92%);
   margin: 0 auto;
   padding: 24px 26px 26px;
+  box-sizing: border-box;
 }
 
 .team-practice-panel-head {
@@ -1459,9 +1476,19 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 }
 
 .team-practice-member-card h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   margin: 2px 0 0;
   font-size: 1.18em;
   line-height: 1.18;
+}
+
+.team-practice-member-card h3 span {
+  color: rgba(228, 236, 248, 0.66);
+  font-size: 0.54em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .team-practice-member-card strong {

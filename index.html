@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=57">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=58">
 </head>
 <body>
 
@@ -2086,24 +2086,24 @@
           <div class="team-practice-hero-panel">
             <div class="team-practice-hero-copy">
               <span class="team-practice-kicker">Team Operating Model</span>
-              <h3>개인의 실험이 팀의 제작 방식으로 이어지며,<br>도구도 함께 진화하고 있습니다.</h3>
+              <h3>개인의 실험이 팀의 제작 방식으로 이어지고,<br>도구도 함께 진화하고 있습니다.</h3>
               <p>처음에는 혼자 문제를 풀기 위한 작은 시도였지만, 이제는 프롬프트와 배포 방식, 실패 경험까지 팀이 공유하는 공통 자산이 됐습니다.</p>
             </div>
             <div class="team-practice-hero-pillars">
               <article class="team-practice-flow-card">
                 <span class="team-practice-flow-index">01</span>
                 <strong>개인 실험</strong>
-                <p>반복되는 불편을 작은 웹앱과 시뮬레이션으로 먼저 바꿔봅니다.</p>
+                <p>반복되는 불편을 작은 웹앱으로 먼저 바꿔봅니다.</p>
               </article>
               <article class="team-practice-flow-card">
                 <span class="team-practice-flow-index">02</span>
                 <strong>팀 공유</strong>
-                <p>프롬프트, 링크, 실패 포인트를 서로 공유하며 제작 속도를 높입니다.</p>
+                <p>프롬프트와 링크, 실패 포인트를 함께 공유합니다.</p>
               </article>
               <article class="team-practice-flow-card">
                 <span class="team-practice-flow-index">03</span>
                 <strong>함께 빌드</strong>
-                <p>좋은 패턴은 다른 문제로 옮겨가며 더 높은 완성도의 도구로 자랍니다.</p>
+                <p>좋은 패턴을 더 큰 문제로 확장합니다.</p>
               </article>
             </div>
           </div>
@@ -2121,7 +2121,7 @@
               <article class="team-practice-version-card">
                 <span class="team-practice-version-badge">v2</span>
                 <strong>GPTs 대화형</strong>
-                <p>상대 맥락 입력은 가능해졌지만 사용 로그와 학습 데이터 축적은 어려웠습니다.</p>
+                <p>상대 맥락 입력은 가능했지만, 사용 로그와 데이터 축적은 어려웠습니다.</p>
                 <div class="team-link-group">
                   <a class="team-link-button" href="https://ktcloud.atlassian.net/wiki/x/8IUrSg" target="_blank" rel="noreferrer">가이드 1</a>
                   <a class="team-link-button" href="https://drive.google.com/file/d/1476PHKtcQ4kTTxdJze5Iaakkjicjurow/view" target="_blank" rel="noreferrer">가이드 2</a>
@@ -2164,21 +2164,21 @@
           <div class="team-practice-member-grid">
             <article class="team-practice-member-card">
               <span class="team-practice-member-badge">01</span>
-              <h3>박창윤</h3>
+              <h3>박창윤 <span>매니저</span></h3>
               <strong>PI 평가 시스템</strong>
               <p>프로젝트 발표 평가를 수작업 운영에서 <strong>실시간 자동화</strong> 흐름으로 전환했습니다.</p>
               <span class="team-practice-member-note">운영 업무를 실시간 시스템으로 전환</span>
             </article>
             <article class="team-practice-member-card">
               <span class="team-practice-member-badge">02</span>
-              <h3>박창윤</h3>
+              <h3>박창윤 <span>매니저</span></h3>
               <strong>kt cloud 2033</strong>
               <p>경력입사자 온보딩을 <strong>텍스트 어드벤처 게임</strong>으로 재설계해 몰입도를 높였습니다.</p>
               <span class="team-practice-member-note">학습 경험을 스토리 기반 상호작용으로 재구성</span>
             </article>
             <article class="team-practice-member-card">
               <span class="team-practice-member-badge">03</span>
-              <h3>김성환</h3>
+              <h3>김성환 <span>매니저</span></h3>
               <strong>1on1 시뮬레이터</strong>
               <p>리더십 대화를 <strong>선택형 시뮬레이션</strong>으로 바꿔 반복 연습 가능한 형태로 만들었습니다.</p>
               <span class="team-practice-member-note">리더십 스킬을 반복 가능한 훈련 도구로 전환</span>
@@ -2674,7 +2674,8 @@
         'viewport-intro-reading',
         'viewport-body-light',
         'viewport-body-dark',
-        'viewport-soft-light'
+        'viewport-soft-light',
+        'viewport-toolbox-essentials'
       );
 
       if (currentSection.dataset.chapter === 'hero') return;
@@ -2684,6 +2685,11 @@
 
       if (currentSection.classList.contains('intro-reading-section')) {
         viewportEl.classList.add('viewport-intro-reading');
+        return;
+      }
+
+      if (currentSection.classList.contains('toolbox-essentials-slide')) {
+        viewportEl.classList.add('viewport-body-dark', 'viewport-toolbox-essentials');
         return;
       }
 
