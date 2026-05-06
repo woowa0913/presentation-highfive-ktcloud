@@ -651,6 +651,8 @@
   letter-spacing: -0.055em;
   line-height: 1.14;
   text-shadow: 0 20px 46px rgba(3, 7, 18, 0.56);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 .reveal .slides #slide-rail-anim .rail-slide-title::before {
