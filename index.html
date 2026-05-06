@@ -3178,39 +3178,102 @@
     function initSpeakerCueAudio() {
       const speakerAudio = document.getElementById('speakerCueAudio');
       if (!speakerAudio) return;
+      const speakerCueNextKeys = new Set(['ArrowRight', 'PageDown', ' ', 'Spacebar', 'Enter', 'N', 'n']);
 
-      const stopSpeakerAudio = () => {
+      const getSpeakerCueSection = () => {
+        const currentSection = getCurrentSection();
+        return currentSection?.dataset.audioToggle === 'speaker' ? currentSection : null;
+      };
+
+      const markSpeakerCueState = (section, state) => {
+        if (!section) return;
+        section.dataset.audioCueState = state;
+        section.dataset.audioPlaying = state === 'playing' ? 'true' : 'false';
+      };
+
+      const stopSpeakerAudio = (state = 'stopped') => {
         speakerAudio.pause();
         speakerAudio.currentTime = 0;
         document.querySelectorAll('[data-audio-playing="true"]').forEach((section) => {
-          section.dataset.audioPlaying = 'false';
+          markSpeakerCueState(section, state);
         });
+      };
+
+      const playSpeakerAudio = (section) => {
+        if (!section) return;
+        speakerAudio.currentTime = 0;
+        speakerAudio.play().then(() => {
+          markSpeakerCueState(section, 'playing');
+        }).catch((error) => {
+          markSpeakerCueState(section, 'idle');
+          console.warn('speaker cue audio play failed', error);
+        });
+      };
+
+      const handleSpeakerCueAdvance = (event) => {
+        const section = getSpeakerCueSection();
+        if (!section) return false;
+
+        const state = section.dataset.audioCueState || 'idle';
+        if (state === 'ended' || state === 'stopped') return false;
+
+        event.preventDefault();
+        event.stopPropagation();
+        if (typeof event.stopImmediatePropagation === 'function') {
+          event.stopImmediatePropagation();
+        }
+
+        if (speakerAudio.paused) {
+          playSpeakerAudio(section);
+        } else {
+          stopSpeakerAudio('stopped');
+        }
+        return true;
       };
 
       document.querySelectorAll('[data-audio-toggle="speaker"]').forEach((section) => {
         section.dataset.audioPlaying = 'false';
+        section.dataset.audioCueState = 'idle';
         section.addEventListener('click', (event) => {
           if (event.target.closest('a, button, input, textarea, select, .chapter-nav, .custom-nav, .admin-mode-panel')) return;
           if (!section.classList.contains('present')) return;
 
           event.stopPropagation();
           if (speakerAudio.paused) {
-            speakerAudio.currentTime = 0;
-            speakerAudio.play().then(() => {
-              section.dataset.audioPlaying = 'true';
-            }).catch((error) => {
-              console.warn('speaker cue audio play failed', error);
-            });
+            playSpeakerAudio(section);
           } else {
             stopSpeakerAudio();
           }
         });
       });
 
+      document.addEventListener('keydown', (event) => {
+        if (!speakerCueNextKeys.has(event.key)) return;
+        if (event.metaKey || event.ctrlKey || event.altKey) return;
+        if (event.target?.closest?.('input, textarea, select, [contenteditable="true"], .admin-mode-panel')) return;
+        handleSpeakerCueAdvance(event);
+      }, true);
+
+      document.addEventListener('click', (event) => {
+        if (!event.target?.closest?.('#navRight')) return;
+        handleSpeakerCueAdvance(event);
+      }, true);
+
+      speakerAudio.addEventListener('ended', () => {
+        speakerAudio.pause();
+        markSpeakerCueState(getSpeakerCueSection(), 'ended');
+      });
+
       Reveal.on('slidechanged', () => {
         const currentSection = getCurrentSection();
         if (currentSection?.dataset.audioToggle !== 'speaker') {
           stopSpeakerAudio();
+          document.querySelectorAll('[data-audio-toggle="speaker"]').forEach((section) => {
+            markSpeakerCueState(section, 'idle');
+          });
+        } else {
+          stopSpeakerAudio('idle');
+          markSpeakerCueState(currentSection, 'idle');
         }
       });
     }
