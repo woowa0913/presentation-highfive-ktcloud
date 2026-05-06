@@ -1269,8 +1269,17 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 }
 
 .team-practice-rebuild {
-  gap: 18px;
-  padding-bottom: 22px;
+  gap: 26px;
+  padding-bottom: 24px;
+}
+
+.reveal .slides section[data-chapter="ch4"] .team-practice-rebuild {
+  gap: 24px;
+}
+
+.team-practice-hero-panel + .team-practice-version-panel,
+.team-practice-hero-panel + .team-practice-member-grid {
+  margin-top: 12px;
 }
 
 .team-practice-rebuild .body-title {
@@ -1304,7 +1313,7 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 26px;
-  width: min(1280px, 92%);
+  width: min(1360px, 94%);
   margin: 0 auto;
   padding: 28px 30px;
 }
@@ -1400,7 +1409,7 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 }
 
 .team-practice-version-panel {
-  width: min(1280px, 92%);
+  width: min(1360px, 94%);
   margin: 0 auto;
   padding: 24px 26px 26px;
   box-sizing: border-box;
@@ -1463,7 +1472,7 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
 }
 
 .team-practice-member-grid {
-  width: min(1280px, 92%);
+  width: min(1360px, 94%);
   margin: 0 auto;
 }
 
@@ -2758,6 +2767,60 @@ body.admin-mode-active .custom-nav-right {
   font-weight: 700;
   color: var(--wanted-dark);
   line-height: 1.4;
+}
+
+.qa-question-slide {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(120, 126, 172, 0.06), transparent 34%),
+    linear-gradient(180deg, #090911 0%, #070710 100%);
+  color: #eef0fb;
+}
+
+.qa-question-brand {
+  position: absolute;
+  top: 78px;
+  left: 72px;
+  color: rgba(239, 241, 250, 0.94);
+  font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.qa-question-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 58px;
+  width: 100%;
+  height: 100%;
+  padding: 0 11%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.qa-question-mark {
+  color: #e9ebf7;
+  font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
+  font-size: 104px;
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.07em;
+}
+
+.qa-question-content h2 {
+  margin: 0;
+  color: #e9ebf7;
+  font-family: 'WantedSans', 'Plus Jakarta Sans', sans-serif;
+  font-size: 82px;
+  font-weight: 800;
+  line-height: 1.42;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
+  text-wrap: balance;
 }
 
 /* ========================================

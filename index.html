@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=58">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=59">
 </head>
 <body>
 
@@ -19,6 +19,8 @@
       <source src="assets/images/intro_video.mp4" type="video/mp4">
     </video>
   </div>
+
+  <audio id="speakerCueAudio" src="assets/intro-outro.mp3" preload="auto"></audio>
 
   <!-- 상단 챕터 네비게이션 바 -->
   <nav class="chapter-nav" id="chapterNav">
@@ -133,7 +135,7 @@
       <!-- ============================================
            HERO: 영상 배경 + blend 텍스트
            ============================================ -->
-      <section data-chapter="hero">
+      <section data-chapter="hero" data-audio-toggle="speaker">
         <div class="hero-section-logos">
           <div class="hero-sec-top-logo">
             <img src="assets/images/high-five-logo-title-dark.png" alt="HIGH FIVE 26">
@@ -2397,14 +2399,30 @@
         </div>
       </section>
 
+      <section data-background-color="#0a0a0f" data-chapter="closing" class="qa-question-slide">
+        <div class="qa-question-brand">HIGH FIVE 26</div>
+        <div class="qa-question-content">
+          <div class="qa-question-mark">Q.</div>
+          <h2>실제 HRD 현장에서 가장 먼저<br>자동화할 수 있는 업무는 무엇인가요?</h2>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f" data-chapter="closing" class="qa-question-slide">
+        <div class="qa-question-brand">HIGH FIVE 26</div>
+        <div class="qa-question-content">
+          <div class="qa-question-mark">Q.</div>
+          <h2>앞으로 HRD 담당자에게 필요한<br>새로운 역량은 무엇이라고 생각하시나요?</h2>
+        </div>
+      </section>
+
 	      <!-- Q&A + QR -->
-	      <section data-background-image="assets/pptx-media/image7.png" data-background-size="cover" data-chapter="closing">
+	      <section data-background-image="assets/pptx-media/image7.png" data-background-size="cover" data-chapter="closing" data-audio-toggle="speaker">
 	        <div class="slide-qa-wrap">
 	        </div>
 	      </section>
 
       <!-- CLOSING -->
-      <section data-background-image="assets/pptx-media/image10.png" data-background-size="cover" data-chapter="closing">
+      <section data-background-image="assets/pptx-media/image10.png" data-background-size="cover" data-chapter="closing" data-audio-toggle="speaker">
         <div class="slide-closing-wrap">
         </div>
       </section>
@@ -3154,8 +3172,50 @@
 	    Reveal.on('fragmenthidden', syncRailAnimationState);
       Reveal.on('ready', syncAutoFragmentSequence);
       Reveal.on('slidechanged', syncAutoFragmentSequence);
-      Reveal.on('ready', syncPerformanceGraphState);
-      Reveal.on('slidechanged', syncPerformanceGraphState);
+    Reveal.on('ready', syncPerformanceGraphState);
+    Reveal.on('slidechanged', syncPerformanceGraphState);
+
+    function initSpeakerCueAudio() {
+      const speakerAudio = document.getElementById('speakerCueAudio');
+      if (!speakerAudio) return;
+
+      const stopSpeakerAudio = () => {
+        speakerAudio.pause();
+        speakerAudio.currentTime = 0;
+        document.querySelectorAll('[data-audio-playing="true"]').forEach((section) => {
+          section.dataset.audioPlaying = 'false';
+        });
+      };
+
+      document.querySelectorAll('[data-audio-toggle="speaker"]').forEach((section) => {
+        section.dataset.audioPlaying = 'false';
+        section.addEventListener('click', (event) => {
+          if (event.target.closest('a, button, input, textarea, select, .chapter-nav, .custom-nav, .admin-mode-panel')) return;
+          if (!section.classList.contains('present')) return;
+
+          event.stopPropagation();
+          if (speakerAudio.paused) {
+            speakerAudio.currentTime = 0;
+            speakerAudio.play().then(() => {
+              section.dataset.audioPlaying = 'true';
+            }).catch((error) => {
+              console.warn('speaker cue audio play failed', error);
+            });
+          } else {
+            stopSpeakerAudio();
+          }
+        });
+      });
+
+      Reveal.on('slidechanged', () => {
+        const currentSection = getCurrentSection();
+        if (currentSection?.dataset.audioToggle !== 'speaker') {
+          stopSpeakerAudio();
+        }
+      });
+    }
+
+    Reveal.on('ready', initSpeakerCueAudio);
 
     /* ── 3. 다크 배경에서 좌우 버튼 색상 변경 ── */
     const navLeftBtn = document.getElementById('navLeft');
