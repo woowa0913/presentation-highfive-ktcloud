@@ -1522,6 +1522,16 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
   line-height: 1.48;
 }
 
+.team-practice-member-card .team-link-group {
+  margin-top: 0;
+  padding-top: 10px;
+}
+
+.team-practice-member-card .team-link-button {
+  padding: 8px 12px;
+  font-size: 0.78em;
+}
+
 .reveal .slides section[data-chapter^="ch"] .slide-body.dark {
   background: transparent;
   color: #f5f7fb;
