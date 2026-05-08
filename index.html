@@ -45,8 +45,12 @@
     </button>
     <button class="chapter-btn" data-chapter="closing">End</button>
     <!-- 이펙트 토글 -->
-    <button class="effect-toggle" id="effectToggle">Effect ON</button>
+    <div class="nav-actions">
+      <button class="effect-toggle" id="effectToggle">Effect ON</button>
+      <button class="nav-panel-toggle" id="navPanelHide" type="button">패널 숨기기</button>
+    </div>
   </nav>
+  <button class="nav-panel-restore" id="navPanelRestore" type="button">Nav</button>
 
   <aside class="admin-mode-panel" id="adminModePanel" aria-hidden="true">
     <div class="admin-mode-head">
@@ -2502,6 +2506,8 @@
 
     /* ── 1. 네비게이션 바: 마우스 오버 시 표시, 떠나면 1초 후 숨김 ── */
     const nav = document.getElementById('chapterNav');
+    const navPanelHide = document.getElementById('navPanelHide');
+    const navPanelRestore = document.getElementById('navPanelRestore');
     let navTimer = null;
     const bodyEl = document.body;
     const viewportEl = document.querySelector('.reveal-viewport');
@@ -2595,6 +2601,11 @@
     }
 
     function setTopUiVisible(visible) {
+      if (bodyEl.classList.contains('nav-panel-hidden')) {
+        nav.classList.remove('visible');
+        bodyEl.classList.remove('top-ui-visible');
+        return;
+      }
       nav.classList.toggle('visible', visible);
       bodyEl.classList.toggle('top-ui-visible', visible);
     }
@@ -3398,6 +3409,21 @@
       bodyEl.classList.toggle('effects-off', !effectOn);
       effectBtn.textContent = effectOn ? 'Effect ON' : 'Effect OFF';
       effectBtn.classList.toggle('off', !effectOn);
+    });
+
+    navPanelHide?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      clearTimeout(navTimer);
+      bodyEl.classList.add('nav-panel-hidden');
+      nav.classList.remove('visible');
+      bodyEl.classList.remove('top-ui-visible');
+    });
+
+    navPanelRestore?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      bodyEl.classList.remove('nav-panel-hidden');
+      setTopUiVisible(true);
+      scheduleTopUiHide();
     });
 
     /* ── 4. 챕터 네비게이션 빌드 ── */

@@ -1641,6 +1641,12 @@ body.top-ui-visible .reveal .slides section[data-chapter^="ch"] .body-title::bef
   transform: translateY(0);
 }
 
+body.nav-panel-hidden .chapter-nav {
+  opacity: 0 !important;
+  pointer-events: none;
+  transform: translateY(-12px);
+}
+
 .chapter-btn {
   position: relative;
   padding: 9px 16px;
@@ -2526,12 +2532,20 @@ body.admin-mode-active .custom-nav-right {
   }
 }
 
-/* 이펙트 토글 버튼 */
-.effect-toggle {
+.nav-actions {
   position: absolute;
   right: 16px;
   top: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   transform: translateY(-50%);
+}
+
+/* 이펙트 토글 버튼 */
+.effect-toggle,
+.nav-panel-toggle,
+.nav-panel-restore {
   padding: 5px 12px;
   font-family: 'WantedSans', sans-serif;
   font-size: 11px;
@@ -2544,27 +2558,60 @@ body.admin-mode-active .custom-nav-right {
   transition: all 0.2s ease;
   white-space: nowrap;
 }
-.chapter-nav.nav-light .effect-toggle {
+
+.nav-panel-toggle {
+  padding-inline: 10px;
+}
+
+.nav-panel-restore {
+  position: fixed;
+  top: 10px;
+  right: 18px;
+  z-index: 10001;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+}
+
+body.nav-panel-hidden .nav-panel-restore {
+  opacity: 0.68;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.chapter-nav.nav-light .effect-toggle,
+.chapter-nav.nav-light .nav-panel-toggle {
   color: rgba(24, 28, 31, 0.55);
   background: rgba(230, 235, 243, 0.85);
   border-color: rgba(51, 99, 255, 0.08);
 }
-.chapter-nav.nav-dark .effect-toggle {
+.chapter-nav.nav-dark .effect-toggle,
+.chapter-nav.nav-dark .nav-panel-toggle {
   color: rgba(255, 255, 255, 0.62);
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.15);
 }
-.effect-toggle:hover {
+.effect-toggle:hover,
+.nav-panel-toggle:hover,
+.nav-panel-restore:hover {
   color: #fff;
 }
-.chapter-nav.nav-light .effect-toggle:hover {
+.chapter-nav.nav-light .effect-toggle:hover,
+.chapter-nav.nav-light .nav-panel-toggle:hover {
   background: rgba(51, 99, 255, 0.88);
 }
-.chapter-nav.nav-dark .effect-toggle:hover {
+.chapter-nav.nav-dark .effect-toggle:hover,
+.chapter-nav.nav-dark .nav-panel-toggle:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 .effect-toggle.off {
   color: rgba(255, 255, 255, 0.35);
+}
+
+.nav-panel-restore {
+  color: rgba(255, 255, 255, 0.62);
+  background: rgba(0, 0, 0, 0.36);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 /* 다크 배경에서 좌우 네비 버튼 밝게 */
