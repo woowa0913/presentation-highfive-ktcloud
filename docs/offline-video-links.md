@@ -1,6 +1,6 @@
 # 오프라인 모드 영상 준비 목록
 
-오프라인 모드에서는 아래 외부 링크가 `assets/offline-videos/` 아래의 로컬 영상으로 열립니다.
+오프라인 모드에서는 아래 외부 링크가 `offline-video-player.html` 안에서 `assets/offline-videos/` 아래의 로컬 영상으로 재생됩니다.
 
 | 구분 | 원본 링크 | 로컬 영상 경로 |
 |---|---|---|

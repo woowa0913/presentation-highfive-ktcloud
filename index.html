@@ -2573,6 +2573,11 @@
       return OFFLINE_VIDEO_MAP[normalized] || OFFLINE_VIDEO_MAP[normalized.replace(/\/$/, '')] || '';
     }
 
+    function getOfflineVideoPlayerUrl(path) {
+      const params = new URLSearchParams({ src: path });
+      return `offline-video-player.html#${params.toString()}`;
+    }
+
     function openPresentationLink(url) {
       if (!url) return;
       if (!isOfflineMode()) {
@@ -2582,7 +2587,7 @@
 
       const offlinePath = getOfflineVideoPath(url);
       if (offlinePath) {
-        window.open(offlinePath, '_blank', 'noopener,noreferrer');
+        window.open(getOfflineVideoPlayerUrl(offlinePath), '_blank', 'noopener,noreferrer');
         return;
       }
 
