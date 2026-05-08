@@ -2430,8 +2430,12 @@
     </div>
   </div>
 
-  <!-- Branch Indicator -->
-  <div style="position:fixed; bottom:24px; left:24px; font-size:14px; font-weight:700; color:rgba(255,255,255,0.8); background:rgba(0,0,0,0.6); padding:4px 10px; border-radius:6px; z-index:9999; pointer-events:none;">final 브랜치</div>
+  <!-- Branch / Mode Indicator -->
+  <div class="branch-mode-indicator" id="branchModeIndicator">
+    <span>final 브랜치</span>
+    <span class="mode-dot" aria-hidden="true"></span>
+    <span class="mode-label" id="modeLabel">live</span>
+  </div>
 
   <!-- Custom navigation buttons -->
   <button class="custom-nav custom-nav-left" id="navLeft" aria-label="이전 슬라이드">
@@ -2501,7 +2505,25 @@
     let navTimer = null;
     const bodyEl = document.body;
     const viewportEl = document.querySelector('.reveal-viewport');
+    const modeLabel = document.getElementById('modeLabel');
     let navArrowTimer = null;
+
+    const OFFLINE_MODE_KEY = 'presentation-vibe-offline-mode-v1';
+    const OFFLINE_PASSWORD = '0401';
+    const OFFLINE_VIDEO_MAP = {
+      'https://mac-shortcut-master-v4.vercel.app/': 'assets/offline-videos/mac-shortcut-master.mp4',
+      'https://kt-cloud-balance-game.vercel.app/#/': 'assets/offline-videos/kt-cloud-balance-game.mp4',
+      'https://kac-doc-check.vercel.app/': 'assets/offline-videos/kac-doc-check.mp4',
+      'https://kac-mock-test.vercel.app/': 'assets/offline-videos/kac-mock-test.mp4',
+      'https://disc-coaching-analyzer.vercel.app/': 'assets/offline-videos/disc-coaching-analyzer.mp4',
+      'https://kt-cloud-callibration.vercel.app/': 'assets/offline-videos/kt-cloud-calibration.mp4',
+      'https://dtoon-dtoon.vercel.app/': 'assets/offline-videos/dtoon-dtoon.mp4',
+      'https://kt-cloud-mandala.vercel.app/': 'assets/offline-videos/kt-cloud-mandala.mp4',
+      'https://thanks-letter-dun.vercel.app/': 'assets/offline-videos/thanks-letter.mp4',
+      'https://kt-leadership-simulator-production.up.railway.app/': 'assets/offline-videos/kt-leadership-simulator.mp4',
+      'https://invest-k882.onrender.com': 'assets/offline-videos/pi-evaluation-system.mp4',
+      'https://ktcloud2033.vercel.app': 'assets/offline-videos/ktcloud-2033.mp4',
+    };
 
     const TOP_UI_HIDE_DELAY = 1000;
     const NAV_ARROW_SHOW_DELAY = 500;
@@ -2516,6 +2538,60 @@
 
     function getCurrentSection() {
       return getHorizontalSlides()[Reveal.getIndices().h] || document.querySelector('.reveal .slides > section.present');
+    }
+
+    function isOfflineMode() {
+      return localStorage.getItem(OFFLINE_MODE_KEY) === 'true';
+    }
+
+    function setOfflineMode(active) {
+      localStorage.setItem(OFFLINE_MODE_KEY, active ? 'true' : 'false');
+      bodyEl.classList.toggle('offline-mode', active);
+      bodyEl.classList.toggle('live-mode', !active);
+      if (modeLabel) modeLabel.textContent = active ? 'offline' : 'live';
+    }
+
+    function normalizeExternalUrl(url = '') {
+      try {
+        const parsed = new URL(url, window.location.href);
+        if (!/^https?:$/.test(parsed.protocol)) return url;
+        parsed.hash = parsed.hash || '';
+        return parsed.href;
+      } catch {
+        return url;
+      }
+    }
+
+    function getOfflineVideoPath(url) {
+      const normalized = normalizeExternalUrl(url);
+      return OFFLINE_VIDEO_MAP[normalized] || OFFLINE_VIDEO_MAP[normalized.replace(/\/$/, '')] || '';
+    }
+
+    function openPresentationLink(url) {
+      if (!url) return;
+      if (!isOfflineMode()) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      const offlinePath = getOfflineVideoPath(url);
+      if (offlinePath) {
+        window.open(offlinePath, '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      window.alert('오프라인 모드에서 사용할 로컬 영상이 아직 준비되지 않은 링크입니다.');
+    }
+
+    function initOfflineLinkRouting() {
+      document.addEventListener('click', (event) => {
+        if (!isOfflineMode()) return;
+        const link = event.target.closest?.('a[href^="http://"], a[href^="https://"]');
+        if (!link) return;
+        event.preventDefault();
+        event.stopPropagation();
+        openPresentationLink(link.href);
+      }, true);
     }
 
     function setTopUiVisible(visible) {
@@ -2813,7 +2889,7 @@
         button.addEventListener('click', () => {
           const targetUrl = button.dataset.macOpenWindow;
           if (!targetUrl) return;
-          window.open(targetUrl, '_blank', 'noopener,noreferrer');
+          openPresentationLink(targetUrl);
 	        });
 	      });
 	    }
@@ -3395,6 +3471,7 @@
     /* ── 5. 관리자 모드: Intro 더블클릭으로 슬라이드 순서/숨김 관리 ── */
     const ADMIN_PASSWORD = '0401';
     const ADMIN_STATE_KEY = 'presentation-vibe-admin-state-v1';
+    const FORCE_DEFAULT_SLIDE_STATE_ON_LOAD = true;
     const ADMIN_DEFAULT_STATE_VERSION = '2026-05-07-layout-and-closing-order-01';
     const DEFAULT_ADMIN_STATE = Object.freeze({
       __defaultStateVersion: ADMIN_DEFAULT_STATE_VERSION,
@@ -4556,6 +4633,9 @@
         return section;
       });
 
+      if (FORCE_DEFAULT_SLIDE_STATE_ON_LOAD) {
+        localStorage.removeItem(ADMIN_STATE_KEY);
+      }
       applyAdminSlideState();
       Reveal.on('slidechanged', syncAdminSelectionWithCurrentSlide);
 
@@ -4569,6 +4649,20 @@
         const password = window.prompt('관리자 비밀번호를 입력해주세요.');
         if (password === ADMIN_PASSWORD) {
           setAdminMode(true);
+        } else if (password !== null) {
+          window.alert('비밀번호가 맞지 않습니다.');
+        }
+      });
+
+      const adminEndButton = document.querySelector('.chapter-btn[data-chapter="closing"]');
+      adminEndButton?.addEventListener('dblclick', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const password = window.prompt('오프라인 모드 비밀번호를 입력해주세요.');
+        if (password === OFFLINE_PASSWORD) {
+          const nextMode = !isOfflineMode();
+          setOfflineMode(nextMode);
+          window.alert(nextMode ? '오프라인 모드로 전환했습니다.' : '라이브 모드로 전환했습니다.');
         } else if (password !== null) {
           window.alert('비밀번호가 맞지 않습니다.');
         }
@@ -4760,6 +4854,10 @@
     }
 
     Reveal.on('ready', initAdminMode);
+    Reveal.on('ready', () => {
+      setOfflineMode(isOfflineMode());
+      initOfflineLinkRouting();
+    });
   </script>
 </body>
 </html>
