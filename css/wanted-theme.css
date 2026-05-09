@@ -7073,38 +7073,90 @@ body.offline-mode .case-mock-test-slide .case-app-screen iframe {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(1460px, calc(100vw - 96px));
-  height: min(1390px, calc(100vh - 96px));
-  border-radius: 30px;
-  overflow: hidden;
-  background: #eef6fb;
+  width: min(720px, calc(100vw - 96px));
+  max-height: calc(100vh - 96px);
+  padding: 32px;
+  border-radius: 16px;
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 34px 90px rgba(15, 23, 42, 0.34);
 }
 
-.profile-modal-dialog iframe {
+.profile-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(49, 95, 243, 0.16);
+}
+
+.profile-modal-head h3 {
+  margin: 0;
+  color: #17345c;
+  font-size: 1.65rem;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.profile-modal-body {
+  padding-top: 24px;
+}
+
+.profile-video-section {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #111827;
+}
+
+.profile-video-section iframe {
   display: block;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 9;
   border: 0;
-  background: #eef6fb;
+  background: #111827;
+}
+
+.profile-info-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 22px 24px;
+  border-radius: 14px;
+  background: rgba(231, 244, 253, 0.86);
+}
+
+.profile-info-item {
+  display: grid;
+  grid-template-columns: 148px 1fr;
+  gap: 18px;
+  align-items: baseline;
+  color: #315a89;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.profile-info-label {
+  color: #00a3e0;
+  font-weight: 800;
+}
+
+.profile-info-value {
+  font-weight: 500;
 }
 
 .profile-modal-close {
-  position: absolute;
-  top: 22px;
-  right: 24px;
-  z-index: 1;
-  width: 48px;
-  height: 48px;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
+  background: transparent;
   color: #315a89;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.14);
 }
 
 .reframe-divider {
