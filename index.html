@@ -513,7 +513,7 @@
                   <iframe
                     title="Mac Shortcut Master App"
                     data-case-live-iframe
-                    data-src="https://mac-shortcut-master-v4.vercel.app/"
+                    data-live-src="https://mac-shortcut-master-v4.vercel.app/"
                     loading="lazy"
                     referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
@@ -776,9 +776,9 @@
                   </svg>
                 </button>
                 <iframe
-                  src="https://kt-cloud-balance-game.vercel.app/#/"
                   title="실시간 밸런스게임"
                   loading="eager"
+                  data-live-src="https://kt-cloud-balance-game.vercel.app/#/"
                   data-mac-demo-iframe
                   referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <video
@@ -1144,9 +1144,9 @@
                   </div>
                   <div class="mac-demo-body case-app-screen">
                     <iframe
-                      src="https://kac-doc-check.vercel.app/"
                       title="KAC 서류 점검 앱"
                       loading="eager"
+                      data-live-src="https://kac-doc-check.vercel.app/"
                       data-mac-demo-iframe
                       referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     <video
@@ -1208,9 +1208,9 @@
                   </div>
                   <div class="mac-demo-body case-app-screen">
                     <iframe
-                      src="https://kac-mock-test.vercel.app/"
                       title="KAC 모의고사 앱"
                       loading="eager"
+                      data-live-src="https://kac-mock-test.vercel.app/"
                       data-mac-demo-iframe
                       referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     <video
@@ -1352,7 +1352,7 @@
 	                    </button>
 	                    <iframe
 	                      data-disc-app-iframe
-	                      data-src="https://disc-coaching-analyzer.vercel.app/"
+	                      data-live-src="https://disc-coaching-analyzer.vercel.app/"
 	                      title="DISC 조직 다이내믹스 앱"
 	                      loading="lazy"
 	                      data-mac-demo-iframe
@@ -1428,9 +1428,9 @@
 	                  </div>
 	                  <div class="reframe-browser-screen case-app-screen case-calibration-screen">
 	                    <iframe
-	                      src="https://kt-cloud-callibration.vercel.app/"
 	                      title="칼리브레이션 앱"
 	                      loading="lazy"
+	                      data-live-src="https://kt-cloud-callibration.vercel.app/"
 	                      referrerpolicy="strict-origin-when-cross-origin"></iframe>
 	                    <button type="button" class="case-app-float-open" aria-label="새 창으로 열기" data-mac-open-window="https://kt-cloud-callibration.vercel.app/">
 	                      <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -2894,7 +2894,7 @@
             if (target === 'app') {
               const iframe = browser.querySelector('[data-case-live-iframe]');
               if (iframe) {
-                setIframeSourceForMode(iframe, iframe.dataset.src);
+                setIframeSourceForMode(iframe, getIframeLiveUrl(iframe));
               }
             }
           });
@@ -3131,7 +3131,7 @@
 	      if (nextState === 'app') {
 	        const iframe = browser.querySelector('[data-disc-app-iframe]');
 	        if (iframe) {
-	          setIframeSourceForMode(iframe, iframe.dataset.src);
+	          setIframeSourceForMode(iframe, getIframeLiveUrl(iframe));
 	        }
 	      }
 	    }
