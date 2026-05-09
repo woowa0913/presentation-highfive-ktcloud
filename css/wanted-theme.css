@@ -5740,6 +5740,12 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   height: 684px;
 }
 
+.case-doc-check-slide .case-app-screen .case-app-offline-video,
+.case-mock-test-slide .case-app-screen .case-app-offline-video {
+  min-height: 684px;
+  height: 684px;
+}
+
 .case-mock-test-slide .case-proof-frame {
   min-height: 176px;
 }
@@ -5790,6 +5796,24 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   min-height: 470px;
   border: 0;
   background: #ffffff;
+}
+
+.case-app-offline-video {
+  display: none;
+}
+
+body.offline-mode .case-app-screen .case-app-offline-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 470px;
+  background: #000;
+  object-fit: contain;
+}
+
+body.offline-mode .case-doc-check-slide .case-app-screen iframe,
+body.offline-mode .case-mock-test-slide .case-app-screen iframe {
+  display: none;
 }
 
 .case-app-float-open {
