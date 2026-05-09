@@ -194,9 +194,9 @@
             바이브 코딩으로 여는<br>
             'HRD 메이커' 시대
           </h1>
-          <div class="speaker-info title-key-message">
+          <button type="button" class="speaker-info title-key-message speaker-profile-trigger" data-profile-open aria-label="박상우 소개 창 열기">
             <span class="org">kt cloud</span>&nbsp;&nbsp;<span class="name">박상우</span>
-          </div>
+          </button>
         </div>
       </section>
 
@@ -2463,6 +2463,18 @@
     </div>
   </div>
 
+  <div class="profile-modal" id="speakerProfileModal" aria-hidden="true">
+    <button type="button" class="profile-modal-backdrop" data-profile-close aria-label="소개 창 닫기"></button>
+    <div class="profile-modal-dialog" role="dialog" aria-modal="true" aria-label="박상우 소개">
+      <button type="button" class="profile-modal-close" data-profile-close aria-label="닫기">×</button>
+      <iframe
+        id="speakerProfileFrame"
+        title="박상우 소개"
+        data-live-src="https://hrd-vibe.vercel.app/"
+        referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+
   <div class="guide-modal" id="onboardingGuideModal" aria-hidden="true">
     <button type="button" class="guide-modal-backdrop" data-guide-close aria-label="가이드 닫기"></button>
     <div class="guide-modal-dialog" role="dialog" aria-modal="true" aria-label="온보딩 가이드 보기">
@@ -2729,7 +2741,7 @@
 
       const target = event.target;
       return Boolean(target?.closest?.(
-        '.admin-mode-panel, .guide-modal, .image-lightbox, input, textarea, select, [contenteditable="true"]'
+        '.admin-mode-panel, .guide-modal, .image-lightbox, .profile-modal, input, textarea, select, [contenteditable="true"]'
       ));
     }
 
@@ -2990,6 +3002,51 @@
 	        }
 	      });
 	    }
+
+    function initSpeakerProfileModal() {
+      const modal = document.getElementById('speakerProfileModal');
+      const frame = document.getElementById('speakerProfileFrame');
+      if (!modal || !frame) return;
+
+      const openProfile = () => {
+        if (!frame.getAttribute('src')) {
+          frame.setAttribute('src', frame.dataset.liveSrc);
+        }
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        bodyEl.classList.add('lightbox-open');
+      };
+
+      const closeProfile = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        bodyEl.classList.remove('lightbox-open');
+      };
+
+      document.querySelectorAll('[data-profile-open]').forEach((button) => {
+        if (button.dataset.bound === 'true') return;
+        button.dataset.bound = 'true';
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          openProfile();
+        });
+      });
+
+      modal.querySelectorAll('[data-profile-close]').forEach((button) => {
+        if (button.dataset.bound === 'true') return;
+        button.dataset.bound = 'true';
+        button.addEventListener('click', closeProfile);
+      });
+
+      if (modal.dataset.bound === 'true') return;
+      modal.dataset.bound = 'true';
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeProfile();
+        }
+      });
+    }
 
 	    function initOnboardingJourneyToggle() {
 	      document.querySelectorAll('.onboarding-journey-slide [data-onboarding-step-trigger]').forEach((button) => {
@@ -3291,6 +3348,7 @@
 	    Reveal.on('ready', initMacDemoFullscreen);
 	    Reveal.on('ready', initMacDemoOpenWindow);
 	    Reveal.on('ready', initImageLightbox);
+	    Reveal.on('ready', initSpeakerProfileModal);
 	    Reveal.on('ready', initOnboardingJourneyToggle);
 	    Reveal.on('ready', initOnboardingGuideModal);
 	    Reveal.on('ready', syncDiscCaseState);
@@ -3796,6 +3854,7 @@
       '.admin-mode-panel',
       '.image-lightbox',
       '.guide-modal',
+      '.profile-modal',
       '.custom-nav',
       '[data-admin-added-text]',
     ].join(',');
@@ -4895,7 +4954,7 @@
 
       document.addEventListener('click', (event) => {
         if (!bodyEl.classList.contains('admin-mode-active')) return;
-        if (event.target.closest('.admin-mode-panel, .chapter-nav, .custom-nav, .guide-modal, .image-lightbox')) return;
+        if (event.target.closest('.admin-mode-panel, .chapter-nav, .custom-nav, .guide-modal, .image-lightbox, .profile-modal')) return;
 
         const currentSection = getCurrentSection();
         if (!currentSection?.contains(event.target)) return;
