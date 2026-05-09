@@ -2831,12 +2831,22 @@
       const coverScale = Math.max(viewportW / 1920, viewportH / 1080);
       const coverX = (viewportW - 1920 * coverScale) / 2;
       const coverY = (viewportH - 1080 * coverScale) / 2;
+      const safePad = 48;
+
+      function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
+      }
 
       function place(el, sourceX, sourceY, sourceW, sourceH) {
-        el.style.left = `${(coverX + sourceX * coverScale - slideRect.left) / slideScale}px`;
-        el.style.top = `${(coverY + sourceY * coverScale - slideRect.top) / slideScale}px`;
-        el.style.width = `${(sourceW * coverScale) / slideScale}px`;
-        el.style.height = `${(sourceH * coverScale) / slideScale}px`;
+        const width = sourceW * coverScale;
+        const height = sourceH * coverScale;
+        const viewportX = clamp(coverX + sourceX * coverScale, safePad, viewportW - width - safePad);
+        const viewportY = clamp(coverY + sourceY * coverScale, safePad, viewportH - height - safePad);
+
+        el.style.left = `${(viewportX - slideRect.left) / slideScale}px`;
+        el.style.top = `${(viewportY - slideRect.top) / slideScale}px`;
+        el.style.width = `${width / slideScale}px`;
+        el.style.height = `${height / slideScale}px`;
       }
 
       place(topLogo, 100, 100, 257, 32);
