@@ -6,3 +6,4 @@ dist/
 sorce/
 assets/offline-videos/*
 !assets/offline-videos/README.md
+!assets/offline-videos/mac-shortcut-master.mov
