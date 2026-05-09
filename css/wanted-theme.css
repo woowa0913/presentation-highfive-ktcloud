@@ -7594,11 +7594,7 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 }
 
 .mac-demo-address {
-  justify-self: center;
-  font-size: 0.74em;
-  font-weight: 800;
-  color: #667085;
-  letter-spacing: 0.02em;
+  display: none;
 }
 
 .mac-demo-open {
