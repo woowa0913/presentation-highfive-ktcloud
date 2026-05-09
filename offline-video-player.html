@@ -70,7 +70,7 @@
 <body>
   <main>
     <div class="player-shell">
-      <video id="offlineVideo" controls autoplay playsinline></video>
+      <video id="offlineVideo" controls autoplay muted playsinline></video>
     </div>
     <p id="message" class="message">재생할 오프라인 영상 경로를 확인할 수 없습니다.</p>
   </main>
@@ -78,7 +78,11 @@
   <script>
     const params = new URLSearchParams(window.location.hash.slice(1));
     const src = params.get('src') || '';
-    const isAllowedVideo = /^assets\/offline-videos\/[\w.-]+\.(mp4|mov|webm)$/i.test(src);
+    const isAllowedVideo =
+      src.startsWith('assets/offline-videos/') &&
+      !src.includes('..') &&
+      !src.includes('\\') &&
+      /\.(mp4|mov|webm)$/i.test(src);
     const video = document.getElementById('offlineVideo');
     const message = document.getElementById('message');
 
