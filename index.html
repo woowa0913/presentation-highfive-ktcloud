@@ -779,6 +779,7 @@
                   title="실시간 밸런스게임"
                   loading="eager"
                   data-live-src="https://kt-cloud-balance-game.vercel.app/#/"
+                  data-offline-src="assets/balance-game/index.html"
                   data-mac-demo-iframe
                   referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <video
@@ -2562,7 +2563,6 @@
     const OFFLINE_PASSWORD = '0401';
     const OFFLINE_VIDEO_MAP = {
       'https://mac-shortcut-master-v4.vercel.app/': 'assets/offline-videos/mac-shortcut-master.mov',
-      'https://kt-cloud-balance-game.vercel.app/#/': 'assets/offline-videos/kt-cloud-balance-game.mov',
       'https://kac-doc-check.vercel.app/': 'assets/offline-videos/kac-doc-check.webm',
       'https://kac-mock-test.vercel.app/': 'assets/offline-videos/kac-mock-test.webm',
       'https://disc-coaching-analyzer.vercel.app/': 'assets/offline-videos/disc-coaching-analyzer.webm',
@@ -2575,6 +2575,9 @@
       'https://invest-k882.onrender.com': 'assets/offline-videos/pi-evaluation-system.mov',
       'https://ktcloud2033.vercel.app': 'assets/offline-videos/ktcloud-2033.mov',
       'https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view': 'assets/offline-videos/gpts-conversation-demo.mp4',
+    };
+    const OFFLINE_APP_MAP = {
+      'https://kt-cloud-balance-game.vercel.app/#/': 'assets/balance-game/index.html',
     };
 
     const TOP_UI_HIDE_DELAY = 1000;
@@ -2620,6 +2623,11 @@
       return OFFLINE_VIDEO_MAP[normalized] || OFFLINE_VIDEO_MAP[normalized.replace(/\/$/, '')] || '';
     }
 
+    function getOfflineAppPath(url) {
+      const normalized = normalizeExternalUrl(url);
+      return OFFLINE_APP_MAP[normalized] || OFFLINE_APP_MAP[normalized.replace(/\/$/, '')] || '';
+    }
+
     function getOfflineVideoPlayerUrl(path) {
       const params = new URLSearchParams({ src: path });
       return `offline-video-player.html#${params.toString()}`;
@@ -2633,8 +2641,9 @@
       if (!iframe || !liveUrl) return;
       iframe.dataset.liveSrc = liveUrl;
       const offlinePath = getOfflineVideoPath(liveUrl);
-      const nextSrc = isOfflineMode() && offlinePath
-        ? getOfflineVideoPlayerUrl(offlinePath)
+      const offlineAppPath = iframe.dataset.offlineSrc || getOfflineAppPath(liveUrl);
+      const nextSrc = isOfflineMode()
+        ? (offlineAppPath || (offlinePath ? getOfflineVideoPlayerUrl(offlinePath) : liveUrl))
         : liveUrl;
       if (iframe.getAttribute('src') !== nextSrc) {
         iframe.setAttribute('src', nextSrc);
@@ -2644,7 +2653,7 @@
     function syncOfflineIframeSources() {
       document.querySelectorAll('iframe').forEach((iframe) => {
         const liveUrl = getIframeLiveUrl(iframe);
-        if (!liveUrl || !getOfflineVideoPath(liveUrl)) return;
+        if (!liveUrl || (!getOfflineVideoPath(liveUrl) && !(iframe.dataset.offlineSrc || getOfflineAppPath(liveUrl)))) return;
         setIframeSourceForMode(iframe, liveUrl);
       });
     }
@@ -2659,6 +2668,12 @@
       const offlinePath = getOfflineVideoPath(url);
       if (offlinePath) {
         window.open(getOfflineVideoPlayerUrl(offlinePath), '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      const offlineAppPath = getOfflineAppPath(url);
+      if (offlineAppPath) {
+        window.open(offlineAppPath, '_blank', 'noopener,noreferrer');
         return;
       }
 

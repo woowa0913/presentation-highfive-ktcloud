@@ -7804,7 +7804,7 @@ body.offline-mode .case-mock-test-slide .case-app-screen iframe {
   display: none;
 }
 
-body.offline-mode .balance-game-opening-slide .mac-demo-body iframe {
+body.offline-mode .balance-game-opening-slide .mac-demo-body iframe:not([data-offline-src]) {
   display: none;
 }
 
@@ -7815,6 +7815,14 @@ body.offline-mode .balance-game-offline-video {
   min-height: 782px;
   background: #000;
   object-fit: contain;
+}
+
+body.offline-mode .balance-game-opening-slide .mac-demo-body iframe[data-offline-src] {
+  display: block;
+}
+
+body.offline-mode .balance-game-opening-slide .mac-demo-body iframe[data-offline-src] + .balance-game-offline-video {
+  display: none;
 }
 
 .balance-game-opening-spacer {
