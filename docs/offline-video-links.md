@@ -11,12 +11,12 @@
 | DISC 코칭 분석기 | `https://disc-coaching-analyzer.vercel.app/` | `assets/offline-videos/disc-coaching-analyzer.webm` |
 | DISC 앱 데모 | `https://drive.google.com/file/d/1GKNxXqahhZcEx5riUGBRTOSdTSa-2hzJ/view` | `assets/offline-videos/disc-coaching-analyzer.webm` |
 | 칼리브레이션 시뮬레이터 | `https://kt-cloud-callibration.vercel.app/` | `assets/offline-videos/kt-cloud-calibration.mov` |
-| D.Toon | `https://dtoon-dtoon.vercel.app/` | `assets/offline-videos/dtoon-dtoon.mov` |
-| kt cloud 만다라트 | `https://kt-cloud-mandala.vercel.app/` | `assets/offline-videos/kt-cloud-mandala.mov` |
-| Thanks Letter | `https://thanks-letter-dun.vercel.app/` | `assets/offline-videos/thanks-letter.mov` |
-| PI 평가 시스템 | `https://invest-k882.onrender.com` | `assets/offline-videos/pi-evaluation-system.mov` |
-| kt cloud 2033 | `https://ktcloud2033.vercel.app` | `assets/offline-videos/ktcloud-2033.mov` |
-| 1on1 시뮬레이터 | `https://kt-leadership-simulator-production.up.railway.app/` | `assets/offline-videos/kt-leadership-simulator.mov` |
+| D.Toon | `https://dtoon-dtoon.vercel.app/` | `assets/offline-videos/dtoon-dtoon.mp4` |
+| kt cloud 만다라트 | `https://kt-cloud-mandala.vercel.app/` | `assets/offline-videos/kt-cloud-mandala.mp4` |
+| Thanks Letter | `https://thanks-letter-dun.vercel.app/` | `assets/offline-videos/thanks-letter.mp4` |
+| PI 평가 시스템 | `https://invest-k882.onrender.com` | `assets/offline-videos/pi-evaluation-system.mp4` |
+| kt cloud 2033 | `https://ktcloud2033.vercel.app` | `assets/offline-videos/ktcloud-2033.mp4` |
+| 1on1 시뮬레이터 | `https://kt-leadership-simulator-production.up.railway.app/` | `assets/offline-videos/kt-leadership-simulator.m4v` |
 | GPTs 대화형 데모 | `https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view` | `assets/offline-videos/gpts-conversation-demo.mp4` |
 
 Google Drive, Atlassian, BCG 출처 링크처럼 발표 중 데모로 열 필요가 낮은 참고 링크는 현재 오프라인 영상 매핑에서 제외했습니다.
