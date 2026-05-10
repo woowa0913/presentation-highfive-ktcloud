@@ -780,12 +780,11 @@
                   title="실시간 밸런스게임"
                   loading="eager"
                   data-live-src="https://kt-cloud-balance-game.vercel.app/#/"
-                  data-offline-src="assets/balance-game/index.html"
                   data-mac-demo-iframe
                   referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <video
                   class="balance-game-offline-video"
-                  src="assets/offline-videos/kt-cloud-balance-game.mov"
+                  src="assets/offline-videos/kt-cloud-balance-game.mp4"
                   controls
                   autoplay
                   muted
@@ -2564,6 +2563,7 @@
     const OFFLINE_PASSWORD = '0401';
     const OFFLINE_VIDEO_MAP = {
       'https://mac-shortcut-master-v4.vercel.app/': 'assets/offline-videos/mac-shortcut-master.mov',
+      'https://kt-cloud-balance-game.vercel.app/#/': 'assets/offline-videos/kt-cloud-balance-game.mp4',
       'https://kac-doc-check.vercel.app/': 'assets/offline-videos/kac-doc-check.webm',
       'https://kac-mock-test.vercel.app/': 'assets/offline-videos/kac-mock-test.webm',
       'https://disc-coaching-analyzer.vercel.app/': 'assets/offline-videos/disc-coaching-analyzer.webm',
@@ -2577,9 +2577,7 @@
       'https://ktcloud2033.vercel.app': 'assets/offline-videos/ktcloud-2033.mov',
       'https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view': 'assets/offline-videos/gpts-conversation-demo.mp4',
     };
-    const OFFLINE_APP_MAP = {
-      'https://kt-cloud-balance-game.vercel.app/#/': 'assets/balance-game/index.html',
-    };
+    const OFFLINE_APP_MAP = {};
 
     const TOP_UI_HIDE_DELAY = 1000;
     const NAV_ARROW_SHOW_DELAY = 500;
