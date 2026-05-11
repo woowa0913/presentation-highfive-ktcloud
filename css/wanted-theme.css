@@ -5674,8 +5674,10 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  height: 40px;
   min-height: 38px;
   padding: 10px 14px;
+  box-sizing: border-box;
   border-radius: 14px;
   border: 1px solid rgba(51, 99, 255, 0.16);
   background: rgba(51, 99, 255, 0.12);
@@ -5741,6 +5743,7 @@ body.effects-off .reframe-motion-loop .reframe-process-step {
 .case-link-group {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 10px;
   margin-top: 10px;
 }
@@ -6224,12 +6227,7 @@ body.offline-mode .case-disc-browser .case-disc-zoom {
 }
 
 .case-disc-browser[data-disc-case-state="app"] .case-disc-screen iframe {
-  min-height: 640px;
-  width: calc(100% / 1.22);
-  height: calc(100% / 1.22);
-  transform: translateY(-18px) scale(1.22);
-  transform-origin: top center;
-  margin: 0 auto;
+  display: none;
 }
 
 .case-disc-browser[data-disc-case-state="snapshot"] iframe {
@@ -6241,6 +6239,24 @@ body.offline-mode .case-disc-browser .case-disc-zoom {
 
 .case-disc-browser[data-disc-case-state="snapshot"] .case-app-float-open {
   display: none;
+}
+
+.case-disc-app-snapshot {
+  display: none;
+  width: 100%;
+  height: 100%;
+  min-height: 640px;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.case-disc-browser[data-disc-case-state="app"] .case-disc-app-snapshot {
+  display: block;
+}
+
+.case-disc-browser[data-disc-case-state="snapshot"] .case-disc-app-snapshot,
+body.offline-mode .case-disc-app-snapshot {
+  display: none !important;
 }
 
 .case-disc-browser[data-disc-case-state="app"] .case-disc-zoom {
@@ -6959,6 +6975,28 @@ body.offline-mode .onboarding-tool-video {
 .onboarding-tool-card > .reframe-link,
 .onboarding-tool-card > .case-link-group {
   margin-top: 0;
+}
+
+.case-app-card-head .case-demo-actions,
+.case-disc-demo-actions,
+.onboarding-tool-card > .case-demo-actions,
+.onboarding-tool-card > .case-link-group {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.onboarding-tool-card > .case-demo-actions,
+.onboarding-tool-card > .case-link-group {
+  align-self: flex-end;
+}
+
+.case-app-card-head .demo-action-button,
+.case-disc-demo-actions .demo-action-button,
+.onboarding-tool-card .demo-action-button,
+.case-link-group .demo-action-button {
+  height: 40px;
+  min-height: 40px;
+  padding: 0 14px;
 }
 
 /* Fullscreen safety: keep tall app-preview slides inside non-16:9 viewports. */
@@ -7887,9 +7925,14 @@ body.offline-mode .onboarding-tool-video {
 .balance-game-opening-stage {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
   min-height: 88%;
   padding: 10px 46px 46px;
+}
+
+.balance-game-opening-stage > .balance-game-actions {
+  align-self: flex-end;
+  margin: 0 4px 0 0;
 }
 
 .balance-game-opening-slide .mac-demo-window {
