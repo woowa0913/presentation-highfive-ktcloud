@@ -6,9 +6,6 @@
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
   <link rel="stylesheet" href="css/wanted-theme.css?v=60">
 </head>
@@ -792,7 +789,7 @@
                   referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <video
                   class="balance-game-offline-video"
-                  src="assets/offline-videos/kt-cloud-balance-game.mp4"
+                  src="https://drive.google.com/uc?export=download&amp;id=1X9SrPVmQkY-TFXamwE6Wu2MxxgPNUpPu"
                   controls
                   autoplay
                   muted
@@ -1163,7 +1160,7 @@
                       referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     <video
                       class="case-app-offline-video"
-                      src="assets/offline-videos/kac-doc-check.webm"
+                      src="https://drive.google.com/uc?export=download&amp;id=1cio2Ld-zuMgabznUiqOzJxfgUGBYm8Fs"
                       controls
                       autoplay
                       muted
@@ -1230,7 +1227,7 @@
                       referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     <video
                       class="case-app-offline-video"
-                      src="assets/offline-videos/kac-mock-test.webm"
+                      src="https://drive.google.com/uc?export=download&amp;id=15PNijKpxYtaGRatn6vYfUElAbOWMr5SB"
                       controls
                       autoplay
                       muted
@@ -1378,7 +1375,7 @@
 	                    <img class="case-disc-app-snapshot" src="assets/pptx-media/case-disc-dynamics.png" alt="DISC 조직 다이내믹스 앱 화면">
 	                    <video
 	                      class="case-app-offline-video"
-	                      src="assets/offline-videos/disc-coaching-analyzer.webm"
+	                      src="https://drive.google.com/uc?export=download&amp;id=1xy-0kpkt4-uI8cRhHTRp-a5l48DMuGua"
 	                      controls
 	                      autoplay
 	                      muted
@@ -1463,7 +1460,7 @@
 	                      referrerpolicy="strict-origin-when-cross-origin"></iframe>
 	                    <video
 	                      class="case-app-offline-video"
-	                      src="assets/offline-videos/kt-cloud-calibration.mov"
+	                      src="https://drive.google.com/uc?export=download&amp;id=1wta0WtQdmQnilAa9VRBUw5RhPm4TMHat"
 	                      controls
 	                      autoplay
 	                      muted
@@ -1743,7 +1740,7 @@
                   </div>
                   <div class="mac-demo-body onboarding-tool-body">
                     <img class="onboarding-tool-snapshot" src="assets/offline-images/snapshot-dtoon-dtoon.png" alt="D툰D툰 앱 스냅샷">
-                    <video class="onboarding-tool-video" src="assets/offline-videos/dtoon-dtoon.mp4" controls autoplay muted playsinline></video>
+                    <video class="onboarding-tool-video" src="https://drive.google.com/uc?export=download&amp;id=1kRs7xPZY-z0k3gsSqE1b4enTlOC8Fg6F" controls autoplay muted playsinline></video>
                   </div>
                 </div>
                 <div class="case-demo-actions">
@@ -1767,7 +1764,7 @@
                   </div>
                   <div class="mac-demo-body onboarding-tool-body">
                     <img class="onboarding-tool-snapshot" src="assets/offline-images/snapshot-kt-cloud-mandala.png" alt="만다라차트 앱 스냅샷">
-                    <video class="onboarding-tool-video" src="assets/offline-videos/kt-cloud-mandala.mp4" controls autoplay muted playsinline></video>
+                    <video class="onboarding-tool-video" src="https://drive.google.com/uc?export=download&amp;id=1A3hKIzZ3NUwKDa-MUWlk4bc7DjEcIXl3" controls autoplay muted playsinline></video>
                   </div>
                 </div>
                 <div class="case-demo-actions">
@@ -1791,7 +1788,7 @@
                   </div>
                   <div class="mac-demo-body onboarding-tool-body">
                     <img class="onboarding-tool-snapshot" src="assets/offline-images/snapshot-thanks-letter.png" alt="땡큐레터 작성기 앱 스냅샷">
-                    <video class="onboarding-tool-video" src="assets/offline-videos/thanks-letter.mp4" controls autoplay muted playsinline></video>
+                    <video class="onboarding-tool-video" src="https://drive.google.com/uc?export=download&amp;id=15oixdElrGXgTjSKtWKP5EWZBbyfHMHhB" controls autoplay muted playsinline></video>
                   </div>
                 </div>
                 <div class="case-link-group">
@@ -2502,7 +2499,7 @@
 
   <!-- Branch / Mode Indicator -->
   <div class="branch-mode-indicator" id="branchModeIndicator">
-    <span>final 브랜치</span>
+    <span>share 브랜치</span>
     <span class="mode-dot" aria-hidden="true"></span>
     <span class="mode-label" id="modeLabel">live</span>
   </div>
@@ -2618,23 +2615,41 @@
     const modeLabel = document.getElementById('modeLabel');
     let navArrowTimer = null;
 
+    const SHARE_MODE = true;
     const OFFLINE_MODE_KEY = 'presentation-vibe-offline-mode-v1';
     const OFFLINE_PASSWORD = '0401';
+    const DRIVE_VIDEO_IDS = {
+      'mac-shortcut-master.mov': '118huUBt_zGiZpxCsjnymtY2a0MQKkMCG',
+      'kt-cloud-balance-game.mp4': '1X9SrPVmQkY-TFXamwE6Wu2MxxgPNUpPu',
+      'kac-doc-check.webm': '1cio2Ld-zuMgabznUiqOzJxfgUGBYm8Fs',
+      'kac-mock-test.webm': '15PNijKpxYtaGRatn6vYfUElAbOWMr5SB',
+      'disc-coaching-analyzer.webm': '1xy-0kpkt4-uI8cRhHTRp-a5l48DMuGua',
+      'kt-cloud-calibration.mov': '1wta0WtQdmQnilAa9VRBUw5RhPm4TMHat',
+      'dtoon-dtoon.mp4': '1kRs7xPZY-z0k3gsSqE1b4enTlOC8Fg6F',
+      'kt-cloud-mandala.mp4': '1A3hKIzZ3NUwKDa-MUWlk4bc7DjEcIXl3',
+      'thanks-letter.mp4': '15oixdElrGXgTjSKtWKP5EWZBbyfHMHhB',
+      'pi-evaluation-system.mp4': '1uWyl-6gre238PF3iBfB5k8_2cQU8quKD',
+      'ktcloud-2033.mp4': '1BuUpRcNpBRGZMix0bsDIhWRGC3ep4MsZ',
+      'kt-leadership-simulator.m4v': '15Guk3H1JtS2buBvvvkC7usCMTddARR8g',
+      'gpts-conversation-demo.mp4': '1bCZJHIjXIS8-axy-o36F98tOT3IGBXAs',
+    };
+    const drivePreviewUrl = (fileName) => `https://drive.google.com/file/d/${DRIVE_VIDEO_IDS[fileName]}/preview`;
+    const driveDownloadUrl = (fileName) => `https://drive.google.com/uc?export=download&id=${DRIVE_VIDEO_IDS[fileName]}`;
     const OFFLINE_VIDEO_MAP = {
-      'https://mac-shortcut-master-v4.vercel.app/': 'assets/offline-videos/mac-shortcut-master.mov',
-      'https://kt-cloud-balance-game.vercel.app/#/': 'assets/offline-videos/kt-cloud-balance-game.mp4',
-      'https://kac-doc-check.vercel.app/': 'assets/offline-videos/kac-doc-check.webm',
-      'https://kac-mock-test.vercel.app/': 'assets/offline-videos/kac-mock-test.webm',
-      'https://disc-coaching-analyzer.vercel.app/': 'assets/offline-videos/disc-coaching-analyzer.webm',
-      'https://drive.google.com/file/d/1GKNxXqahhZcEx5riUGBRTOSdTSa-2hzJ/view': 'assets/offline-videos/disc-coaching-analyzer.webm',
-      'https://kt-cloud-callibration.vercel.app/': 'assets/offline-videos/kt-cloud-calibration.mov',
-      'https://dtoon-dtoon.vercel.app/': 'assets/offline-videos/dtoon-dtoon.mp4',
-      'https://kt-cloud-mandala.vercel.app/': 'assets/offline-videos/kt-cloud-mandala.mp4',
-      'https://thanks-letter-dun.vercel.app/': 'assets/offline-videos/thanks-letter.mp4',
-      'https://kt-leadership-simulator-production.up.railway.app/': 'assets/offline-videos/kt-leadership-simulator.m4v',
-      'https://invest-k882.onrender.com': 'assets/offline-videos/pi-evaluation-system.mp4',
-      'https://ktcloud2033.vercel.app': 'assets/offline-videos/ktcloud-2033.mp4',
-      'https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view': 'assets/offline-videos/gpts-conversation-demo.mp4',
+      'https://mac-shortcut-master-v4.vercel.app/': drivePreviewUrl('mac-shortcut-master.mov'),
+      'https://kt-cloud-balance-game.vercel.app/#/': drivePreviewUrl('kt-cloud-balance-game.mp4'),
+      'https://kac-doc-check.vercel.app/': drivePreviewUrl('kac-doc-check.webm'),
+      'https://kac-mock-test.vercel.app/': drivePreviewUrl('kac-mock-test.webm'),
+      'https://disc-coaching-analyzer.vercel.app/': drivePreviewUrl('disc-coaching-analyzer.webm'),
+      'https://drive.google.com/file/d/1GKNxXqahhZcEx5riUGBRTOSdTSa-2hzJ/view': drivePreviewUrl('disc-coaching-analyzer.webm'),
+      'https://kt-cloud-callibration.vercel.app/': drivePreviewUrl('kt-cloud-calibration.mov'),
+      'https://dtoon-dtoon.vercel.app/': drivePreviewUrl('dtoon-dtoon.mp4'),
+      'https://kt-cloud-mandala.vercel.app/': drivePreviewUrl('kt-cloud-mandala.mp4'),
+      'https://thanks-letter-dun.vercel.app/': drivePreviewUrl('thanks-letter.mp4'),
+      'https://kt-leadership-simulator-production.up.railway.app/': drivePreviewUrl('kt-leadership-simulator.m4v'),
+      'https://invest-k882.onrender.com': drivePreviewUrl('pi-evaluation-system.mp4'),
+      'https://ktcloud2033.vercel.app': drivePreviewUrl('ktcloud-2033.mp4'),
+      'https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view': drivePreviewUrl('gpts-conversation-demo.mp4'),
     };
     const OFFLINE_APP_MAP = {};
 
@@ -2654,14 +2669,17 @@
     }
 
     function isOfflineMode() {
+      if (SHARE_MODE) return true;
       return localStorage.getItem(OFFLINE_MODE_KEY) === 'true';
     }
 
     function setOfflineMode(active) {
-      localStorage.setItem(OFFLINE_MODE_KEY, active ? 'true' : 'false');
-      bodyEl.classList.toggle('offline-mode', active);
-      bodyEl.classList.toggle('live-mode', !active);
-      if (modeLabel) modeLabel.textContent = active ? 'offline' : 'live';
+      const nextActive = SHARE_MODE ? true : active;
+      localStorage.setItem(OFFLINE_MODE_KEY, nextActive ? 'true' : 'false');
+      bodyEl.classList.toggle('offline-mode', nextActive);
+      bodyEl.classList.toggle('live-mode', !nextActive);
+      bodyEl.classList.toggle('share-video-only', SHARE_MODE);
+      if (modeLabel) modeLabel.textContent = SHARE_MODE ? 'online' : (nextActive ? 'offline' : 'live');
       syncOfflineIframeSources();
     }
 
@@ -2687,6 +2705,7 @@
     }
 
     function getOfflineVideoPlayerUrl(path) {
+      if (/^https?:\/\//.test(path)) return path;
       const params = new URLSearchParams({ src: path });
       return `offline-video-player.html#${params.toString()}`;
     }
@@ -2736,6 +2755,40 @@
       }
 
       window.alert('오프라인 모드에서 사용할 로컬 영상이 아직 준비되지 않은 링크입니다.');
+    }
+
+    function initShareModeLinkSanitizer() {
+      if (!SHARE_MODE) return;
+
+      document.querySelectorAll('[data-mac-open-window]').forEach((button) => {
+        const offlinePath = getOfflineVideoPath(button.dataset.macOpenWindow);
+        if (!offlinePath) return;
+        button.hidden = true;
+        button.dataset.shareHidden = 'true';
+        button.setAttribute('aria-label', '데모 영상 보기');
+        if (button.textContent.trim() === 'App 열기') {
+          button.textContent = 'Demo 보기';
+        }
+      });
+
+      document.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach((link) => {
+        const offlinePath = getOfflineVideoPath(link.href);
+        if (offlinePath) {
+          link.href = getOfflineVideoPlayerUrl(offlinePath);
+          if (/App\s*열기/.test(link.textContent)) {
+            link.hidden = true;
+            link.dataset.shareHidden = 'true';
+          }
+          return;
+        }
+
+        link.dataset.shareBlockedHref = link.href;
+        link.removeAttribute('href');
+        link.hidden = true;
+        link.dataset.shareHidden = 'true';
+        link.setAttribute('aria-disabled', 'true');
+        link.setAttribute('title', '공유용 오프라인 슬라이드에서는 외부 링크를 열 수 없습니다.');
+      });
     }
 
     function openDemoVideo(url) {
@@ -4913,6 +4966,10 @@
       adminEndButton?.addEventListener('dblclick', (event) => {
         event.preventDefault();
         event.stopPropagation();
+        if (SHARE_MODE) {
+          window.alert('공유용 브랜치에서는 오프라인 모드가 고정되어 있습니다.');
+          return;
+        }
         const password = window.prompt('오프라인 모드 비밀번호를 입력해주세요.');
         if (password === OFFLINE_PASSWORD) {
           const nextMode = !isOfflineMode();
@@ -5111,6 +5168,8 @@
     Reveal.on('ready', initAdminMode);
     Reveal.on('ready', () => {
       setOfflineMode(isOfflineMode());
+      initDemoVideoButtons();
+      initShareModeLinkSanitizer();
       initOfflineLinkRouting();
     });
   </script>

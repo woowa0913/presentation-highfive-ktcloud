@@ -1768,6 +1768,19 @@ body.offline-mode .branch-mode-indicator .mode-dot {
   box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.16);
 }
 
+body.share-video-only .branch-mode-indicator .mode-dot {
+  background: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.14);
+}
+
+[data-share-hidden="true"],
+a[aria-disabled="true"] {
+  display: none !important;
+  cursor: not-allowed;
+  opacity: 0.52;
+  filter: grayscale(0.25);
+}
+
 /* 서브 페이지 드롭다운 */
 .chapter-pages {
   position: absolute;
