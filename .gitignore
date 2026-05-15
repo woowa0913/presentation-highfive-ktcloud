@@ -18,3 +18,4 @@ assets/offline-videos/*
 !assets/offline-videos/pi-evaluation-system.mp4
 !assets/offline-videos/ktcloud-2033.mp4
 !assets/offline-videos/kt-leadership-simulator.m4v
+.vercel

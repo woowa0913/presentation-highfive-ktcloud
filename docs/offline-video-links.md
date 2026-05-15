@@ -2,7 +2,7 @@
 
 공유용 영상 모드에서는 아래 외부 링크가 Google Drive에 올려둔 영상으로만 연결됩니다.
 
-`share` 브랜치는 화면에는 `online`으로 표시되지만, 슬라이드 안의 앱 링크와 iframe은 외부 앱을 열지 않고 준비된 데모 영상만 재생하도록 라우팅됩니다. 영상이 준비되지 않은 외부 참고 링크는 공유용 화면에서 숨김 처리됩니다.
+`share` 브랜치는 화면에는 `online`으로 표시되지만, 대부분의 앱 링크와 iframe은 외부 앱을 열지 않고 준비된 저용량 데모 영상만 재생하도록 라우팅됩니다. 14p 실시간 밸런스게임 슬라이드 안의 iframe만 예외적으로 라이브 웹 페이지를 표시합니다. 영상이 준비되지 않은 외부 참고 링크는 공유용 화면에서 숨김 처리됩니다.
 
 | 구분 | 원본 링크 | 공유 영상 |
 |---|---|---|
@@ -19,7 +19,7 @@
 | PI 평가 시스템 | `https://invest-k882.onrender.com` | `https://drive.google.com/file/d/1uWyl-6gre238PF3iBfB5k8_2cQU8quKD/preview` |
 | kt cloud 2033 | `https://ktcloud2033.vercel.app` | `https://drive.google.com/file/d/1BuUpRcNpBRGZMix0bsDIhWRGC3ep4MsZ/preview` |
 | 1on1 시뮬레이터 | `https://kt-leadership-simulator-production.up.railway.app/` | `https://drive.google.com/file/d/15Guk3H1JtS2buBvvvkC7usCMTddARR8g/preview` |
-| GPTs 대화형 데모 | `https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view` | `https://drive.google.com/file/d/1bCZJHIjXIS8-axy-o36F98tOT3IGBXAs/preview` |
+| GPTs 대화형 데모 | `https://drive.google.com/file/d/1bCZJHIjXIS8-axy-o36F98tOT3IGBXAs/view?usp=drive_link` | `https://drive.google.com/file/d/1bCZJHIjXIS8-axy-o36F98tOT3IGBXAs/preview` |
 
 Google Drive, Atlassian, BCG 출처 링크처럼 발표 중 데모로 열 필요가 낮은 참고 링크는 현재 오프라인 영상 매핑에서 제외했습니다.
 
