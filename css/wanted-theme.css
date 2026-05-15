@@ -6974,6 +6974,8 @@ body.offline-mode .case-disc-app-snapshot {
   height: 100%;
   min-height: 282px;
   border: 0;
+  opacity: 1;
+  transform: none;
   object-fit: contain;
   background: #000;
 }
@@ -6984,6 +6986,7 @@ body.offline-mode .onboarding-tool-snapshot {
 
 body.offline-mode .onboarding-tool-video {
   display: block;
+  opacity: 1;
 }
 
 .onboarding-tool-eyebrow {
