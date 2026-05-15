@@ -6,15 +6,3 @@ dist/
 sorce/
 assets/offline-videos/*
 !assets/offline-videos/README.md
-!assets/offline-videos/mac-shortcut-master.mov
-!assets/offline-videos/kt-cloud-balance-game.mp4
-!assets/offline-videos/kac-doc-check.webm
-!assets/offline-videos/kac-mock-test.webm
-!assets/offline-videos/disc-coaching-analyzer.webm
-!assets/offline-videos/kt-cloud-calibration.mov
-!assets/offline-videos/dtoon-dtoon.mp4
-!assets/offline-videos/kt-cloud-mandala.mp4
-!assets/offline-videos/thanks-letter.mp4
-!assets/offline-videos/pi-evaluation-system.mp4
-!assets/offline-videos/ktcloud-2033.mp4
-!assets/offline-videos/kt-leadership-simulator.m4v
