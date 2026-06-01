@@ -4,12 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/wanted-theme.css?v=57">
+  <link rel="stylesheet" href="css/wanted-theme.css?v=60">
 </head>
 <body>
 
@@ -19,6 +20,8 @@
       <source src="assets/images/intro_video.mp4" type="video/mp4">
     </video>
   </div>
+
+  <audio id="speakerCueAudio" src="assets/intro-outro.mp3" preload="auto"></audio>
 
   <!-- 상단 챕터 네비게이션 바 -->
   <nav class="chapter-nav" id="chapterNav">
@@ -43,8 +46,12 @@
     </button>
     <button class="chapter-btn" data-chapter="closing">End</button>
     <!-- 이펙트 토글 -->
-    <button class="effect-toggle" id="effectToggle">Effect ON</button>
+    <div class="nav-actions">
+      <button class="effect-toggle" id="effectToggle">Effect ON</button>
+      <button class="nav-panel-toggle" id="navPanelHide" type="button">패널 숨기기</button>
+    </div>
   </nav>
+  <button class="nav-panel-restore" id="navPanelRestore" type="button">Nav</button>
 
   <aside class="admin-mode-panel" id="adminModePanel" aria-hidden="true">
     <div class="admin-mode-head">
@@ -133,7 +140,7 @@
       <!-- ============================================
            HERO: 영상 배경 + blend 텍스트
            ============================================ -->
-      <section data-chapter="hero">
+      <section data-chapter="hero" data-audio-toggle="speaker">
         <div class="hero-section-logos">
           <div class="hero-sec-top-logo">
             <img src="assets/images/high-five-logo-title-dark.png" alt="HIGH FIVE 26">
@@ -146,6 +153,22 @@
           <div class="hero-main-title">HR TECH</div>
           <div class="hero-sub-en">방법을 핏하게, 바이브 코딩으로 여는 'HRD 메이커' 시대</div>
           <div class="hero-sub-kr">kt cloud 박상우</div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           Title (배경: image1.png)
+           ============================================ -->
+      <section data-background-image="assets/pptx-media/image1.png" data-background-size="100% 100%" data-chapter="intro">
+        <div class="slide-title-wrap">
+          <h1>
+            방법을 핏하게,<br>
+            바이브 코딩으로 여는<br>
+            'HRD 메이커' 시대
+          </h1>
+          <button type="button" class="speaker-info title-key-message speaker-profile-trigger" data-profile-open aria-label="박상우 소개 창 열기">
+            <span class="org">kt cloud</span>&nbsp;&nbsp;<span class="name">박상우</span>
+          </button>
         </div>
       </section>
 
@@ -178,24 +201,8 @@
         </div>
       </section>
 
-      <!-- ============================================
-           Title (배경: image1.png)
-           ============================================ -->
-      <section data-background-image="assets/pptx-media/image1.png" data-background-size="cover" data-chapter="intro">
-        <div class="slide-title-wrap">
-          <h1>
-            방법을 핏하게,<br>
-            바이브 코딩으로 여는<br>
-            'HRD 메이커' 시대
-          </h1>
-          <div class="speaker-info title-key-message">
-            <span class="org">kt cloud</span>&nbsp;&nbsp;<span class="name">박상우</span>
-          </div>
-        </div>
-      </section>
-
       <!-- Index / 목차 -->
-      <section data-background-image="assets/pptx-media/image2.png" data-background-size="cover" data-chapter="index">
+      <section data-background-image="assets/pptx-media/image2.png" data-background-size="100% 100%" data-chapter="index">
         <div class="slide-index-wrap">
           <div class="index-numbers">01<br>02<br>03<br>04</div>
           <div class="index-items">
@@ -208,7 +215,7 @@
       </section>
 
       <!-- ==================== CH1: 도입 ==================== -->
-      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch1">
+      <section data-background-image="assets/pptx-media/image3.png" data-background-size="100% 100%" data-chapter="ch1">
         <div class="slide-section-wrap">
           <div class="section-number">01</div>
           <h2>만들고 싶었지만,<br>만들 수 없었던 시간들</h2>
@@ -411,16 +418,16 @@
 
             <div class="reframe-discovery-visual">
               <figure class="reframe-discovery-frame" data-step="0">
-                <img src="https://m.media-amazon.com/images/I/91oLbKMEadL._AC_UF350,350_QL50_.jpg" alt="프로그래밍 입문서 표지 1" referrerpolicy="no-referrer">
+                <img src="assets/offline-images/discovery-book-1.jpg" alt="프로그래밍 입문서 표지 1">
               </figure>
               <figure class="reframe-discovery-frame" data-step="1">
-                <img src="https://contents.kyobobook.co.kr/sih/fit-in/400x0/pdt/9788992649681.jpg" alt="프로그래밍 입문서 표지 2" referrerpolicy="no-referrer">
+                <img src="assets/offline-images/discovery-book-2.jpg" alt="프로그래밍 입문서 표지 2">
               </figure>
               <figure class="reframe-discovery-frame" data-step="2">
-                <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1328834793i/2998152.jpg" alt="프로그래밍 입문서 표지 3" referrerpolicy="no-referrer">
+                <img src="assets/offline-images/discovery-book-3.jpg" alt="프로그래밍 입문서 표지 3">
               </figure>
               <figure class="reframe-discovery-frame" data-step="3">
-                <img src="https://dz2cdn1.dzone.com/storage/temp/13978501-effective-python-ch09.jpg" alt="프로그래밍 서적 내지" referrerpolicy="no-referrer">
+                <img src="assets/offline-images/discovery-book-4.jpg" alt="프로그래밍 서적 내지">
               </figure>
 
               <div class="reframe-discovery-caption">
@@ -489,7 +496,11 @@
                 <a class="case-live-address" href="https://www.google.com/search?q=macbook+shortcuts+wallpaer&sca_esv=4f38280b320b6d53&udm=2&biw=1710&bih=868&sxsrf=ANbL-n41n2kSmU9nt48UVIdz-vM1tTKJWA%3A1776147392032&ei=wNvdabDTAa6o2roP77Df-AI&ved=0ahUKEwiws_vS2OyTAxUulFYBHW_YFy8Q4dUDCBI&uact=5&oq=macbook+shortcuts+wallpaer&gs_lp=Egtnd3Mtd2l6LWltZyIabWFjYm9vayBzaG9ydGN1dHMgd2FsbHBhZXJIuxhQ6wNYvRRwAHgAkAEAmAHsAaAB3gyqAQUwLjguMrgBA8gBAPgBAZgCCKAC2wrCAgcQIxgnGMkCwgIGEAAYBxgewgIFEAAYgATCAgQQABgewgIGEAAYChgewgIHEAAYgAQYE8ICBhAAGBMYHsICCBAAGBMYCBgemAMAiAYBkgcFMC42LjKgB6UcsgcFMC42LjK4B9sKwgcFMC43LjHIBw6ACAA&sclient=gws-wiz-img" target="_blank" rel="noreferrer">https://www.google.com/search?q=macbook+shortcuts+wallpaer&amp;udm=2&amp;biw=1710&amp;bih=868...</a>
                 <div class="case-live-toolbar">
                   <button class="case-live-toggle is-active" type="button" data-case-live-target="search">검색 화면</button>
-                  <button class="case-live-toggle" type="button" data-case-live-target="app">앱 실행</button>
+                  <button class="case-live-toggle" type="button" data-case-live-target="app">앱 화면</button>
+                </div>
+                <div class="case-demo-actions case-live-actions">
+                  <button type="button" class="demo-action-button" data-mac-open-window="https://mac-shortcut-master-v4.vercel.app/">App 열기</button>
+                  <button type="button" class="demo-action-button is-secondary" data-demo-video-url="https://mac-shortcut-master-v4.vercel.app/">Demo 보기</button>
                 </div>
               </div>
               <div class="reframe-browser-screen">
@@ -507,7 +518,7 @@
                   <iframe
                     title="Mac Shortcut Master App"
                     data-case-live-iframe
-                    data-src="https://mac-shortcut-master-v4.vercel.app/"
+                    data-live-src="https://mac-shortcut-master-v4.vercel.app/"
                     loading="lazy"
                     referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
@@ -579,7 +590,7 @@
       </section>
 
       <!-- ==================== CH2: 왜 메이커가 되어야 하는가 ==================== -->
-      <section data-background-image="assets/pptx-media/image4.png" data-background-size="cover" data-chapter="ch2">
+      <section data-background-image="assets/pptx-media/image4.png" data-background-size="100% 100%" data-chapter="ch2">
         <div class="slide-section-wrap">
           <div class="section-number" style="color:var(--wanted-dark);">02</div>
           <h2 style="color:var(--wanted-dark);">왜 HRD는<br>메이커가 되어야 하는가</h2>
@@ -741,7 +752,7 @@
       </section>
 
       <!-- ==================== CH2: HRD의 바이브 코딩, 개념이 아니라 실행 방식 ==================== -->
-      <section data-background-image="assets/pptx-media/image5.png" data-background-size="cover" data-chapter="ch2">
+      <section data-background-image="assets/pptx-media/image5.png" data-background-size="100% 100%" data-chapter="ch2">
         <div class="slide-section-wrap">
           <div class="section-number">02</div>
           <h2>HRD의 바이브 코딩,<br>개념이 아니라 실행 방식</h2>
@@ -752,6 +763,10 @@
         <div class="slide-body balance-game-opening-slide">
           <div class="body-title">실시간 밸런스게임 — 여러분의 생각은?</div>
           <div class="balance-game-opening-stage">
+            <div class="case-demo-actions balance-game-actions">
+              <button type="button" class="demo-action-button" data-mac-open-window="https://kt-cloud-balance-game.vercel.app/#/">App 열기</button>
+              <button type="button" class="demo-action-button is-secondary" data-demo-video-url="https://kt-cloud-balance-game.vercel.app/#/">Demo 보기</button>
+            </div>
             <div class="mac-demo-window fragment fade-up" data-mac-demo-window>
               <div class="mac-demo-titlebar">
                 <div class="mac-demo-controls">
@@ -770,11 +785,18 @@
                   </svg>
                 </button>
                 <iframe
-                  src="https://kt-cloud-balance-game.vercel.app/#/"
                   title="실시간 밸런스게임"
                   loading="eager"
+                  data-live-src="https://kt-cloud-balance-game.vercel.app/#/"
                   data-mac-demo-iframe
                   referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <video
+                  class="balance-game-offline-video"
+                  src="https://drive.google.com/uc?export=download&amp;id=1X9SrPVmQkY-TFXamwE6Wu2MxxgPNUpPu"
+                  controls
+                  autoplay
+                  muted
+                  playsinline></video>
               </div>
             </div>
           </div>
@@ -1043,7 +1065,7 @@
       </section>
 
       <!-- ==================== CH3: 실제 사례 ==================== -->
-      <section data-background-image="assets/pptx-media/image6.png" data-background-size="cover" data-chapter="ch3">
+      <section data-background-image="assets/pptx-media/image6.png" data-background-size="100% 100%" data-chapter="ch3">
         <div class="slide-section-wrap">
           <div class="section-number">03</div>
           <h2>실제 사례 —<br>문제를 도구로 바꾼 기록</h2>
@@ -1118,7 +1140,10 @@
               <div class="reframe-card case-app-card">
                 <div class="case-app-card-head">
                   <span class="reframe-eyebrow">Product View</span>
-                  <a class="reframe-link case-inline-link" href="https://kac-doc-check.vercel.app/" target="_blank" rel="noreferrer">데모 열기</a>
+                  <div class="case-demo-actions">
+                    <a class="demo-action-button" href="https://kac-doc-check.vercel.app/" target="_blank" rel="noreferrer">App 열기</a>
+                    <button type="button" class="demo-action-button is-secondary" data-demo-video-url="https://kac-doc-check.vercel.app/">Demo 보기</button>
+                  </div>
                 </div>
                 <div class="mac-demo-window case-app-browser" data-mac-demo-window style="min-height:620px;">
                   <div class="mac-demo-titlebar case-app-titlebar">
@@ -1131,11 +1156,18 @@
                   </div>
                   <div class="mac-demo-body case-app-screen">
                     <iframe
-                      src="https://kac-doc-check.vercel.app/"
                       title="KAC 서류 점검 앱"
                       loading="eager"
+                      data-live-src="https://kac-doc-check.vercel.app/"
                       data-mac-demo-iframe
                       referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <video
+                      class="case-app-offline-video"
+                      src="https://drive.google.com/uc?export=download&amp;id=1cio2Ld-zuMgabznUiqOzJxfgUGBYm8Fs"
+                      controls
+                      autoplay
+                      muted
+                      playsinline></video>
                   </div>
                 </div>
               </div>
@@ -1155,9 +1187,9 @@
 	                    <button
 	                      type="button"
 	                      class="case-proof-zoom"
-	                      data-lightbox-src="https://lh3.googleusercontent.com/d/1A8hVqX6bb0Wmua4cvbcMnjDym6kgy30i=w1600"
+	                      data-lightbox-src="assets/offline-images/slack-kac-doc.png"
 	                      data-lightbox-alt="KAC 서류 점검 전사 안내 이미지">
-	                      <img src="https://lh3.googleusercontent.com/d/1A8hVqX6bb0Wmua4cvbcMnjDym6kgy30i=w1600" alt="KAC 서류 점검 전사 안내 이미지">
+	                      <img src="assets/offline-images/slack-kac-doc.png" alt="KAC 서류 점검 전사 안내 이미지">
 	                    </button>
 	                  </div>
 	                </div>
@@ -1175,7 +1207,10 @@
               <div class="reframe-card case-app-card">
                 <div class="case-app-card-head">
                   <span class="reframe-eyebrow">Product View</span>
-                  <a class="reframe-link case-inline-link" href="https://kac-mock-test.vercel.app/" target="_blank" rel="noreferrer">데모 열기</a>
+                  <div class="case-demo-actions">
+                    <a class="demo-action-button" href="https://kac-mock-test.vercel.app/" target="_blank" rel="noreferrer">App 열기</a>
+                    <button type="button" class="demo-action-button is-secondary" data-demo-video-url="https://kac-mock-test.vercel.app/">Demo 보기</button>
+                  </div>
                 </div>
                 <div class="mac-demo-window case-app-browser" data-mac-demo-window style="min-height:620px;">
                   <div class="mac-demo-titlebar case-app-titlebar">
@@ -1188,11 +1223,18 @@
                   </div>
                   <div class="mac-demo-body case-app-screen">
                     <iframe
-                      src="https://kac-mock-test.vercel.app/"
                       title="KAC 모의고사 앱"
                       loading="eager"
+                      data-live-src="https://kac-mock-test.vercel.app/"
                       data-mac-demo-iframe
                       referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <video
+                      class="case-app-offline-video"
+                      src="https://drive.google.com/uc?export=download&amp;id=15PNijKpxYtaGRatn6vYfUElAbOWMr5SB"
+                      controls
+                      autoplay
+                      muted
+                      playsinline></video>
                   </div>
                 </div>
               </div>
@@ -1212,9 +1254,9 @@
 	                    <button
 	                      type="button"
 	                      class="case-proof-zoom"
-	                      data-lightbox-src="https://lh3.googleusercontent.com/d/1r4ttDiZOOE6LgvQv-x8ugmtRnkHcBm-r=w1600"
+	                      data-lightbox-src="assets/offline-images/slack-kac-mock.png"
 	                      data-lightbox-alt="KAC 모의고사 전사 안내 이미지">
-	                      <img src="https://lh3.googleusercontent.com/d/1r4ttDiZOOE6LgvQv-x8ugmtRnkHcBm-r=w1600" alt="KAC 모의고사 전사 안내 이미지">
+	                      <img src="assets/offline-images/slack-kac-mock.png" alt="KAC 모의고사 전사 안내 이미지">
 	                    </button>
 	                  </div>
 	                </div>
@@ -1313,23 +1355,34 @@
 	                      <button type="button" class="mac-dot is-expand" aria-label="새 창으로 열기" data-mac-open-window="https://disc-coaching-analyzer.vercel.app/"></button>
 	                    </div>
 	                    <div class="mac-demo-address">DISC report view</div>
-	                    <a class="reframe-link case-inline-link case-disc-demo-link" href="https://drive.google.com/file/d/1GKNxXqahhZcEx5riUGBRTOSdTSa-2hzJ/view" target="_blank" rel="noreferrer">DISC 앱 데모</a>
+	                    <div class="case-demo-actions case-disc-demo-actions">
+	                      <a class="demo-action-button" href="https://disc-coaching-analyzer.vercel.app/" target="_blank" rel="noreferrer">App 열기</a>
+	                      <button type="button" class="demo-action-button is-secondary" data-demo-video-url="https://disc-coaching-analyzer.vercel.app/">Demo 보기</button>
+	                    </div>
 	                  </div>
 	                  <div class="mac-demo-body case-disc-screen">
 	                    <button
 	                      type="button"
 	                      class="case-proof-zoom case-disc-zoom"
-	                      data-lightbox-src="https://lh3.googleusercontent.com/d/1K35tZs0uFk6D3KSoBdfwQVC2bNmnzseP=w1600"
+	                      data-lightbox-src="assets/offline-images/slack-disc.png"
 	                      data-lightbox-alt="DISC 조직 다이내믹스 앱 안내 이미지">
-	                      <img src="https://lh3.googleusercontent.com/d/1K35tZs0uFk6D3KSoBdfwQVC2bNmnzseP=w1600" alt="DISC 조직 다이내믹스 앱 안내 이미지">
+	                      <img src="assets/offline-images/slack-disc.png" alt="DISC 조직 다이내믹스 앱 안내 이미지">
 	                    </button>
 	                    <iframe
 	                      data-disc-app-iframe
-	                      data-src="https://disc-coaching-analyzer.vercel.app/"
+	                      data-live-src="https://disc-coaching-analyzer.vercel.app/"
 	                      title="DISC 조직 다이내믹스 앱"
 	                      loading="lazy"
 	                      data-mac-demo-iframe
 	                      referrerpolicy="strict-origin-when-cross-origin"></iframe>
+	                    <img class="case-disc-app-snapshot" src="assets/pptx-media/case-disc-dynamics.png" alt="DISC 조직 다이내믹스 앱 화면">
+	                    <video
+	                      class="case-app-offline-video"
+	                      src="https://drive.google.com/uc?export=download&amp;id=1xy-0kpkt4-uI8cRhHTRp-a5l48DMuGua"
+	                      controls
+	                      autoplay
+	                      muted
+	                      playsinline></video>
 	                  </div>
 	                </div>
 	              </div>
@@ -1392,7 +1445,10 @@
 	              <div class="reframe-card case-app-card case-calibration-app-card fragment fade-left">
 	                <div class="case-app-card-head">
 	                  <span class="reframe-eyebrow">Product View</span>
-	                  <a class="reframe-link case-inline-link" href="https://kt-cloud-callibration.vercel.app/" target="_blank" rel="noreferrer">데모 보기</a>
+	                  <div class="case-demo-actions">
+	                    <a class="demo-action-button" href="https://kt-cloud-callibration.vercel.app/" target="_blank" rel="noreferrer">App 열기</a>
+	                    <button type="button" class="demo-action-button is-secondary" data-demo-video-url="https://kt-cloud-callibration.vercel.app/">Demo 보기</button>
+	                  </div>
 	                </div>
 	                <div class="reframe-browser case-app-browser case-calibration-browser">
 	                  <div class="reframe-browser-bar">
@@ -1401,10 +1457,17 @@
 	                  </div>
 	                  <div class="reframe-browser-screen case-app-screen case-calibration-screen">
 	                    <iframe
-	                      src="https://kt-cloud-callibration.vercel.app/"
 	                      title="칼리브레이션 앱"
 	                      loading="lazy"
+	                      data-live-src="https://kt-cloud-callibration.vercel.app/"
 	                      referrerpolicy="strict-origin-when-cross-origin"></iframe>
+	                    <video
+	                      class="case-app-offline-video"
+	                      src="https://drive.google.com/uc?export=download&amp;id=1wta0WtQdmQnilAa9VRBUw5RhPm4TMHat"
+	                      controls
+	                      autoplay
+	                      muted
+	                      playsinline></video>
 	                    <button type="button" class="case-app-float-open" aria-label="새 창으로 열기" data-mac-open-window="https://kt-cloud-callibration.vercel.app/">
 	                      <svg viewBox="0 0 24 24" aria-hidden="true">
 	                        <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
@@ -1679,15 +1742,14 @@
                     <div class="mac-demo-address">dtoon-dtoon.vercel.app</div>
                   </div>
                   <div class="mac-demo-body onboarding-tool-body">
-                    <iframe
-                      src="https://dtoon-dtoon.vercel.app/"
-                      title="D툰D툰 앱 미리보기"
-                      loading="lazy"
-                      data-mac-demo-iframe
-                      referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <img class="onboarding-tool-snapshot" src="assets/offline-images/snapshot-dtoon-dtoon.png" alt="D툰D툰 앱 스냅샷">
+                    <video class="onboarding-tool-video" src="https://drive.google.com/uc?export=download&amp;id=1kRs7xPZY-z0k3gsSqE1b4enTlOC8Fg6F" controls autoplay muted playsinline></video>
                   </div>
                 </div>
-                <a class="reframe-link" href="https://dtoon-dtoon.vercel.app/" target="_blank" rel="noreferrer">데모 보기</a>
+                <div class="case-demo-actions">
+                  <a class="demo-action-button" href="https://dtoon-dtoon.vercel.app/" target="_blank" rel="noreferrer">App 열기</a>
+                  <button type="button" class="demo-action-button is-secondary" data-demo-video-url="https://dtoon-dtoon.vercel.app/">Demo 보기</button>
+                </div>
               </div>
 
               <div class="reframe-card is-rose onboarding-tool-card">
@@ -1704,15 +1766,14 @@
                     <div class="mac-demo-address">kt-cloud-mandala.vercel.app</div>
                   </div>
                   <div class="mac-demo-body onboarding-tool-body">
-                    <iframe
-                      src="https://kt-cloud-mandala.vercel.app/"
-                      title="만다라차트 앱 미리보기"
-                      loading="lazy"
-                      data-mac-demo-iframe
-                      referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <img class="onboarding-tool-snapshot" src="assets/offline-images/snapshot-kt-cloud-mandala.png" alt="만다라차트 앱 스냅샷">
+                    <video class="onboarding-tool-video" src="https://drive.google.com/uc?export=download&amp;id=1A3hKIzZ3NUwKDa-MUWlk4bc7DjEcIXl3" controls autoplay muted playsinline></video>
                   </div>
                 </div>
-                <a class="reframe-link" href="https://kt-cloud-mandala.vercel.app/" target="_blank" rel="noreferrer">데모 보기</a>
+                <div class="case-demo-actions">
+                  <a class="demo-action-button" href="https://kt-cloud-mandala.vercel.app/" target="_blank" rel="noreferrer">App 열기</a>
+                  <button type="button" class="demo-action-button is-secondary" data-demo-video-url="https://kt-cloud-mandala.vercel.app/">Demo 보기</button>
+                </div>
               </div>
 
               <div class="reframe-card is-mint onboarding-tool-card">
@@ -1729,16 +1790,13 @@
                     <div class="mac-demo-address">thanks-letter-dun.vercel.app</div>
                   </div>
                   <div class="mac-demo-body onboarding-tool-body">
-                    <iframe
-                      src="https://thanks-letter-dun.vercel.app/"
-                      title="땡큐레터 작성기 미리보기"
-                      loading="lazy"
-                      data-mac-demo-iframe
-                      referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <img class="onboarding-tool-snapshot" src="assets/offline-images/snapshot-thanks-letter.png" alt="땡큐레터 작성기 앱 스냅샷">
+                    <video class="onboarding-tool-video" src="https://drive.google.com/uc?export=download&amp;id=15oixdElrGXgTjSKtWKP5EWZBbyfHMHhB" controls autoplay muted playsinline></video>
                   </div>
                 </div>
                 <div class="case-link-group">
-                  <a class="reframe-link" href="https://thanks-letter-dun.vercel.app/" target="_blank" rel="noreferrer">데모 보기</a>
+                  <a class="demo-action-button" href="https://thanks-letter-dun.vercel.app/" target="_blank" rel="noreferrer">App 열기</a>
+                  <button type="button" class="demo-action-button is-secondary" data-demo-video-url="https://thanks-letter-dun.vercel.app/">Demo 보기</button>
                   <a class="reframe-link" href="https://drive.google.com/file/d/1t44BjWb2dC0hQr_MrSvQ4ZNMVsR_QAd2/view" target="_blank" rel="noreferrer">예시 보기</a>
                 </div>
               </div>
@@ -1748,7 +1806,7 @@
       </section>
 
 	      <!-- CH4 간지 (짝수=검정) — image6 -->
-	      <section data-background-image="assets/pptx-media/image6.png" data-background-size="cover" data-chapter="ch3">
+	      <section data-background-image="assets/pptx-media/image6.png" data-background-size="100% 100%" data-chapter="ch3">
 	        <div class="slide-section-wrap">
           <div class="section-number">03</div>
           <h2>어떻게 만들었나:<br>프로세스와 도구</h2>
@@ -2073,145 +2131,10 @@
       </section>
 
       <!-- ==================== CH4: 개인 실험에서 팀의 방식으로 ==================== -->
-      <section data-background-image="assets/pptx-media/image3.png" data-background-size="cover" data-chapter="ch4">
+      <section data-background-image="assets/pptx-media/image3.png" data-background-size="100% 100%" data-chapter="ch4">
         <div class="slide-section-wrap">
           <div class="section-number" style="color:var(--wanted-dark);">04</div>
           <h2 style="color:var(--wanted-dark);">개인 실험에서<br>팀의 방식으로</h2>
-        </div>
-      </section>
-
-      <section data-background-color="#0a0a0a" data-chapter="ch4">
-        <div class="slide-body dark team-practice-slide team-practice-rebuild">
-          <div class="body-title">혼자 만든 것이 아니라, 팀의 방식으로 진화 중이다</div>
-          <div class="team-practice-hero-panel">
-            <div class="team-practice-hero-copy">
-              <span class="team-practice-kicker">Team Operating Model</span>
-              <h3>개인의 실험이 팀의 제작 방식으로 이어지며,<br>도구도 함께 진화하고 있습니다.</h3>
-              <p>처음에는 혼자 문제를 풀기 위한 작은 시도였지만, 이제는 프롬프트와 배포 방식, 실패 경험까지 팀이 공유하는 공통 자산이 됐습니다.</p>
-            </div>
-            <div class="team-practice-hero-pillars">
-              <article class="team-practice-flow-card">
-                <span class="team-practice-flow-index">01</span>
-                <strong>개인 실험</strong>
-                <p>반복되는 불편을 작은 웹앱과 시뮬레이션으로 먼저 바꿔봅니다.</p>
-              </article>
-              <article class="team-practice-flow-card">
-                <span class="team-practice-flow-index">02</span>
-                <strong>팀 공유</strong>
-                <p>프롬프트, 링크, 실패 포인트를 서로 공유하며 제작 속도를 높입니다.</p>
-              </article>
-              <article class="team-practice-flow-card">
-                <span class="team-practice-flow-index">03</span>
-                <strong>함께 빌드</strong>
-                <p>좋은 패턴은 다른 문제로 옮겨가며 더 높은 완성도의 도구로 자랍니다.</p>
-              </article>
-            </div>
-          </div>
-          <div class="team-practice-version-panel">
-            <div class="team-practice-panel-head">
-              <span class="team-practice-kicker">Evolution Path</span>
-              <h3>진화 사례: 1on1 시뮬레이터</h3>
-            </div>
-            <div class="team-practice-version-grid">
-              <article class="team-practice-version-card">
-                <span class="team-practice-version-badge">v1</span>
-                <strong>텍스트 기반 웹앱</strong>
-                <p>빠르게 만들 수 있었지만, 실제 대화감과 몰입도는 제한적이었습니다.</p>
-              </article>
-              <article class="team-practice-version-card">
-                <span class="team-practice-version-badge">v2</span>
-                <strong>GPTs 대화형</strong>
-                <p>상대 맥락 입력은 가능해졌지만 사용 로그와 학습 데이터 축적은 어려웠습니다.</p>
-                <div class="team-link-group">
-                  <a class="team-link-button" href="https://ktcloud.atlassian.net/wiki/x/8IUrSg" target="_blank" rel="noreferrer">가이드 1</a>
-                  <a class="team-link-button" href="https://drive.google.com/file/d/1476PHKtcQ4kTTxdJze5Iaakkjicjurow/view" target="_blank" rel="noreferrer">가이드 2</a>
-                  <a class="team-link-button" href="https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view" target="_blank" rel="noreferrer">데모 보기</a>
-                </div>
-              </article>
-              <article class="team-practice-version-card is-accent">
-                <span class="team-practice-version-badge">v3</span>
-                <strong>게임화 + 데이터화</strong>
-                <p>몰입도를 높이고 활용 데이터를 쌓아 조직적으로 확장 가능한 형태로 발전했습니다.</p>
-                <div class="team-link-group">
-                  <a class="team-link-button" href="https://workspaceapi-server-production-03e0.up.railway.app/login" target="_blank" rel="noreferrer">웹앱 열기</a>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section data-background-color="#0a0a0a" data-chapter="ch4">
-        <div class="slide-body dark team-practice-slide team-practice-rebuild team-practice-rebuild-story">
-          <div class="body-title">동료 사례: 한 명의 특이한 시도가 아니라 팀 문화로</div>
-          <div class="team-practice-hero-panel">
-            <div class="team-practice-hero-copy">
-              <span class="team-practice-kicker">Team Culture</span>
-              <h3>코딩 경험 0명에서 시작했지만,<br>각자의 문제를 직접 푸는 문화가 만들어졌습니다.</h3>
-              <p>이제 바이브 코딩은 특정 개인의 특기가 아니라, 각자 맡은 문제를 빠르게 실험해보는 팀의 기본 방식으로 퍼지고 있습니다.</p>
-            </div>
-            <div class="team-practice-story-metrics">
-              <div class="team-practice-metric-card">
-                <span>코딩 경험</span>
-                <strong>0명 시작</strong>
-              </div>
-              <div class="team-practice-metric-card">
-                <span>팀 보유 도구</span>
-                <strong>6개+</strong>
-              </div>
-            </div>
-          </div>
-          <div class="team-practice-member-grid">
-            <article class="team-practice-member-card">
-              <span class="team-practice-member-badge">01</span>
-              <h3>박창윤</h3>
-              <strong>PI 평가 시스템</strong>
-              <p>프로젝트 발표 평가를 수작업 운영에서 <strong>실시간 자동화</strong> 흐름으로 전환했습니다.</p>
-              <span class="team-practice-member-note">운영 업무를 실시간 시스템으로 전환</span>
-            </article>
-            <article class="team-practice-member-card">
-              <span class="team-practice-member-badge">02</span>
-              <h3>박창윤</h3>
-              <strong>kt cloud 2033</strong>
-              <p>경력입사자 온보딩을 <strong>텍스트 어드벤처 게임</strong>으로 재설계해 몰입도를 높였습니다.</p>
-              <span class="team-practice-member-note">학습 경험을 스토리 기반 상호작용으로 재구성</span>
-            </article>
-            <article class="team-practice-member-card">
-              <span class="team-practice-member-badge">03</span>
-              <h3>김성환</h3>
-              <strong>1on1 시뮬레이터</strong>
-              <p>리더십 대화를 <strong>선택형 시뮬레이션</strong>으로 바꿔 반복 연습 가능한 형태로 만들었습니다.</p>
-              <span class="team-practice-member-note">리더십 스킬을 반복 가능한 훈련 도구로 전환</span>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section data-background-color="#0a0a0a" data-chapter="ch4">
-        <div class="slide-body dark">
-          <div class="body-title">실패와 진화: 1on1 시뮬레이터</div>
-          <div class="body-crop-c3 iteration-track">
-            <div class="body-card">
-              <strong>v1. 텍스트 기반 웹앱</strong>
-              <p>빠르게 만들 수 있었지만 실제 대화감과 몰입도는 낮았다.</p>
-            </div>
-            <div class="body-card">
-              <strong>v2. GPTs 대화형</strong>
-              <p>상대의 맥락 입력이 가능해졌지만, 사용 데이터 축적은 어려웠다.</p>
-              <div class="team-link-group">
-                <a class="team-link-button" href="https://ktcloud.atlassian.net/wiki/x/8IUrSg" target="_blank" rel="noreferrer">가이드 1</a>
-                <a class="team-link-button" href="https://drive.google.com/file/d/1476PHKtcQ4kTTxdJze5Iaakkjicjurow/view" target="_blank" rel="noreferrer">가이드 2</a>
-                <a class="team-link-button" href="https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view" target="_blank" rel="noreferrer">데모 보기</a>
-              </div>
-            </div>
-            <div class="body-card">
-              <strong>v3. 게임화 + 데이터화</strong>
-              <p>몰입도를 높이고 활용 데이터를 쌓아 조직적으로 확장할 수 있게 됐다.</p>
-              <div class="team-link-group">
-                <a class="team-link-button" href="https://workspaceapi-server-production-03e0.up.railway.app/login" target="_blank" rel="noreferrer">웹앱 열기</a>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -2243,6 +2166,155 @@
             </div>
 
             <p class="workstyle-key-message fragment fade-up">핵심 변화는 개발 속도가 아니라, 문제를 다루는 팀의 리듬이 짧아졌다는 점입니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0a" data-chapter="ch4">
+        <div class="slide-body dark team-practice-slide team-practice-rebuild">
+          <div class="body-title">혼자 만든 것이 아니라, 팀의 방식으로 진화 중이다</div>
+          <div class="team-practice-hero-panel">
+            <div class="team-practice-hero-copy">
+              <span class="team-practice-kicker">Team Operating Model</span>
+              <h3>개인의 실험이 팀의 제작 방식으로 이어지고,<br>도구도 함께 진화하고 있습니다.</h3>
+              <p>처음에는 혼자 문제를 풀기 위한 작은 시도였지만, 이제는 프롬프트와 배포 방식, 실패 경험까지 팀이 공유하는 공통 자산이 됐습니다.</p>
+            </div>
+            <div class="team-practice-hero-pillars">
+              <article class="team-practice-flow-card">
+                <span class="team-practice-flow-index">01</span>
+                <strong>개인 실험</strong>
+                <p>반복되는 불편을 작은 웹앱으로 먼저 바꿔봅니다.</p>
+              </article>
+              <article class="team-practice-flow-card">
+                <span class="team-practice-flow-index">02</span>
+                <strong>팀 공유</strong>
+                <p>프롬프트와 링크, 실패 포인트를 함께 공유합니다.</p>
+              </article>
+              <article class="team-practice-flow-card">
+                <span class="team-practice-flow-index">03</span>
+                <strong>함께 빌드</strong>
+                <p>좋은 패턴을 더 큰 문제로 확장합니다.</p>
+              </article>
+            </div>
+          </div>
+          <div class="team-practice-version-panel">
+            <div class="team-practice-panel-head">
+              <span class="team-practice-kicker">Evolution Path</span>
+              <h3>진화 사례: 1on1 시뮬레이터</h3>
+            </div>
+            <div class="team-practice-version-grid">
+              <article class="team-practice-version-card">
+                <span class="team-practice-version-badge">v1</span>
+                <strong>텍스트 기반 웹앱</strong>
+                <p>빠르게 만들 수 있었지만, 실제 대화감과 몰입도는 제한적이었습니다.</p>
+              </article>
+              <article class="team-practice-version-card">
+                <span class="team-practice-version-badge">v2</span>
+                <strong>GPTs 대화형</strong>
+                <p>상대 맥락 입력은 가능했지만, 사용 로그와 데이터 축적은 어려웠습니다.</p>
+                <div class="team-link-group">
+                  <a class="team-link-button" href="https://ktcloud.atlassian.net/wiki/x/8IUrSg" target="_blank" rel="noreferrer">가이드 1</a>
+                  <a class="team-link-button" href="https://drive.google.com/file/d/1476PHKtcQ4kTTxdJze5Iaakkjicjurow/view" target="_blank" rel="noreferrer">가이드 2</a>
+                  <a class="team-link-button" href="https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view" target="_blank" rel="noreferrer">데모 보기</a>
+                </div>
+              </article>
+              <article class="team-practice-version-card is-accent">
+                <span class="team-practice-version-badge">v3</span>
+                <strong>게임화 + 데이터화</strong>
+                <p>몰입도를 높이고 활용 데이터를 쌓아 조직적으로 확장 가능한 형태로 발전했습니다.</p>
+                <div class="team-link-group">
+                  <a class="team-link-button" href="https://kt-leadership-simulator-production.up.railway.app/" target="_blank" rel="noreferrer">App 열기</a>
+                  <button type="button" class="team-link-button is-demo" data-demo-video-url="https://kt-leadership-simulator-production.up.railway.app/">Demo 보기</button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0a" data-chapter="ch4">
+        <div class="slide-body dark team-practice-slide team-practice-rebuild team-practice-rebuild-story">
+          <div class="body-title">동료 사례: 한 명의 특이한 시도가 아니라 팀 문화로</div>
+          <div class="team-practice-hero-panel">
+            <div class="team-practice-hero-copy">
+              <span class="team-practice-kicker">Team Culture</span>
+              <h3>코딩 경험 0명에서 시작했지만,<br>각자의 문제를 직접 푸는 문화가 만들어졌습니다.</h3>
+              <p>이제 바이브 코딩은 특정 개인의 특기가 아니라, 각자 맡은 문제를 빠르게 실험해보는 팀의 기본 방식으로 퍼지고 있습니다.</p>
+            </div>
+            <div class="team-practice-story-metrics">
+              <div class="team-practice-metric-card">
+                <span>코딩 경험</span>
+                <strong>0명 시작</strong>
+              </div>
+              <div class="team-practice-metric-card">
+                <span>팀 보유 도구</span>
+                <strong>6개+</strong>
+              </div>
+            </div>
+          </div>
+          <div class="team-practice-member-grid">
+            <article class="team-practice-member-card">
+              <span class="team-practice-member-badge">01</span>
+              <h3>박창윤 <span>매니저</span></h3>
+              <strong>PI 평가 시스템</strong>
+              <p>프로젝트 발표 평가를 수작업 운영에서 <strong>실시간 자동화</strong> 흐름으로 전환했습니다.</p>
+              <span class="team-practice-member-note">운영 업무를 실시간 시스템으로 전환</span>
+              <div class="team-link-group team-member-actions">
+                <a class="team-link-button" href="https://invest-k882.onrender.com" target="_blank" rel="noreferrer">App 열기</a>
+                <button type="button" class="team-link-button is-demo" data-demo-video-url="https://invest-k882.onrender.com">Demo 보기</button>
+              </div>
+            </article>
+            <article class="team-practice-member-card">
+              <span class="team-practice-member-badge">02</span>
+              <h3>박창윤 <span>매니저</span></h3>
+              <strong>kt cloud 2033</strong>
+              <p>경력입사자 온보딩을 <strong>텍스트 어드벤처 게임</strong>으로 재설계해 몰입도를 높였습니다.</p>
+              <span class="team-practice-member-note">학습 경험을 스토리 기반 상호작용으로 재구성</span>
+              <div class="team-link-group team-member-actions">
+                <a class="team-link-button" href="https://ktcloud2033.vercel.app" target="_blank" rel="noreferrer">App 열기</a>
+                <button type="button" class="team-link-button is-demo" data-demo-video-url="https://ktcloud2033.vercel.app">Demo 보기</button>
+              </div>
+            </article>
+            <article class="team-practice-member-card">
+              <span class="team-practice-member-badge">03</span>
+              <h3>김성환 <span>매니저</span></h3>
+              <strong>1on1 시뮬레이터</strong>
+              <p>리더십 대화를 <strong>선택형 시뮬레이션</strong>으로 바꿔 반복 연습 가능한 형태로 만들었습니다.</p>
+              <span class="team-practice-member-note">리더십 스킬을 반복 가능한 훈련 도구로 전환</span>
+              <div class="team-link-group team-member-actions">
+                <a class="team-link-button" href="https://kt-leadership-simulator-production.up.railway.app/" target="_blank" rel="noreferrer">App 열기</a>
+                <button type="button" class="team-link-button is-demo" data-demo-video-url="https://kt-leadership-simulator-production.up.railway.app/">Demo 보기</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0a" data-chapter="ch4">
+        <div class="slide-body dark">
+          <div class="body-title">실패와 진화: 1on1 시뮬레이터</div>
+          <div class="body-crop-c3 iteration-track">
+            <div class="body-card">
+              <strong>v1. 텍스트 기반 웹앱</strong>
+              <p>빠르게 만들 수 있었지만 실제 대화감과 몰입도는 낮았다.</p>
+            </div>
+            <div class="body-card">
+              <strong>v2. GPTs 대화형</strong>
+              <p>상대의 맥락 입력이 가능해졌지만, 사용 데이터 축적은 어려웠다.</p>
+              <div class="team-link-group">
+                <a class="team-link-button" href="https://ktcloud.atlassian.net/wiki/x/8IUrSg" target="_blank" rel="noreferrer">가이드 1</a>
+                <a class="team-link-button" href="https://drive.google.com/file/d/1476PHKtcQ4kTTxdJze5Iaakkjicjurow/view" target="_blank" rel="noreferrer">가이드 2</a>
+                <a class="team-link-button" href="https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view" target="_blank" rel="noreferrer">데모 보기</a>
+              </div>
+            </div>
+            <div class="body-card">
+              <strong>v3. 게임화 + 데이터화</strong>
+              <p>몰입도를 높이고 활용 데이터를 쌓아 조직적으로 확장할 수 있게 됐다.</p>
+              <div class="team-link-group">
+                <a class="team-link-button" href="https://kt-leadership-simulator-production.up.railway.app/" target="_blank" rel="noreferrer">App 열기</a>
+                <button type="button" class="team-link-button is-demo" data-demo-video-url="https://kt-leadership-simulator-production.up.railway.app/">Demo 보기</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -2371,6 +2443,28 @@
         </div>
       </section>
 
+	      <!-- Q&A + QR -->
+	      <section data-background-image="assets/pptx-media/image7.png" data-background-size="100% 100%" data-chapter="closing">
+	        <div class="slide-qa-wrap">
+	        </div>
+	      </section>
+
+      <section data-background-color="#0a0a0f" data-chapter="closing" class="qa-question-slide">
+        <div class="qa-question-brand">HIGH FIVE 26</div>
+        <div class="qa-question-content">
+          <div class="qa-question-mark">Q.</div>
+          <h2>실제 HRD 현장에서 가장 먼저<br>자동화할 수 있는 업무는 무엇인가요?</h2>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f" data-chapter="closing" class="qa-question-slide">
+        <div class="qa-question-brand">HIGH FIVE 26</div>
+        <div class="qa-question-content">
+          <div class="qa-question-mark">Q.</div>
+          <h2>앞으로 HRD 담당자에게 필요한<br>새로운 역량은 무엇이라고 생각하시나요?</h2>
+        </div>
+      </section>
+
       <section data-background-color="#FFFFFF" data-chapter="closing" class="intro-reading-section" data-intro-step="0">
         <div class="intro-reading-stage">
           <p class="intro-reading-topline">오늘 이 자리, <span>여러분에게 새로운 읽을거리가 되길 바랍니다.</span></p>
@@ -2397,14 +2491,8 @@
         </div>
       </section>
 
-	      <!-- Q&A + QR -->
-	      <section data-background-image="assets/pptx-media/image7.png" data-background-size="cover" data-chapter="closing">
-	        <div class="slide-qa-wrap">
-	        </div>
-	      </section>
-
       <!-- CLOSING -->
-      <section data-background-image="assets/pptx-media/image10.png" data-background-size="cover" data-chapter="closing">
+      <section data-background-image="assets/pptx-media/image10.png" data-background-size="100% 100%" data-chapter="closing" data-audio-toggle="speaker">
         <div class="slide-closing-wrap">
         </div>
       </section>
@@ -2412,8 +2500,12 @@
     </div>
   </div>
 
-  <!-- Branch Indicator -->
-  <div style="position:fixed; bottom:24px; left:24px; font-size:14px; font-weight:700; color:rgba(255,255,255,0.8); background:rgba(0,0,0,0.6); padding:4px 10px; border-radius:6px; z-index:9999; pointer-events:none;">final 브랜치</div>
+  <!-- Branch / Mode Indicator -->
+  <div class="branch-mode-indicator" id="branchModeIndicator">
+    <span>final 브랜치</span>
+    <span class="mode-dot" aria-hidden="true"></span>
+    <span class="mode-label" id="modeLabel">live</span>
+  </div>
 
   <!-- Custom navigation buttons -->
   <button class="custom-nav custom-nav-left" id="navLeft" aria-label="이전 슬라이드">
@@ -2428,6 +2520,44 @@
     <div class="image-lightbox-dialog" role="dialog" aria-modal="true" aria-label="확대 이미지 보기">
       <button type="button" class="image-lightbox-close" data-lightbox-close aria-label="닫기">×</button>
       <img id="imageLightboxImg" alt="">
+    </div>
+  </div>
+
+  <div class="profile-modal" id="speakerProfileModal" aria-hidden="true">
+    <button type="button" class="profile-modal-backdrop" data-profile-close aria-label="소개 창 닫기"></button>
+    <div class="profile-modal-dialog" role="dialog" aria-modal="true" aria-label="박상우 소개">
+      <div class="profile-modal-head">
+        <h3>👋 안녕하세요, 박상우입니다</h3>
+        <button type="button" class="profile-modal-close" data-profile-close aria-label="닫기">×</button>
+      </div>
+      <div class="profile-modal-body">
+        <div class="profile-video-section">
+          <iframe
+            id="speakerProfileFrame"
+            title="자기소개 영상"
+            data-live-src="https://drive.google.com/file/d/1FZ39LeBl35HQ6wW70WaAbLiK8ku6qyLa/preview"
+            allow="autoplay"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="profile-info-list">
+          <div class="profile-info-item">
+            <span class="profile-info-label">🏢 소속</span>
+            <span class="profile-info-value">kt cloud ㅣ 인재육성TF</span>
+          </div>
+          <div class="profile-info-item">
+            <span class="profile-info-label">💼 직무</span>
+            <span class="profile-info-value">리더십 · 온보딩 · 인재개발</span>
+          </div>
+          <div class="profile-info-item">
+            <span class="profile-info-label">🤖 관심사</span>
+            <span class="profile-info-value">AI 활용 업무혁신 · 바이브코딩 · HRD 자동화</span>
+          </div>
+          <div class="profile-info-item">
+            <span class="profile-info-label">🎮 취미</span>
+            <span class="profile-info-value">아들 주호(7세)와 함께 게임 만들기</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -2482,10 +2612,73 @@
 
     /* ── 1. 네비게이션 바: 마우스 오버 시 표시, 떠나면 1초 후 숨김 ── */
     const nav = document.getElementById('chapterNav');
+    const navPanelHide = document.getElementById('navPanelHide');
+    const navPanelRestore = document.getElementById('navPanelRestore');
     let navTimer = null;
     const bodyEl = document.body;
     const viewportEl = document.querySelector('.reveal-viewport');
+    const modeLabel = document.getElementById('modeLabel');
     let navArrowTimer = null;
+
+    const OFFLINE_MODE_KEY = 'presentation-vibe-offline-mode-v1';
+    const OFFLINE_PASSWORD = '0401';
+    const DRIVE_PREVIEW_BASE = 'https://drive.google.com/file/d/';
+    const DRIVE_VIDEO_IDS = {
+      'mac-shortcut-master.mov': '118huUBt_zGiZpxCsjnymtY2a0MQKkMCG',
+      'kt-cloud-balance-game.mov': '1L1XJ1F7Sd8CZXlcf9zgD7KOkg9zoWrfw',
+      'kt-cloud-balance-game.mp4': '1X9SrPVmQkY-TFXamwE6Wu2MxxgPNUpPu',
+      'kac-doc-check.webm': '1cio2Ld-zuMgabznUiqOzJxfgUGBYm8Fs',
+      'kac-mock-test.webm': '15PNijKpxYtaGRatn6vYfUElAbOWMr5SB',
+      'disc-coaching-analyzer.webm': '1xy-0kpkt4-uI8cRhHTRp-a5l48DMuGua',
+      'kt-cloud-calibration.mov': '1wta0WtQdmQnilAa9VRBUw5RhPm4TMHat',
+      'dtoon-dtoon.mov': '1Ve_fJIDTvLQ3vvd4jfv5sSZyJpLcHM1H',
+      'dtoon-dtoon.mp4': '1kRs7xPZY-z0k3gsSqE1b4enTlOC8Fg6F',
+      'kt-cloud-mandala.mov': '1NHtXU9tuAksnN63YgET8W8XXOdlq9OMz',
+      'kt-cloud-mandala.mp4': '1A3hKIzZ3NUwKDa-MUWlk4bc7DjEcIXl3',
+      'thanks-letter.mov': '1IYJvDIHqyLxMem8p9VuYMMbXSvo233cj',
+      'thanks-letter.mp4': '15oixdElrGXgTjSKtWKP5EWZBbyfHMHhB',
+      'kt-leadership-simulator.mov': '1-fgKCEISmtNjAGhoO6-i7Seh9KbwozgT',
+      'kt-leadership-simulator.m4v': '15Guk3H1JtS2buBvvvkC7usCMTddARR8g',
+      'pi-evaluation-system.mov': '1wuveQYGOzUqSRPx8C-986EzSBWFxjMf8',
+      'pi-evaluation-system.mp4': '1uWyl-6gre238PF3iBfB5k8_2cQU8quKD',
+      'ktcloud-2033.mov': '1vjwhHID6BRe-4RiENaq060NfSxBZWlxv',
+      'ktcloud-2033.mp4': '1BuUpRcNpBRGZMix0bsDIhWRGC3ep4MsZ',
+      'gpts-conversation-demo.mp4': '1bCZJHIjXIS8-axy-o36F98tOT3IGBXAs',
+    };
+    const drivePreviewUrl = (fileName) => `${DRIVE_PREVIEW_BASE}${DRIVE_VIDEO_IDS[fileName]}/preview`;
+    const ONLINE_VIDEO_MAP = {
+      'https://mac-shortcut-master-v4.vercel.app/': drivePreviewUrl('mac-shortcut-master.mov'),
+      'https://kt-cloud-balance-game.vercel.app/#/': drivePreviewUrl('kt-cloud-balance-game.mov'),
+      'https://kac-doc-check.vercel.app/': drivePreviewUrl('kac-doc-check.webm'),
+      'https://kac-mock-test.vercel.app/': drivePreviewUrl('kac-mock-test.webm'),
+      'https://disc-coaching-analyzer.vercel.app/': drivePreviewUrl('disc-coaching-analyzer.webm'),
+      'https://drive.google.com/file/d/1GKNxXqahhZcEx5riUGBRTOSdTSa-2hzJ/view': drivePreviewUrl('disc-coaching-analyzer.webm'),
+      'https://kt-cloud-callibration.vercel.app/': drivePreviewUrl('kt-cloud-calibration.mov'),
+      'https://dtoon-dtoon.vercel.app/': drivePreviewUrl('dtoon-dtoon.mov'),
+      'https://kt-cloud-mandala.vercel.app/': drivePreviewUrl('kt-cloud-mandala.mov'),
+      'https://thanks-letter-dun.vercel.app/': drivePreviewUrl('thanks-letter.mov'),
+      'https://kt-leadership-simulator-production.up.railway.app/': drivePreviewUrl('kt-leadership-simulator.mov'),
+      'https://invest-k882.onrender.com': drivePreviewUrl('pi-evaluation-system.mov'),
+      'https://ktcloud2033.vercel.app': drivePreviewUrl('ktcloud-2033.mov'),
+      'https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view': drivePreviewUrl('gpts-conversation-demo.mp4'),
+    };
+    const OFFLINE_VIDEO_MAP = {
+      'https://mac-shortcut-master-v4.vercel.app/': drivePreviewUrl('mac-shortcut-master.mov'),
+      'https://kt-cloud-balance-game.vercel.app/#/': drivePreviewUrl('kt-cloud-balance-game.mp4'),
+      'https://kac-doc-check.vercel.app/': drivePreviewUrl('kac-doc-check.webm'),
+      'https://kac-mock-test.vercel.app/': drivePreviewUrl('kac-mock-test.webm'),
+      'https://disc-coaching-analyzer.vercel.app/': drivePreviewUrl('disc-coaching-analyzer.webm'),
+      'https://drive.google.com/file/d/1GKNxXqahhZcEx5riUGBRTOSdTSa-2hzJ/view': drivePreviewUrl('disc-coaching-analyzer.webm'),
+      'https://kt-cloud-callibration.vercel.app/': drivePreviewUrl('kt-cloud-calibration.mov'),
+      'https://dtoon-dtoon.vercel.app/': drivePreviewUrl('dtoon-dtoon.mp4'),
+      'https://kt-cloud-mandala.vercel.app/': drivePreviewUrl('kt-cloud-mandala.mp4'),
+      'https://thanks-letter-dun.vercel.app/': drivePreviewUrl('thanks-letter.mp4'),
+      'https://kt-leadership-simulator-production.up.railway.app/': drivePreviewUrl('kt-leadership-simulator.m4v'),
+      'https://invest-k882.onrender.com': drivePreviewUrl('pi-evaluation-system.mp4'),
+      'https://ktcloud2033.vercel.app': drivePreviewUrl('ktcloud-2033.mp4'),
+      'https://drive.google.com/file/d/1cuVunNdzQnkX6_EOsG6bO7pIeMhlSgHC/view': drivePreviewUrl('gpts-conversation-demo.mp4'),
+    };
+    const OFFLINE_APP_MAP = {};
 
     const TOP_UI_HIDE_DELAY = 1000;
     const NAV_ARROW_SHOW_DELAY = 500;
@@ -2502,7 +2695,137 @@
       return getHorizontalSlides()[Reveal.getIndices().h] || document.querySelector('.reveal .slides > section.present');
     }
 
+    function isOfflineMode() {
+      return localStorage.getItem(OFFLINE_MODE_KEY) === 'true';
+    }
+
+    function setOfflineMode(active) {
+      localStorage.setItem(OFFLINE_MODE_KEY, active ? 'true' : 'false');
+      bodyEl.classList.toggle('offline-mode', active);
+      bodyEl.classList.toggle('live-mode', !active);
+      if (modeLabel) modeLabel.textContent = active ? 'offline' : 'live';
+      syncOfflineIframeSources();
+    }
+
+    function normalizeExternalUrl(url = '') {
+      try {
+        const parsed = new URL(url, window.location.href);
+        if (!/^https?:$/.test(parsed.protocol)) return url;
+        parsed.hash = parsed.hash || '';
+        return parsed.href;
+      } catch {
+        return url;
+      }
+    }
+
+    function getOfflineVideoPath(url) {
+      const normalized = normalizeExternalUrl(url);
+      return OFFLINE_VIDEO_MAP[normalized] || OFFLINE_VIDEO_MAP[normalized.replace(/\/$/, '')] || '';
+    }
+
+    function getOnlineVideoPath(url) {
+      const normalized = normalizeExternalUrl(url);
+      return ONLINE_VIDEO_MAP[normalized] || ONLINE_VIDEO_MAP[normalized.replace(/\/$/, '')] || getOfflineVideoPath(url);
+    }
+
+    function getOfflineAppPath(url) {
+      const normalized = normalizeExternalUrl(url);
+      return OFFLINE_APP_MAP[normalized] || OFFLINE_APP_MAP[normalized.replace(/\/$/, '')] || '';
+    }
+
+    function getOfflineVideoPlayerUrl(path) {
+      if (/^https?:\/\//.test(path)) return path;
+      const params = new URLSearchParams({ src: path });
+      return `offline-video-player.html#${params.toString()}`;
+    }
+
+    function getIframeLiveUrl(iframe) {
+      return iframe.dataset.liveSrc || iframe.dataset.src || iframe.getAttribute('src') || '';
+    }
+
+    function setIframeSourceForMode(iframe, liveUrl) {
+      if (!iframe || !liveUrl) return;
+      iframe.dataset.liveSrc = liveUrl;
+      const offlinePath = getOfflineVideoPath(liveUrl);
+      const offlineAppPath = iframe.dataset.offlineSrc || getOfflineAppPath(liveUrl);
+      const nextSrc = isOfflineMode()
+        ? (offlineAppPath || (offlinePath ? getOfflineVideoPlayerUrl(offlinePath) : liveUrl))
+        : liveUrl;
+      if (iframe.getAttribute('src') !== nextSrc) {
+        iframe.setAttribute('src', nextSrc);
+      }
+    }
+
+    function syncOfflineIframeSources() {
+      document.querySelectorAll('iframe').forEach((iframe) => {
+        const liveUrl = getIframeLiveUrl(iframe);
+        if (!liveUrl || (!getOfflineVideoPath(liveUrl) && !(iframe.dataset.offlineSrc || getOfflineAppPath(liveUrl)))) return;
+        setIframeSourceForMode(iframe, liveUrl);
+      });
+    }
+
+    function openPresentationLink(url) {
+      if (!url) return;
+      if (!isOfflineMode()) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      const offlinePath = getOfflineVideoPath(url);
+      if (offlinePath) {
+        window.open(getOfflineVideoPlayerUrl(offlinePath), '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      const offlineAppPath = getOfflineAppPath(url);
+      if (offlineAppPath) {
+        window.open(offlineAppPath, '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      window.alert('오프라인 모드에서 사용할 로컬 영상이 아직 준비되지 않은 링크입니다.');
+    }
+
+    function openDemoVideo(url) {
+      const videoPath = isOfflineMode() ? getOfflineVideoPath(url) : getOnlineVideoPath(url);
+      if (!videoPath) {
+        window.alert('이 링크에 연결된 데모 영상이 아직 준비되지 않았습니다.');
+        return;
+      }
+      window.open(getOfflineVideoPlayerUrl(videoPath), '_blank', 'noopener,noreferrer');
+    }
+
+    function initDemoVideoButtons() {
+      document.querySelectorAll('[data-demo-video-url]').forEach((button) => {
+        if (button.dataset.demoBound === 'true') return;
+        button.dataset.demoBound = 'true';
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          openDemoVideo(button.dataset.demoVideoUrl);
+        });
+      });
+    }
+
+    function initOfflineLinkRouting() {
+      document.addEventListener('click', (event) => {
+        if (!isOfflineMode()) return;
+        if (event.target.closest?.('[data-demo-video-url]')) return;
+        const link = event.target.closest?.('a[href^="http://"], a[href^="https://"]');
+        if (!link) return;
+        event.preventDefault();
+        event.stopPropagation();
+        openPresentationLink(link.href);
+      }, true);
+    }
+
+
     function setTopUiVisible(visible) {
+      if (bodyEl.classList.contains('nav-panel-hidden')) {
+        nav.classList.remove('visible');
+        bodyEl.classList.remove('top-ui-visible');
+        return;
+      }
       nav.classList.toggle('visible', visible);
       bodyEl.classList.toggle('top-ui-visible', visible);
     }
@@ -2588,7 +2911,7 @@
 
       const target = event.target;
       return Boolean(target?.closest?.(
-        '.admin-mode-panel, .guide-modal, .image-lightbox, input, textarea, select, [contenteditable="true"]'
+        '.admin-mode-panel, .guide-modal, .image-lightbox, .profile-modal, input, textarea, select, [contenteditable="true"]'
       ));
     }
 
@@ -2652,12 +2975,22 @@
       const coverScale = Math.max(viewportW / 1920, viewportH / 1080);
       const coverX = (viewportW - 1920 * coverScale) / 2;
       const coverY = (viewportH - 1080 * coverScale) / 2;
+      const safePad = 48;
+
+      function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
+      }
 
       function place(el, sourceX, sourceY, sourceW, sourceH) {
-        el.style.left = `${(coverX + sourceX * coverScale - slideRect.left) / slideScale}px`;
-        el.style.top = `${(coverY + sourceY * coverScale - slideRect.top) / slideScale}px`;
-        el.style.width = `${(sourceW * coverScale) / slideScale}px`;
-        el.style.height = `${(sourceH * coverScale) / slideScale}px`;
+        const width = sourceW * coverScale;
+        const height = sourceH * coverScale;
+        const viewportX = clamp(coverX + sourceX * coverScale, safePad, viewportW - width - safePad);
+        const viewportY = clamp(coverY + sourceY * coverScale, safePad, viewportH - height - safePad);
+
+        el.style.left = `${(viewportX - slideRect.left) / slideScale}px`;
+        el.style.top = `${(viewportY - slideRect.top) / slideScale}px`;
+        el.style.width = `${width / slideScale}px`;
+        el.style.height = `${height / slideScale}px`;
       }
 
       place(topLogo, 100, 100, 257, 32);
@@ -2676,7 +3009,9 @@
         'viewport-intro-reading',
         'viewport-body-light',
         'viewport-body-dark',
-        'viewport-soft-light'
+        'viewport-soft-light',
+        'viewport-toolbox-essentials',
+        'viewport-qa-question'
       );
 
       if (currentSection.dataset.chapter === 'hero') return;
@@ -2686,6 +3021,16 @@
 
       if (currentSection.classList.contains('intro-reading-section')) {
         viewportEl.classList.add('viewport-intro-reading');
+        return;
+      }
+
+      if (currentSection.classList.contains('toolbox-essentials-slide')) {
+        viewportEl.classList.add('viewport-body-dark', 'viewport-toolbox-essentials');
+        return;
+      }
+
+      if (currentSection.classList.contains('qa-question-slide')) {
+        viewportEl.classList.add('viewport-body-dark', 'viewport-qa-question');
         return;
       }
 
@@ -2740,8 +3085,8 @@
 
             if (target === 'app') {
               const iframe = browser.querySelector('[data-case-live-iframe]');
-              if (iframe && !iframe.getAttribute('src')) {
-                iframe.setAttribute('src', iframe.dataset.src);
+              if (iframe) {
+                setIframeSourceForMode(iframe, getIframeLiveUrl(iframe));
               }
             }
           });
@@ -2785,7 +3130,7 @@
         button.addEventListener('click', () => {
           const targetUrl = button.dataset.macOpenWindow;
           if (!targetUrl) return;
-          window.open(targetUrl, '_blank', 'noopener,noreferrer');
+          openPresentationLink(targetUrl);
 	        });
 	      });
 	    }
@@ -2838,6 +3183,51 @@
 	      });
 	    }
 
+    function initSpeakerProfileModal() {
+      const modal = document.getElementById('speakerProfileModal');
+      const frame = document.getElementById('speakerProfileFrame');
+      if (!modal || !frame) return;
+
+      const openProfile = () => {
+        if (!frame.getAttribute('src')) {
+          frame.setAttribute('src', frame.dataset.liveSrc);
+        }
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        bodyEl.classList.add('lightbox-open');
+      };
+
+      const closeProfile = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        bodyEl.classList.remove('lightbox-open');
+      };
+
+      document.querySelectorAll('[data-profile-open]').forEach((button) => {
+        if (button.dataset.bound === 'true') return;
+        button.dataset.bound = 'true';
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          openProfile();
+        });
+      });
+
+      modal.querySelectorAll('[data-profile-close]').forEach((button) => {
+        if (button.dataset.bound === 'true') return;
+        button.dataset.bound = 'true';
+        button.addEventListener('click', closeProfile);
+      });
+
+      if (modal.dataset.bound === 'true') return;
+      modal.dataset.bound = 'true';
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeProfile();
+        }
+      });
+    }
+
 	    function initOnboardingJourneyToggle() {
 	      document.querySelectorAll('.onboarding-journey-slide [data-onboarding-step-trigger]').forEach((button) => {
 	        if (button.dataset.bound === 'true') return;
@@ -2869,15 +3259,15 @@
 	      const guideImages = [
 	        {
 	          title: '온보딩 커피챗 1',
-	          src: 'https://lh3.googleusercontent.com/d/1DFdcTT9Y4s3ZJs_RokCV4hIeiv7UZdnc=w1600',
+	          src: 'assets/offline-images/onboarding-guide/coffee-chat-1.png',
 	        },
 	        {
 	          title: '온보딩 커피챗 2',
-	          src: 'https://lh3.googleusercontent.com/d/115DUyFxUtyd_WaFekySqsWxwOxXcEEDf=w1600',
+	          src: 'assets/offline-images/onboarding-guide/coffee-chat-2.png',
 	        },
 	        {
 	          title: '온보딩 커피챗 3',
-	          src: 'https://lh3.googleusercontent.com/d/1bpRiU3UCekwoCfmyZ21DW3dQZU59eVik=w1600',
+	          src: 'assets/offline-images/onboarding-guide/coffee-chat-3.png',
 	        },
 	      ];
 
@@ -2977,8 +3367,8 @@
 
 	      if (nextState === 'app') {
 	        const iframe = browser.querySelector('[data-disc-app-iframe]');
-	        if (iframe && !iframe.getAttribute('src')) {
-	          iframe.setAttribute('src', iframe.dataset.src);
+	        if (iframe) {
+	          setIframeSourceForMode(iframe, getIframeLiveUrl(iframe));
 	        }
 	      }
 	    }
@@ -3137,7 +3527,9 @@
 	    Reveal.on('ready', initCaseLiveToggle);
 	    Reveal.on('ready', initMacDemoFullscreen);
 	    Reveal.on('ready', initMacDemoOpenWindow);
+	    Reveal.on('ready', initDemoVideoButtons);
 	    Reveal.on('ready', initImageLightbox);
+	    Reveal.on('ready', initSpeakerProfileModal);
 	    Reveal.on('ready', initOnboardingJourneyToggle);
 	    Reveal.on('ready', initOnboardingGuideModal);
 	    Reveal.on('ready', syncDiscCaseState);
@@ -3150,8 +3542,113 @@
 	    Reveal.on('fragmenthidden', syncRailAnimationState);
       Reveal.on('ready', syncAutoFragmentSequence);
       Reveal.on('slidechanged', syncAutoFragmentSequence);
-      Reveal.on('ready', syncPerformanceGraphState);
-      Reveal.on('slidechanged', syncPerformanceGraphState);
+    Reveal.on('ready', syncPerformanceGraphState);
+    Reveal.on('slidechanged', syncPerformanceGraphState);
+
+    function initSpeakerCueAudio() {
+      const speakerAudio = document.getElementById('speakerCueAudio');
+      if (!speakerAudio) return;
+      const speakerCueNextKeys = new Set(['ArrowRight', 'PageDown', ' ', 'Spacebar', 'Enter', 'N', 'n']);
+
+      const getSpeakerCueSection = () => {
+        const currentSection = getCurrentSection();
+        return currentSection?.dataset.audioToggle === 'speaker' ? currentSection : null;
+      };
+
+      const markSpeakerCueState = (section, state) => {
+        if (!section) return;
+        section.dataset.audioCueState = state;
+        section.dataset.audioPlaying = state === 'playing' ? 'true' : 'false';
+      };
+
+      const stopSpeakerAudio = (state = 'stopped') => {
+        speakerAudio.pause();
+        speakerAudio.currentTime = 0;
+        document.querySelectorAll('[data-audio-playing="true"]').forEach((section) => {
+          markSpeakerCueState(section, state);
+        });
+      };
+
+      const playSpeakerAudio = (section) => {
+        if (!section) return;
+        speakerAudio.currentTime = 0;
+        speakerAudio.play().then(() => {
+          markSpeakerCueState(section, 'playing');
+        }).catch((error) => {
+          markSpeakerCueState(section, 'idle');
+          console.warn('speaker cue audio play failed', error);
+        });
+      };
+
+      const handleSpeakerCueAdvance = (event) => {
+        const section = getSpeakerCueSection();
+        if (!section) return false;
+
+        const state = section.dataset.audioCueState || 'idle';
+        if (state === 'ended' || state === 'stopped') return false;
+
+        event.preventDefault();
+        event.stopPropagation();
+        if (typeof event.stopImmediatePropagation === 'function') {
+          event.stopImmediatePropagation();
+        }
+
+        if (speakerAudio.paused) {
+          playSpeakerAudio(section);
+        } else {
+          stopSpeakerAudio('stopped');
+        }
+        return true;
+      };
+
+      document.querySelectorAll('[data-audio-toggle="speaker"]').forEach((section) => {
+        section.dataset.audioPlaying = 'false';
+        section.dataset.audioCueState = 'idle';
+        section.addEventListener('click', (event) => {
+          if (event.target.closest('a, button, input, textarea, select, .chapter-nav, .custom-nav, .admin-mode-panel')) return;
+          if (!section.classList.contains('present')) return;
+
+          event.stopPropagation();
+          if (speakerAudio.paused) {
+            playSpeakerAudio(section);
+          } else {
+            stopSpeakerAudio();
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (!speakerCueNextKeys.has(event.key)) return;
+        if (event.metaKey || event.ctrlKey || event.altKey) return;
+        if (event.target?.closest?.('input, textarea, select, [contenteditable="true"], .admin-mode-panel')) return;
+        handleSpeakerCueAdvance(event);
+      }, true);
+
+      document.addEventListener('click', (event) => {
+        if (!event.target?.closest?.('#navRight')) return;
+        handleSpeakerCueAdvance(event);
+      }, true);
+
+      speakerAudio.addEventListener('ended', () => {
+        speakerAudio.pause();
+        markSpeakerCueState(getSpeakerCueSection(), 'ended');
+      });
+
+      Reveal.on('slidechanged', () => {
+        const currentSection = getCurrentSection();
+        if (currentSection?.dataset.audioToggle !== 'speaker') {
+          stopSpeakerAudio();
+          document.querySelectorAll('[data-audio-toggle="speaker"]').forEach((section) => {
+            markSpeakerCueState(section, 'idle');
+          });
+        } else {
+          stopSpeakerAudio('idle');
+          markSpeakerCueState(currentSection, 'idle');
+        }
+      });
+    }
+
+    Reveal.on('ready', initSpeakerCueAudio);
 
     /* ── 3. 다크 배경에서 좌우 버튼 색상 변경 ── */
     const navLeftBtn = document.getElementById('navLeft');
@@ -3189,6 +3686,21 @@
       bodyEl.classList.toggle('effects-off', !effectOn);
       effectBtn.textContent = effectOn ? 'Effect ON' : 'Effect OFF';
       effectBtn.classList.toggle('off', !effectOn);
+    });
+
+    navPanelHide?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      clearTimeout(navTimer);
+      bodyEl.classList.add('nav-panel-hidden');
+      nav.classList.remove('visible');
+      bodyEl.classList.remove('top-ui-visible');
+    });
+
+    navPanelRestore?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      bodyEl.classList.remove('nav-panel-hidden');
+      setTopUiVisible(true);
+      scheduleTopUiHide();
     });
 
     /* ── 4. 챕터 네비게이션 빌드 ── */
@@ -3262,7 +3774,8 @@
     /* ── 5. 관리자 모드: Intro 더블클릭으로 슬라이드 순서/숨김 관리 ── */
     const ADMIN_PASSWORD = '0401';
     const ADMIN_STATE_KEY = 'presentation-vibe-admin-state-v1';
-    const ADMIN_DEFAULT_STATE_VERSION = '2026-05-06-admin-design-edits-02';
+    const FORCE_DEFAULT_SLIDE_STATE_ON_LOAD = true;
+    const ADMIN_DEFAULT_STATE_VERSION = '2026-05-07-layout-and-closing-order-01';
     const DEFAULT_ADMIN_STATE = Object.freeze({
       __defaultStateVersion: ADMIN_DEFAULT_STATE_VERSION,
       order: [
@@ -3307,15 +3820,17 @@
         'slide-44',
         'slide-45',
         'slide-46',
-        'slide-48',
+        'slide-47',
         'slide-50',
         'slide-53',
+        'slide-57',
         'slide-54',
         'slide-55',
         'slide-56',
+        'slide-58',
       ],
       hidden: [],
-      deleted: ['slide-9', 'slide-14', 'slide-16', 'slide-38', 'slide-39', 'slide-47', 'slide-49', 'slide-51', 'slide-52'],
+      deleted: ['slide-9', 'slide-14', 'slide-16', 'slide-38', 'slide-39', 'slide-48', 'slide-49', 'slide-51', 'slide-52'],
       textEdits: {},
       textDeleted: [],
       textAdded: {},
@@ -3492,21 +4007,6 @@
             fontSize: 28,
           },
         },
-        'slide-45-element-5': {
-          styles: {
-            y: 50,
-          },
-        },
-        'slide-45-element-6': {
-          styles: {
-            y: 50,
-          },
-        },
-        'slide-45-element-7': {
-          styles: {
-            y: 50,
-          },
-        },
       },
     });
     const adminPanel = document.getElementById('adminModePanel');
@@ -3535,6 +4035,7 @@
       '.admin-mode-panel',
       '.image-lightbox',
       '.guide-modal',
+      '.profile-modal',
       '.custom-nav',
       '[data-admin-added-text]',
     ].join(',');
@@ -4436,6 +4937,9 @@
         return section;
       });
 
+      if (FORCE_DEFAULT_SLIDE_STATE_ON_LOAD) {
+        localStorage.removeItem(ADMIN_STATE_KEY);
+      }
       applyAdminSlideState();
       Reveal.on('slidechanged', syncAdminSelectionWithCurrentSlide);
 
@@ -4449,6 +4953,20 @@
         const password = window.prompt('관리자 비밀번호를 입력해주세요.');
         if (password === ADMIN_PASSWORD) {
           setAdminMode(true);
+        } else if (password !== null) {
+          window.alert('비밀번호가 맞지 않습니다.');
+        }
+      });
+
+      const adminEndButton = document.querySelector('.chapter-btn[data-chapter="closing"]');
+      adminEndButton?.addEventListener('dblclick', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const password = window.prompt('오프라인 모드 비밀번호를 입력해주세요.');
+        if (password === OFFLINE_PASSWORD) {
+          const nextMode = !isOfflineMode();
+          setOfflineMode(nextMode);
+          window.alert(nextMode ? '오프라인 모드로 전환했습니다.' : '라이브 모드로 전환했습니다.');
         } else if (password !== null) {
           window.alert('비밀번호가 맞지 않습니다.');
         }
@@ -4617,7 +5135,7 @@
 
       document.addEventListener('click', (event) => {
         if (!bodyEl.classList.contains('admin-mode-active')) return;
-        if (event.target.closest('.admin-mode-panel, .chapter-nav, .custom-nav, .guide-modal, .image-lightbox')) return;
+        if (event.target.closest('.admin-mode-panel, .chapter-nav, .custom-nav, .guide-modal, .image-lightbox, .profile-modal')) return;
 
         const currentSection = getCurrentSection();
         if (!currentSection?.contains(event.target)) return;
@@ -4640,6 +5158,10 @@
     }
 
     Reveal.on('ready', initAdminMode);
+    Reveal.on('ready', () => {
+      setOfflineMode(isOfflineMode());
+      initOfflineLinkRouting();
+    });
   </script>
 </body>
 </html>

@@ -4,3 +4,5 @@ dist/
 .env*
 .gstack/
 sorce/
+assets/offline-videos/*
+!assets/offline-videos/README.md

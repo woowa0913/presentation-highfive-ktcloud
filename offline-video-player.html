@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offline Demo Video</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #05070d;
+      color: #f5f7ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #05070d;
+    }
+
+    main {
+      width: min(100vw, 1280px);
+      padding: 28px;
+    }
+
+    .player-shell {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    .message {
+      display: none;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #f5f7ff;
+      font-size: 18px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    body.is-error .player-shell {
+      display: none;
+    }
+
+    body.is-error .message {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="player-shell">
+      <video id="offlineVideo" controls autoplay muted playsinline></video>
+    </div>
+    <p id="message" class="message">재생할 오프라인 영상 경로를 확인할 수 없습니다.</p>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const src = params.get('src') || '';
+    const isAllowedVideo =
+      src.startsWith('assets/offline-videos/') &&
+      !src.includes('..') &&
+      !src.includes('\\') &&
+      /\.(mp4|m4v|mov|webm)$/i.test(src);
+    const video = document.getElementById('offlineVideo');
+    const message = document.getElementById('message');
+
+    if (!isAllowedVideo) {
+      document.body.classList.add('is-error');
+    } else {
+      video.setAttribute('src', src);
+      video.load();
+      video.addEventListener('error', () => {
+        document.body.classList.add('is-error');
+        message.textContent = '영상 파일을 재생할 수 없습니다. 파일 경로와 코덱을 확인해주세요.';
+      });
+    }
+  </script>
+</body>
+</html>

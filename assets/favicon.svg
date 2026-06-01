@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Maker cursor favicon">
+  <defs>
+    <linearGradient id="bg" x1="7" y1="6" x2="57" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECF7FF"/>
+      <stop offset="0.48" stop-color="#BFE8FF"/>
+      <stop offset="1" stop-color="#3363FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
+  <path d="M19 12v38l10-9 8 14 7-4-8-14h14z" fill="#1A1550"/>
+  <path d="M43 9v8M39 13h8" stroke="#FF644E" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="51" cy="25" r="4" fill="#00D4AA"/>
+  <circle cx="13" cy="50" r="3" fill="#245DFF"/>
+</svg>
